@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32630.194
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quest2-VRC", "Quest2-VRC\Quest2-VRC.csproj", "{0BFC8128-748B-49AB-A5F6-CE52D656FD1C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{0BFC8128-748B-49AB-A5F6-CE52D656FD1C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0BFC8128-748B-49AB-A5F6-CE52D656FD1C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0BFC8128-748B-49AB-A5F6-CE52D656FD1C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0BFC8128-748B-49AB-A5F6-CE52D656FD1C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {78F188A3-3D87-4BB5-93F1-DEE876F3C41C}
+	EndGlobalSection
+EndGlobal

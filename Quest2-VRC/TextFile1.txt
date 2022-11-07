@@ -1,0 +1,14 @@
+﻿client = new AdvancedAdbClient();
+            client.Connect("127.0.0.1:62001");
+            device = client.GetDevices().FirstOrDefault();
+            if (device == null)
+            {
+                Console.WriteLine("No devices found, please restart app and try again");
+                Console.ReadLine();
+                return;
+            }
+            if (device.Name != "hollywood")
+            {
+                Console.WriteLine("Oculus/Meta Quest 2 is not detected, please disconnect non Oculus/Meta devices and emulators from PC, restart app and try again");
+                Console.ReadLine();
+                return;
