@@ -8,14 +8,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Media;
-using System.Collections.Generic;
 using System.Runtime.InteropServices;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 
 namespace Quest2_VRC
@@ -45,10 +38,17 @@ namespace Quest2_VRC
             Console.WriteLine("Exiting system due to external CTRL-C, or process kill, or shutdown");
 
             //do your cleanup here
-            Thread.Sleep(5000); //simulate some cleanup delay
-
+            
+            System.Diagnostics.Process process = new System.Diagnostics.Process();
+            System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
+            startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
+            startInfo.FileName = "cmd.exe";
+            startInfo.Arguments = "/C adb.exe kill-server";
+            process.StartInfo = startInfo;
+            process.Start();
+            
             Console.WriteLine("Cleanup complete");
-
+            Thread.Sleep(100);
             //allow main to run off
             exitSystem = true;
 
@@ -61,6 +61,17 @@ namespace Quest2_VRC
 
         static void Main(string[] args)
         {
+            if (!AdbServer.Instance.GetStatus().IsRunning)
+            {
+                AdbServer server = new AdbServer();
+                StartServerResult result = server.StartServer(@"adb.exe", false);
+                if (result != StartServerResult.Started)
+                {
+                    Console.WriteLine("Can't start adb server, please restart app and try again");
+                    Console.ReadLine();
+                    return;
+                }
+            }
             // Some biolerplate to react to close window event, CTRL-C, kill, etc
             _handler += new EventHandler(Handler);
             SetConsoleCtrlHandler(_handler, true);
@@ -75,11 +86,7 @@ namespace Quest2_VRC
             }
         }
 
-        public void Start()
-        {
-            // start a thread and start doing some processing
-            Console.WriteLine("Thread started, processing..");
-        }
+
     }
 
     static class VRCProgram
@@ -92,17 +99,7 @@ namespace Quest2_VRC
 
         public static async void Run()
         {
-            if (!AdbServer.Instance.GetStatus().IsRunning)
-            {
-                AdbServer server = new AdbServer();
-                StartServerResult result = server.StartServer(@"adb.exe", false);
-                if (result != StartServerResult.Started)
-                {
-                    Console.WriteLine("Can't start adb server, please restart app and try again");
-                    Console.ReadLine();
-                    return;
-                }
-            }
+            Console.WriteLine("To quit the application press CTRL+C to close the ADB server");
             client = new AdvancedAdbClient();
             client.Connect("127.0.0.1:62001");
             device = client.GetDevices().FirstOrDefault();
@@ -124,7 +121,7 @@ namespace Quest2_VRC
                 return;
 
             }
-
+            
             Random rnd = new Random();
             int Uport = rnd.Next(1, 9999);
             Console.WriteLine("UDP port is {0}", Uport);
