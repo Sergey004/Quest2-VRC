@@ -10,6 +10,7 @@ using System.Threading;
 using System.Media;
 using System.Runtime.InteropServices;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace Quest2_VRC
 {
@@ -61,16 +62,32 @@ namespace Quest2_VRC
 
         static void Main(string[] args)
         {
+            Console.WriteLine("Make sure you connect the headset to your computer and turn on the controllers");
             if (!AdbServer.Instance.GetStatus().IsRunning)
             {
                 AdbServer server = new AdbServer();
-                StartServerResult result = server.StartServer(@"adb.exe", false);
-                if (result != StartServerResult.Started)
+                try
                 {
-                    Console.WriteLine("Can't start adb server, please restart app and try again");
-                    Console.ReadLine();
-                    return;
+                    Console.WriteLine("Checking for adb components...");
+                    Console.WriteLine(File.Exists(@"AdbWinApi.dll") ? "AdbWinApi.dll exists." : "AdbWinApi.dll does not exist.");
+                    Console.WriteLine(File.Exists(@"AdbWinUsbApi.dll") ? "AdbWinUsbApi.dll exists." : "AdbWinUsbApi.dll does not exist.");
+                    Console.WriteLine(File.Exists(@"adb.exe") ? "Adb.exe exists." : "Adb.exe does not exist.");
+                    StartServerResult result = server.StartServer(@"adb.exe", false);
+                    if (result != StartServerResult.Started)
+                    {
+                        Console.WriteLine("Can't start adb server, please restart app and try again");
+                        Console.ReadLine();
+                        return;
+                    }
+                    
                 }
+                catch (FileNotFoundException)
+                {
+                    Console.WriteLine("ADB.exe, AdbWinApi.dll or AdbWinUsbApi.dll not found in root of program, you can dowload from https://developer.android.com/studio/releases/platform-tools , press any key to exit");
+                    Console.ReadLine();
+                    Environment.Exit(-1);
+                }
+
             }
             // Some biolerplate to react to close window event, CTRL-C, kill, etc
             _handler += new EventHandler(Handler);
