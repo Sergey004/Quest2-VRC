@@ -147,11 +147,6 @@ namespace Quest2_VRC
             await questwd(Uport);
 
         }
-        static void OnProcessExit(object sender, EventArgs e)
-        {
-            Console.WriteLine("I'm out of here");
-            Console.ReadLine();
-        }
 
         public static async Task questwd(int Uport)
         {
@@ -162,12 +157,10 @@ namespace Quest2_VRC
             {
                 try
                 {
-
                     int Hbatlevelint = 0;
                     int Rbatlevelint = 0;
                     int Lbatlevelint = 0;
                     bool LowHMDBat = false;
-
 
                     ConsoleOutputReceiver Hbat_receiver = new ConsoleOutputReceiver();
                     client.ExecuteRemoteCommand("dumpsys CompanionService | grep Battery", device, Hbat_receiver);
@@ -181,7 +174,6 @@ namespace Quest2_VRC
                     var Rbat_match = Regex.Match(Rbat_receiver.ToString(), @"\d+", RegexOptions.RightToLeft);
                     var Lbat_match = Regex.Match(Lbat_receiver.ToString(), @"\d+", RegexOptions.RightToLeft);
 
-
                     Hbatlevelint = int.Parse(Hbat_match.Value);
                     Rbatlevelint = int.Parse(Rbat_match.Value);
                     Lbatlevelint = int.Parse(Lbat_match.Value);
@@ -189,25 +181,25 @@ namespace Quest2_VRC
                     float Rbatlevelf = Rbatlevelint;
                     float Lbatlevelf = Lbatlevelint;
 
-
                     if (Hbatlevelf < 15)
                     {
                         LowHMDBat = true;
                         SoundPlayer playSound = new SoundPlayer(Properties.Resources.HMDloworbelow15);
                         playSound.Play();
-                    }
+                        Thread.Sleep(300);
+                   }
                     if (Rbatlevelf < 15)
                     {
                         SoundPlayer playSound = new SoundPlayer(Properties.Resources.Rcrtloworbelow15);
-                        playSound.Play();
+                        playSound.Play(); 
+                        Thread.Sleep(300);
                     }
                     if (Lbatlevelf < 15)
                     {
                         SoundPlayer playSound = new SoundPlayer(Properties.Resources.Lctrloworbelow15);
                         playSound.Play();
+                        Thread.Sleep(300);
                     }
-
-                    //Spacer
 
                     VRChatMessage Msg1 = new VRChatMessage("HMDBat", Hbatlevelf);
                     VRChatMessage Msg2 = new VRChatMessage("ControllerBatL", Lbatlevelf);
