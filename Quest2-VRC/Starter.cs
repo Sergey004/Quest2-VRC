@@ -1,21 +1,22 @@
 ﻿using AdvancedSharpAdbClient;
-using Bespoke.Osc;
 using System;
-using System.Linq;
-using System.Net;
-using System.Net.Sockets;
-using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading;
-//using System.Media;
 using System.Runtime.InteropServices;
-using System.Threading.Tasks;
 using System.IO;
+using System.Linq;
+using Bespoke.Osc;
+using System.Media;
+using System.Net.Sockets;
+using System.Net;
+using System.Text.RegularExpressions;
+using System.Text;
+using System.Threading.Tasks;
 
 namespace Quest2_VRC
 {
-    public class Program
+    public class Starter
     {
+
         static bool exitSystem = false;
 
         #region Trap application termination
@@ -59,10 +60,13 @@ namespace Quest2_VRC
             return true;
         }
         #endregion
-
-        static void Main(string[] args)
+        static AdvancedAdbClient client;
+        static DeviceData device;
+        static void Main()
         {
+
             Console.WriteLine("Make sure you connect the headset to your computer and turn on the controllers");
+            Console.WriteLine("To quit the application press CTRL+C to close the ADB server");
             if (!AdbServer.Instance.GetStatus().IsRunning)
             {
                 AdbServer server = new AdbServer();
@@ -77,6 +81,7 @@ namespace Quest2_VRC
                     {
                         Console.WriteLine("Can't start adb server, please restart app and try again");
                         Console.ReadLine();
+                        Environment.Exit(-1);
                         return;
                     }
                     
@@ -89,35 +94,7 @@ namespace Quest2_VRC
                 }
 
             }
-            // Some biolerplate to react to close window event, CTRL-C, kill, etc
-            _handler += new EventHandler(Handler);
-            SetConsoleCtrlHandler(_handler, true);
 
-            //start your multi threaded program here
-            Console.Clear();
-            VRCProgram.Run();
-
-            //hold the console so it doesn’t run off the end
-            while (!exitSystem)
-            {
-                Thread.Sleep(500);
-            }
-        }
-
-
-    }
-
-    static class VRCProgram
-    {
-        static readonly IPAddress IP = IPAddress.Loopback;
-        static readonly int Port = 9000;
-        static readonly IPEndPoint VRChat = new IPEndPoint(IP, Port);
-        static AdvancedAdbClient client;
-        static DeviceData device;
-
-        public static async void Run()
-        {
-            Console.WriteLine("To quit the application press CTRL+C to close the ADB server");
             client = new AdvancedAdbClient();
             client.Connect("127.0.0.1:62001");
             device = client.GetDevices().FirstOrDefault();
@@ -125,6 +102,7 @@ namespace Quest2_VRC
             {
                 Console.WriteLine("No devices found, please restart app and try again");
                 Console.ReadLine();
+
                 return;
             }
             if (device is not null)
@@ -136,9 +114,37 @@ namespace Quest2_VRC
             {
                 Console.WriteLine("Oculus/Meta Quest 2 is not detected, please disconnect non Oculus/Meta devices and emulators from PC, restart app and try again");
                 Console.ReadLine();
+                Environment.Exit(-1);
                 return;
 
             }
+            // Some biolerplate to react to close window event, CTRL-C, kill, etc
+            _handler += new EventHandler(Handler);
+            SetConsoleCtrlHandler(_handler, true);
+
+            //start your multi threaded program here
+            Console.WriteLine("All checks passed, launching application");
+            VRCProgram.Run();
+
+
+            //hold the console so it doesn’t run off the end
+            while (!exitSystem)
+            {
+                Thread.Sleep(500);
+            }
+        }
+
+
+    }
+    static class VRCProgram
+    {
+        static readonly IPAddress IP = IPAddress.Loopback;
+        static readonly int Port = 9000;
+        static readonly IPEndPoint VRChat = new IPEndPoint(IP, Port); 
+        static AdvancedAdbClient client;
+        static DeviceData device;
+        public static async void Run()
+        {
 
             Random rnd = new Random();
             int Uport = rnd.Next(1, 9999);
@@ -153,8 +159,7 @@ namespace Quest2_VRC
         {
             // Create a bogus port for the client
             OscPacket.UdpClient = new UdpClient(Uport);
-
-            while (true)
+                        while (true)
             {
                 try
                 {
@@ -185,23 +190,21 @@ namespace Quest2_VRC
                     if (Hbatlevelf < 15)
                     {
                         LowHMDBat = true;
-                        //SoundPlayer playSound = new SoundPlayer(Properties.Resources.HMDloworbelow15);
-                        //playSound.Play();
-
-                   }
+                        SoundPlayer playSound = new SoundPlayer(Properties.Resources.HMDloworbelow15);
+                        playSound.Play();
+                        Thread.Sleep(300);
+                    }
                     if (Rbatlevelf < 15)
                     {
-                        LogToConsole("Right controller is discharged or disabled");
-                        //SoundPlayer playSound = new SoundPlayer(Properties.Resources.Rcrtloworbelow15);
-                        //playSound.Play();
-
+                        SoundPlayer playSound = new SoundPlayer(Properties.Resources.Rcrtloworbelow15);
+                        playSound.Play();
+                        Thread.Sleep(300);
                     }
                     if (Lbatlevelf < 15)
                     {
-                        LogToConsole("Left controller is discharged or disabled");
-                        //SoundPlayer playSound = new SoundPlayer(Properties.Resources.Lctrloworbelow15);
-                        //playSound.Play();
-
+                        SoundPlayer playSound = new SoundPlayer(Properties.Resources.Lctrloworbelow15);
+                        playSound.Play();
+                        Thread.Sleep(300);
                     }
 
                     VRChatMessage Msg1 = new VRChatMessage("HMDBat", Hbatlevelf);
