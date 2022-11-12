@@ -3,13 +3,17 @@ This program transmits Quest 2 battery information to the VRChtat via the OSC pr
 
 ## Building from source
 To build this application you will need:
-- Visual Studio 2019 
+- Visual Studio 2019 or later
 - [ADB](https://developer.android.com/studio/releases/platform-tools)
 
 To start building the application, simply launch the solution in Visual Studio and run " Restore NuGet packages" to download dependencies
 
 ## Using
-Add a parameter to the ExpressionParameters of your avatar by assigning ```HMDBat```, ```ControllerBatL```,  ```ControllerBatR```  with a value ```-1 float```
+Add a parameter to the ExpressionParameters of your avatar by assigning:
+- ```HMDBat``` = ```-1 float```
+- ```ControllerBatL``` =```-1 float```
+- ```ControllerBatR``` = ```-1 float```
+- ```LowHMDBat``` = ```bool false```
 
 Connect your Quest 2 to your computer in developer mode
 
