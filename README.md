@@ -9,7 +9,12 @@ To build this application you will need:
 To start building the application, simply launch the solution in Visual Studio and run " Restore NuGet packages" to download dependencies
 
 ## Using
-Add a parameter to the ExpressionParameters of your avatar by assigning ```HMDBat```, ```ControllerBatL```,  ```ControllerBatR```  with a value ```-1 float```
+Add a parameter to the ExpressionParameters of your avatar by assigning:
+```HMDBat```, 
+```ControllerBatL```,
+```ControllerBatR```
+with a value ```-1 float```
+```LowHMDBat``` with a value ```bool```
 
 Connect your Quest 2 to your computer in developer mode
 
