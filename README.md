@@ -3,7 +3,7 @@ This program transmits Quest 2 battery information to the VRChtat via the OSC pr
 
 ## Building from source
 To build this application you will need:
-- Visual Studio 2019 
+- Visual Studio 2019 or later
 - [ADB](https://developer.android.com/studio/releases/platform-tools)
 
 To start building the application, simply launch the solution in Visual Studio and run " Restore NuGet packages" to download dependencies
