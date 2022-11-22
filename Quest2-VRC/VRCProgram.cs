@@ -31,18 +31,18 @@ namespace Quest2_VRC
                 Console.ReadLine();
                 return;
             }
+            if (device.Name != "hollywood" && device.Name != "vr_monterey" && device.Name != "monterey" && device.Name != "seacliff")
+            {
+                Console.WriteLine("Oculus/Meta device is not detected or is not authorized, please disconnect all non Oculus/Meta devices and clouse all emulators on PC, restart app and try again");
+                Console.ReadLine();
+                return;
+            }
             if (device is not null)
             {
                 Console.WriteLine("Selecting device: {0} with name {1}", device.Model, device.Name);
 
             }
-            if (device.Name != "hollywood" && device.Name != "vr_monterey" && device.Name != "monterey" && device.Name != "seacliff")
-            {
-                Console.WriteLine("Oculus/Meta device is not detected, please disconnect all non Oculus/Meta devices and clouse all emulators on PC, restart app and try again");
-                Console.ReadLine();
-                return;
-
-            }
+           
             Random rnd = new Random();
             int Uport = rnd.Next(1, 9999);
             Console.WriteLine("UDP port is {0}", Uport);
@@ -94,14 +94,14 @@ namespace Quest2_VRC
                     }
                     if (Rbatlevelf < 15)
                     {
-                        LogToConsole("Right controller is discharged or disabled");
+                        LogToConsole("Right controller is discharged, disabled or not connected");
                         //SoundPlayer playSound = new SoundPlayer(Properties.Resources.Rcrtloworbelow15);
                         //playSound.Play();
 
                     }
                     if (Lbatlevelf < 15)
                     {
-                        LogToConsole("Left controller is discharged or disabled");
+                        LogToConsole("Left controller is discharged, disabled or not connected");
                         //SoundPlayer playSound = new SoundPlayer(Properties.Resources.Lctrloworbelow15);
                         //playSound.Play();
 
