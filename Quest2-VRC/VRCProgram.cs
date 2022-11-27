@@ -25,7 +25,7 @@ namespace Quest2_VRC
             await questwd(Uport);
         }
 
-        public static async Task<string> questwd(int Uport)
+        public static async Task questwd(int Uport)
         {
             // Create a bogus port for the client
             OscPacket.UdpClient = new UdpClient(Uport);
