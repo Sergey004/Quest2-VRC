@@ -3,12 +3,16 @@ using System;
 using System.Threading;
 using System.Runtime.InteropServices;
 using System.IO;
+using System.Threading.Tasks;
+using System.Linq;
 
 namespace Quest2_VRC
 {
     public class Program
     {
         static bool exitSystem = false;
+        static public AdvancedAdbClient client;
+        static public DeviceData device;
 
         #region Trap application termination
         [DllImport("Kernel32")]
@@ -54,6 +58,10 @@ namespace Quest2_VRC
 
         static void Main(string[] args)
         {
+            // Some biolerplate to react to close window event, CTRL-C, kill, etc
+            _handler += new EventHandler(Handler);
+            SetConsoleCtrlHandler(_handler, true);
+
             Console.WriteLine("Make sure you connect the headset to your computer and turn on the controllers");
             Console.WriteLine("To quit the application press CTRL+C to close the ADB server");
             if (!AdbServer.Instance.GetStatus().IsRunning)
@@ -70,9 +78,9 @@ namespace Quest2_VRC
                     {
                         Console.WriteLine("Can't start adb server, please restart app and try again");
                         Console.ReadLine();
-                        return;
+                        Environment.Exit(-1);
                     }
-                    
+
                 }
                 catch (FileNotFoundException)
                 {
@@ -80,15 +88,33 @@ namespace Quest2_VRC
                     Console.ReadLine();
                     Environment.Exit(-1);
                 }
-              
+
             }
             else
             {
                 Console.WriteLine("ADB server is already running, no checks are required");
             }
-            // Some biolerplate to react to close window event, CTRL-C, kill, etc
-            _handler += new EventHandler(Handler);
-            SetConsoleCtrlHandler(_handler, true);
+
+            client = new AdvancedAdbClient();
+            client.Connect("127.0.0.1:62001");
+            device = client.GetDevices().FirstOrDefault();
+            if (device == null)
+            {
+                Console.WriteLine("No devices found, please restart app and try again");
+                Console.ReadLine();
+                return;
+            }
+            if (device.Name != "hollywood" && device.Name != "vr_monterey" && device.Name != "monterey" && device.Name != "seacliff")
+            {
+                Console.WriteLine("Oculus/Meta device is not detected or is not authorized, please disconnect all non Oculus/Meta devices and close all emulators on PC, restart app and try again");
+                Console.ReadLine();
+                Environment.Exit(-1);
+            }
+            if (device is not null)
+            {
+                Console.WriteLine("Selecting device:\nSerial: {0}\nModel: {1}\nCodename: {2}", device.Serial, device.Model, device.Name);
+
+            }
 
             //start your multi threaded program here
             VRCProgram.Run();
@@ -98,6 +124,7 @@ namespace Quest2_VRC
             {
                 Thread.Sleep(500);
             }
+            
         }
 
 

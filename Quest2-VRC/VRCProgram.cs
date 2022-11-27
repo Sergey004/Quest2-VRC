@@ -1,13 +1,13 @@
 ﻿using AdvancedSharpAdbClient;
 using Bespoke.Osc;
 using System;
-using System.Linq;
 using System.Net.Sockets;
 using System.Net;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using static Quest2_VRC.Logger;
+using static Quest2_VRC.Program;
 
 namespace Quest2_VRC
 {
@@ -16,43 +16,16 @@ namespace Quest2_VRC
         static readonly IPAddress IP = IPAddress.Loopback;
         static readonly int Port = 9000;
         static readonly IPEndPoint VRChat = new IPEndPoint(IP, Port); 
-        static AdvancedAdbClient client;
-        static DeviceData device;
 
         public static async void Run()
         {
-            
-            client = new AdvancedAdbClient();
-            client.Connect("127.0.0.1:62001");
-            device = client.GetDevices().FirstOrDefault();
-            if (device == null)
-            {
-                Console.WriteLine("No devices found, please restart app and try again");
-                Console.ReadLine();
-                return;
-            }
-            if (device.Name != "hollywood" && device.Name != "vr_monterey" && device.Name != "monterey" && device.Name != "seacliff")
-            {
-                Console.WriteLine("Oculus/Meta device is not detected or is not authorized, please disconnect all non Oculus/Meta devices and clouse all emulators on PC, restart app and try again");
-                Console.ReadLine();
-                return;
-            }
-            if (device is not null)
-            {
-                Console.WriteLine("Selecting device: {0} with name {1}", device.Model, device.Name);
-
-            }
-           
             Random rnd = new Random();
             int Uport = rnd.Next(1, 9999);
-            Console.WriteLine("UDP port is {0}", Uport);
-
-
+            Console.WriteLine("OSC UDP port is {0}", Uport);
             await questwd(Uport);
-
         }
 
-        public static async Task questwd(int Uport)
+        public static async Task<string> questwd(int Uport)
         {
             // Create a bogus port for the client
             OscPacket.UdpClient = new UdpClient(Uport);
@@ -73,7 +46,6 @@ namespace Quest2_VRC
                     ConsoleOutputReceiver Lbat_receiver = new ConsoleOutputReceiver();
                     client.ExecuteRemoteCommand("dumpsys OVRRemoteService | grep Left", device, Lbat_receiver);
 
-                    //Console.WriteLine($"String with number: {receiver}");  //Debug output
                     var Hbat_match = Regex.Match(Hbat_receiver.ToString(), @"\d+", RegexOptions.RightToLeft);
                     var Rbat_match = Regex.Match(Rbat_receiver.ToString(), @"\d+", RegexOptions.RightToLeft);
                     var Lbat_match = Regex.Match(Lbat_receiver.ToString(), @"\d+", RegexOptions.RightToLeft);
@@ -116,8 +88,8 @@ namespace Quest2_VRC
 
                     LogToConsole("Sending HMD status", Msg1, Msg2, Msg3, Msg4);
 
-                    Thread.Sleep(300);
-
+                    Thread.Sleep(1000);
+ 
                 }
                 catch
                 {
@@ -142,7 +114,8 @@ namespace Quest2_VRC
                         if (Param.Data != null &&
                             Param.Data.GetType() != typeof(int) &&
                             Param.Data.GetType() != typeof(float) &&
-                            Param.Data.GetType() != typeof(bool))
+                            Param.Data.GetType() != typeof(bool)) 
+                            
                             throw new Exception(String.Format("Param of type {0} is not supported by VRChat!", Param.Data.GetType()));
 
                         // Create a bundle that contains the target address and port (VRChat works on localhost:9000)
@@ -165,32 +138,8 @@ namespace Quest2_VRC
                     }
                 }
             }
-
-            static void LogToConsole(string Message, params VRChatMessage[] Parameters)
-            {
-                StringBuilder MessageBuilder = new StringBuilder();
-
-                MessageBuilder.Append(String.Format("{0} - {1}", DateTime.UtcNow.ToString("dd/MM/yyyy HH:mm:ss.ffff"), Message));
-
-                if (Parameters.Length > 0)
-                {
-                    MessageBuilder.Append(" (");
-
-                    var LastParam = Parameters[Parameters.Length - 1];
-                    foreach (var Parameter in Parameters)
-                    {
-                        MessageBuilder.Append(String.Format("{0} of type {1}", Parameter.Data, Parameter.Data.GetType()));
-
-                        if (Parameter != LastParam)
-                            MessageBuilder.Append(", ");
-                    }
-
-                    MessageBuilder.Append(")");
-                }
-
-                Console.WriteLine(MessageBuilder.ToString());
-            }
         }
+
 
         public class VRChatMessage
         {
