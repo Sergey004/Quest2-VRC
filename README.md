@@ -6,7 +6,7 @@ To build this application you will need:
 - Visual Studio 2019 or later
 - [ADB](https://developer.android.com/studio/releases/platform-tools)
 
-To start building the application, simply launch the solution in Visual Studio and run " Restore NuGet packages" to download dependencies
+To start building the application, simply launch the solution in Visual Studio and run "Restore NuGet packages" to download dependencies
 
 ## Using
 Add a parameter to the ExpressionParameters of your avatar by assigning:
