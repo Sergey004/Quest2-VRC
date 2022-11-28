@@ -40,7 +40,7 @@ namespace Quest2_VRC
             System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
             startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
             startInfo.FileName = "cmd.exe";
-            startInfo.Arguments = "/C adb.exe kill-server";
+            startInfo.Arguments = "/C ADB\\adb.exe kill-server";
             process.StartInfo = startInfo;
             process.Start();
             
@@ -70,10 +70,18 @@ namespace Quest2_VRC
                 try
                 {
                     Console.WriteLine("Checking for adb components...");
-                    Console.WriteLine(File.Exists(@"AdbWinApi.dll") ? "AdbWinApi.dll exists." : "AdbWinApi.dll does not exist.");
-                    Console.WriteLine(File.Exists(@"AdbWinUsbApi.dll") ? "AdbWinUsbApi.dll exists." : "AdbWinUsbApi.dll does not exist.");
-                    Console.WriteLine(File.Exists(@"adb.exe") ? "Adb.exe exists." : "Adb.exe does not exist.");
-                    StartServerResult result = server.StartServer(@"adb.exe", false);
+                    bool exists = Directory.Exists("ADB");
+                    if (!exists)
+                    {
+                        Console.WriteLine("ADB directory does not exist, creating...");
+                        Directory.CreateDirectory("ADB");
+                        File.Create("ADB\\Put ADB files here.txt");
+                    }
+
+                    Console.WriteLine(File.Exists(@"ADB\\AdbWinApi.dll") ? "AdbWinApi.dll exists." : "AdbWinApi.dll does not exist.");
+                    Console.WriteLine(File.Exists(@"ADB\\AdbWinUsbApi.dll") ? "AdbWinUsbApi.dll exists." : "AdbWinUsbApi.dll does not exist.");
+                    Console.WriteLine(File.Exists(@"ADB\\adb.exe") ? "Adb.exe exists." : "Adb.exe does not exist.");
+                    StartServerResult result = server.StartServer(@"ADB\\adb.exe", false);
                     if (result != StartServerResult.Started)
                     {
                         Console.WriteLine("Can't start adb server, please restart app and try again");
@@ -84,7 +92,7 @@ namespace Quest2_VRC
                 }
                 catch (FileNotFoundException)
                 {
-                    Console.WriteLine("ADB.exe, AdbWinApi.dll or AdbWinUsbApi.dll not found in root of program, you can download from https://developer.android.com/studio/releases/platform-tools, press any key to exit");
+                    Console.WriteLine("ADB.exe, AdbWinApi.dll or AdbWinUsbApi.dll not found in ADB directory, you can download from https://developer.android.com/studio/releases/platform-tools, press any key to exit");
                     Console.ReadLine();
                     Environment.Exit(-1);
                 }
