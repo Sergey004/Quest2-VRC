@@ -120,7 +120,7 @@ namespace Quest2_VRC
             }
             if (device is not null)
             {
-                Console.WriteLine("Selecting device:\nSerial: {0}\nModel: {1}\nCodename: {2}", device.Serial, device.Model, device.Name);
+                Console.WriteLine("Selecting device:\nSerial or IP: {0}\nModel: {1}\nCodename: {2}", device.Serial, device.Model, device.Name);
 
             }
 
