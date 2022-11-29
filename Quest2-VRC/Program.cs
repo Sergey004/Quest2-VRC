@@ -109,6 +109,7 @@ namespace Quest2_VRC
             if (device == null)
             {
                 Console.WriteLine("No devices found, please restart app and try again");
+                Console.WriteLine("Or you can connect your headset via Wireless ADB: ADB\\adb.exe connect HEADSET_IP:5555");
                 Console.ReadLine();
                 return;
             }
@@ -120,7 +121,7 @@ namespace Quest2_VRC
             }
             if (device is not null)
             {
-                Console.WriteLine("Selecting device:\nSerial: {0}\nModel: {1}\nCodename: {2}", device.Serial, device.Model, device.Name);
+                Console.WriteLine("Selecting device:\nSerial or IP: {0}\nModel: {1}\nCodename: {2}", device.Serial, device.Model, device.Name);
 
             }
 
