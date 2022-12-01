@@ -11,7 +11,7 @@ using static Quest2_VRC.Program;
 
 namespace Quest2_VRC
 {
-    static class VRCProgram
+    static class Sender
     {
         static readonly IPAddress IP = IPAddress.Loopback;
         static readonly int Port = 9000;
