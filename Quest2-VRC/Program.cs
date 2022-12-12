@@ -126,8 +126,13 @@ namespace Quest2_VRC
             }
 
             //start your multi threaded program here
-            Sender.Run();
 
+
+            var tasks = new[]
+            {
+                Task.Factory.StartNew(() => Sender.Run(), TaskCreationOptions.LongRunning),
+                Task.Factory.StartNew(() => Receiver.Run(), TaskCreationOptions.LongRunning),
+            };
 
             //hold the console so it doesn’t run off the end
             while (!exitSystem)
