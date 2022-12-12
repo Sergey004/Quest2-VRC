@@ -22,7 +22,8 @@ And hope for the best that this program will work for you
 ## Dependencies
 
 - [AdvancedSharpAdbClient](https://github.com/yungd1plomat/AdvancedSharpAdbClient)
-- [Bespoke Osc](https://github.com/emilytrau/Bespoke.Osc)
+- [Bespoke.Osc](https://bitbucket.org/pvarcholik/bespoke.osc)
+- [OpenRGB.NET](https://github.com/diogotr7/OpenRGB.NET)
 
 Based on modified source code from https://github.com/KaleidonKep99/VRChat_CS_OSCTest
 
