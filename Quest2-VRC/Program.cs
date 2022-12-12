@@ -127,6 +127,7 @@ namespace Quest2_VRC
 
             //start your multi threaded program here
             Sender.Run();
+            Receiver.Run();
 
 
             //hold the console so it doesn’t run off the end
