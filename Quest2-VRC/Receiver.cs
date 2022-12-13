@@ -19,6 +19,7 @@ namespace Quest2_VRC
             oscServer = new OscServer((Bespoke.Common.Net.TransportType)TransportType.Udp, IPAddress.Loopback, Port);
             oscServer.FilterRegisteredMethods = true;
             oscServer.RegisterMethod(Eyesmode);
+            oscServer.RegisterMethod(EyesmodeTest);
             oscServer.MessageReceived += new EventHandler<OscMessageReceivedEventArgs>(oscServer_MessageReceived);
             oscServer.Start();
             Console.WriteLine("OSC receiver is active");
@@ -49,6 +50,7 @@ namespace Quest2_VRC
             
         }
         private static readonly string Eyesmode = "/avatar/parameters/Eyes_mode";
+        private static readonly string EyesmodeTest = "/avatar/parameters/Eyes mode";
 
         public static void SendRGBData(int dataInt)
         {
@@ -56,6 +58,7 @@ namespace Quest2_VRC
 
             var deviceCount = client.GetControllerCount();
             var devices = client.GetAllControllerData();
+
             var r = ((byte)0);
             var g = ((byte)0);
             var b = ((byte)0);
