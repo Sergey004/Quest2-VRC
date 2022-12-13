@@ -89,7 +89,7 @@ namespace Quest2_VRC
 
                     LogToConsole("Sending HMD status", Msg1, Msg2, Msg3, Msg4);
 
-                    Thread.Sleep(1000);
+                    Thread.Sleep(3000);
  
                 }
                 catch
