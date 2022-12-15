@@ -22,7 +22,6 @@ namespace Quest2_VRC
             Random rnd = new Random();
             int Uport = rnd.Next(1, 9999);
             Console.WriteLine("OSC UDP port is {0}", Uport);
-            Console.WriteLine("OSC sender is active");
             await questwd(Uport);
         }
 

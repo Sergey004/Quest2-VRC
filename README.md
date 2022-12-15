@@ -19,6 +19,12 @@ Connect your Quest 2 to your computer in developer mode
 
 And hope for the best that this program will work for you
 
+
+## CLI
+```--help - show help
+--no-sender - disable osc sender
+--no-receiver - disable osc receiver```
+
 ## Dependencies
 
 - [AdvancedSharpAdbClient](https://github.com/yungd1plomat/AdvancedSharpAdbClient)

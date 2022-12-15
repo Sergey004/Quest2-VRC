@@ -22,7 +22,6 @@ namespace Quest2_VRC
             oscServer.RegisterMethod(EyesmodeTest);
             oscServer.MessageReceived += new EventHandler<OscMessageReceivedEventArgs>(oscServer_MessageReceived);
             oscServer.Start();
-            Console.WriteLine("OSC receiver is active");
         }
 
         private static void oscServer_MessageReceived(object sender, OscMessageReceivedEventArgs e)

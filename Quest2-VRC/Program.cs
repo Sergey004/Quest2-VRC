@@ -32,10 +32,10 @@ namespace Quest2_VRC
 
         private static bool Handler(CtrlType sig)
         {
-            Console.WriteLine("Exiting system due to external CTRL-C, or process kill, or shutdown");
+            Console.WriteLine("Exiting program due to external CTRL-C, or process kill, or shutdown");
 
             //do your cleanup here
-            
+
             System.Diagnostics.Process process = new System.Diagnostics.Process();
             System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
             startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
@@ -43,7 +43,7 @@ namespace Quest2_VRC
             startInfo.Arguments = "/C ADB\\adb.exe kill-server";
             process.StartInfo = startInfo;
             process.Start();
-            
+
             Console.WriteLine("Cleanup complete");
             Thread.Sleep(100);
             //allow main to run off
@@ -61,7 +61,33 @@ namespace Quest2_VRC
             // Some biolerplate to react to close window event, CTRL-C, kill, etc
             _handler += new EventHandler(Handler);
             SetConsoleCtrlHandler(_handler, true);
+            foreach (string arg in args)
+            {
+                switch (arg)
+                {
+                    case "--help":
+                        Console.WriteLine("----Commands----\n--help - show help\n--no-sender - disable osc sender\n--no-receiver - disable osc receiver");
+                        Handler(CtrlType.CTRL_SHUTDOWN_EVENT);
+                        break;
+                    case "--no-sender":
+                        StartADB(false, true);
+                        break;
+                    case "--no-receiver":
+                        StartADB(true, false);
+                        break;
+                    default:
+                        Console.WriteLine("Invalid argiment");
+                        break;
 
+                }
+            }
+            while (!exitSystem)
+            {
+                Thread.Sleep(500);
+            }
+        }
+        static void StartADB(bool sender, bool receiver)
+        {
             Console.WriteLine("Make sure you connect the headset to your computer and turn on the controllers");
             Console.WriteLine("To quit the application press CTRL+C to close the ADB server");
             if (!AdbServer.Instance.GetStatus().IsRunning)
@@ -125,29 +151,38 @@ namespace Quest2_VRC
 
             }
 
+
             //start your multi threaded program here
-
-
-            var tasks = new[]
+            if (receiver == false && sender == true)
             {
-                Task.Factory.StartNew(() => Sender.Run(), TaskCreationOptions.LongRunning),
-                Task.Factory.StartNew(() => Receiver.Run(), TaskCreationOptions.LongRunning),
-            };
+                Console.WriteLine("OSC sender is active");
+                Console.WriteLine("OSC receiver is inactive");
+                var tasks = new[]
+                {
+                     Task.Factory.StartNew(() => Sender.Run(), TaskCreationOptions.LongRunning)
+                };
 
-            //hold the console so it doesn’t run off the end
-            while (!exitSystem)
-            {
-                Thread.Sleep(500);
+
             }
-            
+            else if (receiver == true && sender == false)
+            {
+                Console.WriteLine("OSC sender is inactive");
+                Console.WriteLine("OSC receiver is active");
+                var tasks = new[]
+                {
+                    Task.Factory.StartNew(() => Receiver.Run(), TaskCreationOptions.LongRunning)
+                };
+            }
+            else 
+            {
+                Console.WriteLine("OSC sender is active");
+                Console.WriteLine("OSC receiver is active");
+                var tasks = new[]
+                {
+                     Task.Factory.StartNew(() => Sender.Run(), TaskCreationOptions.LongRunning),
+                     Task.Factory.StartNew(() => Receiver.Run(), TaskCreationOptions.LongRunning)
+                };
+            }
         }
-
-
-    }
-
-    
+    } 
 }
-
-
-
-
