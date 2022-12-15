@@ -1,5 +1,5 @@
 # Quest2-VRC
-This program transmits Quest 2 battery information to the VRChtat via the OSC protocol
+This program transmits Quest 2 battery information to the VRChtat via the OSC protocol, also receive osc address to control OpenRGB
 
 ## Building from source
 To build this application you will need:
@@ -9,11 +9,14 @@ To build this application you will need:
 To start building the application, simply launch the solution in Visual Studio and run "Restore NuGet packages" to download dependencies
 
 ## Using
-Add a parameter to the ExpressionParameters of your avatar by assigning:
+Add a parameter to the ExpressionParameters of your avatar by assigning
+For sending:
 - ```HMDBat``` = ```-1 float```
 - ```ControllerBatL``` =```-1 float```
 - ```ControllerBatR``` = ```-1 float```
 - ```LowHMDBat``` = ```bool false```
+For receiving
+- Replace ```/avatar/parameters/Eyes mode``` and ```/avatar/parameters/Eyes_mode``` according to your specific parameters
 
 Connect your Quest 2 to your computer in developer mode
 
