@@ -10,10 +10,10 @@ using System.IO.Compression;
 
 namespace Quest2_VRC
 {
-    
+
     public class Program
     {
-        
+
         static bool exitSystem = false;
         static public AdvancedAdbClient client;
         static public DeviceData device;
@@ -59,10 +59,10 @@ namespace Quest2_VRC
             return true;
         }
         #endregion
-        
+
         static void Main(string[] args)
         {
-            
+
             Console.Title = "Quest2-VRC";
             // Some biolerplate to react to close window event, CTRL-C, kill, etc
             _handler += new EventHandler(Handler);
@@ -72,8 +72,11 @@ namespace Quest2_VRC
                 switch (arg)
                 {
                     case "--help":
-                        Console.WriteLine("----Commands----\n--help - show help\n--no-sender - disable osc sender\n--no-receiver - disable osc receiver");
+                        Console.WriteLine("----Commands----\n--help - show help\n--no-sender - disable osc sender\n--no-receiver - disable osc receiver\n--no-adb - disable adb functions");
                         Handler(CtrlType.CTRL_CLOSE_EVENT);
+                        break;
+                    case "--no-adb":
+                        StartOSC(false, true);
                         break;
                     case "--no-sender":
                         StartADB(false, true);
@@ -122,7 +125,7 @@ namespace Quest2_VRC
                         Console.WriteLine("Can't start adb server, please restart app and try again");
                         Console.Title = "Error!";
                         Console.ReadLine();
-                        Handler(CtrlType.CTRL_CLOSE_EVENT); 
+                        Handler(CtrlType.CTRL_CLOSE_EVENT);
                     }
 
                 }
@@ -166,11 +169,9 @@ namespace Quest2_VRC
 
             }
 
-
-            //start your multi threaded program here
             if (receiver == false && sender == true)
             {
-                Console.Title = "Tx + Rx";
+                Console.Title = "Tx Only";
                 Console.WriteLine("OSC transfer is active");
                 Console.WriteLine("OSC receiver is inactive");
                 var tasks = new[]
@@ -190,9 +191,9 @@ namespace Quest2_VRC
                     Task.Factory.StartNew(() => Receiver.Run(), TaskCreationOptions.LongRunning)
                 };
             }
-            else 
+            else
             {
-                Console.Title = "Tx Only";
+                Console.Title = "Tx + Rx";
                 Console.WriteLine("OSC transfer is active");
                 Console.WriteLine("OSC receiver is active");
                 var tasks = new[]
@@ -200,7 +201,37 @@ namespace Quest2_VRC
                      Task.Factory.StartNew(() => Sender.Run(), TaskCreationOptions.LongRunning),
                      Task.Factory.StartNew(() => Receiver.Run(), TaskCreationOptions.LongRunning)
                 };
+
             }
         }
-    } 
+        static void StartOSC(bool sender, bool receiver)
+        {
+            if (receiver == false && sender == true)
+            {
+                Console.Title = "Tx Only";
+                Console.WriteLine("You cannot enable data transfer with --no-adb, exiting");
+                Handler(CtrlType.CTRL_CLOSE_EVENT);
+
+
+            }
+            else if (receiver == true && sender == false)
+            {
+                Console.Title = "Rx Only";
+                Console.WriteLine("OSC transfer is inactive");
+                Console.WriteLine("OSC receiver is active");
+                var tasks = new[]
+                {
+                    Task.Factory.StartNew(() => Receiver.Run(), TaskCreationOptions.LongRunning)
+                };
+            }
+            else
+            {
+                Console.Title = "Tx + Rx";
+                Console.WriteLine("You cannot enable data transfer with --no-adb, exiting");
+                Handler(CtrlType.CTRL_CLOSE_EVENT);
+
+
+            }
+        }
+    }
 }

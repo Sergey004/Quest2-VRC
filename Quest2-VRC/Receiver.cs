@@ -15,6 +15,8 @@ namespace Quest2_VRC
         static readonly int Port = 9001;
         public static async void Run()
         {
+            string Eyesmode = "/avatar/parameters/Eyes_mode";
+            string EyesmodeTest = "/avatar/parameters/Eyes mode";
             OscServer oscServer;
             oscServer = new OscServer((Bespoke.Common.Net.TransportType)TransportType.Udp, IPAddress.Loopback, Port);
             oscServer.FilterRegisteredMethods = true;
@@ -48,8 +50,7 @@ namespace Quest2_VRC
             }
             
         }
-        private static readonly string Eyesmode = "/avatar/parameters/Eyes_mode";
-        private static readonly string EyesmodeTest = "/avatar/parameters/Eyes mode";
+        
 
         public static void SendRGBData(int dataInt)
         {
