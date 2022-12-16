@@ -5,11 +5,15 @@ using System.Runtime.InteropServices;
 using System.IO;
 using System.Threading.Tasks;
 using System.Linq;
+using System.Net;
+using System.IO.Compression;
 
 namespace Quest2_VRC
 {
+    
     public class Program
     {
+        
         static bool exitSystem = false;
         static public AdvancedAdbClient client;
         static public DeviceData device;
@@ -32,7 +36,7 @@ namespace Quest2_VRC
 
         private static bool Handler(CtrlType sig)
         {
-            Console.WriteLine("Exiting program due to external CTRL-C, or process kill, or shutdown");
+            Console.WriteLine("Exiting program due to external CTRL-C, or process kill, or shutdown, or program exiting");
 
             //do your cleanup here
 
@@ -40,7 +44,7 @@ namespace Quest2_VRC
             System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
             startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
             startInfo.FileName = "cmd.exe";
-            startInfo.Arguments = "/C ADB\\adb.exe kill-server";
+            startInfo.Arguments = "/C platform-tools\\adb.exe kill-server";
             process.StartInfo = startInfo;
             process.Start();
 
@@ -55,9 +59,11 @@ namespace Quest2_VRC
             return true;
         }
         #endregion
-
+        
         static void Main(string[] args)
         {
+            
+            Console.Title = "Quest2-VRC";
             // Some biolerplate to react to close window event, CTRL-C, kill, etc
             _handler += new EventHandler(Handler);
             SetConsoleCtrlHandler(_handler, true);
@@ -67,7 +73,7 @@ namespace Quest2_VRC
                 {
                     case "--help":
                         Console.WriteLine("----Commands----\n--help - show help\n--no-sender - disable osc sender\n--no-receiver - disable osc receiver");
-                        Handler(CtrlType.CTRL_SHUTDOWN_EVENT);
+                        Handler(CtrlType.CTRL_CLOSE_EVENT);
                         break;
                     case "--no-sender":
                         StartADB(false, true);
@@ -77,6 +83,7 @@ namespace Quest2_VRC
                         break;
                     default:
                         Console.WriteLine("Invalid argiment");
+                        Handler(CtrlType.CTRL_CLOSE_EVENT);
                         break;
 
                 }
@@ -88,6 +95,7 @@ namespace Quest2_VRC
         }
         static void StartADB(bool sender, bool receiver)
         {
+            Console.WriteLine("When you use this program you agree to the Terms and Conditions of the ADB, if you do not agree immediately close this program!");
             Console.WriteLine("Make sure you connect the headset to your computer and turn on the controllers");
             Console.WriteLine("To quit the application press CTRL+C to close the ADB server");
             if (!AdbServer.Instance.GetStatus().IsRunning)
@@ -95,32 +103,35 @@ namespace Quest2_VRC
                 AdbServer server = new AdbServer();
                 try
                 {
-                    Console.WriteLine("Checking for adb components...");
-                    bool exists = Directory.Exists("ADB");
+                    bool exists = Directory.Exists("platform-tools");
                     if (!exists)
                     {
                         Console.WriteLine("ADB directory does not exist, creating...");
-                        Directory.CreateDirectory("ADB");
-                        File.Create("ADB\\Put ADB files here.txt");
+                        var client = new WebClient();
+                        string uri = "https://dl.google.com/android/repository/platform-tools-latest-windows.zip";
+                        string filename = "platform-tools-latest-windows.zip";
+                        string extractPath = AppDomain.CurrentDomain.BaseDirectory;
+                        client.DownloadFile(uri, filename);
+                        client.DownloadFileCompleted += (sender, e) => Console.WriteLine("Finished");
+                        ZipFile.ExtractToDirectory(filename, extractPath);
+                        File.Delete(filename);
                     }
-
-                    Console.WriteLine(File.Exists(@"ADB\\AdbWinApi.dll") ? "AdbWinApi.dll exists." : "AdbWinApi.dll does not exist.");
-                    Console.WriteLine(File.Exists(@"ADB\\AdbWinUsbApi.dll") ? "AdbWinUsbApi.dll exists." : "AdbWinUsbApi.dll does not exist.");
-                    Console.WriteLine(File.Exists(@"ADB\\adb.exe") ? "Adb.exe exists." : "Adb.exe does not exist.");
-                    StartServerResult result = server.StartServer(@"ADB\\adb.exe", false);
+                    StartServerResult result = server.StartServer(@"platform-tools\adb.exe", false);
                     if (result != StartServerResult.Started)
                     {
                         Console.WriteLine("Can't start adb server, please restart app and try again");
+                        Console.Title = "Error!";
                         Console.ReadLine();
-                        Environment.Exit(-1);
+                        Handler(CtrlType.CTRL_CLOSE_EVENT); 
                     }
 
                 }
-                catch (FileNotFoundException)
+                catch (WebException)
                 {
-                    Console.WriteLine("ADB.exe, AdbWinApi.dll or AdbWinUsbApi.dll not found in ADB directory, you can download from https://developer.android.com/studio/releases/platform-tools, press any key to exit");
+                    Console.WriteLine("Unable to download ADB from Google servers, try again or download files manually https://developer.android.com/studio/releases/platform-tools, press any key to exit");
+                    Console.Title = "Error!";
                     Console.ReadLine();
-                    Environment.Exit(-1);
+                    Handler(CtrlType.CTRL_CLOSE_EVENT);
                 }
 
             }
@@ -136,18 +147,22 @@ namespace Quest2_VRC
             {
                 Console.WriteLine("No devices found, please restart app and try again");
                 Console.WriteLine("Or you can connect your headset via Wireless ADB: ADB\\adb.exe connect HEADSET_IP:5555");
+                Console.Title = "Error!";
                 Console.ReadLine();
+                Handler(CtrlType.CTRL_CLOSE_EVENT);
                 return;
             }
             if (device.Name != "hollywood" && device.Name != "vr_monterey" && device.Name != "monterey" && device.Name != "seacliff")
             {
                 Console.WriteLine("Oculus/Meta device is not detected or is not authorized, please disconnect all non Oculus/Meta devices and close all emulators on PC, restart app and try again");
+                Console.Title = "Error!";
                 Console.ReadLine();
-                Environment.Exit(-1);
+                Handler(CtrlType.CTRL_CLOSE_EVENT);
             }
             if (device is not null)
             {
                 Console.WriteLine("Selecting device:\nSerial or IP: {0}\nModel: {1}\nCodename: {2}", device.Serial, device.Model, device.Name);
+                Console.Title = "Starting...";
 
             }
 
@@ -155,7 +170,8 @@ namespace Quest2_VRC
             //start your multi threaded program here
             if (receiver == false && sender == true)
             {
-                Console.WriteLine("OSC sender is active");
+                Console.Title = "Tx + Rx";
+                Console.WriteLine("OSC transfer is active");
                 Console.WriteLine("OSC receiver is inactive");
                 var tasks = new[]
                 {
@@ -166,7 +182,8 @@ namespace Quest2_VRC
             }
             else if (receiver == true && sender == false)
             {
-                Console.WriteLine("OSC sender is inactive");
+                Console.Title = "Rx Only";
+                Console.WriteLine("OSC transfer is inactive");
                 Console.WriteLine("OSC receiver is active");
                 var tasks = new[]
                 {
@@ -175,7 +192,8 @@ namespace Quest2_VRC
             }
             else 
             {
-                Console.WriteLine("OSC sender is active");
+                Console.Title = "Tx Only";
+                Console.WriteLine("OSC transfer is active");
                 Console.WriteLine("OSC receiver is active");
                 var tasks = new[]
                 {
