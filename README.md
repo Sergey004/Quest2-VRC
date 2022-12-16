@@ -1,6 +1,7 @@
 # Quest2-VRC
 This program sending Quest 2 battery information to the VRChtat via the OSC protocol, also receive osc address to control OpenRGB
 
+OpenRGB functions tested only on MSI Mystic Light
 ## Building from source
 To build this application you will need:
 - Visual Studio 2019 or later
