@@ -43,6 +43,6 @@ And hope for the best that this program will work for you
 - [Bespoke.Osc](https://bitbucket.org/pvarcholik/bespoke.osc)
 - [OpenRGB.NET](https://github.com/diogotr7/OpenRGB.NET)
 
-Based on modified source code from https://github.com/KaleidonKep99/VRChat_CS_OSCTest
+Sending code based on modified source code from https://github.com/KaleidonKep99/VRChat_CS_OSCTest
 
 Audio files were generated with [xVASynth](https://github.com/DanRuta/xVA-Synth)
