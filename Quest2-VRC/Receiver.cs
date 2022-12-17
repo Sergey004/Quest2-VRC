@@ -15,8 +15,8 @@ namespace Quest2_VRC
         static readonly int Port = 9001;
         public static async void Run()
         {
-            string Eyesmode = "/avatar/parameters/Eyes_mode";
-            string EyesmodeTest = "/avatar/parameters/Eyes mode";
+            string Eyesmode = "/avatar/parameters/Eyes_mode";  // Edit this for your avarar parameters (For Unity Editor)
+            string EyesmodeTest = "/avatar/parameters/Eyes mode"; // Edit this for your avarar parameters (For VRChat)
             OscServer oscServer;
             oscServer = new OscServer((Bespoke.Common.Net.TransportType)TransportType.Udp, IPAddress.Loopback, Port);
             oscServer.FilterRegisteredMethods = true;
