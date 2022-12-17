@@ -30,6 +30,8 @@ And hope for the best that this program will work for you
 --no-sender - disable osc sender
 
 --no-receiver - disable osc receiver
+
+--no-adb - disable adb functions
 ```
 
 ## Dependencies
