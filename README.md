@@ -10,11 +10,13 @@ To start building the application, simply launch the solution in Visual Studio a
 
 ## Using
 Add a parameter to the ExpressionParameters of your avatar by assigning
+
 For sending:
 - ```HMDBat``` = ```-1 float```
 - ```ControllerBatL``` =```-1 float```
 - ```ControllerBatR``` = ```-1 float```
 - ```LowHMDBat``` = ```bool false```
+
 For receiving
 - Replace in Receiver.cs ```/avatar/parameters/Eyes mode``` and ```/avatar/parameters/Eyes_mode``` according to your specific parameters
 
