@@ -3,6 +3,7 @@ using OpenRGB.NET;
 using OpenRGB.NET.Models;
 using System;
 using System.Data;
+using System.IO;
 using System.Linq;
 using System.Net;
 
@@ -15,8 +16,12 @@ namespace Quest2_VRC
         static readonly int Port = 9001;
         public static async void Run()
         {
-            string Eyesmode = "/avatar/parameters/Eyes_mode";  // Edit this for your avarar parameters (For Unity Editor)
-            string EyesmodeTest = "/avatar/parameters/Eyes mode"; // Edit this for your avarar parameters (For VRChat)
+            var dic = File.ReadAllLines("vars.txt")
+    .Select(l => l.Split(new[] { '=' }))
+    .ToDictionary(s => s[0].Trim(), s => s[1].Trim());
+
+            string Eyesmode = dic["Eyesmode"];
+            string EyesmodeTest = dic["Eyesmode_test"];
             OscServer oscServer;
             oscServer = new OscServer((Bespoke.Common.Net.TransportType)TransportType.Udp, IPAddress.Loopback, Port);
             oscServer.FilterRegisteredMethods = true;

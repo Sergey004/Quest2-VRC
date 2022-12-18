@@ -8,6 +8,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using static Quest2_VRC.Logger;
 using static Quest2_VRC.Program;
+using System.IO;
+using System.Linq;
 
 namespace Quest2_VRC
 {
@@ -23,6 +25,7 @@ namespace Quest2_VRC
             int Uport = rnd.Next(1, 9999);
             Console.WriteLine("OSC UDP port is {0}", Uport);
             await questwd(Uport);
+                      
         }
 
         public static async Task questwd(int Uport)
@@ -34,6 +37,14 @@ namespace Quest2_VRC
             {
                 try
                 {
+                    var dic = File.ReadAllLines("vars.txt")
+              .Select(l => l.Split(new[] { '=' }))
+              .ToDictionary(s => s[0].Trim(), s => s[1].Trim());
+
+                    string HMDBat = dic["HMDBat"];
+                    string ControllerBatL = dic["ControllerBatL"];
+                    string ControllerBatR = dic["ControllerBatR"];
+
                     int Hbatlevelint = 0;
                     int Rbatlevelint = 0;
                     int Lbatlevelint = 0;
@@ -79,8 +90,8 @@ namespace Quest2_VRC
 
                     }
 
-                    VRChatMessage Msg1 = new VRChatMessage("HMDBat", Hbatlevelf);
-                    VRChatMessage Msg2 = new VRChatMessage("ControllerBatL", Lbatlevelf);
+                    VRChatMessage Msg1 = new VRChatMessage(HMDBat, Hbatlevelf);
+                    VRChatMessage Msg2 = new VRChatMessage(ControllerBatL, Lbatlevelf);
                     VRChatMessage Msg3 = new VRChatMessage("ControllerBatR", Rbatlevelf);
                     VRChatMessage Msg4 = new VRChatMessage("LowHMDBat", LowHMDBat);
 
