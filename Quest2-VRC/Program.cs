@@ -67,6 +67,10 @@ namespace Quest2_VRC
             // Some biolerplate to react to close window event, CTRL-C, kill, etc
             _handler += new EventHandler(Handler);
             SetConsoleCtrlHandler(_handler, true);
+            CheckVars();
+           
+
+
             foreach (string arg in args)
             {
                 switch (arg)
@@ -205,6 +209,7 @@ namespace Quest2_VRC
 
             }
         }
+       
         static void StartOSC(bool sender, bool receiver)
         {
             if (receiver == false && sender == true)
@@ -212,8 +217,6 @@ namespace Quest2_VRC
                 Console.Title = "Tx Only";
                 Console.WriteLine("You cannot enable data transfer with --no-adb, exiting");
                 Handler(CtrlType.CTRL_CLOSE_EVENT);
-
-
             }
             else if (receiver == true && sender == false)
             {
@@ -230,9 +233,22 @@ namespace Quest2_VRC
                 Console.Title = "Tx + Rx";
                 Console.WriteLine("You cannot enable data transfer with --no-adb, exiting");
                 Handler(CtrlType.CTRL_CLOSE_EVENT);
-
+            }
+        }
+        public static async Task CheckVars()
+        {
+            bool exists = File.Exists("vars.txt");
+            if (!exists)
+            {
+                Console.WriteLine("vars.txt does not exist, creating...");
+                string[] lines =
+                {
+                    "HMDBat = HMDBat", "ControllerBatL = ControllerBatL", "ControllerBatR = ControllerBatR", "Receive_addr = /avatar/parameters/Eyes mode", "Receive_addr_test = /avatar/parameters/Eyes_mode"
+                };
+                File.WriteAllLines("vars.txt", lines);
 
             }
+            return;
         }
     }
 }
