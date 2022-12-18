@@ -21,7 +21,7 @@ For sending:
 - ```LowHMDBat``` = ```bool false```
 
 For receiving
-- Replace in var.txt ```Eyesmode``` and ```Eyesmode_test``` according to your specific parameters
+- Replace in var.txt ```Receive_addr``` and ```Receive_addr_test``` according to your specific parameters
 
 Connect your Quest 2 to your computer in developer mode
 
