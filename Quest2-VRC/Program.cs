@@ -1,12 +1,10 @@
 ﻿using AdvancedSharpAdbClient;
 using System;
-using System.Threading;
 using System.Runtime.InteropServices;
-using System.IO;
-using System.Threading.Tasks;
-using System.Linq;
-using System.Net;
-using System.IO.Compression;
+using System.Threading;
+using static Quest2_VRC.ADB;
+using static Quest2_VRC.Check_Vars;
+using static Quest2_VRC.OSC;
 
 namespace Quest2_VRC
 {
@@ -20,12 +18,12 @@ namespace Quest2_VRC
 
         #region Trap application termination
         [DllImport("Kernel32")]
-        private static extern bool SetConsoleCtrlHandler(EventHandler handler, bool add);
+        public static extern bool SetConsoleCtrlHandler(EventHandler handler, bool add);
 
-        private delegate bool EventHandler(CtrlType sig);
+        public delegate bool EventHandler(CtrlType sig);
         static EventHandler _handler;
 
-        enum CtrlType
+        public enum CtrlType
         {
             CTRL_C_EVENT = 0,
             CTRL_BREAK_EVENT = 1,
@@ -34,7 +32,7 @@ namespace Quest2_VRC
             CTRL_SHUTDOWN_EVENT = 6
         }
 
-        private static bool Handler(CtrlType sig)
+        public static bool Handler(CtrlType sig)
         {
             Console.WriteLine("Exiting program due to external CTRL-C, or process kill, or shutdown, or program exiting");
 
@@ -67,10 +65,8 @@ namespace Quest2_VRC
             // Some biolerplate to react to close window event, CTRL-C, kill, etc
             _handler += new EventHandler(Handler);
             SetConsoleCtrlHandler(_handler, true);
+            Console.WriteLine("When you use this program you agree to the Terms and Conditions of the ADB, if you do not agree immediately close this program!");
             CheckVars();
-           
-
-
             foreach (string arg in args)
             {
                 switch (arg)
@@ -94,161 +90,18 @@ namespace Quest2_VRC
                         break;
 
                 }
+                
             }
-            StartADB(true, true);
+
+            if (args.Length == 0 )
+                
+            {
+                StartADB(true, true);
+            }
             while (!exitSystem)
             {
                 Thread.Sleep(500);
             }
-        }
-        static void StartADB(bool sender, bool receiver)
-        {
-            Console.WriteLine("When you use this program you agree to the Terms and Conditions of the ADB, if you do not agree immediately close this program!");
-            Console.WriteLine("Make sure you connect the headset to your computer and turn on the controllers");
-            Console.WriteLine("To quit the application press CTRL+C to close the ADB server");
-            if (!AdbServer.Instance.GetStatus().IsRunning)
-            {
-                AdbServer server = new AdbServer();
-                try
-                {
-                    bool exists = Directory.Exists("platform-tools");
-                    if (!exists)
-                    {
-                        Console.WriteLine("ADB directory does not exist, creating...");
-                        var client = new WebClient();
-                        string uri = "https://dl.google.com/android/repository/platform-tools-latest-windows.zip";
-                        string filename = "platform-tools-latest-windows.zip";
-                        string extractPath = AppDomain.CurrentDomain.BaseDirectory;
-                        client.DownloadFile(uri, filename);
-                        client.DownloadFileCompleted += (sender, e) => Console.WriteLine("Finished");
-                        ZipFile.ExtractToDirectory(filename, extractPath);
-                        File.Delete(filename);
-                    }
-                    StartServerResult result = server.StartServer(@"platform-tools\adb.exe", false);
-                    if (result != StartServerResult.Started)
-                    {
-                        Console.WriteLine("Can't start adb server, please restart app and try again");
-                        Console.Title = "Error!";
-                        Console.ReadLine();
-                        Handler(CtrlType.CTRL_CLOSE_EVENT);
-                    }
-
-                }
-                catch (WebException)
-                {
-                    Console.WriteLine("Unable to download ADB from Google servers, try again or download files manually https://developer.android.com/studio/releases/platform-tools, press any key to exit");
-                    Console.Title = "Error!";
-                    Console.ReadLine();
-                    Handler(CtrlType.CTRL_CLOSE_EVENT);
-                }
-
-            }
-            else
-            {
-                Console.WriteLine("ADB server is already running, no checks are required");
-            }
-
-            client = new AdvancedAdbClient();
-            client.Connect("127.0.0.1:62001");
-            device = client.GetDevices().FirstOrDefault();
-            if (device == null)
-            {
-                Console.WriteLine("No devices found, please restart app and try again");
-                Console.WriteLine("Or you can connect your headset via Wireless ADB: ADB\\adb.exe connect HEADSET_IP:5555");
-                Console.Title = "Error!";
-                Console.ReadLine();
-                Handler(CtrlType.CTRL_CLOSE_EVENT);
-                return;
-            }
-            if (device.Name != "hollywood" && device.Name != "vr_monterey" && device.Name != "monterey" && device.Name != "seacliff")
-            {
-                Console.WriteLine("Oculus/Meta device is not detected or is not authorized, please disconnect all non Oculus/Meta devices and close all emulators on PC, restart app and try again");
-                Console.Title = "Error!";
-                Console.ReadLine();
-                Handler(CtrlType.CTRL_CLOSE_EVENT);
-            }
-            if (device is not null)
-            {
-                Console.WriteLine("Selecting device:\nSerial or IP: {0}\nModel: {1}\nCodename: {2}", device.Serial, device.Model, device.Name);
-                Console.Title = "Starting...";
-
-            }
-
-            if (receiver == false && sender == true)
-            {
-                Console.Title = "Tx Only";
-                Console.WriteLine("OSC transfer is active");
-                Console.WriteLine("OSC receiver is inactive");
-                var tasks = new[]
-                {
-                     Task.Factory.StartNew(() => Sender.Run(), TaskCreationOptions.LongRunning)
-                };
-
-
-            }
-            else if (receiver == true && sender == false)
-            {
-                Console.Title = "Rx Only";
-                Console.WriteLine("OSC transfer is inactive");
-                Console.WriteLine("OSC receiver is active");
-                var tasks = new[]
-                {
-                    Task.Factory.StartNew(() => Receiver.Run(), TaskCreationOptions.LongRunning)
-                };
-            }
-            else
-            {
-                Console.Title = "Tx + Rx";
-                Console.WriteLine("OSC transfer is active");
-                Console.WriteLine("OSC receiver is active");
-                var tasks = new[]
-                {
-                     Task.Factory.StartNew(() => Sender.Run(), TaskCreationOptions.LongRunning),
-                     Task.Factory.StartNew(() => Receiver.Run(), TaskCreationOptions.LongRunning)
-                };
-
-            }
-        }
-       
-        static void StartOSC(bool sender, bool receiver)
-        {
-            if (receiver == false && sender == true)
-            {
-                Console.Title = "Tx Only";
-                Console.WriteLine("You cannot enable data transfer with --no-adb, exiting");
-                Handler(CtrlType.CTRL_CLOSE_EVENT);
-            }
-            else if (receiver == true && sender == false)
-            {
-                Console.Title = "Rx Only";
-                Console.WriteLine("OSC transfer is inactive");
-                Console.WriteLine("OSC receiver is active");
-                var tasks = new[]
-                {
-                    Task.Factory.StartNew(() => Receiver.Run(), TaskCreationOptions.LongRunning)
-                };
-            }
-            else
-            {
-                Console.Title = "Tx + Rx";
-                Console.WriteLine("You cannot enable data transfer with --no-adb, exiting");
-                Handler(CtrlType.CTRL_CLOSE_EVENT);
-            }
-        }
-        public static async Task CheckVars()
-        {
-            bool exists = File.Exists("vars.txt");
-            if (!exists)
-            {
-                Console.WriteLine("vars.txt does not exist, creating...");
-                string[] lines =
-                {
-                    "HMDBat = HMDBat", "ControllerBatL = ControllerBatL", "ControllerBatR = ControllerBatR", "Receive_addr = /avatar/parameters/Eyes mode", "Receive_addr_test = /avatar/parameters/Eyes_mode"
-                };
-                File.WriteAllLines("vars.txt", lines);
-
-            }
-            return;
         }
     }
 }

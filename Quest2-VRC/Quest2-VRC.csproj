@@ -176,6 +176,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ADB.cs" />
+    <Compile Include="Check_Vars.cs" />
+    <Compile Include="OSC.cs" />
     <Compile Include="Receiver.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Sender.cs" />

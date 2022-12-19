@@ -1,15 +1,15 @@
 ﻿using AdvancedSharpAdbClient;
 using Bespoke.Osc;
 using System;
-using System.Net.Sockets;
+using System.IO;
+using System.Linq;
 using System.Net;
+using System.Net.Sockets;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using static Quest2_VRC.Logger;
 using static Quest2_VRC.Program;
-using System.IO;
-using System.Linq;
 
 namespace Quest2_VRC
 {
@@ -17,7 +17,7 @@ namespace Quest2_VRC
     {
         static readonly IPAddress IP = IPAddress.Loopback;
         static readonly int Port = 9000;
-        static readonly IPEndPoint VRChat = new IPEndPoint(IP, Port); 
+        static readonly IPEndPoint VRChat = new IPEndPoint(IP, Port);
 
         public static async void Run()
         {
@@ -25,7 +25,7 @@ namespace Quest2_VRC
             int Uport = rnd.Next(1, 9999);
             Console.WriteLine("OSC UDP port is {0}", Uport);
             await questwd(Uport);
-                      
+
         }
 
         public static async Task questwd(int Uport)
@@ -100,7 +100,7 @@ namespace Quest2_VRC
                     LogToConsole("Sending HMD status", Msg1, Msg2, Msg3, Msg4);
 
                     Thread.Sleep(3000);
- 
+
                 }
                 catch
                 {
@@ -125,8 +125,8 @@ namespace Quest2_VRC
                         if (Param.Data != null &&
                             Param.Data.GetType() != typeof(int) &&
                             Param.Data.GetType() != typeof(float) &&
-                            Param.Data.GetType() != typeof(bool)) 
-                            
+                            Param.Data.GetType() != typeof(bool))
+
                             throw new Exception(String.Format("Param of type {0} is not supported by VRChat!", Param.Data.GetType()));
 
                         // Create a bundle that contains the target address and port (VRChat works on localhost:9000)
