@@ -15,6 +15,7 @@ Add a parameter to the ExpressionParameters of your avatar by assigning
 For sending:
 - You can replace ```HMDBat``` , ```ControllerBatL```, ```ControllerBatR``` with your own parameters is vars.txt
 
+Default vars
 - ```HMDBat``` = ```-1 float```
 - ```ControllerBatL``` =```-1 float```
 - ```ControllerBatR``` = ```-1 float```
