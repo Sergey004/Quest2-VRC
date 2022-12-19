@@ -6,7 +6,7 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Threading.Tasks;
+using static Quest2_VRC.Logger;
 
 namespace Quest2_VRC
 {
@@ -29,6 +29,7 @@ namespace Quest2_VRC
             oscServer.RegisterMethod(EyesmodeTest);
             oscServer.MessageReceived += new EventHandler<OscMessageReceivedEventArgs>(oscServer_MessageReceived);
             oscServer.Start();
+            Console.WriteLine("Make sure you have all effects disabled in OpenRGB");
         }
 
         private static void oscServer_MessageReceived(object sender, OscMessageReceivedEventArgs e)
@@ -61,8 +62,6 @@ namespace Quest2_VRC
         {
             try
             {
-
-
                 using var client = new OpenRGBClient(name: "Quest2-VRC OSC Receiver", autoconnect: true, timeout: 1000);
 
                 var deviceCount = client.GetControllerCount();
@@ -108,9 +107,9 @@ namespace Quest2_VRC
                         .ToArray();
                     client.UpdateLeds(i, leds);
                 }
-            } catch(TimeoutException ex)
+            } catch(TimeoutException)
             {
-                Console.WriteLine(ex);
+                LogToConsole("OpenRGB server is not enabled");
             }
         }
     }

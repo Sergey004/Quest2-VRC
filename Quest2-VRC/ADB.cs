@@ -14,7 +14,6 @@ namespace Quest2_VRC
         public static void StartADB(bool sender, bool receiver)
         {
             Console.WriteLine("Make sure you connect the headset to your computer and turn on the controllers");
-            Console.WriteLine("To quit the application press CTRL+C to close the ADB server");
             if (!AdbServer.Instance.GetStatus().IsRunning)
             {
                 AdbServer server = new AdbServer();

@@ -66,6 +66,7 @@ namespace Quest2_VRC
             _handler += new EventHandler(Handler);
             SetConsoleCtrlHandler(_handler, true);
             Console.WriteLine("When you use this program you agree to the Terms and Conditions of the ADB, if you do not agree immediately close this program!");
+            Console.WriteLine("To quit the application press CTRL+C");
             CheckVars();
             foreach (string arg in args)
             {
