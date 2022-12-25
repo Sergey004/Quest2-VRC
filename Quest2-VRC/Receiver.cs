@@ -17,8 +17,8 @@ namespace Quest2_VRC
         public static async void Run()
         {
             var dic = File.ReadAllLines("vars.txt")
-    .Select(l => l.Split(new[] { '=' }))
-    .ToDictionary(s => s[0].Trim(), s => s[1].Trim());
+            .Select(l => l.Split(new[] { '=' }))
+            .ToDictionary(s => s[0].Trim(), s => s[1].Trim());
 
             string Eyesmode = dic["Receive_addr"];
             string EyesmodeTest = dic["Receive_addr_test"];
@@ -49,7 +49,7 @@ namespace Quest2_VRC
                 {
                     dataString = (message.Data[i] is byte[]? BitConverter.ToString((byte[])message.Data[i]) : message.Data[i].ToString());
                 }
-                //Console.WriteLine(string.Format("{0}", dataString));
+                //Console.WriteLine(string.Format("{0}", dataString)); //Debug
 
                 int dataInt = Int32.Parse(dataString);
                 SendRGBData(dataInt);
@@ -58,7 +58,7 @@ namespace Quest2_VRC
         }
 
 
-        public static void SendRGBData(int dataInt)
+        public static void SendRGBData(int dataInt) // Sends commands to OpenRGB (every time there is a change at the OSC address)
         {
             try
             {
@@ -70,7 +70,7 @@ namespace Quest2_VRC
                 var r = ((byte)0);
                 var g = ((byte)0);
                 var b = ((byte)0);
-
+                // Default settings for my avatar
                 switch (dataInt)
                 {
                     case 1:

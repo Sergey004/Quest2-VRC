@@ -38,8 +38,8 @@ namespace Quest2_VRC
                 try
                 {
                     var dic = File.ReadAllLines("vars.txt")
-              .Select(l => l.Split(new[] { '=' }))
-              .ToDictionary(s => s[0].Trim(), s => s[1].Trim());
+                    .Select(l => l.Split(new[] { '=' }))
+                    .ToDictionary(s => s[0].Trim(), s => s[1].Trim());
 
                     string HMDBat = dic["HMDBat"];
                     string ControllerBatL = dic["ControllerBatL"];

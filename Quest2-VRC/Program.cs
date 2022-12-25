@@ -35,9 +35,6 @@ namespace Quest2_VRC
         public static bool Handler(CtrlType sig)
         {
             Console.WriteLine("Exiting program due to external CTRL-C, or process kill, or shutdown, or program exiting");
-
-            //do your cleanup here
-
             System.Diagnostics.Process process = new System.Diagnostics.Process();
             System.Diagnostics.ProcessStartInfo startInfo = new System.Diagnostics.ProcessStartInfo();
             startInfo.WindowStyle = System.Diagnostics.ProcessWindowStyle.Hidden;
@@ -48,10 +45,8 @@ namespace Quest2_VRC
 
             Console.WriteLine("Cleanup complete");
             Thread.Sleep(100);
-            //allow main to run off
             exitSystem = true;
 
-            //shutdown right away so there are no lingering threads
             Environment.Exit(-1);
 
             return true;
@@ -67,7 +62,7 @@ namespace Quest2_VRC
             SetConsoleCtrlHandler(_handler, true);
             Console.WriteLine("When you use this program you agree to the Terms and Conditions of the ADB, if you do not agree immediately close this program!");
             Console.WriteLine("To quit the application press CTRL+C");
-            CheckVars();
+            CheckVars(); // Check if a file with parameters exists
             foreach (string arg in args)
             {
                 switch (arg)
