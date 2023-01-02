@@ -93,7 +93,7 @@ namespace Quest2_VRC
 
                     VRChatMessage Msg1 = new VRChatMessage(HMDBat, Hbatlevelf);
                     VRChatMessage Msg2 = new VRChatMessage(ControllerBatL, Lbatlevelf);
-                    VRChatMessage Msg3 = new VRChatMessage("ControllerBatR", Rbatlevelf);
+                    VRChatMessage Msg3 = new VRChatMessage(ControllerBatR, Rbatlevelf);
                     VRChatMessage Msg4 = new VRChatMessage("LowHMDBat", LowHMDBat);
 
                     SendPacket(Msg1, Msg2, Msg3, Msg4);
@@ -105,8 +105,11 @@ namespace Quest2_VRC
                 }
                 catch (AdbException)
                 {
+                    string inputbox = "input";
                     LogToConsole("Error: connection to the headset is lost!");
-                    Thread.Sleep(4000);
+                    VRChatMessage MsgErr = new VRChatMessage(inputbox, "Error: connection to the headset is lost!");
+                    SendPacket(MsgErr);
+                    Thread.Sleep(40000);
 
                 }
 
@@ -127,7 +130,9 @@ namespace Quest2_VRC
                         if (Param.Data != null &&
                             Param.Data.GetType() != typeof(int) &&
                             Param.Data.GetType() != typeof(float) &&
-                            Param.Data.GetType() != typeof(bool))
+                            Param.Data.GetType() != typeof(bool) &&
+                            Param.Data.GetType() != typeof(string))
+
 
                             throw new Exception(String.Format("Param of type {0} is not supported by VRChat!", Param.Data.GetType()));
 
@@ -135,14 +140,33 @@ namespace Quest2_VRC
                         OscBundle VRBundle = new OscBundle(VRChat);
 
                         // Create the message, and append the parameter to it
-                        OscMessage Message = new OscMessage(VRChat, String.Format("/avatar/parameters/{0}", Param.Parameter));
-                        Message.Append(Param.Data);
+                        if (Param.Parameter == "input")
+                        {
 
-                        // Append the message to the bundle
-                        VRBundle.Append(Message);
+                            ;
 
-                        // Send the bundle to the target address and port
-                        VRBundle.Send(VRChat);
+                            OscMessage Message = new OscMessage(VRChat, String.Format("/chatbox/{0}", Param.Parameter));
+                            Message.Append(Param.Data);
+                            Message.Append(true);
+                            // Append the message to the bundle
+                            VRBundle.Append(Message);
+                            
+                            // Send the bundle to the target address and port
+                            VRBundle.Send(VRChat);
+                        }
+                        else {
+                            OscMessage Message = new OscMessage(VRChat, String.Format("/avatar/parameters/{0}", Param.Parameter));
+                            Message.Append(Param.Data);
+
+                            // Append the message to the bundle
+                            
+                            VRBundle.Append(Message);
+
+                            // Send the bundle to the target address and port
+                            VRBundle.Send(VRChat);
+                        }
+
+                    
 
                     }
                     catch (Exception ex)
