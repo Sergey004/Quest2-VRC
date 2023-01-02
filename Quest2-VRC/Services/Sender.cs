@@ -1,4 +1,5 @@
 ﻿using AdvancedSharpAdbClient;
+using AdvancedSharpAdbClient.Exceptions;
 using Bespoke.Osc;
 using System;
 using System.IO;
@@ -102,9 +103,10 @@ namespace Quest2_VRC
                     Thread.Sleep(3000);
 
                 }
-                catch
+                catch (AdbException)
                 {
-                    LogToConsole("Error!");
+                    LogToConsole("Error: connection to the headset is lost!");
+                    Thread.Sleep(4000);
 
                 }
 

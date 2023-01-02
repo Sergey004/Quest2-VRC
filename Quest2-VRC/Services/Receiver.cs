@@ -13,9 +13,11 @@ namespace Quest2_VRC
     internal class Receiver
 
     {
+        static readonly int dataInt = 0;
         static readonly int Port = 9001;
         public static async void Run()
         {
+            SendRGBData(dataInt); //Init OpenRGB
             var dic = File.ReadAllLines("vars.txt")
             .Select(l => l.Split(new[] { '=' }))
             .ToDictionary(s => s[0].Trim(), s => s[1].Trim());
@@ -107,7 +109,8 @@ namespace Quest2_VRC
                         .ToArray();
                     client.UpdateLeds(i, leds);
                 }
-            } catch(TimeoutException)
+            }
+            catch (TimeoutException)
             {
                 LogToConsole("OpenRGB server is not enabled");
             }

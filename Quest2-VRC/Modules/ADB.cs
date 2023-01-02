@@ -19,7 +19,7 @@ namespace Quest2_VRC
                 AdbServer server = new AdbServer();
                 try
                 {
-                    bool exists = Directory.Exists("platform-tools"); // ADB autoloading if it does not exist
+                    bool exists = Directory.Exists("platform-tools"); // ADB Auto donwloader
                     if (!exists)
                     {
                         Console.WriteLine("ADB directory does not exist, creating...");
@@ -66,6 +66,7 @@ namespace Quest2_VRC
             device = client.GetDevices().FirstOrDefault();
             if (device == null)
             {
+                
                 Console.WriteLine("No devices found, please restart app and try again");
                 Console.WriteLine("Or you can connect your headset via Wireless ADB: platform-tools\\adb.exe connect HEADSET_IP:5555");
                 Console.Title = "Error - No device";
@@ -74,6 +75,7 @@ namespace Quest2_VRC
                 Console.ReadLine();
                 Handler(CtrlType.CTRL_CLOSE_EVENT);
                 return;
+
             }
             if (device.Name != "hollywood" && device.Name != "vr_monterey" && device.Name != "monterey" && device.Name != "seacliff")
             {
@@ -89,6 +91,7 @@ namespace Quest2_VRC
             {
                 Console.WriteLine("Selecting device:\nSerial or IP: {0}\nModel: {1}\nCodename: {2}", device.Serial, device.Model, device.Name);
                 Console.Title = "Starting...";
+
             }
 
             if (receiver == false && sender == true)

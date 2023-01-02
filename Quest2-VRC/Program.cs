@@ -86,11 +86,11 @@ namespace Quest2_VRC
                         break;
 
                 }
-                
+
             }
 
-            if (args.Length == 0 )
-                
+            if (args.Length == 0)
+
             {
                 StartADB(true, true);
             }
