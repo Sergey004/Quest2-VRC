@@ -18,6 +18,7 @@ namespace Quest2_VRC
         public static async void Run()
         {
             SendRGBData(dataInt); //Init OpenRGB
+            //Check_Vars.CheckRGBVars();
             var dic = File.ReadAllLines("vars.txt")
             .Select(l => l.Split(new[] { '=' }))
             .ToDictionary(s => s[0].Trim(), s => s[1].Trim());
@@ -31,7 +32,7 @@ namespace Quest2_VRC
             oscServer.RegisterMethod(EyesmodeTest);
             oscServer.MessageReceived += new EventHandler<OscMessageReceivedEventArgs>(oscServer_MessageReceived);
             oscServer.Start();
-            Console.WriteLine("Make sure you have all effects disabled in OpenRGB");
+            Logger.LogToConsole("Make sure you have all effects disabled in OpenRGB");
         }
 
         private static void oscServer_MessageReceived(object sender, OscMessageReceivedEventArgs e)
@@ -81,6 +82,7 @@ namespace Quest2_VRC
                         b = 178;
                         break;
                     case 2:
+
                         r = 214;
                         g = 148;
                         b = 45;

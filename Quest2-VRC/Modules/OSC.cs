@@ -21,7 +21,7 @@ namespace Quest2_VRC
                 Console.WriteLine("OSC receiver is active");
                 var tasks = new[]
                 {
-                    Task.Factory.StartNew(() => Receiver.Run(), TaskCreationOptions.LongRunning)
+                    Task.Factory.StartNew(() => Receiver.Run(), TaskCreationOptions.LongRunning),
                 };
             }
             else

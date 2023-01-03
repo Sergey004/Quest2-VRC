@@ -179,6 +179,8 @@
     <Compile Include="Modules\ADB.cs" />
     <Compile Include="Services\Check_Vars.cs" />
     <Compile Include="Modules\OSC.cs" />
+    <Compile Include="Services\PacketSender.cs" />
+    <Compile Include="Services\Dash_wd.cs" />
     <Compile Include="Services\Receiver.cs" />
     <Compile Include="Services\Logger.cs" />
     <Compile Include="Services\Sender.cs" />

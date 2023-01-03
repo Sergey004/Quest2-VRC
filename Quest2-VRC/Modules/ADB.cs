@@ -66,7 +66,7 @@ namespace Quest2_VRC
             device = client.GetDevices().FirstOrDefault();
             if (device == null)
             {
-                
+
                 Console.WriteLine("No devices found, please restart app and try again");
                 Console.WriteLine("Or you can connect your headset via Wireless ADB: platform-tools\\adb.exe connect HEADSET_IP:5555");
                 Console.Title = "Error - No device";
@@ -94,6 +94,8 @@ namespace Quest2_VRC
 
             }
 
+           
+
             if (receiver == false && sender == true)
             {
                 Console.Title = "Tx Only";
@@ -101,7 +103,7 @@ namespace Quest2_VRC
                 Console.WriteLine("OSC receiver is inactive");
                 var tasks = new[]
                 {
-                     Task.Factory.StartNew(() => Sender.Run(), TaskCreationOptions.LongRunning)
+                     Task.Factory.StartNew(() => Sender.Run(), TaskCreationOptions.LongRunning),
                 };
 
 
@@ -124,7 +126,7 @@ namespace Quest2_VRC
                 var tasks = new[]
                 {
                      Task.Factory.StartNew(() => Sender.Run(), TaskCreationOptions.LongRunning),
-                     Task.Factory.StartNew(() => Receiver.Run(), TaskCreationOptions.LongRunning)
+                     Task.Factory.StartNew(() => Receiver.Run(), TaskCreationOptions.LongRunning),
                 };
 
             }
