@@ -18,11 +18,9 @@ namespace Quest2_VRC
         public static async void Run()
         {
             SendRGBData(dataInt); //Init OpenRGB
-            //Check_Vars.CheckRGBVars();
             var dic = File.ReadAllLines("vars.txt")
             .Select(l => l.Split(new[] { '=' }))
             .ToDictionary(s => s[0].Trim(), s => s[1].Trim());
-
             string Eyesmode = dic["Receive_addr"];
             string EyesmodeTest = dic["Receive_addr_test"];
             OscServer oscServer;
