@@ -14,7 +14,7 @@ namespace Quest2_VRC
     {
 
         static bool exitSystem = false;
-        static public AdvancedAdbClient client;
+        static public AdbClient client;
         static public DeviceData device;
 
         #region Trap application termination

@@ -61,7 +61,7 @@ namespace Quest2_VRC
                 Console.WriteLine("ADB server is already running, no checks are required");
             }
 
-            client = new AdvancedAdbClient();
+            client = new AdbClient();
             client.Connect("127.0.0.1:62001");
             device = client.GetDevices().FirstOrDefault();
             if (device == null)
