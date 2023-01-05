@@ -105,9 +105,9 @@ namespace Quest2_VRC
                 {
                     string inputbox = "input";
                     LogToConsole("Error: connection to the headset is lost!");
-                    VRChatMessage MsgErr = new VRChatMessage(inputbox, "Error: connection to the headset is lost!");
+                    VRChatMessage MsgErr = new VRChatMessage(inputbox, "Error: connection to the headset is lost! Reconnecting...");
                     SendPacket(MsgErr);
-                    Thread.Sleep(40000);
+                    Thread.Sleep(3000);
 
                 }
 
