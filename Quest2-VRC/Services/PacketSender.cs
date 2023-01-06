@@ -9,7 +9,7 @@ using static Quest2_VRC.Logger;
 
 namespace Quest2_VRC
 {
-    internal class PacketSender
+    public class PacketSender
     {
         static readonly IPAddress IP = IPAddress.Loopback;
         static readonly int Port = 9000;

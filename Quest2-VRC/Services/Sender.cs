@@ -10,7 +10,8 @@ using System.Threading;
 using System.Threading.Tasks;
 using static Quest2_VRC.Logger;
 using static Quest2_VRC.PacketSender;
-using static Quest2_VRC.Program;
+using static Quest2_VRC.ADB;
+
 
 namespace Quest2_VRC
 {

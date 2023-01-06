@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
-using static Quest2_VRC.Program;
+
 
 namespace Quest2_VRC
 {
-    internal class OSC
+    public class OSC
     {
         public static void StartOSC(bool sender, bool receiver)
         {
@@ -12,7 +12,7 @@ namespace Quest2_VRC
             {
                 Console.Title = "Tx Only";
                 Console.WriteLine("You cannot enable data transfer with --no-adb, exiting");
-                Handler(CtrlType.CTRL_CLOSE_EVENT);
+                
             }
             else if (receiver == true && sender == false)
             {
@@ -28,7 +28,7 @@ namespace Quest2_VRC
             {
                 Console.Title = "Tx + Rx";
                 Console.WriteLine("You cannot enable data transfer with --no-adb, exiting");
-                Handler(CtrlType.CTRL_CLOSE_EVENT);
+                
             }
         }
     }

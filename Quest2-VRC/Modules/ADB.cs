@@ -5,12 +5,14 @@ using System.IO.Compression;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
-using static Quest2_VRC.Program;
+
 
 namespace Quest2_VRC
 {
-    internal class ADB
+    public class ADB
     {
+        static public AdbClient client;
+        static public DeviceData device;
         public static void StartADB(bool sender, bool receiver)
         {
             Console.WriteLine("Make sure you connect the headset to your computer and turn on the controllers");
@@ -38,10 +40,8 @@ namespace Quest2_VRC
                     {
                         Console.WriteLine("Can't start adb server, please restart app and try again");
                         Console.Title = "Error - ADB launch failed";
-                        Console.Beep();
-                        Console.Beep();
-                        Console.ReadLine();
-                        Handler(CtrlType.CTRL_CLOSE_EVENT);
+
+
                     }
 
                 }
@@ -49,10 +49,8 @@ namespace Quest2_VRC
                 {
                     Console.WriteLine("Unable to download ADB from Google servers, try again or download files manually https://developer.android.com/studio/releases/platform-tools, press any key to exit");
                     Console.Title = "Error - download failed";
-                    Console.Beep();
-                    Console.Beep();
-                    Console.ReadLine();
-                    Handler(CtrlType.CTRL_CLOSE_EVENT);
+
+
                 }
 
             }
@@ -69,11 +67,7 @@ namespace Quest2_VRC
 
                 Console.WriteLine("No devices found, please restart app and try again");
                 Console.WriteLine("Or you can connect your headset via Wireless ADB: platform-tools\\adb.exe connect HEADSET_IP:5555");
-                Console.Title = "Error - No device";
-                Console.Beep();
-                Console.Beep();
-                Console.ReadLine();
-                Handler(CtrlType.CTRL_CLOSE_EVENT);
+
                 return;
 
             }
@@ -81,11 +75,7 @@ namespace Quest2_VRC
             {
                 Console.WriteLine("Device is: \nModel: {0}\nCodename: {1} \nState: {2}", device.Model, device.Name, device.State);
                 Console.WriteLine("Oculus/Meta device is not detected or is not authorized, please disconnect all non Oculus/Meta devices and close all emulators on PC, restart app and try again");
-                Console.Title = "Error - Wrong device";
-                Console.Beep();
-                Console.Beep();
-                Console.ReadLine();
-                Handler(CtrlType.CTRL_CLOSE_EVENT);
+
             }
             if (device is not null)
             {

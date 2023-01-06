@@ -10,7 +10,7 @@ using static Quest2_VRC.Logger;
 
 namespace Quest2_VRC
 {
-    internal class Receiver
+    public class Receiver
 
     {
         static readonly int dataInt = 0;

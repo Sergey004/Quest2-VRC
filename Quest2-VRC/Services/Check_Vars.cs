@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Quest2_VRC
 {
-    internal class Check_Vars
+    public class Check_Vars
     {
         public static async Task CheckVars()
         {
