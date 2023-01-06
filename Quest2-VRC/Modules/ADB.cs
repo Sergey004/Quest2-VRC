@@ -39,7 +39,7 @@ namespace Quest2_VRC
                     if (result != StartServerResult.Started)
                     {
                         Console.WriteLine("Can't start adb server, please restart app and try again");
-                        Console.Title = "Error - ADB launch failed";
+                        
 
 
                     }
@@ -48,7 +48,7 @@ namespace Quest2_VRC
                 catch (WebException)
                 {
                     Console.WriteLine("Unable to download ADB from Google servers, try again or download files manually https://developer.android.com/studio/releases/platform-tools, press any key to exit");
-                    Console.Title = "Error - download failed";
+                    
 
 
                 }
@@ -80,7 +80,7 @@ namespace Quest2_VRC
             if (device is not null)
             {
                 Console.WriteLine("Selecting device:\nSerial or IP: {0}\nModel: {1}\nCodename: {2}", device.Serial, device.Model, device.Name);
-                Console.Title = "Starting...";
+                
 
             }
 
@@ -88,7 +88,7 @@ namespace Quest2_VRC
 
             if (receiver == false && sender == true)
             {
-                Console.Title = "Tx Only";
+                
                 Console.WriteLine("OSC transfer is active");
                 Console.WriteLine("OSC receiver is inactive");
                 var tasks = new[]
@@ -100,7 +100,7 @@ namespace Quest2_VRC
             }
             else if (receiver == true && sender == false)
             {
-                Console.Title = "Rx Only";
+                
                 Console.WriteLine("OSC transfer is inactive");
                 Console.WriteLine("OSC receiver is active");
                 var tasks = new[]
@@ -110,7 +110,7 @@ namespace Quest2_VRC
             }
             else
             {
-                Console.Title = "Tx + Rx";
+                
                 Console.WriteLine("OSC transfer is active");
                 Console.WriteLine("OSC receiver is active");
                 var tasks = new[]

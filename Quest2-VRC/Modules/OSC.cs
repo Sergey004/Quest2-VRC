@@ -10,13 +10,13 @@ namespace Quest2_VRC
         {
             if (receiver == false && sender == true)
             {
-                Console.Title = "Tx Only";
+
                 Console.WriteLine("You cannot enable data transfer with --no-adb, exiting");
                 
             }
             else if (receiver == true && sender == false)
             {
-                Console.Title = "Rx Only";
+
                 Console.WriteLine("OSC transfer is inactive");
                 Console.WriteLine("OSC receiver is active");
                 var tasks = new[]
@@ -26,7 +26,7 @@ namespace Quest2_VRC
             }
             else
             {
-                Console.Title = "Tx + Rx";
+
                 Console.WriteLine("You cannot enable data transfer with --no-adb, exiting");
                 
             }

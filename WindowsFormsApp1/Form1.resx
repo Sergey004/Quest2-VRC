@@ -117,41 +117,53 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;materialRadioButton3.Name" xml:space="preserve">
-    <value>materialRadioButton3</value>
+  <data name="&gt;&gt;materialButton1.Name" xml:space="preserve">
+    <value>materialButton1</value>
   </data>
-  <data name="&gt;&gt;materialRadioButton3.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialRadioButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  <data name="&gt;&gt;materialButton1.Type" xml:space="preserve">
+    <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;materialRadioButton3.Parent" xml:space="preserve">
+  <data name="&gt;&gt;materialButton1.Parent" xml:space="preserve">
     <value>materialCard1</value>
   </data>
-  <data name="&gt;&gt;materialRadioButton3.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;materialButton1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="&gt;&gt;materialRadioButton2.Name" xml:space="preserve">
-    <value>materialRadioButton2</value>
+  <data name="&gt;&gt;materialButton4.Name" xml:space="preserve">
+    <value>materialButton4</value>
   </data>
-  <data name="&gt;&gt;materialRadioButton2.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialRadioButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  <data name="&gt;&gt;materialButton4.Type" xml:space="preserve">
+    <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;materialRadioButton2.Parent" xml:space="preserve">
+  <data name="&gt;&gt;materialButton4.Parent" xml:space="preserve">
     <value>materialCard1</value>
   </data>
-  <data name="&gt;&gt;materialRadioButton2.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;materialButton4.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
-  <data name="&gt;&gt;materialRadioButton1.Name" xml:space="preserve">
-    <value>materialRadioButton1</value>
+  <data name="&gt;&gt;materialButton3.Name" xml:space="preserve">
+    <value>materialButton3</value>
   </data>
-  <data name="&gt;&gt;materialRadioButton1.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialRadioButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  <data name="&gt;&gt;materialButton3.Type" xml:space="preserve">
+    <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
-  <data name="&gt;&gt;materialRadioButton1.Parent" xml:space="preserve">
+  <data name="&gt;&gt;materialButton3.Parent" xml:space="preserve">
     <value>materialCard1</value>
   </data>
-  <data name="&gt;&gt;materialRadioButton1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;materialButton3.ZOrder" xml:space="preserve">
     <value>2</value>
+  </data>
+  <data name="&gt;&gt;materialButton2.Name" xml:space="preserve">
+    <value>materialButton2</value>
+  </data>
+  <data name="&gt;&gt;materialButton2.Type" xml:space="preserve">
+    <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;materialButton2.Parent" xml:space="preserve">
+    <value>materialCard1</value>
+  </data>
+  <data name="&gt;&gt;materialButton2.ZOrder" xml:space="preserve">
+    <value>3</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="materialCard1.Location" type="System.Drawing.Point, System.Drawing">
@@ -165,7 +177,7 @@
     <value>14, 14, 14, 14</value>
   </data>
   <data name="materialCard1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>227, 203</value>
+    <value>199, 222</value>
   </data>
   <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="materialCard1.TabIndex" type="System.Int32, mscorlib">
@@ -181,97 +193,151 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;materialCard1.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="materialRadioButton3.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="materialRadioButton3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 134</value>
-  </data>
-  <data name="materialRadioButton3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="materialRadioButton3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 37</value>
-  </data>
-  <data name="materialRadioButton3.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="materialRadioButton3.Text" xml:space="preserve">
-    <value>materialRadioButton3</value>
-  </data>
-  <data name="&gt;&gt;materialRadioButton3.Name" xml:space="preserve">
-    <value>materialRadioButton3</value>
-  </data>
-  <data name="&gt;&gt;materialRadioButton3.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialRadioButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;materialRadioButton3.Parent" xml:space="preserve">
-    <value>materialCard1</value>
-  </data>
-  <data name="&gt;&gt;materialRadioButton3.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="materialRadioButton2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="materialRadioButton2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 80</value>
-  </data>
-  <data name="materialRadioButton2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="materialRadioButton2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 37</value>
-  </data>
-  <data name="materialRadioButton2.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="materialRadioButton2.Text" xml:space="preserve">
-    <value>materialRadioButton2</value>
-  </data>
-  <data name="&gt;&gt;materialRadioButton2.Name" xml:space="preserve">
-    <value>materialRadioButton2</value>
-  </data>
-  <data name="&gt;&gt;materialRadioButton2.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialRadioButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;materialRadioButton2.Parent" xml:space="preserve">
-    <value>materialCard1</value>
-  </data>
-  <data name="&gt;&gt;materialRadioButton2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="materialRadioButton1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="materialRadioButton1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>14, 26</value>
-  </data>
-  <data name="materialRadioButton1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="materialRadioButton1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>190, 37</value>
-  </data>
-  <data name="materialRadioButton1.TabIndex" type="System.Int32, mscorlib">
     <value>3</value>
   </data>
-  <data name="materialRadioButton1.Text" xml:space="preserve">
-    <value>materialRadioButton1</value>
+  <data name="materialButton1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
   </data>
-  <data name="&gt;&gt;materialRadioButton1.Name" xml:space="preserve">
-    <value>materialRadioButton1</value>
+  <data name="materialButton1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
-  <data name="&gt;&gt;materialRadioButton1.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialRadioButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  <data name="materialButton1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 164</value>
   </data>
-  <data name="&gt;&gt;materialRadioButton1.Parent" xml:space="preserve">
+  <data name="materialButton1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 6, 4, 6</value>
+  </data>
+  <data name="materialButton1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>158, 36</value>
+  </data>
+  <data name="materialButton1.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <data name="materialButton1.Text" xml:space="preserve">
+    <value>materialButton1</value>
+  </data>
+  <data name="&gt;&gt;materialButton1.Name" xml:space="preserve">
+    <value>materialButton1</value>
+  </data>
+  <data name="&gt;&gt;materialButton1.Type" xml:space="preserve">
+    <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;materialButton1.Parent" xml:space="preserve">
     <value>materialCard1</value>
   </data>
-  <data name="&gt;&gt;materialRadioButton1.ZOrder" xml:space="preserve">
+  <data name="&gt;&gt;materialButton1.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="materialButton4.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="materialButton4.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="materialButton4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 116</value>
+  </data>
+  <data name="materialButton4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 6, 4, 6</value>
+  </data>
+  <data name="materialButton4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>158, 36</value>
+  </data>
+  <data name="materialButton4.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
+  </data>
+  <data name="materialButton4.Text" xml:space="preserve">
+    <value>materialButton4</value>
+  </data>
+  <data name="&gt;&gt;materialButton4.Name" xml:space="preserve">
+    <value>materialButton4</value>
+  </data>
+  <data name="&gt;&gt;materialButton4.Type" xml:space="preserve">
+    <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;materialButton4.Parent" xml:space="preserve">
+    <value>materialCard1</value>
+  </data>
+  <data name="&gt;&gt;materialButton4.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <data name="materialButton3.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="materialButton3.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="materialButton3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 68</value>
+  </data>
+  <data name="materialButton3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 6, 4, 6</value>
+  </data>
+  <data name="materialButton3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>158, 36</value>
+  </data>
+  <data name="materialButton3.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="materialButton3.Text" xml:space="preserve">
+    <value>materialButton3</value>
+  </data>
+  <data name="&gt;&gt;materialButton3.Name" xml:space="preserve">
+    <value>materialButton3</value>
+  </data>
+  <data name="&gt;&gt;materialButton3.Type" xml:space="preserve">
+    <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;materialButton3.Parent" xml:space="preserve">
+    <value>materialCard1</value>
+  </data>
+  <data name="&gt;&gt;materialButton3.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="materialButton2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
+    <value>Top, Bottom, Left, Right</value>
+  </data>
+  <data name="materialButton2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
+  </data>
+  <data name="materialButton2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 20</value>
+  </data>
+  <data name="materialButton2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 6, 4, 6</value>
+  </data>
+  <data name="materialButton2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>158, 36</value>
+  </data>
+  <data name="materialButton2.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="materialButton2.Text" xml:space="preserve">
+    <value>materialButton2</value>
+  </data>
+  <data name="&gt;&gt;materialButton2.Name" xml:space="preserve">
+    <value>materialButton2</value>
+  </data>
+  <data name="&gt;&gt;materialButton2.Type" xml:space="preserve">
+    <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;materialButton2.Parent" xml:space="preserve">
+    <value>materialCard1</value>
+  </data>
+  <data name="&gt;&gt;materialButton2.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="&gt;&gt;materialMaskedTextBox2.Name" xml:space="preserve">
+    <value>materialMaskedTextBox2</value>
+  </data>
+  <data name="&gt;&gt;materialMaskedTextBox2.Type" xml:space="preserve">
+    <value>MaterialSkin.Controls.MaterialMaskedTextBox, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;materialMaskedTextBox2.Parent" xml:space="preserve">
+    <value>materialCard2</value>
+  </data>
+  <data name="&gt;&gt;materialMaskedTextBox2.ZOrder" xml:space="preserve">
+    <value>0</value>
   </data>
   <data name="&gt;&gt;materialMaskedTextBox1.Name" xml:space="preserve">
     <value>materialMaskedTextBox1</value>
@@ -283,7 +349,7 @@
     <value>materialCard2</value>
   </data>
   <data name="&gt;&gt;materialMaskedTextBox1.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="materialCard2.Location" type="System.Drawing.Point, System.Drawing">
     <value>272, 78</value>
@@ -295,7 +361,7 @@
     <value>14, 14, 14, 14</value>
   </data>
   <data name="materialCard2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>504, 202</value>
+    <value>481, 152</value>
   </data>
   <data name="materialCard2.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
@@ -310,46 +376,88 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;materialCard2.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>2</value>
   </data>
-  <data name="materialButton1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
+  <data name="materialMaskedTextBox2.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>None</value>
   </data>
-  <data name="materialButton1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>618, 300</value>
+  <data name="materialMaskedTextBox2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 16px</value>
   </data>
-  <data name="materialButton1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 6, 4, 6</value>
+  <data name="materialMaskedTextBox2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>17, 77</value>
   </data>
-  <data name="materialButton1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>158, 36</value>
+  <data name="materialMaskedTextBox2.PrefixSuffixText" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
   </data>
-  <data name="materialButton1.TabIndex" type="System.Int32, mscorlib">
+  <data name="materialMaskedTextBox2.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>No</value>
+  </data>
+  <data name="materialMaskedTextBox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>447, 48</value>
+  </data>
+  <data name="materialMaskedTextBox2.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="materialMaskedTextBox2.Text" xml:space="preserve">
+    <value>materialMaskedTextBox2</value>
+  </data>
+  <data name="&gt;&gt;materialMaskedTextBox2.Name" xml:space="preserve">
+    <value>materialMaskedTextBox2</value>
+  </data>
+  <data name="&gt;&gt;materialMaskedTextBox2.Type" xml:space="preserve">
+    <value>MaterialSkin.Controls.MaterialMaskedTextBox, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;materialMaskedTextBox2.Parent" xml:space="preserve">
+    <value>materialCard2</value>
+  </data>
+  <data name="&gt;&gt;materialMaskedTextBox2.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="materialButton1.Text" xml:space="preserve">
-    <value>materialButton1</value>
+  <data name="materialMaskedTextBox1.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
+    <value>None</value>
   </data>
-  <data name="&gt;&gt;materialButton1.Name" xml:space="preserve">
-    <value>materialButton1</value>
+  <data name="materialMaskedTextBox1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 16px</value>
   </data>
-  <data name="&gt;&gt;materialButton1.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  <data name="materialMaskedTextBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>17, 15</value>
   </data>
-  <data name="&gt;&gt;materialButton1.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="materialMaskedTextBox1.PrefixSuffixText" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
   </data>
-  <data name="&gt;&gt;materialButton1.ZOrder" xml:space="preserve">
+  <data name="materialMaskedTextBox1.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
+    <value>No</value>
+  </data>
+  <data name="materialMaskedTextBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>447, 48</value>
+  </data>
+  <data name="materialMaskedTextBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="materialMaskedTextBox1.Text" xml:space="preserve">
+    <value>materialMaskedTextBox1</value>
+  </data>
+  <data name="&gt;&gt;materialMaskedTextBox1.Name" xml:space="preserve">
+    <value>materialMaskedTextBox1</value>
+  </data>
+  <data name="&gt;&gt;materialMaskedTextBox1.Type" xml:space="preserve">
+    <value>MaterialSkin.Controls.MaterialMaskedTextBox, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;materialMaskedTextBox1.Parent" xml:space="preserve">
+    <value>materialCard2</value>
+  </data>
+  <data name="&gt;&gt;materialMaskedTextBox1.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
   <data name="materialMultiLineTextBox1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 14px</value>
   </data>
   <data name="materialMultiLineTextBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>17, 345</value>
+    <value>17, 336</value>
   </data>
   <data name="materialMultiLineTextBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>759, 170</value>
+    <value>759, 190</value>
   </data>
   <data name="materialMultiLineTextBox1.TabIndex" type="System.Int32, mscorlib">
     <value>2</value>
@@ -367,7 +475,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;materialMultiLineTextBox1.ZOrder" xml:space="preserve">
-    <value>2</value>
+    <value>1</value>
   </data>
   <data name="materialLabel1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -376,7 +484,7 @@
     <value>Roboto, 14px</value>
   </data>
   <data name="materialLabel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 317</value>
+    <value>28, 314</value>
   </data>
   <data name="materialLabel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>36, 19</value>
@@ -399,42 +507,6 @@
   <data name="&gt;&gt;materialLabel1.ZOrder" xml:space="preserve">
     <value>0</value>
   </data>
-  <data name="materialMaskedTextBox1.BackgroundImageLayout" type="System.Windows.Forms.ImageLayout, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="materialMaskedTextBox1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Roboto, 16px</value>
-  </data>
-  <data name="materialMaskedTextBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>17, 15</value>
-  </data>
-  <data name="materialMaskedTextBox1.PrefixSuffixText" type="System.Resources.ResXNullRef, System.Windows.Forms">
-    <value />
-  </data>
-  <data name="materialMaskedTextBox1.RightToLeft" type="System.Windows.Forms.RightToLeft, System.Windows.Forms">
-    <value>No</value>
-  </data>
-  <data name="materialMaskedTextBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>250, 48</value>
-  </data>
-  <data name="materialMaskedTextBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="materialMaskedTextBox1.Text" xml:space="preserve">
-    <value>materialMaskedTextBox1</value>
-  </data>
-  <data name="&gt;&gt;materialMaskedTextBox1.Name" xml:space="preserve">
-    <value>materialMaskedTextBox1</value>
-  </data>
-  <data name="&gt;&gt;materialMaskedTextBox1.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialMaskedTextBox, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;materialMaskedTextBox1.Parent" xml:space="preserve">
-    <value>materialCard2</value>
-  </data>
-  <data name="&gt;&gt;materialMaskedTextBox1.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -442,7 +514,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>800, 547</value>
+    <value>800, 576</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

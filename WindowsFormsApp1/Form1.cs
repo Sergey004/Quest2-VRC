@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,7 +17,11 @@ namespace Quest2_VRC
     {
         public Form1()
         {
+            
             InitializeComponent();
+            Console.SetOut(new ConsoleTextBoxWriter(materialMultiLineTextBox1));
+            Check_Vars.CheckVars();
+            
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
@@ -34,6 +39,15 @@ namespace Quest2_VRC
                 e.ReturnValue);
         }
 
+        private void materialButton2_Click(object sender, EventArgs e)
+        {
+            Console.SetOut(new ConsoleTextBoxWriter(materialMultiLineTextBox1));
+            ADB.StartADB(true, true);
+            
+        }
+
         
+        
+
     }
 }
