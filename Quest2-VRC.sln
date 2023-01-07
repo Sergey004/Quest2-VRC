@@ -5,7 +5,7 @@ VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quest2-VRC.Core", "Quest2-VRC\Quest2-VRC.Core.csproj", "{0BFC8128-748B-49AB-A5F6-CE52D656FD1C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quest2-VRC.GUI", "WindowsFormsApp1\Quest2-VRC.GUI.csproj", "{B8C01B77-7853-408C-8B9E-6740B890571A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quest2-VRC.GUI", "Quest2-VRC.GUI\Quest2-VRC.GUI.csproj", "{B8C01B77-7853-408C-8B9E-6740B890571A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

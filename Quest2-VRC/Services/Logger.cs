@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Text;
-using static Quest2_VRC.Sender;
 
 namespace Quest2_VRC
 {

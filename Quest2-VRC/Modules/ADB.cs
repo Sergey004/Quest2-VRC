@@ -1,10 +1,15 @@
 ﻿using AdvancedSharpAdbClient;
+using AdvancedSharpAdbClient.Exceptions;
 using System;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Net;
+using System.Threading;
 using System.Threading.Tasks;
+using static Quest2_VRC.PacketSender;
+using static Quest2_VRC.Logger;
+
 
 
 namespace Quest2_VRC
@@ -39,17 +44,12 @@ namespace Quest2_VRC
                     if (result != StartServerResult.Started)
                     {
                         Console.WriteLine("Can't start adb server, please restart app and try again");
-                        
-
-
                     }
 
                 }
                 catch (WebException)
                 {
                     Console.WriteLine("Unable to download ADB from Google servers, try again or download files manually https://developer.android.com/studio/releases/platform-tools, press any key to exit");
-                    
-
 
                 }
 
@@ -62,26 +62,37 @@ namespace Quest2_VRC
             client = new AdbClient();
             client.Connect("127.0.0.1:62001");
             device = client.GetDevices().FirstOrDefault();
-            if (device == null)
+            try
             {
 
-                Console.WriteLine("No devices found, please restart app and try again");
-                Console.WriteLine("Or you can connect your headset via Wireless ADB: platform-tools\\adb.exe connect HEADSET_IP:5555");
+                if (device == null)
+                {
 
-                return;
+                    Console.WriteLine("No devices found, please restart app and try again");
+                    Console.WriteLine("Or you can connect your headset via Wireless ADB: platform-tools\\adb.exe connect HEADSET_IP:5555");
 
-            }
-            if (device.Name != "hollywood" && device.Name != "vr_monterey" && device.Name != "monterey" && device.Name != "seacliff")
+                    return;
+
+                }
+                if (device.Name != "hollywood" && device.Name != "vr_monterey" && device.Name != "monterey" && device.Name != "seacliff")
+                {
+                    Console.WriteLine("Device is: \nModel: {0}\nCodename: {1} \nState: {2}", device.Model, device.Name, device.State);
+                    Console.WriteLine("Oculus/Meta device is not detected or is not authorized, please disconnect all non Oculus/Meta devices and close all emulators on PC, restart app and try again");
+
+                }
+                if (device is not null)
+                {
+                    Console.WriteLine("Selecting device:\nSerial or IP: {0}\nModel: {1}\nCodename: {2}", device.Serial, device.Model, device.Name);
+
+
+                }
+            } catch (AdbException)
             {
-                Console.WriteLine("Device is: \nModel: {0}\nCodename: {1} \nState: {2}", device.Model, device.Name, device.State);
-                Console.WriteLine("Oculus/Meta device is not detected or is not authorized, please disconnect all non Oculus/Meta devices and close all emulators on PC, restart app and try again");
-
-            }
-            if (device is not null)
-            {
-                Console.WriteLine("Selecting device:\nSerial or IP: {0}\nModel: {1}\nCodename: {2}", device.Serial, device.Model, device.Name);
-                
-
+                string inputbox = "input";
+                LogToConsole("Error: connection to the headset is lost!");
+                VRChatMessage MsgErr = new VRChatMessage(inputbox, "Error: connection to the headset is lost! Reconnecting...");
+                SendPacket(MsgErr);
+                Thread.Sleep(3000);
             }
 
            

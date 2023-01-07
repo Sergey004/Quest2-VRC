@@ -8,9 +8,9 @@ using System.Net.Sockets;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using static Quest2_VRC.ADB;
 using static Quest2_VRC.Logger;
 using static Quest2_VRC.PacketSender;
-using static Quest2_VRC.ADB;
 
 
 namespace Quest2_VRC

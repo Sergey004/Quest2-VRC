@@ -1,19 +1,17 @@
 ﻿using Bespoke.Osc;
 using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
-using System.Text;
-using System.Threading.Tasks;
 using static Quest2_VRC.Logger;
 
 namespace Quest2_VRC
 {
     public class PacketSender
     {
-        static readonly IPAddress IP = IPAddress.Loopback;
+
+        public static IPAddress IP = IPAddress.Loopback;
         static readonly int Port = 9000;
         static readonly IPEndPoint VRChat = new IPEndPoint(IP, Port);
+
         static public void SendPacket(params VRChatMessage[] Params)
         {
             foreach (var Param in Params)
@@ -91,4 +89,4 @@ namespace Quest2_VRC
 
     }
 }
-   
+
