@@ -11,7 +11,8 @@ namespace Quest2_VRC
 {
     public class PacketSender
     {
-        static readonly IPAddress IP = IPAddress.Loopback;
+        public static string IPString = "127.0.0.1";
+        public static IPAddress IP = IPAddress.Parse(IPString);
         static readonly int Port = 9000;
         static readonly IPEndPoint VRChat = new IPEndPoint(IP, Port);
         static public void SendPacket(params VRChatMessage[] Params)
