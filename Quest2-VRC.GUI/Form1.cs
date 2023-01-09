@@ -12,7 +12,7 @@ namespace Quest2_VRC
     {
         public Form1()
         {
-
+            
             InitializeComponent();
             Invoke((MethodInvoker)(() => { Invoke((MethodInvoker)(() => { Console.SetOut(new TBStreamWriter(materialMultiLineTextBox1)); })); }));
             Check_Vars.CheckVars();
@@ -83,10 +83,10 @@ namespace Quest2_VRC
             {
                 base.Write(value);
                 _output.BeginInvoke((MethodInvoker)(() =>
-                 {
-                     _output.AppendText(value.ToString());
-                     _output.ScrollToCaret();
-                 }));
+                {
+                    _output.AppendText(value.ToString());
+                    _output.ScrollToCaret();
+                }));
             }
             public override Encoding Encoding
             {
@@ -99,7 +99,7 @@ namespace Quest2_VRC
         {
             if (MessageBox.Show("Do you want to exit?", "Exit and stop ADB",
         MessageBoxButtons.YesNo) == DialogResult.No)
-            {
+            {                 
                 e.Cancel = true;
             }
             else
