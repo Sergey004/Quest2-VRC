@@ -193,7 +193,7 @@
     <value>14, 14, 14, 14</value>
   </data>
   <data name="materialCard1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154, 125</value>
+    <value>154, 126</value>
   </data>
   <data name="materialCard1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -208,7 +208,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;materialCard1.ZOrder" xml:space="preserve">
-    <value>5</value>
+    <value>4</value>
   </data>
   <data name="materialButton1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -280,13 +280,13 @@
     <value>Microsoft Sans Serif, 14px</value>
   </data>
   <data name="materialMultiLineTextBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>21, 382</value>
+    <value>6, 331</value>
   </data>
   <data name="materialMultiLineTextBox1.ScrollBars" type="System.Windows.Forms.RichTextBoxScrollBars, System.Windows.Forms">
     <value>None</value>
   </data>
   <data name="materialMultiLineTextBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>759, 190</value>
+    <value>787, 150</value>
   </data>
   <data name="materialMultiLineTextBox1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
@@ -304,7 +304,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;materialMultiLineTextBox1.ZOrder" xml:space="preserve">
-    <value>4</value>
+    <value>2</value>
   </data>
   <data name="materialLabel1.AutoSize" type="System.Boolean, mscorlib">
     <value>True</value>
@@ -313,7 +313,7 @@
     <value>Roboto, 14px</value>
   </data>
   <data name="materialLabel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 339</value>
+    <value>17, 309</value>
   </data>
   <data name="materialLabel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>36, 19</value>
@@ -334,7 +334,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;materialLabel1.ZOrder" xml:space="preserve">
-    <value>3</value>
+    <value>0</value>
   </data>
   <data name="materialCard4.Location" type="System.Drawing.Point, System.Drawing">
     <value>212, 76</value>
@@ -373,7 +373,7 @@
     <value>NoControl</value>
   </data>
   <data name="materialLabel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>28, 217</value>
+    <value>556, 309</value>
   </data>
   <data name="materialLabel2.Size" type="System.Drawing.Size, System.Drawing">
     <value>51, 19</value>
@@ -394,37 +394,7 @@
     <value>$this</value>
   </data>
   <data name="&gt;&gt;materialLabel2.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="materialLabel3.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="materialLabel3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Roboto, 14px</value>
-  </data>
-  <data name="materialLabel3.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="materialLabel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>85, 217</value>
-  </data>
-  <data name="materialLabel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>1, 0</value>
-  </data>
-  <data name="materialLabel3.TabIndex" type="System.Int32, mscorlib">
-    <value>5</value>
-  </data>
-  <data name="&gt;&gt;materialLabel3.Name" xml:space="preserve">
-    <value>materialLabel3</value>
-  </data>
-  <data name="&gt;&gt;materialLabel3.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialLabel, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;materialLabel3.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;materialLabel3.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>3</value>
   </data>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
@@ -433,7 +403,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>831, 611</value>
+    <value>799, 498</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

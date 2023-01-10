@@ -28,7 +28,7 @@ namespace Quest2_VRC
             Invoke((MethodInvoker)(() => { Invoke((MethodInvoker)(() => { Console.SetOut(new TBStreamWriter(materialMultiLineTextBox1)); })); }));
 
             ADB.StartADB(true, true);
-            materialLabel3.Text = "ADB is running";
+            materialLabel2.Text = "Status: ADB is running";
             materialButton1.Enabled = false;
             materialButton2.Enabled = false;
             materialButton3.Enabled = false;
@@ -39,7 +39,7 @@ namespace Quest2_VRC
         {
             Invoke((MethodInvoker)(() => { Invoke((MethodInvoker)(() => { Console.SetOut(new TBStreamWriter(materialMultiLineTextBox1)); })); }));
             OSC.StartOSC(false, true);
-            materialLabel3.Text = "No ADB mode";
+            materialLabel2.Text = "Status: No ADB mode";
             materialButton1.Enabled = false;
             materialButton2.Enabled = false;
             materialButton3.Enabled = false;
@@ -51,7 +51,7 @@ namespace Quest2_VRC
         {
             Invoke((MethodInvoker)(() => { Invoke((MethodInvoker)(() => { Console.SetOut(new TBStreamWriter(materialMultiLineTextBox1)); })); }));
             ADB.StartADB(false, true);
-            materialLabel3.Text = "Recive only";
+            materialLabel2.Text = "Status: Recive only";
             materialButton1.Enabled = false;
             materialButton2.Enabled = false;
             materialButton3.Enabled = false;
@@ -62,7 +62,7 @@ namespace Quest2_VRC
         {
             Invoke((MethodInvoker)(() => { Invoke((MethodInvoker)(() => { Console.SetOut(new TBStreamWriter(materialMultiLineTextBox1)); })); }));
             ADB.StartADB(true, false);
-            materialLabel3.Text = "Send only";
+            materialLabel2.Text = "Status: Send only";
             materialButton1.Enabled = false;
             materialButton2.Enabled = false;
             materialButton3.Enabled = false;

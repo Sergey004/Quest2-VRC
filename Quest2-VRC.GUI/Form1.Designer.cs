@@ -38,7 +38,6 @@
             this.materialLabel1 = new MaterialSkin.Controls.MaterialLabel();
             this.materialCard4 = new MaterialSkin.Controls.MaterialCard();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
-            this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             this.materialCard1.SuspendLayout();
             this.materialCard4.SuspendLayout();
             this.SuspendLayout();
@@ -151,24 +150,15 @@
             this.materialLabel2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialLabel2.Name = "materialLabel2";
             // 
-            // materialLabel3
-            // 
-            resources.ApplyResources(this.materialLabel3, "materialLabel3");
-            this.materialLabel3.Depth = 0;
-            this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialLabel3.Name = "materialLabel3";
-
-            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.Controls.Add(this.materialLabel3);
-            this.Controls.Add(this.materialCard4);
-            this.Controls.Add(this.materialLabel2);
             this.Controls.Add(this.materialLabel1);
+            this.Controls.Add(this.materialCard4);
             this.Controls.Add(this.materialMultiLineTextBox1);
+            this.Controls.Add(this.materialLabel2);
             this.Controls.Add(this.materialCard1);
             this.MaximizeBox = false;
             this.Name = "Form1";
@@ -194,7 +184,6 @@
         private MaterialSkin.Controls.MaterialButton materialButton2;
         private MaterialSkin.Controls.MaterialCard materialCard4;
         private MaterialSkin.Controls.MaterialLabel materialLabel2;
-        private MaterialSkin.Controls.MaterialLabel materialLabel3;
     }
 }
 
