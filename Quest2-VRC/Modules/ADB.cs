@@ -38,7 +38,7 @@ namespace Quest2_VRC
                         client.DownloadFile(uri, filename);
                         ZipFile.ExtractToDirectory(filename, extractPath);
                         File.Delete(filename);
-                        Console.WriteLine("Dowload completed");
+                        Console.WriteLine("Download completed");
                     }
                     StartServerResult result = server.StartServer(@"platform-tools\adb.exe", false);
                     if (result != StartServerResult.Started)
