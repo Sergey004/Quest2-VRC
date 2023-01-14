@@ -117,14 +117,66 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="&gt;&gt;materialButton3.Name" xml:space="preserve">
+    <value>materialButton3</value>
+  </data>
+  <data name="&gt;&gt;materialButton3.Type" xml:space="preserve">
+    <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;materialButton3.Parent" xml:space="preserve">
+    <value>materialCard1</value>
+  </data>
+  <data name="&gt;&gt;materialButton3.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;materialButton2.Name" xml:space="preserve">
+    <value>materialButton2</value>
+  </data>
+  <data name="&gt;&gt;materialButton2.Type" xml:space="preserve">
+    <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;materialButton2.Parent" xml:space="preserve">
+    <value>materialCard1</value>
+  </data>
+  <data name="&gt;&gt;materialButton2.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="materialCard1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>20, 76</value>
+  </data>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="materialCard1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>14, 14, 14, 14</value>
+  </data>
+  <data name="materialCard1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>14, 14, 14, 14</value>
+  </data>
+  <data name="materialCard1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>154, 126</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="materialCard1.TabIndex" type="System.Int32, mscorlib">
+    <value>0</value>
+  </data>
+  <data name="&gt;&gt;materialCard1.Name" xml:space="preserve">
+    <value>materialCard1</value>
+  </data>
+  <data name="&gt;&gt;materialCard1.Type" xml:space="preserve">
+    <value>MaterialSkin.Controls.MaterialCard, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="&gt;&gt;materialCard1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;materialCard1.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
   <data name="materialButton3.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
   </data>
   <data name="materialButton3.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
     <value>GrowAndShrink</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="materialButton3.Location" type="System.Drawing.Point, System.Drawing">
     <value>18, 68</value>
   </data>
@@ -134,7 +186,6 @@
   <data name="materialButton3.Size" type="System.Drawing.Size, System.Drawing">
     <value>74, 36</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="materialButton3.TabIndex" type="System.Int32, mscorlib">
     <value>1</value>
   </data>
@@ -182,33 +233,6 @@
   </data>
   <data name="&gt;&gt;materialButton2.ZOrder" xml:space="preserve">
     <value>1</value>
-  </data>
-  <data name="materialCard1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>31, 78</value>
-  </data>
-  <data name="materialCard1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>14, 14, 14, 14</value>
-  </data>
-  <data name="materialCard1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>14, 14, 14, 14</value>
-  </data>
-  <data name="materialCard1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154, 126</value>
-  </data>
-  <data name="materialCard1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;materialCard1.Name" xml:space="preserve">
-    <value>materialCard1</value>
-  </data>
-  <data name="&gt;&gt;materialCard1.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialCard, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;materialCard1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;materialCard1.ZOrder" xml:space="preserve">
-    <value>4</value>
   </data>
   <data name="materialButton1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -337,7 +361,7 @@
     <value>0</value>
   </data>
   <data name="materialCard4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>212, 76</value>
+    <value>202, 74</value>
   </data>
   <data name="materialCard4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>14, 14, 14, 14</value>

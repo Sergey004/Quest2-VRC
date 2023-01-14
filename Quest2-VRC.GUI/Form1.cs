@@ -3,6 +3,7 @@ using MaterialSkin.Controls;
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Net;
 using System.Text;
 using System.Windows.Forms;
 
@@ -12,8 +13,8 @@ namespace Quest2_VRC
     {
         public Form1()
         {
-            
             InitializeComponent();
+            
             Invoke((MethodInvoker)(() => { Invoke((MethodInvoker)(() => { Console.SetOut(new TBStreamWriter(materialMultiLineTextBox1)); })); }));
             Check_Vars.CheckVars();
             var materialSkinManager = MaterialSkinManager.Instance;
