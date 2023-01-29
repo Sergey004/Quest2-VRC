@@ -117,17 +117,26 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="&gt;&gt;materialButton3.Name" xml:space="preserve">
-    <value>materialButton3</value>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="materialButton2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
+    <value>GrowAndShrink</value>
   </data>
-  <data name="&gt;&gt;materialButton3.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="materialButton2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>18, 20</value>
   </data>
-  <data name="&gt;&gt;materialButton3.Parent" xml:space="preserve">
-    <value>materialCard1</value>
+  <data name="materialButton2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
+    <value>4, 6, 4, 6</value>
   </data>
-  <data name="&gt;&gt;materialButton3.ZOrder" xml:space="preserve">
+  <data name="materialButton2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>117, 36</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="materialButton2.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
+  </data>
+  <data name="materialButton2.Text" xml:space="preserve">
+    <value>Default run</value>
   </data>
   <data name="&gt;&gt;materialButton2.Name" xml:space="preserve">
     <value>materialButton2</value>
@@ -139,13 +148,11 @@
     <value>materialCard1</value>
   </data>
   <data name="&gt;&gt;materialButton2.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>0</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="materialCard1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 76</value>
+    <value>203, 78</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="materialCard1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>14, 14, 14, 14</value>
   </data>
@@ -153,9 +160,8 @@
     <value>14, 14, 14, 14</value>
   </data>
   <data name="materialCard1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>154, 126</value>
+    <value>154, 80</value>
   </data>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="materialCard1.TabIndex" type="System.Int32, mscorlib">
     <value>0</value>
   </data>
@@ -178,7 +184,7 @@
     <value>GrowAndShrink</value>
   </data>
   <data name="materialButton3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 68</value>
+    <value>18, 126</value>
   </data>
   <data name="materialButton3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>4, 6, 4, 6</value>
@@ -199,40 +205,10 @@
     <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
   </data>
   <data name="&gt;&gt;materialButton3.Parent" xml:space="preserve">
-    <value>materialCard1</value>
+    <value>materialCard4</value>
   </data>
   <data name="&gt;&gt;materialButton3.ZOrder" xml:space="preserve">
     <value>0</value>
-  </data>
-  <data name="materialButton2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="materialButton2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>18, 20</value>
-  </data>
-  <data name="materialButton2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 6, 4, 6</value>
-  </data>
-  <data name="materialButton2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>117, 36</value>
-  </data>
-  <data name="materialButton2.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="materialButton2.Text" xml:space="preserve">
-    <value>Default run</value>
-  </data>
-  <data name="&gt;&gt;materialButton2.Name" xml:space="preserve">
-    <value>materialButton2</value>
-  </data>
-  <data name="&gt;&gt;materialButton2.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Version=2.3.1.0, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;materialButton2.Parent" xml:space="preserve">
-    <value>materialCard1</value>
-  </data>
-  <data name="&gt;&gt;materialButton2.ZOrder" xml:space="preserve">
-    <value>1</value>
   </data>
   <data name="materialButton1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -265,7 +241,7 @@
     <value>materialCard4</value>
   </data>
   <data name="&gt;&gt;materialButton1.ZOrder" xml:space="preserve">
-    <value>0</value>
+    <value>1</value>
   </data>
   <data name="materialButton4.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
     <value>Top, Bottom, Left, Right</value>
@@ -298,7 +274,7 @@
     <value>materialCard4</value>
   </data>
   <data name="&gt;&gt;materialButton4.ZOrder" xml:space="preserve">
-    <value>1</value>
+    <value>2</value>
   </data>
   <data name="materialMultiLineTextBox1.Font" type="System.Drawing.Font, System.Drawing">
     <value>Microsoft Sans Serif, 14px</value>
@@ -361,7 +337,7 @@
     <value>0</value>
   </data>
   <data name="materialCard4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>202, 74</value>
+    <value>17, 78</value>
   </data>
   <data name="materialCard4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
     <value>14, 14, 14, 14</value>
@@ -370,7 +346,7 @@
     <value>14, 14, 14, 14</value>
   </data>
   <data name="materialCard4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>158, 128</value>
+    <value>158, 182</value>
   </data>
   <data name="materialCard4.TabIndex" type="System.Int32, mscorlib">
     <value>8</value>
@@ -397,7 +373,7 @@
     <value>NoControl</value>
   </data>
   <data name="materialLabel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>556, 309</value>
+    <value>17, 493</value>
   </data>
   <data name="materialLabel2.Size" type="System.Drawing.Size, System.Drawing">
     <value>51, 19</value>
@@ -427,7 +403,7 @@
     <value>6, 13</value>
   </data>
   <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>799, 498</value>
+    <value>799, 524</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>

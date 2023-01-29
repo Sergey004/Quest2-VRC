@@ -48,6 +48,7 @@ namespace Quest2_VRC
                     int Hbatlevelint = 0;
                     int Rbatlevelint = 0;
                     int Lbatlevelint = 0;
+                    int BatTempint = 0;
                     bool LowHMDBat = false;
 
                     ConsoleOutputReceiver Hbat_receiver = new ConsoleOutputReceiver();
@@ -55,7 +56,7 @@ namespace Quest2_VRC
                     ConsoleOutputReceiver Rbat_receiver = new ConsoleOutputReceiver();
                     client.ExecuteRemoteCommand("dumpsys OVRRemoteService | grep Right", device, Rbat_receiver);
                     ConsoleOutputReceiver Lbat_receiver = new ConsoleOutputReceiver();
-                    client.ExecuteRemoteCommand("dumpsys OVRRemoteService | grep Left", device, Lbat_receiver);
+                    client.ExecuteRemoteCommand("dumpsys OVRRemoteService | grep Left", device, Lbat_receiver);;
 
                     var Hbat_match = Regex.Match(Hbat_receiver.ToString(), @"\d+", RegexOptions.RightToLeft);
                     var Rbat_match = Regex.Match(Rbat_receiver.ToString(), @"\d+", RegexOptions.RightToLeft);
@@ -94,7 +95,6 @@ namespace Quest2_VRC
                     VRChatMessage Msg2 = new VRChatMessage(ControllerBatL, Lbatlevelf);
                     VRChatMessage Msg3 = new VRChatMessage(ControllerBatR, Rbatlevelf);
                     VRChatMessage Msg4 = new VRChatMessage("LowHMDBat", LowHMDBat);
-
                     SendPacket(Msg1, Msg2, Msg3, Msg4);
 
                     LogToConsole("Sending HMD status", Msg1, Msg2, Msg3, Msg4);

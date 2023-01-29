@@ -9,8 +9,11 @@ using System.Windows.Forms;
 
 namespace Quest2_VRC
 {
+
     public partial class Form1 : MaterialForm
+        
     {
+        
         public Form1()
         {
             InitializeComponent();
@@ -117,5 +120,23 @@ namespace Quest2_VRC
 
         }
 
+        //private void materialButton5_Click(object sender, EventArgs e)
+        //{
+        //    PacketSender.GetOrSetIP IP = new PacketSender.GetOrSetIP();
+        //    try
+        //    {
+        //        IPAddress ipaddress = IPAddress.Parse(materialTextBox1.Text + "." + materialTextBox2.Text + "." + materialTextBox3.Text + "." + materialTextBox4.Text);
+        //        PacketSender.GetOrSetIP.IP = ipaddress;
+        //        materialLabel2.Text = $"Status: IP set to {PacketSender.GetOrSetIP.IP}";
+        //    }
+        //    catch
+        //    {
+        //        PacketSender.GetOrSetIP.IP = IPAddress.Loopback;
+        //        materialLabel2.Text = $"Status: IP set to {PacketSender.GetOrSetIP.IP}";
+        //    }
+            
+            
+
+        //}
     }
 }
