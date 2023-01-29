@@ -7,8 +7,8 @@ using System.Linq;
 using System.Net;
 using System.Threading;
 using System.Threading.Tasks;
-using static Quest2_VRC.PacketSender;
 using static Quest2_VRC.Logger;
+using static Quest2_VRC.PacketSender;
 
 
 
@@ -86,7 +86,8 @@ namespace Quest2_VRC
 
 
                 }
-            } catch (AdbException)
+            }
+            catch (AdbException)
             {
                 string inputbox = "input";
                 LogToConsole("Error: connection to the headset is lost!");
@@ -95,11 +96,9 @@ namespace Quest2_VRC
                 Thread.Sleep(3000);
             }
 
-           
-
             if (receiver == false && sender == true)
             {
-                
+
                 Console.WriteLine("OSC transfer is active");
                 Console.WriteLine("OSC receiver is inactive");
                 var tasks = new[]
@@ -111,7 +110,7 @@ namespace Quest2_VRC
             }
             else if (receiver == true && sender == false)
             {
-                
+
                 Console.WriteLine("OSC transfer is inactive");
                 Console.WriteLine("OSC receiver is active");
                 var tasks = new[]
@@ -121,7 +120,7 @@ namespace Quest2_VRC
             }
             else
             {
-                
+
                 Console.WriteLine("OSC transfer is active");
                 Console.WriteLine("OSC receiver is active");
                 var tasks = new[]

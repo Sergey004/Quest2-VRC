@@ -25,7 +25,7 @@ namespace Quest2_VRC
             string Eyesmode = dic["Receive_addr"];
             string EyesmodeTest = dic["Receive_addr_test"];
             OscServer oscServer;
-            oscServer = new OscServer((Bespoke.Common.Net.TransportType)TransportType.Udp, IP, Port);
+            oscServer = new OscServer((Bespoke.Common.Net.TransportType)TransportType.Udp,IP, Port);
             oscServer.FilterRegisteredMethods = true;
             oscServer.RegisterMethod(Eyesmode);
             oscServer.RegisterMethod(EyesmodeTest);

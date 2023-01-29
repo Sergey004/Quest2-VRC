@@ -30,8 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.materialCard1 = new MaterialSkin.Controls.MaterialCard();
-            this.materialButton3 = new MaterialSkin.Controls.MaterialButton();
             this.materialButton2 = new MaterialSkin.Controls.MaterialButton();
+            this.materialButton3 = new MaterialSkin.Controls.MaterialButton();
             this.materialButton1 = new MaterialSkin.Controls.MaterialButton();
             this.materialButton4 = new MaterialSkin.Controls.MaterialButton();
             this.materialMultiLineTextBox1 = new MaterialSkin.Controls.MaterialMultiLineTextBox();
@@ -45,13 +45,27 @@
             // materialCard1
             // 
             this.materialCard1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.materialCard1.Controls.Add(this.materialButton3);
             this.materialCard1.Controls.Add(this.materialButton2);
             this.materialCard1.Depth = 0;
             this.materialCard1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             resources.ApplyResources(this.materialCard1, "materialCard1");
             this.materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard1.Name = "materialCard1";
+            // 
+            // materialButton2
+            // 
+            resources.ApplyResources(this.materialButton2, "materialButton2");
+            this.materialButton2.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.materialButton2.Depth = 0;
+            this.materialButton2.HighEmphasis = true;
+            this.materialButton2.Icon = null;
+            this.materialButton2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialButton2.Name = "materialButton2";
+            this.materialButton2.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.materialButton2.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.materialButton2.UseAccentColor = false;
+            this.materialButton2.UseVisualStyleBackColor = true;
+            this.materialButton2.Click += new System.EventHandler(this.materialButton2_Click);
             // 
             // materialButton3
             // 
@@ -68,21 +82,6 @@
             this.materialButton3.UseAccentColor = false;
             this.materialButton3.UseVisualStyleBackColor = true;
             this.materialButton3.Click += new System.EventHandler(this.materialButton3_Click);
-            // 
-            // materialButton2
-            // 
-            resources.ApplyResources(this.materialButton2, "materialButton2");
-            this.materialButton2.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
-            this.materialButton2.Depth = 0;
-            this.materialButton2.HighEmphasis = true;
-            this.materialButton2.Icon = null;
-            this.materialButton2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialButton2.Name = "materialButton2";
-            this.materialButton2.NoAccentTextColor = System.Drawing.Color.Empty;
-            this.materialButton2.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
-            this.materialButton2.UseAccentColor = false;
-            this.materialButton2.UseVisualStyleBackColor = true;
-            this.materialButton2.Click += new System.EventHandler(this.materialButton2_Click);
             // 
             // materialButton1
             // 
@@ -135,6 +134,7 @@
             // materialCard4
             // 
             this.materialCard4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard4.Controls.Add(this.materialButton3);
             this.materialCard4.Controls.Add(this.materialButton1);
             this.materialCard4.Controls.Add(this.materialButton4);
             this.materialCard4.Depth = 0;

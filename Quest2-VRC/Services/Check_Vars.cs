@@ -21,7 +21,7 @@ namespace Quest2_VRC
 
             else
             {
-                Console.WriteLine("vars.txt exsists");
+                Console.WriteLine("vars.txt exists");
             }
         }
     }
