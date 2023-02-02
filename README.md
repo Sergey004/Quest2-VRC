@@ -29,23 +29,13 @@ Connect your Quest 2 to your computer in developer mode
 And hope for the best that this program will work for you
 
 
-## CLI
-```
---help - show help
-
---no-sender - disable osc sender
-
---no-receiver - disable osc receiver
-
---no-adb - disable adb functions
-```
-
 ## Dependencies
 
 - [ADB](https://developer.android.com/studio/releases/platform-tools)
 - [AdvancedSharpAdbClient](https://github.com/yungd1plomat/AdvancedSharpAdbClient)
 - [Bespoke.Osc](https://bitbucket.org/pvarcholik/bespoke.osc)
 - [OpenRGB.NET](https://github.com/diogotr7/OpenRGB.NET)
+- [MaterialSkin.2](https://github.com/leocb/MaterialSkin)
 
 Sending code based on modified source code from https://github.com/KaleidonKep99/VRChat_CS_OSCTest
 
