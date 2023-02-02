@@ -48,7 +48,6 @@ namespace Quest2_VRC
                     int Hbatlevelint = 0;
                     int Rbatlevelint = 0;
                     int Lbatlevelint = 0;
-                    int BatTempint = 0;
                     bool LowHMDBat = false;
 
                     ConsoleOutputReceiver Hbat_receiver = new ConsoleOutputReceiver();
