@@ -18,7 +18,7 @@ namespace Quest2_VRC
         public Form1()
         {
             InitializeComponent();
-            
+            materialTextBox1.Enabled = materialSwitch1.Checked;
             Invoke((MethodInvoker)(() => { Invoke((MethodInvoker)(() => { Console.SetOut(new TBStreamWriter(materialMultiLineTextBox1)); })); }));
             Check_Vars.CheckVars();
             var materialSkinManager = MaterialSkinManager.Instance;
@@ -162,6 +162,11 @@ namespace Quest2_VRC
 
         }
 
+        private void materialSwitch1_CheckedChanged(object sender, EventArgs e)
+        {
+            materialTextBox1.Enabled = materialSwitch1.Checked;
+        }
+
         //private void materialButton5_Click(object sender, EventArgs e)
         //{
         //    PacketSender.GetOrSetIP IP = new PacketSender.GetOrSetIP();
@@ -176,8 +181,8 @@ namespace Quest2_VRC
         //        PacketSender.GetOrSetIP.IP = IPAddress.Loopback;
         //        materialLabel2.Text = $"Status: IP set to {PacketSender.GetOrSetIP.IP}";
         //    }
-            
-            
+
+
 
         //}
     }

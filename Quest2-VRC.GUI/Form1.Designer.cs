@@ -39,8 +39,8 @@
             this.materialCard4 = new MaterialSkin.Controls.MaterialCard();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.materialCard2 = new MaterialSkin.Controls.MaterialCard();
-            this.materialSwitch1 = new MaterialSkin.Controls.MaterialSwitch();
             this.materialTextBox1 = new MaterialSkin.Controls.MaterialTextBox();
+            this.materialSwitch1 = new MaterialSkin.Controls.MaterialSwitch();
             this.materialCard1.SuspendLayout();
             this.materialCard4.SuspendLayout();
             this.materialCard2.SuspendLayout();
@@ -229,21 +229,6 @@
             this.materialCard2.Size = new System.Drawing.Size(296, 165);
             this.materialCard2.TabIndex = 9;
             // 
-            // materialSwitch1
-            // 
-            this.materialSwitch1.AutoSize = true;
-            this.materialSwitch1.Depth = 0;
-            this.materialSwitch1.Location = new System.Drawing.Point(14, 114);
-            this.materialSwitch1.Margin = new System.Windows.Forms.Padding(0);
-            this.materialSwitch1.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialSwitch1.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialSwitch1.Name = "materialSwitch1";
-            this.materialSwitch1.Ripple = true;
-            this.materialSwitch1.Size = new System.Drawing.Size(159, 37);
-            this.materialSwitch1.TabIndex = 0;
-            this.materialSwitch1.Text = "Link or AirLink";
-            this.materialSwitch1.UseVisualStyleBackColor = true;
-            // 
             // materialTextBox1
             // 
             this.materialTextBox1.AnimateReadOnly = false;
@@ -261,6 +246,22 @@
             this.materialTextBox1.TabIndex = 1;
             this.materialTextBox1.Text = "";
             this.materialTextBox1.TrailingIcon = null;
+            // 
+            // materialSwitch1
+            // 
+            this.materialSwitch1.AutoSize = true;
+            this.materialSwitch1.Depth = 0;
+            this.materialSwitch1.Location = new System.Drawing.Point(14, 114);
+            this.materialSwitch1.Margin = new System.Windows.Forms.Padding(0);
+            this.materialSwitch1.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.materialSwitch1.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialSwitch1.Name = "materialSwitch1";
+            this.materialSwitch1.Ripple = true;
+            this.materialSwitch1.Size = new System.Drawing.Size(159, 37);
+            this.materialSwitch1.TabIndex = 0;
+            this.materialSwitch1.Text = "Link or AirLink";
+            this.materialSwitch1.UseVisualStyleBackColor = true;
+            this.materialSwitch1.CheckedChanged += new System.EventHandler(this.materialSwitch1_CheckedChanged);
             // 
             // Form1
             // 
