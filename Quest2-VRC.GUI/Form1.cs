@@ -9,11 +9,12 @@ using System.Windows.Forms;
 
 namespace Quest2_VRC
 {
-
+    
     public partial class Form1 : MaterialForm
         
     {
-        
+        static string adbip;
+
         public Form1()
         {
             InitializeComponent();
@@ -30,13 +31,26 @@ namespace Quest2_VRC
         private void materialButton2_Click(object sender, EventArgs e)
         {
             Invoke((MethodInvoker)(() => { Invoke((MethodInvoker)(() => { Console.SetOut(new TBStreamWriter(materialMultiLineTextBox1)); })); }));
+            if (materialSwitch1.Checked == true)
+            {
+                adbip = materialTextBox1.Text + "5555";
+                ADB.StartADB(true, true, adbip);
+                materialLabel2.Text = "Status: ADB is running";
+                materialButton1.Enabled = false;
+                materialButton2.Enabled = false;
+                materialButton3.Enabled = false;
+                materialButton4.Enabled = false;
 
-            ADB.StartADB(true, true);
-            materialLabel2.Text = "Status: ADB is running";
-            materialButton1.Enabled = false;
-            materialButton2.Enabled = false;
-            materialButton3.Enabled = false;
-            materialButton4.Enabled = false;
+            }
+            else {
+                adbip = "127.0.0.1:62001";
+                ADB.StartADB(true, true, adbip);
+                materialLabel2.Text = "Status: ADB is running";
+                materialButton1.Enabled = false;
+                materialButton2.Enabled = false;
+                materialButton3.Enabled = false;
+                materialButton4.Enabled = false;
+                    }
 
         }
         private void materialButton3_Click(object sender, EventArgs e)
@@ -54,23 +68,51 @@ namespace Quest2_VRC
         private void materialButton1_Click(object sender, EventArgs e)
         {
             Invoke((MethodInvoker)(() => { Invoke((MethodInvoker)(() => { Console.SetOut(new TBStreamWriter(materialMultiLineTextBox1)); })); }));
-            ADB.StartADB(false, true);
-            materialLabel2.Text = "Status: Receive only";
-            materialButton1.Enabled = false;
-            materialButton2.Enabled = false;
-            materialButton3.Enabled = false;
-            materialButton4.Enabled = false;
+            if (materialSwitch1.Checked == true)
+            {
+                adbip = materialTextBox1.Text + "5555";
+                ADB.StartADB(false, true, adbip);
+                materialLabel2.Text = "Status: Receive only";
+                materialButton1.Enabled = false;
+                materialButton2.Enabled = false;
+                materialButton3.Enabled = false;
+                materialButton4.Enabled = false;
+            }
+            else
+            {
+                adbip = "127.0.0.1:62001";
+                ADB.StartADB(false, true, adbip);
+                materialLabel2.Text = "Status: Receive only";
+                materialButton1.Enabled = false;
+                materialButton2.Enabled = false;
+                materialButton3.Enabled = false;
+                materialButton4.Enabled = false;
+            }
         }
 
         private void materialButton4_Click(object sender, EventArgs e)
         {
             Invoke((MethodInvoker)(() => { Invoke((MethodInvoker)(() => { Console.SetOut(new TBStreamWriter(materialMultiLineTextBox1)); })); }));
-            ADB.StartADB(true, false);
-            materialLabel2.Text = "Status: Send only";
-            materialButton1.Enabled = false;
-            materialButton2.Enabled = false;
-            materialButton3.Enabled = false;
-            materialButton4.Enabled = false;
+            if (materialSwitch1.Checked == true)
+            {
+                adbip = materialTextBox1.Text + "5555";
+                ADB.StartADB(true, false, adbip);
+                materialLabel2.Text = "Status: Send only";
+                materialButton1.Enabled = false;
+                materialButton2.Enabled = false;
+                materialButton3.Enabled = false;
+                materialButton4.Enabled = false;
+            }
+            else
+            {
+                adbip = "127.0.0.1:62001";
+                ADB.StartADB(true, false, adbip);
+                materialLabel2.Text = "Status: Send only";
+                materialButton1.Enabled = false;
+                materialButton2.Enabled = false;
+                materialButton3.Enabled = false;
+                materialButton4.Enabled = false;
+            }
         }
 
 
@@ -101,8 +143,8 @@ namespace Quest2_VRC
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Do you want to exit?", "Exit and stop ADB",
-        MessageBoxButtons.YesNo) == DialogResult.No)
+            if (MessageBox.Show("Do you want to exit?\nNote, this action will stop the ADB server", "Exit and stop ADB",
+        MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
             {                 
                 e.Cancel = true;
             }

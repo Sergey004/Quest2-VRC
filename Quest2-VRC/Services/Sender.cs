@@ -55,7 +55,7 @@ namespace Quest2_VRC
                     ConsoleOutputReceiver Rbat_receiver = new ConsoleOutputReceiver();
                     client.ExecuteRemoteCommand("dumpsys OVRRemoteService | grep Right", device, Rbat_receiver);
                     ConsoleOutputReceiver Lbat_receiver = new ConsoleOutputReceiver();
-                    client.ExecuteRemoteCommand("dumpsys OVRRemoteService | grep Left", device, Lbat_receiver);;
+                    client.ExecuteRemoteCommand("dumpsys OVRRemoteService | grep Left", device, Lbat_receiver);
 
                     var Hbat_match = Regex.Match(Hbat_receiver.ToString(), @"\d+", RegexOptions.RightToLeft);
                     var Rbat_match = Regex.Match(Rbat_receiver.ToString(), @"\d+", RegexOptions.RightToLeft);
@@ -108,7 +108,6 @@ namespace Quest2_VRC
                     VRChatMessage MsgErr = new VRChatMessage(inputbox, "Error: connection to the headset is lost! Reconnecting...");
                     SendPacket(MsgErr);
                     Thread.Sleep(3000);
-
                 }
 
 

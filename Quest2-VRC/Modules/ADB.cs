@@ -18,7 +18,7 @@ namespace Quest2_VRC
     {
         static public AdbClient client;
         static public DeviceData device;
-        public static void StartADB(bool sender, bool receiver)
+        public static void StartADB(bool sender, bool receiver, string hostip)
         {
             Console.WriteLine("Make sure you connect the headset to your computer and turn on the controllers");
             if (!AdbServer.Instance.GetStatus().IsRunning)
@@ -60,11 +60,8 @@ namespace Quest2_VRC
             }
 
             client = new AdbClient();
-            client.Connect("127.0.0.1:62001");
+            client.Connect(hostip);
             device = client.GetDevices().FirstOrDefault();
-            try
-            {
-
                 if (device == null)
                 {
 
@@ -86,15 +83,8 @@ namespace Quest2_VRC
 
 
                 }
-            }
-            catch (AdbException)
-            {
-                string inputbox = "input";
-                LogToConsole("Error: connection to the headset is lost!");
-                VRChatMessage MsgErr = new VRChatMessage(inputbox, "Error: connection to the headset is lost! Reconnecting...");
-                SendPacket(MsgErr);
-                Thread.Sleep(3000);
-            }
+            
+          
 
             if (receiver == false && sender == true)
             {
