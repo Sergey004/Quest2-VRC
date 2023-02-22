@@ -68,24 +68,24 @@ namespace Quest2_VRC
                     float Rbatlevelf = Rbatlevelint;
                     float Lbatlevelf = Lbatlevelint;
 
-                    if (Hbatlevelf < 15)
+                    if (Hbatlevelf < 25)
                     {
                         LowHMDBat = true;
-                        //SoundPlayer playSound = new SoundPlayer(Properties.Resources.HMDloworbelow15);
+                        //SoundPlayer playSound = new SoundPlayer(Properties.Resources.HMDloworbelow25);
                         //playSound.Play();
 
                     }
-                    if (Rbatlevelf < 15)
+                    if (Rbatlevelf < 25)
                     {
                         LogToConsole("Right controller is discharged, disabled or not connected");
-                        //SoundPlayer playSound = new SoundPlayer(Properties.Resources.Rcrtloworbelow15);
+                        //SoundPlayer playSound = new SoundPlayer(Properties.Resources.Rcrtloworbelow25);
                         //playSound.Play();
 
                     }
-                    if (Lbatlevelf < 15)
+                    if (Lbatlevelf < 25)
                     {
                         LogToConsole("Left controller is discharged, disabled or not connected");
-                        //SoundPlayer playSound = new SoundPlayer(Properties.Resources.Lctrloworbelow15);
+                        //SoundPlayer playSound = new SoundPlayer(Properties.Resources.Lctrloworbelow25);
                         //playSound.Play();
 
                     }
