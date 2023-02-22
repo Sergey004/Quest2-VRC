@@ -107,12 +107,6 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Quest2-VRC\Quest2-VRC.Core.csproj">
-      <Project>{0bfc8128-748b-49ab-a5f6-ce52d656fd1c}</Project>
-      <Name>Quest2-VRC.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Icon.ico" />
   </ItemGroup>
   <ItemGroup>
