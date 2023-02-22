@@ -218,10 +218,10 @@
   <ItemGroup>
     <Content Include="Icon.ico" />
     <Content Include="Properties\Icon.ico" />
-    <Content Include="Resources\Lctrloworbelow15.wav" />
-    <Content Include="Resources\Rcrtloworbelow15.wav" />
+    <Content Include="Resources\HMDloworbelow25.wav" />
+    <Content Include="Resources\Lctrloworbelow25.wav" />
+    <Content Include="Resources\Rcrtloworbelow25.wav" />
     <None Include="packages.config" />
-    <None Include="Resources\HMDloworbelow15.wav" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Properties\Resources.resx">
