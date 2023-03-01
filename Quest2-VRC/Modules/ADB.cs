@@ -66,7 +66,7 @@ namespace Quest2_VRC
                 {
 
                     Console.WriteLine("No devices found, please restart app and try again");
-                    Console.WriteLine("Or you can connect your headset via Wireless ADB: platform-tools\\adb.exe connect HEADSET_IP:5555");
+                    Console.WriteLine("Or you can connect your headset via Wireless ADB: Use the \"Quest IP\" field for conndection ");
 
                     return;
 
