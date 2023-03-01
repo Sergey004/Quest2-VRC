@@ -17,8 +17,8 @@ namespace Quest2_VRC
         {
             InitializeComponent();
             materialTextBox1.Enabled = materialSwitch1.Checked;
-            materialSwitch1.Enabled = false;
-            materialSwitch1.Text = "Broken, use this -->";
+            //materialSwitch1.Enabled = false;
+            //materialSwitch1.Text = "Broken, use this -->";
             Invoke((MethodInvoker)(() => { Invoke((MethodInvoker)(() => { Console.SetOut(new TBStreamWriter(materialMultiLineTextBox1)); })); }));
             Check_Vars.CheckVars();
             var materialSkinManager = MaterialSkinManager.Instance;
@@ -181,24 +181,5 @@ namespace Quest2_VRC
         {
             MessageBox.Show("1) Enter \"platform-tools\\adb tcpip 5555\" when your headset is connected to your computer via USB \n2) Use the \"Quest IP\" field for conndection\n \n \nIf this don't work\nIgnore the switch and  enter \n\"platform-tools\\adb tcpip 5555\" \n \"platform-tools\\adb connect  QUEST_IP:5555\"", "Help", MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
-
-        //private void materialButton5_Click(object sender, EventArgs e)
-        //{
-        //    PacketSender.GetOrSetIP IP = new PacketSender.GetOrSetIP();
-        //    try
-        //    {
-        //        IPAddress ipaddress = IPAddress.Parse(materialTextBox1.Text + "." + materialTextBox2.Text + "." + materialTextBox3.Text + "." + materialTextBox4.Text);
-        //        PacketSender.GetOrSetIP.IP = ipaddress;
-        //        materialLabel2.Text = $"Status: IP set to {PacketSender.GetOrSetIP.IP}";
-        //    }
-        //    catch
-        //    {
-        //        PacketSender.GetOrSetIP.IP = IPAddress.Loopback;
-        //        materialLabel2.Text = $"Status: IP set to {PacketSender.GetOrSetIP.IP}";
-        //    }
-
-
-
-        //}
     }
 }
