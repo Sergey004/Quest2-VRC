@@ -59,7 +59,7 @@ namespace Quest2_VRC
             client = new AdbClient();
             client.Connect(hostip);;
             device = client.GetDevices().FirstOrDefault();
-            Thread.Sleep(5000);
+            Thread.Sleep(500);
             if (device.Serial == null)
             {
 
