@@ -167,6 +167,7 @@
             this.materialMultiLineTextBox1.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.materialMultiLineTextBox1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.materialMultiLineTextBox1.Location = new System.Drawing.Point(17, 289);
+            this.materialMultiLineTextBox1.MaxLength = 500;
             this.materialMultiLineTextBox1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialMultiLineTextBox1.Name = "materialMultiLineTextBox1";
             this.materialMultiLineTextBox1.ReadOnly = true;
@@ -174,6 +175,7 @@
             this.materialMultiLineTextBox1.Size = new System.Drawing.Size(765, 192);
             this.materialMultiLineTextBox1.TabIndex = 0;
             this.materialMultiLineTextBox1.Text = "";
+            this.materialMultiLineTextBox1.TextChanged += new System.EventHandler(this.materialMultilineTextBox1_TextChanged);
             // 
             // materialLabel1
             // 
@@ -292,16 +294,16 @@
             this.materialCheckbox1.Checked = true;
             this.materialCheckbox1.CheckState = System.Windows.Forms.CheckState.Checked;
             this.materialCheckbox1.Depth = 0;
-            this.materialCheckbox1.Location = new System.Drawing.Point(689, 248);
+            this.materialCheckbox1.Location = new System.Drawing.Point(673, 249);
             this.materialCheckbox1.Margin = new System.Windows.Forms.Padding(0);
             this.materialCheckbox1.MouseLocation = new System.Drawing.Point(-1, -1);
             this.materialCheckbox1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCheckbox1.Name = "materialCheckbox1";
             this.materialCheckbox1.ReadOnly = false;
             this.materialCheckbox1.Ripple = true;
-            this.materialCheckbox1.Size = new System.Drawing.Size(93, 37);
+            this.materialCheckbox1.Size = new System.Drawing.Size(109, 37);
             this.materialCheckbox1.TabIndex = 10;
-            this.materialCheckbox1.Text = "Hide log";
+            this.materialCheckbox1.Text = "Show logs";
             this.materialCheckbox1.UseVisualStyleBackColor = true;
             this.materialCheckbox1.CheckedChanged += new System.EventHandler(this.materialCheckbox1_CheckedChanged);
             // 
@@ -324,6 +326,7 @@
             this.Sizable = false;
             this.Text = "Quest2-VRC GUI";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.materialCard1.ResumeLayout(false);
             this.materialCard1.PerformLayout();
             this.materialCard4.ResumeLayout(false);

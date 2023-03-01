@@ -26,8 +26,6 @@ namespace Quest2_VRC
             await questwd(Uport);
         }
 
-
-
         public static async Task questwd(int Uport)
         {
             // Create a bogus port for the client
@@ -90,15 +88,15 @@ namespace Quest2_VRC
 
                     }
 
-                    VRChatMessage Msg1 = new VRChatMessage(HMDBat, Hbatlevelf);
-                    VRChatMessage Msg2 = new VRChatMessage(ControllerBatL, Lbatlevelf);
-                    VRChatMessage Msg3 = new VRChatMessage(ControllerBatR, Rbatlevelf);
+                    VRChatMessage Msg1 = new VRChatMessage(HMDBat, Hbatlevelf / 100);
+                    VRChatMessage Msg2 = new VRChatMessage(ControllerBatL, Lbatlevelf / 100);
+                    VRChatMessage Msg3 = new VRChatMessage(ControllerBatR, Rbatlevelf / 100);
                     VRChatMessage Msg4 = new VRChatMessage("LowHMDBat", LowHMDBat);
                     SendPacket(Msg1, Msg2, Msg3, Msg4);
 
                     LogToConsole("Sending HMD status", Msg1, Msg2, Msg3, Msg4);
 
-                    Thread.Sleep(3000);
+                    await Task.Delay(3000);
 
                 }
                 catch (AdbException)
@@ -107,7 +105,7 @@ namespace Quest2_VRC
                     LogToConsole("Error: connection to the headset is lost!");
                     VRChatMessage MsgErr = new VRChatMessage(inputbox, "Error: connection to the headset is lost! Reconnecting...");
                     SendPacket(MsgErr);
-                    Thread.Sleep(3000);
+                    await Task.Delay(3000);
                 }
 
 
