@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 
 namespace Quest2_VRC
 {
-    internal class Check_Vars
+    public class Check_Vars
     {
         public static async Task CheckVars()
         {
@@ -17,7 +17,11 @@ namespace Quest2_VRC
                     "HMDBat = HMDBat", "ControllerBatL = ControllerBatL", "ControllerBatR = ControllerBatR", "Receive_addr = /avatar/parameters/Eyes mode", "Receive_addr_test = /avatar/parameters/Eyes_mode"  // Default settings for my avatar
                 };
                 File.WriteAllLines("vars.txt", lines);
+            }
 
+            else
+            {
+                Console.WriteLine("vars.txt exists");
             }
         }
     }

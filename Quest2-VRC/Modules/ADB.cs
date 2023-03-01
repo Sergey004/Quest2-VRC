@@ -4,14 +4,18 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Net;
+using System.Threading;
 using System.Threading.Tasks;
-using static Quest2_VRC.Program;
+
+
 
 namespace Quest2_VRC
 {
-    internal class ADB
+    public class ADB
     {
-        public static void StartADB(bool sender, bool receiver)
+        static public AdbClient client;
+        static public DeviceData device;
+        public static void StartADB(bool sender, bool receiver, string hostip)
         {
             Console.WriteLine("Make sure you connect the headset to your computer and turn on the controllers");
             if (!AdbServer.Instance.GetStatus().IsRunning)
@@ -31,28 +35,19 @@ namespace Quest2_VRC
                         client.DownloadFile(uri, filename);
                         ZipFile.ExtractToDirectory(filename, extractPath);
                         File.Delete(filename);
-                        Console.WriteLine("Dowload completed");
+                        Console.WriteLine("Download completed");
                     }
                     StartServerResult result = server.StartServer(@"platform-tools\adb.exe", false);
                     if (result != StartServerResult.Started)
                     {
                         Console.WriteLine("Can't start adb server, please restart app and try again");
-                        Console.Title = "Error - ADB launch failed";
-                        Console.Beep();
-                        Console.Beep();
-                        Console.ReadLine();
-                        Handler(CtrlType.CTRL_CLOSE_EVENT);
                     }
 
                 }
                 catch (WebException)
                 {
                     Console.WriteLine("Unable to download ADB from Google servers, try again or download files manually https://developer.android.com/studio/releases/platform-tools, press any key to exit");
-                    Console.Title = "Error - download failed";
-                    Console.Beep();
-                    Console.Beep();
-                    Console.ReadLine();
-                    Handler(CtrlType.CTRL_CLOSE_EVENT);
+
                 }
 
             }
@@ -62,18 +57,15 @@ namespace Quest2_VRC
             }
 
             client = new AdbClient();
-            client.Connect("127.0.0.1:62001");
+            client.Connect(hostip);;
             device = client.GetDevices().FirstOrDefault();
-            if (device == null)
+            Thread.Sleep(500);
+            if (device.Serial == null)
             {
 
                 Console.WriteLine("No devices found, please restart app and try again");
-                Console.WriteLine("Or you can connect your headset via Wireless ADB: platform-tools\\adb.exe connect HEADSET_IP:5555");
-                Console.Title = "Error - No device";
-                Console.Beep();
-                Console.Beep();
-                Console.ReadLine();
-                Handler(CtrlType.CTRL_CLOSE_EVENT);
+                Console.WriteLine("Or you can connect your headset via Wireless ADB:\n1) Enter \"platform-tools\\adb tcpip 5555\" when your headset is connected to your computer via USB \n2) Use the \"Quest IP\" field for conndection\n \n \nIf this don't work\nIgnore the switch and  enter\n \"platform-tools\\adb tcpip 5555\" \n \"platform-tools\\adb connect  QUEST_IP:5555\"");
+
                 return;
 
             }
@@ -81,24 +73,20 @@ namespace Quest2_VRC
             {
                 Console.WriteLine("Device is: \nModel: {0}\nCodename: {1} \nState: {2}", device.Model, device.Name, device.State);
                 Console.WriteLine("Oculus/Meta device is not detected or is not authorized, please disconnect all non Oculus/Meta devices and close all emulators on PC, restart app and try again");
-                Console.Title = "Error - Wrong device";
-                Console.Beep();
-                Console.Beep();
-                Console.ReadLine();
-                Handler(CtrlType.CTRL_CLOSE_EVENT);
+
             }
             if (device is not null)
             {
                 Console.WriteLine("Selecting device:\nSerial or IP: {0}\nModel: {1}\nCodename: {2}", device.Serial, device.Model, device.Name);
-                Console.Title = "Starting...";
+
 
             }
 
-           
+
 
             if (receiver == false && sender == true)
             {
-                Console.Title = "Tx Only";
+
                 Console.WriteLine("OSC transfer is active");
                 Console.WriteLine("OSC receiver is inactive");
                 var tasks = new[]
@@ -110,7 +98,7 @@ namespace Quest2_VRC
             }
             else if (receiver == true && sender == false)
             {
-                Console.Title = "Rx Only";
+
                 Console.WriteLine("OSC transfer is inactive");
                 Console.WriteLine("OSC receiver is active");
                 var tasks = new[]
@@ -120,7 +108,7 @@ namespace Quest2_VRC
             }
             else
             {
-                Console.Title = "Tx + Rx";
+
                 Console.WriteLine("OSC transfer is active");
                 Console.WriteLine("OSC receiver is active");
                 var tasks = new[]

@@ -188,6 +188,7 @@
     <Compile Include="Services\PacketSender.cs" />
     <Compile Include="Services\Receiver.cs" />
     <Compile Include="Services\Logger.cs" />
+    <Compile Include="Services\RGBControler.cs" />
     <Compile Include="Services\Sender.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,10 +1,9 @@
 ﻿using System;
 using System.Text;
-using static Quest2_VRC.Sender;
 
 namespace Quest2_VRC
 {
-    internal class Logger
+    public class Logger
     {
         static public void LogToConsole(string Message, params VRChatMessage[] Parameters)
         {

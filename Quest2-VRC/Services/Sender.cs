@@ -8,9 +8,10 @@ using System.Net.Sockets;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using static Quest2_VRC.ADB;
 using static Quest2_VRC.Logger;
 using static Quest2_VRC.PacketSender;
-using static Quest2_VRC.Program;
+
 
 namespace Quest2_VRC
 {
@@ -67,24 +68,24 @@ namespace Quest2_VRC
                     float Rbatlevelf = Rbatlevelint;
                     float Lbatlevelf = Lbatlevelint;
 
-                    if (Hbatlevelf < 15)
+                    if (Hbatlevelf < 25)
                     {
                         LowHMDBat = true;
-                        //SoundPlayer playSound = new SoundPlayer(Properties.Resources.HMDloworbelow15);
+                        //SoundPlayer playSound = new SoundPlayer(Properties.Resources.HMDloworbelow25);
                         //playSound.Play();
 
                     }
-                    if (Rbatlevelf < 15)
+                    if (Rbatlevelf < 25)
                     {
                         LogToConsole("Right controller is discharged, disabled or not connected");
-                        //SoundPlayer playSound = new SoundPlayer(Properties.Resources.Rcrtloworbelow15);
+                        //SoundPlayer playSound = new SoundPlayer(Properties.Resources.Rcrtloworbelow25);
                         //playSound.Play();
 
                     }
-                    if (Lbatlevelf < 15)
+                    if (Lbatlevelf < 25)
                     {
                         LogToConsole("Left controller is discharged, disabled or not connected");
-                        //SoundPlayer playSound = new SoundPlayer(Properties.Resources.Lctrloworbelow15);
+                        //SoundPlayer playSound = new SoundPlayer(Properties.Resources.Lctrloworbelow25);
                         //playSound.Play();
 
                     }
@@ -93,7 +94,6 @@ namespace Quest2_VRC
                     VRChatMessage Msg2 = new VRChatMessage(ControllerBatL, Lbatlevelf);
                     VRChatMessage Msg3 = new VRChatMessage(ControllerBatR, Rbatlevelf);
                     VRChatMessage Msg4 = new VRChatMessage("LowHMDBat", LowHMDBat);
-
                     SendPacket(Msg1, Msg2, Msg3, Msg4);
 
                     LogToConsole("Sending HMD status", Msg1, Msg2, Msg3, Msg4);
@@ -108,7 +108,6 @@ namespace Quest2_VRC
                     VRChatMessage MsgErr = new VRChatMessage(inputbox, "Error: connection to the headset is lost! Reconnecting...");
                     SendPacket(MsgErr);
                     Thread.Sleep(3000);
-
                 }
 
 

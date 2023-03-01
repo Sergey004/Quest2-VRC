@@ -15,7 +15,8 @@ namespace Quest2_VRC
 
         static bool exitSystem = false;
         static public AdbClient client;
-        static public DeviceData device;
+         public DeviceData device;
+        static string questip = "127.0.0.1:62001";
 
         #region Trap application termination
         [DllImport("Kernel32")]
@@ -66,6 +67,7 @@ namespace Quest2_VRC
             CheckVars(); // Check if a file with parameters exists
             foreach (string arg in args)
             {
+                
                 switch (arg)
                 {
                     case "--help":
@@ -76,10 +78,12 @@ namespace Quest2_VRC
                         StartOSC(false, true);
                         break;
                     case "--no-sender":
-                        StartADB(false, true);
+                        
+                        StartADB(false, true, questip);
                         break;
                     case "--no-receiver":
-                        StartADB(true, false);
+                        
+                        StartADB(true, false,questip);
                         break;
                     default:
                         Console.WriteLine("Invalid argiment");
@@ -94,7 +98,7 @@ namespace Quest2_VRC
             if (args.Length == 0)
 
             {
-                StartADB(true, true);
+                StartADB(true, true,questip);
             }
             while (!exitSystem)
             {
