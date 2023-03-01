@@ -3,6 +3,11 @@ This program sending Quest 2 battery information to the VRChtat via the OSC prot
 
 OpenRGB functions tested only on MSI Mystic Light (AKA MSI-RGB)
 
+## Wireless ADB is broken for now
+Ignore the switch and enter
+- ```platform-tools\\adb tcpip 5555```
+- ```platform-tools\\adb connect  QUEST_IP:5555```
+
 ## Building from source
 To build this application you will need:
 - Visual Studio 2019 or later
