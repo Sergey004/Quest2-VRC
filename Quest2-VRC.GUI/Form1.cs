@@ -13,12 +13,12 @@ namespace Quest2_VRC
     public partial class Form1 : MaterialForm
         
     {
-        static string adbip;
-
         public Form1()
         {
             InitializeComponent();
             materialTextBox1.Enabled = materialSwitch1.Checked;
+            materialSwitch1.Enabled = false;
+            materialSwitch1.Text = "Broken, use this -->";
             Invoke((MethodInvoker)(() => { Invoke((MethodInvoker)(() => { Console.SetOut(new TBStreamWriter(materialMultiLineTextBox1)); })); }));
             Check_Vars.CheckVars();
             var materialSkinManager = MaterialSkinManager.Instance;
@@ -33,8 +33,9 @@ namespace Quest2_VRC
             Invoke((MethodInvoker)(() => { Invoke((MethodInvoker)(() => { Console.SetOut(new TBStreamWriter(materialMultiLineTextBox1)); })); }));
             if (materialSwitch1.Checked == true)
             {
-                adbip = materialTextBox1.Text + "5555";
-                ADB.StartADB(true, true, adbip);
+                var questip = materialTextBox1.Text;
+                questip += ":5555";
+                ADB.StartADB(true, true, questip);
                 materialLabel2.Text = "Status: ADB is running";
                 materialButton1.Enabled = false;
                 materialButton2.Enabled = false;
@@ -44,8 +45,8 @@ namespace Quest2_VRC
 
             }
             else {
-                adbip = "127.0.0.1:62001";
-                ADB.StartADB(true, true, adbip);
+                var questip = "127.0.0.1:62001";
+                ADB.StartADB(true, true, questip);
                 materialLabel2.Text = "Status: ADB is running";
                 materialButton1.Enabled = false;
                 materialButton2.Enabled = false;
@@ -73,8 +74,9 @@ namespace Quest2_VRC
             Invoke((MethodInvoker)(() => { Invoke((MethodInvoker)(() => { Console.SetOut(new TBStreamWriter(materialMultiLineTextBox1)); })); }));
             if (materialSwitch1.Checked == true)
             {
-                adbip = materialTextBox1.Text + "5555";
-                ADB.StartADB(false, true, adbip);
+                var questip = materialTextBox1.Text;
+                questip += ":5555"; ;
+                ADB.StartADB(false, true, questip);
                 materialLabel2.Text = "Status: Receive only";
                 materialButton1.Enabled = false;
                 materialButton2.Enabled = false;
@@ -84,8 +86,8 @@ namespace Quest2_VRC
             }
             else
             {
-                adbip = "127.0.0.1:62001";
-                ADB.StartADB(false, true, adbip);
+                var questip = "127.0.0.1:62001";
+                ADB.StartADB(false, true, questip);
                 materialLabel2.Text = "Status: Receive only";
                 materialButton1.Enabled = false;
                 materialButton2.Enabled = false;
@@ -100,8 +102,9 @@ namespace Quest2_VRC
             Invoke((MethodInvoker)(() => { Invoke((MethodInvoker)(() => { Console.SetOut(new TBStreamWriter(materialMultiLineTextBox1)); })); }));
             if (materialSwitch1.Checked == true)
             {
-                adbip = materialTextBox1.Text + "5555";
-                ADB.StartADB(true, false, adbip);
+                var questip = materialTextBox1.Text;
+                questip += ":5555";
+                ADB.StartADB(true, false, questip);
                 materialLabel2.Text = "Status: Send only";
                 materialButton1.Enabled = false;
                 materialButton2.Enabled = false;
@@ -111,8 +114,8 @@ namespace Quest2_VRC
             }
             else
             {
-                adbip = "127.0.0.1:62001";
-                ADB.StartADB(true, false, adbip);
+                var questip = "127.0.0.1:62001";
+                ADB.StartADB(true, false, questip);
                 materialLabel2.Text = "Status: Send only";
                 materialButton1.Enabled = false;
                 materialButton2.Enabled = false;
@@ -172,6 +175,11 @@ namespace Quest2_VRC
         private void materialSwitch1_CheckedChanged(object sender, EventArgs e)
         {
             materialTextBox1.Enabled = materialSwitch1.Checked;
+        }
+
+        private void materialButton5_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("1) Enter \"platform-tools\\adb tcpip 5555\" when your headset is connected to your computer via USB \n2) Use the \"Quest IP\" field for conndection\n \n \nIf this don't work\nIgnore the switch and  enter \n\"platform-tools\\adb tcpip 5555\" \n \"platform-tools\\adb connect  QUEST_IP:5555\"", "Help", MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
 
         //private void materialButton5_Click(object sender, EventArgs e)
