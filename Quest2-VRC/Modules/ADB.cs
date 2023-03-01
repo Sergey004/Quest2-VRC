@@ -4,6 +4,7 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Net;
+using System.Threading;
 using System.Threading.Tasks;
 
 
@@ -56,9 +57,10 @@ namespace Quest2_VRC
             }
 
             client = new AdbClient();
-            client.Connect(hostip);
+            client.Connect(hostip);;
             device = client.GetDevices().FirstOrDefault();
-            if (device == null)
+            Thread.Sleep(5000);
+            if (device.Serial == null)
             {
 
                 Console.WriteLine("No devices found, please restart app and try again");

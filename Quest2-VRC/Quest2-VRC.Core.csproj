@@ -58,8 +58,8 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="AdvancedSharpAdbClient, Version=2.5.3.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\AdvancedSharpAdbClient.2.5.3\lib\net472\AdvancedSharpAdbClient.dll</HintPath>
+    <Reference Include="AdvancedSharpAdbClient, Version=2.5.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\AdvancedSharpAdbClient.2.5.4\lib\net472\AdvancedSharpAdbClient.dll</HintPath>
     </Reference>
     <Reference Include="Bespoke.Common, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Bespoke.Common.1.0.0\lib\net45\Bespoke.Common.dll</HintPath>

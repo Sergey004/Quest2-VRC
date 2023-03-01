@@ -34,7 +34,7 @@ namespace Quest2_VRC
             if (materialSwitch1.Checked == true)
             {
                 var questip = materialTextBox1.Text;
-                questip += ":5555";
+                //questip += ":5555";
                 ADB.StartADB(true, true, questip);
                 materialLabel2.Text = "Status: ADB is running";
                 materialButton1.Enabled = false;
@@ -75,7 +75,7 @@ namespace Quest2_VRC
             if (materialSwitch1.Checked == true)
             {
                 var questip = materialTextBox1.Text;
-                questip += ":5555"; ;
+                //questip += ":5555"; ;
                 ADB.StartADB(false, true, questip);
                 materialLabel2.Text = "Status: Receive only";
                 materialButton1.Enabled = false;
@@ -103,7 +103,7 @@ namespace Quest2_VRC
             if (materialSwitch1.Checked == true)
             {
                 var questip = materialTextBox1.Text;
-                questip += ":5555";
+                //questip += ":5555";
                 ADB.StartADB(true, false, questip);
                 materialLabel2.Text = "Status: Send only";
                 materialButton1.Enabled = false;
