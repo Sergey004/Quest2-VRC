@@ -40,7 +40,7 @@ namespace Quest2_VRC
                 {
                     var questip = materialTextBox1.Text;
                     //questip += ":5555";
-                    ADB.StartADB(true, true, questip);
+                    ADB.StartADB(true, true, questip,true);
                     materialLabel2.Text = "Status: ADB is running";
                     materialButton1.Enabled = false;
                     materialButton2.Enabled = false;
@@ -59,7 +59,7 @@ namespace Quest2_VRC
                 try
                 {
                     var questip = "127.0.0.1:62001";
-                    ADB.StartADB(true, true, questip);
+                    ADB.StartADB(true, true, questip, false);
                     materialLabel2.Text = "Status: ADB is running";
                     materialButton1.Enabled = false;
                     materialButton2.Enabled = false;
@@ -105,7 +105,7 @@ namespace Quest2_VRC
                 {
                     var questip = materialTextBox1.Text;
                     //questip += ":5555"; ;
-                    ADB.StartADB(false, true, questip);
+                    ADB.StartADB(false, true, questip, true);
                     materialLabel2.Text = "Status: Receive only";
                     materialButton1.Enabled = false;
                     materialButton2.Enabled = false;
@@ -124,7 +124,7 @@ namespace Quest2_VRC
                 try
                 {
                     var questip = "127.0.0.1:62001";
-                    ADB.StartADB(false, true, questip);
+                    ADB.StartADB(false, true, questip,false);
                     materialLabel2.Text = "Status: Receive only";
                     materialButton1.Enabled = false;
                     materialButton2.Enabled = false;
@@ -149,7 +149,7 @@ namespace Quest2_VRC
                 {
                     var questip = materialTextBox1.Text;
                     //questip += ":5555";
-                    ADB.StartADB(true, false, questip);
+                    ADB.StartADB(true, false, questip,true);
                     materialLabel2.Text = "Status: Send only";
                     materialButton1.Enabled = false;
                     materialButton2.Enabled = false;
@@ -168,7 +168,7 @@ namespace Quest2_VRC
                 try
                 {
                     var questip = "127.0.0.1:62001";
-                    ADB.StartADB(true, false, questip);
+                    ADB.StartADB(true, false, questip, false);
                     materialLabel2.Text = "Status: Send only";
                     materialButton1.Enabled = false;
                     materialButton2.Enabled = false;
@@ -238,7 +238,7 @@ namespace Quest2_VRC
 
         private void materialButton5_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("1) Enter \"platform-tools\\adb tcpip 5555\" when your headset is connected to your computer via USB \n2) Use the \"Quest IP\" field for conndection\n \n \nIf this don't work\nIgnore the switch and  enter \n\"platform-tools\\adb tcpip 5555\" \n \"platform-tools\\adb connect  QUEST_IP:5555\"", "Help", MessageBoxButtons.OK,MessageBoxIcon.Information);
+            MessageBox.Show("1) Enter \"platform-tools\\adb tcpip 5555\" when your headset is connected to your computer via USB \n2) Use the \"Quest IP\" field for conndection\n \n \nIf this don't work\nIgnore the switch and  enter \n\"platform-tools\\adb tcpip 5555\" \n\"platform-tools\\adb connect  QUEST_IP:5555\"", "Help", MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
 
         private void materialCheckbox1_CheckedChanged(object sender, EventArgs e)
