@@ -22,7 +22,7 @@ Default vars
 - ```ControllerBatL``` =```-1 float```
 - ```ControllerBatR``` = ```-1 float```
 - ```LowHMDBat``` = ```bool false```
-- ```WifiRSSI``` = ```0 float``` 
+- ```WifiRSSI``` = ```-1 float``` 
 
 (About RSSI 0 is best, -100 is worst)
 
