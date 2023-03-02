@@ -24,7 +24,7 @@ Default vars
 - ```LowHMDBat``` = ```bool false```
 - ```WifiRSSI``` = ```-1 float``` 
 
-(About RSSI 0 is best, -100 is worst)
+(About RSSI 0.0 is best, -1 is worst)
 
 For receiving
 - Replace in var.txt ```Receive_addr``` and ```Receive_addr_test``` according to your specific parameters
