@@ -6,7 +6,7 @@ namespace Quest2_VRC
 {
     public class Check_Vars
     {
-        public static async Task CheckVars()
+        public static void CheckVars()
         {
             bool exists = File.Exists("vars.txt");
             if (!exists)
