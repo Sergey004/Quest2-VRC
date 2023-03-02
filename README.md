@@ -1,5 +1,5 @@
 # Quest2-VRC
-This program sending Quest 2 battery information to the VRChtat via the OSC protocol, also receive osc address to control OpenRGB
+This program sending Quest 2 battery information (Now also Wifi signal strength, especially for you, AirLink or VD users) to the VRChtat via the OSC protocol, also receive osc address to control OpenRGB
 
 OpenRGB functions tested only on MSI Mystic Light (AKA MSI-RGB)
 
@@ -22,6 +22,9 @@ Default vars
 - ```ControllerBatL``` =```-1 float```
 - ```ControllerBatR``` = ```-1 float```
 - ```LowHMDBat``` = ```bool false```
+- ```WifiRSSI``` = ```-1 float``` 
+
+(About RSSI 0 is best, -100 is worst)
 
 For receiving
 - Replace in var.txt ```Receive_addr``` and ```Receive_addr_test``` according to your specific parameters
