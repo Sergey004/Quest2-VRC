@@ -105,7 +105,7 @@ namespace Quest2_VRC
                     VRChatMessage Msg1 = new VRChatMessage(HMDBat, Hbatlevelf / 100);
                     VRChatMessage Msg2 = new VRChatMessage(ControllerBatL, Lbatlevelf / 100);
                     VRChatMessage Msg3 = new VRChatMessage(ControllerBatR, Rbatlevelf / 100);
-                    VRChatMessage Msg4 = new VRChatMessage("WifiRSSI", WifiRSSIf / 100);
+                    VRChatMessage Msg4 = new VRChatMessage("WifiRSSI", WifiRSSIf);
                     VRChatMessage Msg5 = new VRChatMessage("LowHMDBat", LowHMDBat);
                     SendPacket(Msg1, Msg2, Msg3, Msg4, Msg5);
 
