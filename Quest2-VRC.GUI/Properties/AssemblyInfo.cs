@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // набора атрибутов. Измените значения этих атрибутов для изменения сведений,
 // связанных со сборкой.
 [assembly: AssemblyTitle("Quest2-VRC GUI")]
-[assembly: AssemblyDescription("Quest 2 (and not only) OSC and ADB powered battery information sender, now with OpenRGB support")]
+[assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
 [assembly: AssemblyProduct("Quest2-VRC")]
