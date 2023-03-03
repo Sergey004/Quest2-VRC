@@ -15,7 +15,7 @@ namespace Quest2_VRC
     {
         static public AdbClient client;
         static public DeviceData device;
-        public static void StartADB(bool sender, bool receiver, string hostip)
+        public static bool StartADB(bool sender, bool receiver, string hostip)
         {
             Console.WriteLine("Make sure you connect the headset to your computer and turn on the controllers");
             if (!AdbServer.Instance.GetStatus().IsRunning)
@@ -40,14 +40,16 @@ namespace Quest2_VRC
                     StartServerResult result = server.StartServer(@"platform-tools\adb.exe", false);
                     if (result != StartServerResult.Started)
                     {
-                        Console.WriteLine("Can't start adb server, please restart app and try again");
-                    }
+                        Console.WriteLine("Can't start adb server, please try again");
 
+                        return false;
+                    }
                 }
                 catch (WebException)
                 {
                     Console.WriteLine("Unable to download ADB from Google servers, try again or download files manually https://developer.android.com/studio/releases/platform-tools, press any key to exit");
 
+                    return false;
                 }
 
             }
@@ -62,16 +64,17 @@ namespace Quest2_VRC
             Thread.Sleep(500);
             if (device == null || device.Serial == null)
             {
-                Console.WriteLine("No devices found, please restart app and try again");
+                Console.WriteLine("No devices found, please try again");
                 //Console.WriteLine("Or you can connect your headset via Wireless ADB:\n1) Enter \"platform-tools\\adb tcpip 5555\" when your headset is connected to your computer via USB \n2) Use the \"Quest IP\" field for conndection\n \n \nIf this don't work\nIgnore the switch and  enter\n \"platform-tools\\adb tcpip 5555\" \n \"platform-tools\\adb connect  QUEST_IP:5555\"");
 
-                return;
+                return false;
             }
             if (device.Name != "hollywood" && device.Name != "vr_monterey" && device.Name != "monterey" && device.Name != "seacliff")
             {
                 Console.WriteLine("Device is: \nModel: {0}\nCodename: {1} \nState: {2}", device.Model, device.Name, device.State);
-                Console.WriteLine("Oculus/Meta device is not detected or is not authorized, please disconnect all non Oculus/Meta devices and close all emulators on PC, restart app and try again");
+                Console.WriteLine("Oculus/Meta device is not detected or is not authorized, please disconnect all non Oculus/Meta devices and close all emulators on PC, try again");
 
+                return false;
             }
 
             Console.WriteLine("Selecting device:\nSerial or IP: {0}\nModel: {1}\nCodename: {2}", device.Serial, device.Model, device.Name);
@@ -112,6 +115,8 @@ namespace Quest2_VRC
                 };
 
             }
+
+            return true;
         }
     }
 }

@@ -102,8 +102,8 @@ namespace Quest2_VRC
                 catch (AdbException)
                 {
                     string inputbox = "input";
-                    LogToConsole("Error: connection to the headset is lost!");
-                    VRChatMessage MsgErr = new VRChatMessage(inputbox, "Error: connection to the headset is lost! Reconnecting...");
+                    LogToConsole("Error: Connection to the headset is lost! Trying to reconnect...");
+                    VRChatMessage MsgErr = new VRChatMessage(inputbox, "Error: Connection to the headset is lost! Trying to reconnect...");
                     SendPacket(MsgErr);
                     await Task.Delay(3000);
                 }
