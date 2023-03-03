@@ -15,7 +15,7 @@ namespace Quest2_VRC
     {
         static public AdbClient client;
         static public DeviceData device;
-        public static bool StartADB(bool sender, bool receiver, string hostip)
+        public static bool StartADB(bool sender, bool receiver, string hostip, bool wireless)
         {
             Console.WriteLine("Make sure you connect the headset to your computer and turn on the controllers");
             if (!AdbServer.Instance.GetStatus().IsRunning)
