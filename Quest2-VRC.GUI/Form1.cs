@@ -30,6 +30,16 @@ namespace Quest2_VRC
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
         }
 
+        private void disableButtons()
+        {
+            materialButton1.Enabled = false;
+            materialButton2.Enabled = false;
+            materialButton3.Enabled = false;
+            materialButton4.Enabled = false;
+            materialSwitch1.Enabled = false;
+            materialTextBox1.Enabled = false;
+        }
+
 
         private void materialButton2_Click(object sender, EventArgs e)
         {
@@ -40,14 +50,11 @@ namespace Quest2_VRC
                 {
                     var questip = materialTextBox1.Text;
                     //questip += ":5555";
-                    ADB.StartADB(true, true, questip,true);
-                    materialLabel2.Text = "Status: ADB is running";
-                    materialButton1.Enabled = false;
-                    materialButton2.Enabled = false;
-                    materialButton3.Enabled = false;
-                    materialButton4.Enabled = false;
-                    materialSwitch1.Enabled = false;
-                    materialTextBox1.Enabled = false;
+                    if(ADB.StartADB(true, true, questip, true))
+                    {
+                        materialLabel2.Text = "Status: ADB is running";
+                        disableButtons();
+                    }
                 }
                 catch (Exception)
                 {
@@ -59,14 +66,11 @@ namespace Quest2_VRC
                 try
                 {
                     var questip = "127.0.0.1:62001";
-                    ADB.StartADB(true, true, questip, false);
-                    materialLabel2.Text = "Status: ADB is running";
-                    materialButton1.Enabled = false;
-                    materialButton2.Enabled = false;
-                    materialButton3.Enabled = false;
-                    materialButton4.Enabled = false;
-                    materialSwitch1.Enabled = false;
-                    materialTextBox1.Enabled = false;
+                    if (ADB.StartADB(true, true, questip, false))
+                    {
+                        materialLabel2.Text = "Status: ADB is running";
+                        disableButtons();
+                    }
                 }
                 catch (Exception)
                 {
@@ -82,12 +86,7 @@ namespace Quest2_VRC
                 //Invoke((MethodInvoker)(() => { Invoke((MethodInvoker)(() => { Console.SetOut(new TBStreamWriter(materialMultiLineTextBox1)); })); }));
                 OSC.StartOSC(false, true);
                 materialLabel2.Text = "Status: No ADB mode";
-                materialButton1.Enabled = false;
-                materialButton2.Enabled = false;
-                materialButton3.Enabled = false;
-                materialButton4.Enabled = false;
-                materialSwitch1.Enabled = false;
-                materialTextBox1.Enabled = false;
+                disableButtons();
             }
             catch (Exception)
             {
@@ -105,14 +104,11 @@ namespace Quest2_VRC
                 {
                     var questip = materialTextBox1.Text;
                     //questip += ":5555"; ;
-                    ADB.StartADB(false, true, questip, true);
-                    materialLabel2.Text = "Status: Receive only";
-                    materialButton1.Enabled = false;
-                    materialButton2.Enabled = false;
-                    materialButton3.Enabled = false;
-                    materialButton4.Enabled = false;
-                    materialSwitch1.Enabled = false;
-                    materialTextBox1.Enabled = false;
+                    if (ADB.StartADB(false, true, questip, true))
+                    {
+                        materialLabel2.Text = "Status: Receive only";
+                        disableButtons();
+                    }
                 }
                 catch (Exception)
                 {
@@ -124,14 +120,11 @@ namespace Quest2_VRC
                 try
                 {
                     var questip = "127.0.0.1:62001";
-                    ADB.StartADB(false, true, questip,false);
-                    materialLabel2.Text = "Status: Receive only";
-                    materialButton1.Enabled = false;
-                    materialButton2.Enabled = false;
-                    materialButton3.Enabled = false;
-                    materialButton4.Enabled = false;
-                    materialSwitch1.Enabled = false;
-                    materialTextBox1.Enabled = false;
+                    if (ADB.StartADB(false, true, questip, false))
+                    {
+                        materialLabel2.Text = "Status: Receive only";
+                        disableButtons();
+                    }
                 }
                 catch (Exception)
                 {
@@ -149,14 +142,11 @@ namespace Quest2_VRC
                 {
                     var questip = materialTextBox1.Text;
                     //questip += ":5555";
-                    ADB.StartADB(true, false, questip,true);
-                    materialLabel2.Text = "Status: Send only";
-                    materialButton1.Enabled = false;
-                    materialButton2.Enabled = false;
-                    materialButton3.Enabled = false;
-                    materialButton4.Enabled = false;
-                    materialSwitch1.Enabled = false;
-                    materialTextBox1.Enabled = false;
+                    if (ADB.StartADB(true, false, questip, true))
+                    {
+                        materialLabel2.Text = "Status: Send only";
+                        disableButtons();
+                    }
                 }
                 catch (Exception)
                 {
@@ -168,14 +158,11 @@ namespace Quest2_VRC
                 try
                 {
                     var questip = "127.0.0.1:62001";
-                    ADB.StartADB(true, false, questip, false);
-                    materialLabel2.Text = "Status: Send only";
-                    materialButton1.Enabled = false;
-                    materialButton2.Enabled = false;
-                    materialButton3.Enabled = false;
-                    materialButton4.Enabled = false;
-                    materialSwitch1.Enabled = false;
-                    materialTextBox1.Enabled = false;
+                    if (ADB.StartADB(true, false, questip, false))
+                    {
+                        materialLabel2.Text = "Status: Send only";
+                        disableButtons();
+                    }
                 }
                 catch (Exception)
                 {
