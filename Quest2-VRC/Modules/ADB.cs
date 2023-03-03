@@ -88,7 +88,7 @@ namespace Quest2_VRC
                 Console.WriteLine("OSC receiver is inactive");
                 var tasks = new[]
                 {
-                     Task.Factory.StartNew(() => Sender.Run(), TaskCreationOptions.LongRunning),
+                     Task.Factory.StartNew(() => Sender.Run(wireless), TaskCreationOptions.LongRunning),
                 };
 
 
@@ -110,7 +110,7 @@ namespace Quest2_VRC
                 Console.WriteLine("OSC receiver is active");
                 var tasks = new[]
                 {
-                     Task.Factory.StartNew(() => Sender.Run(), TaskCreationOptions.LongRunning),
+                     Task.Factory.StartNew(() => Sender.Run(wireless), TaskCreationOptions.LongRunning),
                      Task.Factory.StartNew(() => Receiver.Run(), TaskCreationOptions.LongRunning),
                 };
 
