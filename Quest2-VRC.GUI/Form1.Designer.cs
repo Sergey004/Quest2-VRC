@@ -43,6 +43,7 @@
             this.materialTextBox1 = new MaterialSkin.Controls.MaterialTextBox();
             this.materialSwitch1 = new MaterialSkin.Controls.MaterialSwitch();
             this.materialCheckbox1 = new MaterialSkin.Controls.MaterialCheckbox();
+            this.materialButton6 = new MaterialSkin.Controls.MaterialButton();
             this.materialCard1.SuspendLayout();
             this.materialCard4.SuspendLayout();
             this.materialCard2.SuspendLayout();
@@ -54,6 +55,7 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.materialCard1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard1.Controls.Add(this.materialButton6);
             this.materialCard1.Controls.Add(this.materialButton2);
             this.materialCard1.Depth = 0;
             this.materialCard1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(222)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
@@ -62,7 +64,7 @@
             this.materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard1.Name = "materialCard1";
             this.materialCard1.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard1.Size = new System.Drawing.Size(154, 80);
+            this.materialCard1.Size = new System.Drawing.Size(154, 118);
             this.materialCard1.TabIndex = 0;
             // 
             // materialButton2
@@ -75,7 +77,7 @@
             this.materialButton2.Depth = 0;
             this.materialButton2.HighEmphasis = true;
             this.materialButton2.Icon = null;
-            this.materialButton2.Location = new System.Drawing.Point(18, 20);
+            this.materialButton2.Location = new System.Drawing.Point(18, 68);
             this.materialButton2.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.materialButton2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialButton2.Name = "materialButton2";
@@ -307,6 +309,26 @@
             this.materialCheckbox1.UseVisualStyleBackColor = true;
             this.materialCheckbox1.CheckedChanged += new System.EventHandler(this.materialCheckbox1_CheckedChanged);
             // 
+            // materialButton6
+            // 
+            this.materialButton6.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.materialButton6.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            this.materialButton6.Depth = 0;
+            this.materialButton6.HighEmphasis = true;
+            this.materialButton6.Icon = null;
+            this.materialButton6.Location = new System.Drawing.Point(18, 20);
+            this.materialButton6.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
+            this.materialButton6.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialButton6.Name = "materialButton6";
+            this.materialButton6.NoAccentTextColor = System.Drawing.Color.Empty;
+            this.materialButton6.Size = new System.Drawing.Size(89, 36);
+            this.materialButton6.TabIndex = 1;
+            this.materialButton6.Text = "OSC Test";
+            this.materialButton6.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            this.materialButton6.UseAccentColor = false;
+            this.materialButton6.UseVisualStyleBackColor = true;
+            this.materialButton6.Click += new System.EventHandler(this.materialButton6_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -354,6 +376,7 @@
         private MaterialSkin.Controls.MaterialTextBox materialTextBox1;
         private MaterialSkin.Controls.MaterialButton materialButton5;
         private MaterialSkin.Controls.MaterialCheckbox materialCheckbox1;
+        private MaterialSkin.Controls.MaterialButton materialButton6;
     }
 }
 

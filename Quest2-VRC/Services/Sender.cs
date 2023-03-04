@@ -75,26 +75,21 @@ namespace Quest2_VRC
                     Rbatlevelint = int.Parse(Rbat_match.Value);
                     Lbatlevelint = int.Parse(Lbat_match.Value);
                     
-                    float Hbatlevelf = Hbatlevelint;
-                    float Rbatlevelf = Rbatlevelint;
-                    float Lbatlevelf = Lbatlevelint;
-                    float WifiRSSIf = WifiInt;
-
-                    if (Hbatlevelf < 25)
+                    if (Hbatlevelint < 25)
                     {
                         LowHMDBat = true;
                         //SoundPlayer playSound = new SoundPlayer(Properties.Resources.HMDloworbelow25);
                         //playSound.Play();
 
                     }
-                    if (Rbatlevelf < 25)
+                    if (Rbatlevelint < 25)
                     {
                         LogToConsole("Right controller is discharged, disabled or not connected");
                         //SoundPlayer playSound = new SoundPlayer(Properties.Resources.Rcrtloworbelow25);
                         //playSound.Play();
 
                     }
-                    if (Lbatlevelf < 25)
+                    if (Lbatlevelint < 25)
                     {
                         LogToConsole("Left controller is discharged, disabled or not connected");
                         //SoundPlayer playSound = new SoundPlayer(Properties.Resources.Lctrloworbelow25);
@@ -102,10 +97,10 @@ namespace Quest2_VRC
 
                     }
 
-                    VRChatMessage Msg1 = new VRChatMessage(HMDBat, Hbatlevelf / 100);
-                    VRChatMessage Msg2 = new VRChatMessage(ControllerBatL, Lbatlevelf / 100);
-                    VRChatMessage Msg3 = new VRChatMessage(ControllerBatR, Rbatlevelf / 100);
-                    VRChatMessage Msg4 = new VRChatMessage("WifiRSSI", WifiRSSIf/100);
+                    VRChatMessage Msg1 = new VRChatMessage(HMDBat, (float)Hbatlevelint / 100);
+                    VRChatMessage Msg2 = new VRChatMessage(ControllerBatL, (float)Lbatlevelint / 100);
+                    VRChatMessage Msg3 = new VRChatMessage(ControllerBatR, (float)Rbatlevelint / 100);
+                    VRChatMessage Msg4 = new VRChatMessage("WifiRSSI", (float)WifiInt / 100);
                     VRChatMessage Msg5 = new VRChatMessage("LowHMDBat", LowHMDBat);
                     SendPacket(Msg1, Msg2, Msg3, Msg4, Msg5);
 
