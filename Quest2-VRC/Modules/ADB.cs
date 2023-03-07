@@ -1,5 +1,6 @@
 ﻿using AdvancedSharpAdbClient;
 using System;
+using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
@@ -59,7 +60,7 @@ namespace Quest2_VRC
             }
 
             client = new AdbClient();
-            client.Connect(hostip);;
+            client.Connect(hostip); ;
             device = client.GetDevices().FirstOrDefault();
             Thread.Sleep(500);
             if (device == null || device.Serial == null)
@@ -117,6 +118,20 @@ namespace Quest2_VRC
             }
 
             return true;
+        }
+        public static void StartTCPIP()
+        {
+
+
+            Process process = new Process();
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            startInfo.FileName = "cmd.exe";
+            startInfo.Arguments = "/C platform-tools\\adb.exe tcpip 5555";
+            process.StartInfo = startInfo;
+            process.Start();
+
+
         }
     }
 }

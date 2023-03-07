@@ -6,6 +6,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Quest2_VRC
@@ -218,14 +219,23 @@ namespace Quest2_VRC
 
         }
 
-        private void materialSwitch1_CheckedChanged(object sender, EventArgs e)
+        private async void materialSwitch1_CheckedChanged(object sender, EventArgs e)
         {
             materialTextBox1.Enabled = materialSwitch1.Checked;
+            if (materialSwitch1.Checked)
+            {
+                MessageBox.Show("Connect your Quest to your computer and click \"OK\" to continue\nAttention, this function has no checks for the presence of the device", "Restarting ADB in TCPIP mode",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                ADB.StartTCPIP();
+                await Task.Delay(3000);
+                MessageBox.Show("ADB restarted in TCPIP mode, ready to wireless conection", "Restarting ADB in TCPIP mode", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                materialLabel2.Text = "Status: In TCPIP mode";
+            }
+
         }
 
         private void materialButton5_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("1) Enter \"platform-tools\\adb tcpip 5555\" when your headset is connected to your computer via USB \n2) Use the \"Quest IP\" field for conndection\n \n \nIf this don't work\nIgnore the switch and  enter \n\"platform-tools\\adb tcpip 5555\" \n\"platform-tools\\adb connect  QUEST_IP:5555\"", "Help", MessageBoxButtons.OK,MessageBoxIcon.Information);
+            MessageBox.Show("1) Connect the headset to your computer\n2) Turn the switch to the \"AirLink (or VD)\" position.\n3) Wait for ADB to switch to TCPIP mode\n4) Use \"Quest IP\" to connect (you can get Quest ip by entering \"platform-tools\\adb shell ip route\"\n \nIf this don't work\nManual connection\nEnter \n\"platform-tools\\adb tcpip 5555\" \n\"platform-tools\\adb connect  QUEST_IP:5555", "Help", MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
 
         private void materialCheckbox1_CheckedChanged(object sender, EventArgs e)
