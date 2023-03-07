@@ -1,5 +1,5 @@
 # Quest2-VRC
-This program sending Quest 2 battery information (Now also Wifi signal strength, especially for you, AirLink or VD users) to the VRChtat via the OSC protocol, also receive osc address to control OpenRGB
+This program sending Quest 2 (As well as other headsets in the Quest line) battery information (Now also Wifi signal strength, especially for you, AirLink or VD users) to the VRChtat via the OSC protocol, also receive osc address to control OpenRGB
 
 OpenRGB functions tested only on MSI Mystic Light (AKA MSI-RGB)
 
@@ -29,7 +29,7 @@ Default vars
 For receiving
 - Replace in var.txt ```Receive_addr``` and ```Receive_addr_test``` according to your specific parameters
 
-Connect your Quest 2 to your computer in developer mode
+Connect your Quest 2 (Or another headset from the Quest range) to your computer in developer mode
 
 And hope for the best that this program will work for you
 
