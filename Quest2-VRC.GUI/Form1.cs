@@ -224,11 +224,21 @@ namespace Quest2_VRC
             materialTextBox1.Enabled = materialSwitch1.Checked;
             if (materialSwitch1.Checked)
             {
-                MessageBox.Show("Connect your Quest to your computer and click \"OK\" to continue\nAttention, this function has no checks for the presence of the device", "Restarting ADB in TCPIP mode",MessageBoxButtons.OK,MessageBoxIcon.Information);
-                ADB.StartTCPIP();
-                await Task.Delay(3000);
-                MessageBox.Show("ADB restarted in TCPIP mode, ready to wireless conection", "Restarting ADB in TCPIP mode", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                materialLabel2.Text = "Status: In TCPIP mode";
+                MessageBox.Show("Connect your Quest to your computer and click \"OK\" to continue", "Restarting ADB in TCPIP mode",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                if (Check_Device.CheckDevice())
+                {
+                    ADB.StartTCPIP();
+                    await Task.Delay(3000);
+                    MessageBox.Show("ADB restarted in TCPIP mode, ready to wireless conection", "Restarting ADB in TCPIP mode", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    materialLabel2.Text = "Status: In TCPIP mode";
+                }
+                else
+                {
+                    MessageBox.Show("Headset not connected", "Restarting ADB in TCPIP mode", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    materialSwitch1.Checked = false;
+                    materialLabel2.Text = "Status: Headset not connected";
+                }
+                
             }
 
         }

@@ -121,8 +121,6 @@ namespace Quest2_VRC
         }
         public static void StartTCPIP()
         {
-
-
             Process process = new Process();
             ProcessStartInfo startInfo = new ProcessStartInfo();
             startInfo.WindowStyle = ProcessWindowStyle.Hidden;
@@ -130,8 +128,6 @@ namespace Quest2_VRC
             startInfo.Arguments = "/C platform-tools\\adb.exe tcpip 5555";
             process.StartInfo = startInfo;
             process.Start();
-
-
         }
     }
 }
