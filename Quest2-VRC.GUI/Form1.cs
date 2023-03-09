@@ -221,7 +221,7 @@ namespace Quest2_VRC
 
         private async void materialSwitch1_CheckedChanged(object sender, EventArgs e)
         {
-            materialTextBox1.Enabled = materialSwitch1.Checked;
+            materialTextBox1.Enabled = false;
             if (materialSwitch1.Checked)
             {
                 MessageBox.Show("Connect your Quest to your computer and click \"OK\" to continue", "Restarting ADB in TCPIP mode",MessageBoxButtons.OK,MessageBoxIcon.Information);
@@ -230,7 +230,9 @@ namespace Quest2_VRC
                     ADB.StartTCPIP();
                     await Task.Delay(3000);
                     MessageBox.Show("ADB restarted in TCPIP mode, ready to wireless conection", "Restarting ADB in TCPIP mode", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    materialLabel2.Text = "Status: In TCPIP mode";
+
+                    materialLabel2.Text = $"Status: In TCPIP mode";
+                        materialTextBox1.Text = ADB.GetIP();
                 }
                 else
                 {
