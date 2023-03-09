@@ -29,6 +29,7 @@ namespace Quest2_VRC
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
+            materialLabel2.Text = "Status: Ready";
         }
 
         private void disableButtons()
@@ -37,6 +38,8 @@ namespace Quest2_VRC
             materialButton2.Enabled = false;
             materialButton3.Enabled = false;
             materialButton4.Enabled = false;
+            materialButton5.Enabled = false;
+            materialButton6.Enabled = false;
             materialSwitch1.Enabled = false;
             materialTextBox1.Enabled = false;
         }
@@ -207,7 +210,7 @@ namespace Quest2_VRC
             }
             else
             {
-                Console.WriteLine("Exiting program due to external CTRL-C, or process kill, or shutdown, or program exiting");
+
                 Process process = new Process();
                 ProcessStartInfo startInfo = new ProcessStartInfo();
                 startInfo.WindowStyle = ProcessWindowStyle.Hidden;
@@ -229,10 +232,9 @@ namespace Quest2_VRC
                 {
                     ADB.StartTCPIP();
                     await Task.Delay(3000);
-                    MessageBox.Show("ADB restarted in TCPIP mode, ready to wireless conection", "Restarting ADB in TCPIP mode", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    materialLabel2.Text = $"Status: In TCPIP mode";
+                    materialLabel2.Text = "Status: In TCPIP mode";
                     materialTextBox1.Text = ADB.GetIP();
+                    MessageBox.Show("ADB restarted in TCPIP mode, ready to wireless conection", "Restarting ADB in TCPIP mode", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 else
                 {
@@ -247,7 +249,7 @@ namespace Quest2_VRC
 
         private void materialButton5_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("1) Connect the headset to your computer\n2) Turn the switch to the \"AirLink (or VD)\" position.\n3) Wait for ADB to switch to TCPIP mode\n4) Use \"Quest IP\" to connect (you can get Quest ip by entering \"platform-tools\\adb shell ip route\"\n \nIf this don't work\nManual connection\nEnter \n\"platform-tools\\adb tcpip 5555\" \n\"platform-tools\\adb connect  QUEST_IP:5555", "Help", MessageBoxButtons.OK,MessageBoxIcon.Information);
+            MessageBox.Show("1) Connect the headset to your computer\n2) Turn the switch to the \"AirLink (or VD)\" position.\n3) Wait for ADB to switch to TCPIP mode\n4) Press \"Default run\" to connect \n \nIf this don't work\nManual connection\nEnter \n\"platform-tools\\adb tcpip 5555\" \n\"platform-tools\\adb connect  QUEST_IP:5555", "Help", MessageBoxButtons.OK,MessageBoxIcon.Information);
         }
 
         private void materialCheckbox1_CheckedChanged(object sender, EventArgs e)
