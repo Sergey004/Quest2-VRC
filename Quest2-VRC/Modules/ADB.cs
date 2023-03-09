@@ -1,10 +1,12 @@
 ﻿using AdvancedSharpAdbClient;
+using OpenRGB.NET.Models;
 using System;
 using System.Diagnostics;
 using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Net;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 
@@ -60,7 +62,7 @@ namespace Quest2_VRC
             }
 
             client = new AdbClient();
-            client.Connect(hostip); ;
+            client.Connect(hostip);
             device = client.GetDevices().FirstOrDefault();
             Thread.Sleep(500);
             if (device == null || device.Serial == null)
@@ -121,6 +123,7 @@ namespace Quest2_VRC
         }
         public static void StartTCPIP()
         {
+            
             Process process = new Process();
             ProcessStartInfo startInfo = new ProcessStartInfo();
             startInfo.WindowStyle = ProcessWindowStyle.Hidden;
@@ -128,6 +131,21 @@ namespace Quest2_VRC
             startInfo.Arguments = "/C platform-tools\\adb.exe tcpip 5555";
             process.StartInfo = startInfo;
             process.Start();
+            
         }
+        public static string GetIP()
+        {
+            string deviceip = null;
+            client = new AdbClient();
+            client.Connect("127.0.0.1:62001");
+            device = client.GetDevices().FirstOrDefault();
+            Thread.Sleep(500);
+            ConsoleOutputReceiver ipquery = new ConsoleOutputReceiver();
+            client.ExecuteRemoteCommand("ip route", device, ipquery);
+            deviceip = Regex.Match(ipquery.ToString(), @"\S*\d+", RegexOptions.RightToLeft).ToString();
+
+            return deviceip;
+        }
+        
     }
 }
