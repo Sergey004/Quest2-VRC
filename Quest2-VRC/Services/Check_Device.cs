@@ -16,9 +16,9 @@ namespace Quest2_VRC
 
             bool deviceConnected = false;
             ManagementObjectSearcher searcher = new ManagementObjectSearcher("select * from Win32_PnPEntity where Caption='Oculus Composite ADB Interface'");
-            foreach (ManagementObject keyboard in searcher.Get())
+            foreach (ManagementObject hmd in searcher.Get())
             {
-                foreach (PropertyData prop in keyboard.Properties)
+                foreach (PropertyData prop in hmd.Properties)
                 {
                     if (Convert.ToString(prop.Value).Contains(DeviceName))
                     {
