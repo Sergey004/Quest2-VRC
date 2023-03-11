@@ -3,7 +3,7 @@ This program sending Quest 2 (As well as other headsets in the Quest line) batte
 
 OpenRGB functions tested only on MSI Mystic Light (AKA MSI-RGB)
 
-[Avatars with support for this program](.../blob/winform_gui/Avatars with Quest2-VRC support.md)
+[Avatars with support for this program](Avatars%20with%20Quest2-VRC%20support.md)
 
 Available also in [CLI](https://github.com/Sergey004/Quest2-VRC/tree/cli_ver) form 
 
