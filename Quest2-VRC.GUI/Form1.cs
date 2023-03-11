@@ -28,7 +28,7 @@ namespace Quest2_VRC
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.Cyan700, Primary.Cyan800, Primary.Cyan500, Accent.Cyan700, TextShade.WHITE);
+            materialSkinManager.ColorScheme = new ColorScheme(Primary.Amber800, Primary.Amber900, Primary.Cyan500, Accent.Cyan700, TextShade.WHITE);
             materialLabel2.Text = "Status: Ready";
         }
 
