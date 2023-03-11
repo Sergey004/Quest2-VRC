@@ -3,8 +3,10 @@ This program sending Quest 2 (As well as other headsets in the Quest line) batte
 
 OpenRGB functions tested only on MSI Mystic Light (AKA MSI-RGB)
 
+[Avatars with support for this program](.../blob/winform_gui/Avatars with Quest2-VRC support.md)
 
 Available also in [CLI](https://github.com/Sergey004/Quest2-VRC/tree/cli_ver) form 
+
 ## Building from source
 To build this application you will need:
 - Visual Studio 2019 or later
@@ -18,11 +20,15 @@ For sending:
 - You can replace ```HMDBat``` , ```ControllerBatL```, ```ControllerBatR``` with your own parameters is vars.txt
 
 Default vars
-- ```HMDBat``` = ```-1 float```
-- ```ControllerBatL``` =```-1 float```
-- ```ControllerBatR``` = ```-1 float```
-- ```LowHMDBat``` = ```bool false```
-- ```WifiRSSI``` = ```-1 float``` 
+
+|Var name|Type|Value|
+|---|---|---|
+|HMDBat|Float|-1|
+|ControllerBatL|Float|-1|
+|ControllerBatLR|Float|-1|
+|LowHMDBat|Bool|False|
+|WifiRSSI|Float|-1|
+ 
 
 (About RSSI 0.0 is best, -1 is worst)
 
