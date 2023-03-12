@@ -1,14 +1,9 @@
 ﻿using MaterialSkin;
 using MaterialSkin.Controls;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Data;
-using System.Drawing;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using static Quest2_VRC.PacketSender;
 
@@ -22,7 +17,7 @@ namespace Quest2_VRC
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
-            materialSkinManager.ColorScheme = new ColorScheme(Primary.BlueGrey800, Primary.BlueGrey900, Primary.BlueGrey500, Accent.LightBlue200, TextShade.WHITE);
+            materialSkinManager.ColorScheme = new ColorScheme(Primary.Amber800, Primary.Amber900, Primary.Cyan500, Accent.Cyan700, TextShade.WHITE);
         }
 
 
@@ -81,7 +76,7 @@ namespace Quest2_VRC
 
         private void materialSlider4_onValueChanged(object sender, int newValue)
         {
-            
+
             VRChatMessage Msg_emu4 = new VRChatMessage("WifiRSSI", (float)newValue / 100);
             SendPacket(Msg_emu4);
         }
