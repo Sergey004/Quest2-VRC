@@ -8,6 +8,7 @@ using System.Net.Sockets;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using static Quest2_VRC.ADB;
 using static Quest2_VRC.Logger;
 using static Quest2_VRC.PacketSender;
@@ -49,6 +50,7 @@ namespace Quest2_VRC
                     string WifiRSSI = null;
                     int WifiInt = 0;
                     bool LowHMDBat = false;
+                    bool HMDCrit = false;
 
                     ConsoleOutputReceiver Hbat_receiver = new ConsoleOutputReceiver();
                     client.ExecuteRemoteCommand("dumpsys CompanionService | grep Battery", device, Hbat_receiver);
@@ -80,6 +82,14 @@ namespace Quest2_VRC
                         LowHMDBat = true;
                         //SoundPlayer playSound = new SoundPlayer(Properties.Resources.HMDloworbelow25);
                         //playSound.Play();
+                        if(HMDCrit = false && Hbatlevelint == 15)
+                        {
+                            string inputbox = "input";
+                            LogToConsole("Headset battery is at critical value, headset is turns off.");
+                            VRChatMessage MsgCrit = new VRChatMessage(inputbox, "Headset battery is at critical value, headset is turns off.");
+                            SendPacket(MsgCrit);
+                            HMDCrit = true;
+                        }
 
                     }
                     if (Rbatlevelint < 25)
