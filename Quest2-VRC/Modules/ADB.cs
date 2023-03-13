@@ -18,7 +18,7 @@ namespace Quest2_VRC
     {
         static public AdbClient client;
         static public DeviceData device;
-        public static bool StartADB(bool sender, bool receiver, string hostip, bool wireless)
+        public static bool StartADB(bool sender, bool receiver, string hostip, bool wireless, bool audioEnadled)
         {
             Console.WriteLine("Make sure you connect the headset to your computer and turn on the controllers");
             if (!AdbServer.Instance.GetStatus().IsRunning)
@@ -91,7 +91,7 @@ namespace Quest2_VRC
                 Console.WriteLine("OSC receiver is inactive");
                 var tasks = new[]
                 {
-                     Task.Factory.StartNew(() => Sender.Run(wireless), TaskCreationOptions.LongRunning),
+                     Task.Factory.StartNew(() => Sender.Run(wireless, audioEnadled), TaskCreationOptions.LongRunning),
                 };
 
 
@@ -113,7 +113,7 @@ namespace Quest2_VRC
                 Console.WriteLine("OSC receiver is active");
                 var tasks = new[]
                 {
-                     Task.Factory.StartNew(() => Sender.Run(wireless), TaskCreationOptions.LongRunning),
+                     Task.Factory.StartNew(() => Sender.Run(wireless,audioEnadled), TaskCreationOptions.LongRunning),
                      Task.Factory.StartNew(() => Receiver.Run(), TaskCreationOptions.LongRunning),
                 };
 

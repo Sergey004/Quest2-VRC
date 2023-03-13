@@ -44,6 +44,7 @@
             this.materialTextBox1 = new MaterialSkin.Controls.MaterialTextBox();
             this.materialSwitch1 = new MaterialSkin.Controls.MaterialSwitch();
             this.materialCheckbox1 = new MaterialSkin.Controls.MaterialCheckbox();
+            this.materialCheckbox2 = new MaterialSkin.Controls.MaterialCheckbox();
             this.materialCard1.SuspendLayout();
             this.materialCard4.SuspendLayout();
             this.materialCard2.SuspendLayout();
@@ -243,6 +244,7 @@
             // materialCard2
             // 
             this.materialCard2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.materialCard2.Controls.Add(this.materialCheckbox2);
             this.materialCard2.Controls.Add(this.materialButton5);
             this.materialCard2.Controls.Add(this.materialTextBox1);
             this.materialCard2.Controls.Add(this.materialSwitch1);
@@ -253,7 +255,7 @@
             this.materialCard2.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialCard2.Name = "materialCard2";
             this.materialCard2.Padding = new System.Windows.Forms.Padding(14);
-            this.materialCard2.Size = new System.Drawing.Size(355, 165);
+            this.materialCard2.Size = new System.Drawing.Size(389, 165);
             this.materialCard2.TabIndex = 9;
             // 
             // materialButton5
@@ -263,7 +265,7 @@
             this.materialButton5.Depth = 0;
             this.materialButton5.HighEmphasis = true;
             this.materialButton5.Icon = null;
-            this.materialButton5.Location = new System.Drawing.Point(274, 114);
+            this.materialButton5.Location = new System.Drawing.Point(307, 114);
             this.materialButton5.Margin = new System.Windows.Forms.Padding(4, 6, 4, 6);
             this.materialButton5.MouseState = MaterialSkin.MouseState.HOVER;
             this.materialButton5.Name = "materialButton5";
@@ -289,7 +291,7 @@
             this.materialTextBox1.MouseState = MaterialSkin.MouseState.OUT;
             this.materialTextBox1.Multiline = false;
             this.materialTextBox1.Name = "materialTextBox1";
-            this.materialTextBox1.Size = new System.Drawing.Size(321, 50);
+            this.materialTextBox1.Size = new System.Drawing.Size(355, 50);
             this.materialTextBox1.TabIndex = 1;
             this.materialTextBox1.Text = "";
             this.materialTextBox1.TrailingIcon = null;
@@ -298,7 +300,7 @@
             // 
             this.materialSwitch1.AutoSize = true;
             this.materialSwitch1.Depth = 0;
-            this.materialSwitch1.Location = new System.Drawing.Point(14, 114);
+            this.materialSwitch1.Location = new System.Drawing.Point(14, 83);
             this.materialSwitch1.Margin = new System.Windows.Forms.Padding(0);
             this.materialSwitch1.MouseLocation = new System.Drawing.Point(-1, -1);
             this.materialSwitch1.MouseState = MaterialSkin.MouseState.HOVER;
@@ -328,6 +330,22 @@
             this.materialCheckbox1.Text = "Show logs";
             this.materialCheckbox1.UseVisualStyleBackColor = true;
             this.materialCheckbox1.CheckedChanged += new System.EventHandler(this.materialCheckbox1_CheckedChanged);
+            // 
+            // materialCheckbox2
+            // 
+            this.materialCheckbox2.AutoSize = true;
+            this.materialCheckbox2.Depth = 0;
+            this.materialCheckbox2.Location = new System.Drawing.Point(14, 120);
+            this.materialCheckbox2.Margin = new System.Windows.Forms.Padding(0);
+            this.materialCheckbox2.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.materialCheckbox2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialCheckbox2.Name = "materialCheckbox2";
+            this.materialCheckbox2.ReadOnly = false;
+            this.materialCheckbox2.Ripple = true;
+            this.materialCheckbox2.Size = new System.Drawing.Size(169, 37);
+            this.materialCheckbox2.TabIndex = 3;
+            this.materialCheckbox2.Text = "Audio notifications";
+            this.materialCheckbox2.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -377,6 +395,7 @@
         private MaterialSkin.Controls.MaterialButton materialButton5;
         private MaterialSkin.Controls.MaterialCheckbox materialCheckbox1;
         private MaterialSkin.Controls.MaterialButton materialButton6;
+        private MaterialSkin.Controls.MaterialCheckbox materialCheckbox2;
     }
 }
 

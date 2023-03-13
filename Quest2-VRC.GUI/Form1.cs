@@ -54,7 +54,7 @@ namespace Quest2_VRC
                 {
                     var questip = materialTextBox1.Text;
                     //questip += ":5555";
-                    if(ADB.StartADB(true, true, questip, true))
+                    if(ADB.StartADB(true, true, questip, true, materialCheckbox2.Checked))
                     {
                         materialLabel2.Text = "Status: ADB is running";
                         disableButtons();
@@ -70,7 +70,7 @@ namespace Quest2_VRC
                 try
                 {
                     var questip = "127.0.0.1:62001";
-                    if (ADB.StartADB(true, true, questip, false))
+                    if (ADB.StartADB(true, true, questip, false, materialCheckbox2.Checked))
                     {
                         materialLabel2.Text = "Status: ADB is running";
                         disableButtons();
@@ -108,7 +108,7 @@ namespace Quest2_VRC
                 {
                     var questip = materialTextBox1.Text;
                     //questip += ":5555"; ;
-                    if (ADB.StartADB(false, true, questip, true))
+                    if (ADB.StartADB(false, true, questip, true, materialCheckbox2.Checked))
                     {
                         materialLabel2.Text = "Status: Receive only";
                         disableButtons();
@@ -124,7 +124,7 @@ namespace Quest2_VRC
                 try
                 {
                     var questip = "127.0.0.1:62001";
-                    if (ADB.StartADB(false, true, questip, false))
+                    if (ADB.StartADB(false, true, questip, false, materialCheckbox2.Checked))
                     {
                         materialLabel2.Text = "Status: Receive only";
                         disableButtons();
@@ -146,7 +146,7 @@ namespace Quest2_VRC
                 {
                     var questip = materialTextBox1.Text;
                     //questip += ":5555";
-                    if (ADB.StartADB(true, false, questip, true))
+                    if (ADB.StartADB(true, false, questip, true, materialCheckbox2.Checked))
                     {
                         materialLabel2.Text = "Status: Send only";
                         disableButtons();
@@ -162,7 +162,7 @@ namespace Quest2_VRC
                 try
                 {
                     var questip = "127.0.0.1:62001";
-                    if (ADB.StartADB(true, false, questip, false))
+                    if (ADB.StartADB(true, false, questip, false, materialCheckbox2.Checked))
                     {
                         materialLabel2.Text = "Status: Send only";
                         disableButtons();
@@ -210,7 +210,6 @@ namespace Quest2_VRC
             }
             else
             {
-
                 Process process = new Process();
                 ProcessStartInfo startInfo = new ProcessStartInfo();
                 startInfo.WindowStyle = ProcessWindowStyle.Hidden;

@@ -4,6 +4,7 @@ using Bespoke.Osc;
 using System;
 using System.IO;
 using System.Linq;
+using System.Media;
 using System.Net.Sockets;
 using System.Text.RegularExpressions;
 using System.Threading;
@@ -19,15 +20,15 @@ namespace Quest2_VRC
     static class Sender
     {
 
-        public static async void Run(bool wirlessmode)
+        public static async void Run(bool wirlessmode, bool audioEnadled)
         {
             Random rnd = new Random();
             int Uport = rnd.Next(1, 9999);
             Console.WriteLine("OSC UDP port is {0}", Uport);
-            await questwd(Uport, wirlessmode);
+            await questwd(Uport, wirlessmode, audioEnadled);
         }
 
-        public static async Task questwd(int Uport,bool wirlessmode)
+        public static async Task questwd(int Uport,bool wirlessmode, bool audioEnadled)
         {
             // Create a bogus port for the client
             OscPacket.UdpClient = new UdpClient(Uport);
@@ -76,12 +77,15 @@ namespace Quest2_VRC
                     Hbatlevelint = int.Parse(Hbat_match.Value);
                     Rbatlevelint = int.Parse(Rbat_match.Value);
                     Lbatlevelint = int.Parse(Lbat_match.Value);
-                    
+
                     if (Hbatlevelint < 25)
                     {
                         LowHMDBat = true;
-                        //SoundPlayer playSound = new SoundPlayer(Properties.Resources.HMDloworbelow25);
-                        //playSound.Play();
+                        if (audioEnadled == true)
+                        {
+                        SoundPlayer playSound = new SoundPlayer(Properties.Resources.HMDloworbelow25);
+                        playSound.Play();
+                        }
                         if(HMDCrit = false && Hbatlevelint == 15)
                         {
                             string inputbox = "input";
@@ -95,16 +99,22 @@ namespace Quest2_VRC
                     if (Rbatlevelint < 25)
                     {
                         LogToConsole("Right controller is discharged, disabled or not connected");
-                        //SoundPlayer playSound = new SoundPlayer(Properties.Resources.Rcrtloworbelow25);
-                        //playSound.Play();
+                        if (audioEnadled == true)
+                        {
+                            SoundPlayer playSound = new SoundPlayer(Properties.Resources.Rcrtloworbelow25);
+                            playSound.Play();
 
+                        }
                     }
                     if (Lbatlevelint < 25)
                     {
                         LogToConsole("Left controller is discharged, disabled or not connected");
-                        //SoundPlayer playSound = new SoundPlayer(Properties.Resources.Lctrloworbelow25);
-                        //playSound.Play();
+                        if (audioEnadled == true)
+                        {
+                            SoundPlayer playSound = new SoundPlayer(Properties.Resources.Lctrloworbelow25);
+                            playSound.Play();
 
+                        }
                     }
 
                     VRChatMessage Msg1 = new VRChatMessage(HMDBat, (float)Hbatlevelint / 100);
