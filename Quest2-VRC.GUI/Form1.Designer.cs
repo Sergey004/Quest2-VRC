@@ -342,10 +342,11 @@
             this.materialCheckbox2.Name = "materialCheckbox2";
             this.materialCheckbox2.ReadOnly = false;
             this.materialCheckbox2.Ripple = true;
-            this.materialCheckbox2.Size = new System.Drawing.Size(169, 37);
+            this.materialCheckbox2.Size = new System.Drawing.Size(212, 37);
             this.materialCheckbox2.TabIndex = 3;
-            this.materialCheckbox2.Text = "Audio notifications";
+            this.materialCheckbox2.Text = "Audio notifications (WIP)";
             this.materialCheckbox2.UseVisualStyleBackColor = true;
+            this.materialCheckbox2.Visible = false;
             // 
             // Form1
             // 
