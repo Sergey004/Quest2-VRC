@@ -232,8 +232,18 @@ namespace Quest2_VRC
                     ADB.StartTCPIP();
                     await Task.Delay(3000);
                     materialLabel2.Text = "Status: In TCPIP mode";
-                    materialTextBox1.Text = ADB.GetIP();
                     MessageBox.Show("ADB restarted in TCPIP mode, ready to wireless conection", "Restarting ADB in TCPIP mode", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    DialogResult dialogResult = MessageBox.Show("Do you want the program to find the IP address of the headset itself?", "Restarting ADB in TCPIP mode", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    if (dialogResult == DialogResult.Yes)
+                    {
+                        materialTextBox1.Text = ADB.GetIP();
+                    }
+                    else if (dialogResult == DialogResult.No)
+                    {
+                        MessageBox.Show("Input field is unlocked for manual entry", "Restarting ADB in TCPIP mode", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        materialTextBox1.Enabled = true;
+                    }
+
                 }
                 else
                 {

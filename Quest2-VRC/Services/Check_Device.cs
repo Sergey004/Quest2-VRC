@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Management;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Quest2_VRC
 {
-   
+
     public class Check_Device
     {
         private static readonly string DeviceName = "Oculus Composite ADB Interface";

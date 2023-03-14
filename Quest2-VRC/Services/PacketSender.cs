@@ -1,16 +1,15 @@
 ﻿using Bespoke.Osc;
 using System;
 using System.Net;
-using System.Xml.Linq;
 using static Quest2_VRC.Logger;
 
 namespace Quest2_VRC
 {
-    
+
     public class PacketSender
     {
-       
-       
+
+
         static public IPAddress IP = IPAddress.Loopback;
         static readonly int Port = 9000;
         static readonly IPEndPoint VRChat = new IPEndPoint(IP, Port);

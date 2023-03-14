@@ -1,13 +1,10 @@
 ﻿using Bespoke.Osc;
-using OpenRGB.NET;
-using OpenRGB.NET.Models;
 using Quest2_VRC.Services;
 using System;
 using System.Data;
 using System.IO;
 using System.Linq;
 using System.Net;
-using static Quest2_VRC.Logger;
 using static Quest2_VRC.PacketSender;
 
 namespace Quest2_VRC

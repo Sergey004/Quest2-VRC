@@ -2,9 +2,7 @@
 using OpenRGB.NET.Models;
 using System;
 using System.Data;
-using System.IO;
 using System.Linq;
-using System.Net;
 using static Quest2_VRC.Logger;
 
 

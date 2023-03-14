@@ -40,11 +40,11 @@
             this.materialCard4 = new MaterialSkin.Controls.MaterialCard();
             this.materialLabel2 = new MaterialSkin.Controls.MaterialLabel();
             this.materialCard2 = new MaterialSkin.Controls.MaterialCard();
+            this.materialCheckbox2 = new MaterialSkin.Controls.MaterialCheckbox();
             this.materialButton5 = new MaterialSkin.Controls.MaterialButton();
             this.materialTextBox1 = new MaterialSkin.Controls.MaterialTextBox();
             this.materialSwitch1 = new MaterialSkin.Controls.MaterialSwitch();
             this.materialCheckbox1 = new MaterialSkin.Controls.MaterialCheckbox();
-            this.materialCheckbox2 = new MaterialSkin.Controls.MaterialCheckbox();
             this.materialCard1.SuspendLayout();
             this.materialCard4.SuspendLayout();
             this.materialCard2.SuspendLayout();
@@ -258,6 +258,22 @@
             this.materialCard2.Size = new System.Drawing.Size(389, 165);
             this.materialCard2.TabIndex = 9;
             // 
+            // materialCheckbox2
+            // 
+            this.materialCheckbox2.AutoSize = true;
+            this.materialCheckbox2.Depth = 0;
+            this.materialCheckbox2.Location = new System.Drawing.Point(14, 120);
+            this.materialCheckbox2.Margin = new System.Windows.Forms.Padding(0);
+            this.materialCheckbox2.MouseLocation = new System.Drawing.Point(-1, -1);
+            this.materialCheckbox2.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialCheckbox2.Name = "materialCheckbox2";
+            this.materialCheckbox2.ReadOnly = false;
+            this.materialCheckbox2.Ripple = true;
+            this.materialCheckbox2.Size = new System.Drawing.Size(212, 37);
+            this.materialCheckbox2.TabIndex = 3;
+            this.materialCheckbox2.Text = "Audio notifications (WIP)";
+            this.materialCheckbox2.UseVisualStyleBackColor = true;
+            // 
             // materialButton5
             // 
             this.materialButton5.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -330,23 +346,6 @@
             this.materialCheckbox1.Text = "Show logs";
             this.materialCheckbox1.UseVisualStyleBackColor = true;
             this.materialCheckbox1.CheckedChanged += new System.EventHandler(this.materialCheckbox1_CheckedChanged);
-            // 
-            // materialCheckbox2
-            // 
-            this.materialCheckbox2.AutoSize = true;
-            this.materialCheckbox2.Depth = 0;
-            this.materialCheckbox2.Location = new System.Drawing.Point(14, 120);
-            this.materialCheckbox2.Margin = new System.Windows.Forms.Padding(0);
-            this.materialCheckbox2.MouseLocation = new System.Drawing.Point(-1, -1);
-            this.materialCheckbox2.MouseState = MaterialSkin.MouseState.HOVER;
-            this.materialCheckbox2.Name = "materialCheckbox2";
-            this.materialCheckbox2.ReadOnly = false;
-            this.materialCheckbox2.Ripple = true;
-            this.materialCheckbox2.Size = new System.Drawing.Size(212, 37);
-            this.materialCheckbox2.TabIndex = 3;
-            this.materialCheckbox2.Text = "Audio notifications (WIP)";
-            this.materialCheckbox2.UseVisualStyleBackColor = true;
-            this.materialCheckbox2.Visible = false;
             // 
             // Form1
             // 
