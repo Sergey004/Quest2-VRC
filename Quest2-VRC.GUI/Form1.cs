@@ -4,26 +4,24 @@ using System;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
-using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Quest2_VRC
 {
-    
+
     public partial class Form1 : MaterialForm
-        
+
     {
         public Form1()
         {
             InitializeComponent();
             materialTextBox1.Enabled = false;
-            materialMultiLineTextBox1.Visible = true;
+            materialCheckbox1.Checked = false;
             //materialSwitch1.Enabled = false;
             //materialSwitch1.Text = "Broken, use this -->";
-            TBStreamWriter streamWriter = new TBStreamWriter(materialMultiLineTextBox1);
-            Invoke((MethodInvoker)(() => { Invoke((MethodInvoker)(() => { Console.SetOut(streamWriter); })); }));
+
             Check_Vars.CheckVars();
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
@@ -41,141 +39,170 @@ namespace Quest2_VRC
             materialButton5.Enabled = false;
             materialButton6.Enabled = false;
             materialSwitch1.Enabled = false;
+            materialCheckbox2.Enabled = false;
             materialTextBox1.Enabled = false;
         }
 
 
-        private void materialButton2_Click(object sender, EventArgs e)
+        private async void materialButton2_Click(object sender, EventArgs e)
         {
-            //Invoke((MethodInvoker)(() => { Invoke((MethodInvoker)(() => { Console.SetOut(new TBStreamWriter(materialMultiLineTextBox1)); })); }));
-            if (materialSwitch1.Checked == true)
+            disableButtons();
+            materialLabel2.Text = "Status: Executing...";
+            await Task.Run(() =>
             {
-                try
-                {
-                    var questip = materialTextBox1.Text;
-                    //questip += ":5555";
-                    if(ADB.StartADB(true, true, questip, true, materialCheckbox2.Checked))
-                    {
-                        materialLabel2.Text = "Status: ADB is running";
-                        disableButtons();
-                    }
-                }
-                catch (Exception)
-                {
-                    Console.WriteLine("Failed to start ADB");
-                }
 
-            }
-            else {
-                try
+
+                if (materialSwitch1.Checked == true)
                 {
-                    var questip = "127.0.0.1:62001";
-                    if (ADB.StartADB(true, true, questip, false, materialCheckbox2.Checked))
+                    try
                     {
-                        materialLabel2.Text = "Status: ADB is running";
-                        disableButtons();
+                        var questip = materialTextBox1.Text;
+                        if (ADB.StartADB(true, true, questip, false, materialCheckbox2.Checked))
+                        {
+                            
+                            materialLabel2.Invoke(new Action(() => materialLabel2.Text = "Status: ADB is running"));
+                           
+                        }
+
+                    }
+                    catch (Exception)
+                    {
+                        Console.WriteLine("Failed to start ADB");
+                        MessageBox.Show("Failed to start ADB", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                }
+                else
+                {
+                    try
+                    {
+                        var questip = "127.0.0.1:62001";
+                        if (ADB.StartADB(true, true, questip, false, materialCheckbox2.Checked))
+                        {
+                            materialLabel2.Invoke(new Action(() => materialLabel2.Text = "Status: ADB is running"));
+
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        Console.WriteLine("Failed to start ADB");
+                        MessageBox.Show("Failed to start ADB", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-                catch (Exception)
-                {
-                    Console.WriteLine("Failed to start ADB");
-                }
-            }
+            });
 
         }
-        private void materialButton3_Click(object sender, EventArgs e)
+        private async void materialButton3_Click(object sender, EventArgs e)
         {
-            try
+            materialLabel2.Text = "Status: Executing...";
+            disableButtons();
+            await Task.Run(() =>
             {
-                //Invoke((MethodInvoker)(() => { Invoke((MethodInvoker)(() => { Console.SetOut(new TBStreamWriter(materialMultiLineTextBox1)); })); }));
-                OSC.StartOSC(false, true);
-                materialLabel2.Text = "Status: No ADB mode";
-                disableButtons();
-            }
-            catch (Exception)
-            {
-                Console.WriteLine("Failed to start OSC");
-            }
-
+                try
+                {
+                    OSC.StartOSC(false, true);
+                    materialLabel2.Invoke(new Action(() => materialLabel2.Text = "Status: No ADB mode")); ;
+                    
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Failed to start OSC");
+                    MessageBox.Show("Failed to start OSC", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            });
         }
 
-        private void materialButton1_Click(object sender, EventArgs e)
+        private async void materialButton1_Click(object sender, EventArgs e)
         {
-            //Invoke((MethodInvoker)(() => { Invoke((MethodInvoker)(() => { Console.SetOut(new TBStreamWriter(materialMultiLineTextBox1)); })); }));
-            if (materialSwitch1.Checked == true)
+            materialLabel2.Text = "Status: Executing...";
+            disableButtons();
+            await Task.Run(() =>
             {
-                try
+
+                if (materialSwitch1.Checked == true)
                 {
-                    var questip = materialTextBox1.Text;
-                    //questip += ":5555"; ;
-                    if (ADB.StartADB(false, true, questip, true, materialCheckbox2.Checked))
+                    try
                     {
-                        materialLabel2.Text = "Status: Receive only";
-                        disableButtons();
+                        var questip = materialTextBox1.Text;
+                        //questip += ":5555"; ;
+                        if (ADB.StartADB(false, true, questip, true, materialCheckbox2.Checked))
+                        {
+                            materialLabel2.Invoke(new Action(() => materialLabel2.Text = "Status: Receive only"));
+                            disableButtons();
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        Console.WriteLine("Failed to start ADB");
+                        MessageBox.Show("Failed to start ADB", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-                catch (Exception)
+                else
                 {
-                    Console.WriteLine("Failed to start ADB");
-                }
-            }
-            else
-            {
-                try
-                {
-                    var questip = "127.0.0.1:62001";
-                    if (ADB.StartADB(false, true, questip, false, materialCheckbox2.Checked))
+                    try
                     {
-                        materialLabel2.Text = "Status: Receive only";
-                        disableButtons();
+                        var questip = "127.0.0.1:62001";
+                        if (ADB.StartADB(false, true, questip, false, materialCheckbox2.Checked))
+                        {
+                            materialLabel2.Invoke(new Action(() => materialLabel2.Text = "Status: Receive only"));
+                            disableButtons();
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        Console.WriteLine("Failed to start ADB");
+                        MessageBox.Show("Failed to start ADB", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-                catch (Exception)
-                {
-                    Console.WriteLine("Failed to start ADB");
-                }
-            }
+            });
         }
 
-        private void materialButton4_Click(object sender, EventArgs e)
+        private async void materialButton4_Click(object sender, EventArgs e)
         {
-            //Invoke((MethodInvoker)(() => { Invoke((MethodInvoker)(() => { Console.SetOut(new TBStreamWriter(materialMultiLineTextBox1)); })); }));
-            if (materialSwitch1.Checked == true)
+            materialLabel2.Text = "Status: Executing...";
+            disableButtons();
+
+            await Task.Run(() =>
             {
-                try
+                if (materialSwitch1.Checked == true)
                 {
-                    var questip = materialTextBox1.Text;
-                    //questip += ":5555";
-                    if (ADB.StartADB(true, false, questip, true, materialCheckbox2.Checked))
+                    try
                     {
-                        materialLabel2.Text = "Status: Send only";
-                        disableButtons();
+                        var questip = materialTextBox1.Text;
+                        //questip += ":5555";
+                        if (ADB.StartADB(true, false, questip, true, materialCheckbox2.Checked))
+                        {
+                            materialLabel2.Invoke(new Action(() => materialLabel2.Text = "Status: Send only"));
+
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        Console.WriteLine("Failed to start ADB");
+                        MessageBox.Show("Failed to start ADB" ,"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-                catch (Exception)
+                else
                 {
-                    Console.WriteLine("Failed to start ADB");
-                }
-            }
-            else
-            {
-                try
-                {
-                    var questip = "127.0.0.1:62001";
-                    if (ADB.StartADB(true, false, questip, false, materialCheckbox2.Checked))
+                    try
                     {
-                        materialLabel2.Text = "Status: Send only";
-                        disableButtons();
+                        var questip = "127.0.0.1:62001";
+                        if (ADB.StartADB(true, false, questip, false, materialCheckbox2.Checked))
+                        {
+                            materialLabel2.Invoke(new Action(() => materialLabel2.Text = "Status: Send only"));
+
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        Console.WriteLine("Failed to start ADB");
+                        MessageBox.Show("Failed to start ADB", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-                catch (Exception)
-                {
-                    Console.WriteLine("Failed to start ADB");
-                }
-            }
+            });
+
+
         }
-
-
 
         public class TBStreamWriter : TextWriter
         {
@@ -205,7 +232,7 @@ namespace Quest2_VRC
         {
             if (MessageBox.Show("Do you want to exit?\nNote, this action will stop the ADB server", "Exit and stop ADB",
         MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
-            {                 
+            {
                 e.Cancel = true;
             }
             else
@@ -226,7 +253,7 @@ namespace Quest2_VRC
             materialTextBox1.Enabled = false;
             if (materialSwitch1.Checked)
             {
-                MessageBox.Show("Connect your Quest to your computer and click \"OK\" to continue", "Restarting ADB in TCPIP mode",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                MessageBox.Show("Connect your Quest to your computer and click \"OK\" to continue", "Restarting ADB in TCPIP mode", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 if (Check_Device.CheckDevice())
                 {
                     ADB.StartTCPIP();
@@ -251,19 +278,36 @@ namespace Quest2_VRC
                     materialSwitch1.Checked = false;
                     materialLabel2.Text = "Status: Headset not connected";
                 }
-                
+
             }
+            else
+            {
+                materialTextBox1.Text = null;
+            }
+
 
         }
 
         private void materialButton5_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("1) Connect the headset to your computer\n2) Turn the switch to the \"AirLink (or VD)\" position.\n3) Wait for ADB to switch to TCPIP mode\n4) Press \"Default run\" to connect \n \nIf this don't work\nManual connection\nEnter \n\"platform-tools\\adb tcpip 5555\" \n\"platform-tools\\adb connect  QUEST_IP:5555", "Help", MessageBoxButtons.OK,MessageBoxIcon.Information);
+            MessageBox.Show("1) Connect the headset to your computer\n2) Turn the switch to the \"AirLink (or VD)\" position.\n3) Wait for ADB to switch to TCPIP mode\n4) Press \"Default run\" to connect \n \nIf this don't work\nManual connection\nEnter \n\"platform-tools\\adb tcpip 5555\" \n\"platform-tools\\adb connect  QUEST_IP:5555", "Help", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void materialCheckbox1_CheckedChanged(object sender, EventArgs e)
         {
             materialMultiLineTextBox1.Visible = materialCheckbox1.Checked;
+            if (materialCheckbox1.Checked)
+            {
+                TBStreamWriter streamWriter = new TBStreamWriter(materialMultiLineTextBox1);
+                Invoke((MethodInvoker)(() => { Invoke((MethodInvoker)(() => { Console.SetOut(streamWriter); })); }));
+            }
+            else
+            {
+                Invoke((MethodInvoker)(() => { Invoke((MethodInvoker)(() => { Console.SetOut(new StreamWriter(Stream.Null)); })); }));
+                materialMultiLineTextBox1.Text = null;
+            }
+
+
         }
 
         private void materialMultilineTextBox1_TextChanged(object sender, EventArgs e)
