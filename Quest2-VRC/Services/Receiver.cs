@@ -13,7 +13,7 @@ namespace Quest2_VRC
 
     {
         static readonly int dataInt = 0;
-        static readonly int Port = 9001;
+        
         public static async void Run()
         {
             RGBControler.SendRGBData(dataInt); //Init OpenRGB
@@ -22,8 +22,10 @@ namespace Quest2_VRC
             .ToDictionary(s => s[0].Trim(), s => s[1].Trim());
             string Eyesmode = dic["Receive_addr"];
             string EyesmodeTest = dic["Receive_addr_test"];
+            int ReceivePort = int.Parse(dic["ReceivePort"]);
+            
             OscServer oscServer;
-            oscServer = new OscServer((Bespoke.Common.Net.TransportType)TransportType.Udp, IP, Port);
+            oscServer = new OscServer((Bespoke.Common.Net.TransportType)TransportType.Udp, IP, ReceivePort);
             oscServer.FilterRegisteredMethods = true;
             oscServer.RegisterMethod(Eyesmode);
             oscServer.RegisterMethod(EyesmodeTest);

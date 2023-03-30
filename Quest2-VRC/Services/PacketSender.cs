@@ -1,5 +1,7 @@
 ﻿using Bespoke.Osc;
 using System;
+using System.IO;
+using System.Linq;
 using System.Net;
 using static Quest2_VRC.Logger;
 
@@ -11,11 +13,16 @@ namespace Quest2_VRC
 
 
         static public IPAddress IP = IPAddress.Loopback;
-        static readonly int Port = 9000;
-        static readonly IPEndPoint VRChat = new IPEndPoint(IP, Port);
+        
+       
 
         static public void SendPacket(params VRChatMessage[] Params)
         {
+            var dic = File.ReadAllLines("vars.txt")
+           .Select(l => l.Split(new[] { '=' }))
+           .ToDictionary(s => s[0].Trim(), s => s[1].Trim());
+            int SendPort = int.Parse(dic["SendPort"]);
+            IPEndPoint VRChat = new IPEndPoint(IP, SendPort);
             foreach (var Param in Params)
             {
                 try
