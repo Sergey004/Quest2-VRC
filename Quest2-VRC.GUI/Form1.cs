@@ -21,7 +21,7 @@ namespace Quest2_VRC
             materialCheckbox1.Checked = false;
             //materialSwitch1.Enabled = false;
             //materialSwitch1.Text = "Broken, use this -->";
-
+            materialLabel3.Text = $"Last commit: {ThisAssembly.Git.Commit}";
             Check_Vars.CheckVars();
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);

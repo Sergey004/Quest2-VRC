@@ -45,6 +45,7 @@
             this.materialTextBox1 = new MaterialSkin.Controls.MaterialTextBox();
             this.materialSwitch1 = new MaterialSkin.Controls.MaterialSwitch();
             this.materialCheckbox1 = new MaterialSkin.Controls.MaterialCheckbox();
+            this.materialLabel3 = new MaterialSkin.Controls.MaterialLabel();
             this.materialCard1.SuspendLayout();
             this.materialCard4.SuspendLayout();
             this.materialCard2.SuspendLayout();
@@ -347,12 +348,25 @@
             this.materialCheckbox1.UseVisualStyleBackColor = true;
             this.materialCheckbox1.CheckedChanged += new System.EventHandler(this.materialCheckbox1_CheckedChanged);
             // 
+            // materialLabel3
+            // 
+            this.materialLabel3.AutoSize = true;
+            this.materialLabel3.Depth = 0;
+            this.materialLabel3.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
+            this.materialLabel3.Location = new System.Drawing.Point(625, 493);
+            this.materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
+            this.materialLabel3.Name = "materialLabel3";
+            this.materialLabel3.Size = new System.Drawing.Size(57, 19);
+            this.materialLabel3.TabIndex = 11;
+            this.materialLabel3.Text = "Commit";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
             this.ClientSize = new System.Drawing.Size(799, 524);
+            this.Controls.Add(this.materialLabel3);
             this.Controls.Add(this.materialCheckbox1);
             this.Controls.Add(this.materialCard2);
             this.Controls.Add(this.materialLabel1);
@@ -396,6 +410,7 @@
         private MaterialSkin.Controls.MaterialCheckbox materialCheckbox1;
         private MaterialSkin.Controls.MaterialButton materialButton6;
         private MaterialSkin.Controls.MaterialCheckbox materialCheckbox2;
+        private MaterialSkin.Controls.MaterialLabel materialLabel3;
     }
 }
 
