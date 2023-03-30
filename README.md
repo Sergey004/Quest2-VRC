@@ -16,6 +16,8 @@ To start building the application, simply launch the solution in Visual Studio a
 ## Using
 Add a parameter to the ExpressionParameters of your avatar by assigning
 
+- Replace 127.0.0.1 in the vars.txt file with the IP address of your headset if you are using VRChat in standalone mode
+
 For sending:
 - You can replace ```HMDBat```, ```ControllerBatL```, ```ControllerBatR```, ```SendPort``` with your own parameters is vars.txt
 

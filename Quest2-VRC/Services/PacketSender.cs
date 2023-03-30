@@ -3,6 +3,8 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Security;
+using System.Web;
 using static Quest2_VRC.Logger;
 
 namespace Quest2_VRC
@@ -10,11 +12,7 @@ namespace Quest2_VRC
 
     public class PacketSender
     {
-
-
-        static public IPAddress IP = IPAddress.Loopback;
         
-       
 
         static public void SendPacket(params VRChatMessage[] Params)
         {
@@ -22,6 +20,7 @@ namespace Quest2_VRC
            .Select(l => l.Split(new[] { '=' }))
            .ToDictionary(s => s[0].Trim(), s => s[1].Trim());
             int SendPort = int.Parse(dic["SendPort"]);
+            var IP = IPAddress.Parse(dic["HostIP"]);
             IPEndPoint VRChat = new IPEndPoint(IP, SendPort);
             foreach (var Param in Params)
             {

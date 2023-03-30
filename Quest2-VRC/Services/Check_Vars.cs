@@ -11,9 +11,16 @@ namespace Quest2_VRC
             if (!exists)
             {
                 Console.WriteLine("vars.txt does not exist, creating...");
-                string[] lines =
+                string[] lines = // Default settings
                 {
-                    "HMDBat = HMDBat", "ControllerBatL = ControllerBatL", "ControllerBatR = ControllerBatR", "Receive_addr = /avatar/parameters/Eyes mode", "Receive_addr_test = /avatar/parameters/Eyes_mode", "SendPort = 9000", "ReceivePort = 9001" // Default settings for my avatar
+                    "HMDBat = HMDBat",
+                    "ControllerBatL = ControllerBatL",
+                    "ControllerBatR = ControllerBatR",
+                    "Receive_addr = /avatar/parameters/Eyes mode",
+                    "Receive_addr_test = /avatar/parameters/Eyes_mode",
+                    "SendPort = 9000",
+                    "ReceivePort = 9001",
+                    "HostIP = 127.0.0.1" 
                 };
                 File.WriteAllLines("vars.txt", lines);
             }

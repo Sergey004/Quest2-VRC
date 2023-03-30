@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace Quest2_VRC
 {
 
@@ -29,6 +30,7 @@ namespace Quest2_VRC
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Amber800, Primary.Amber900, Primary.Cyan500, Accent.Cyan700, TextShade.WHITE);
             materialLabel2.Text = "Status: Ready";
         }
+
 
         private void disableButtons()
         {
@@ -59,9 +61,9 @@ namespace Quest2_VRC
                         var questip = materialTextBox1.Text;
                         if (ADB.StartADB(true, true, questip, false, materialCheckbox2.Checked))
                         {
-                            
+
                             materialLabel2.Invoke(new Action(() => materialLabel2.Text = "Status: ADB is running"));
-                           
+
                         }
 
                     }
@@ -102,7 +104,7 @@ namespace Quest2_VRC
                 {
                     OSC.StartOSC(false, true);
                     materialLabel2.Invoke(new Action(() => materialLabel2.Text = "Status: No ADB mode")); ;
-                    
+
                 }
                 catch (Exception)
                 {
@@ -179,7 +181,7 @@ namespace Quest2_VRC
                     catch (Exception)
                     {
                         Console.WriteLine("Failed to start ADB");
-                        MessageBox.Show("Failed to start ADB" ,"Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Failed to start ADB", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
@@ -332,5 +334,6 @@ namespace Quest2_VRC
             Form2 f2 = new Form2();
             f2.ShowDialog();
         }
+
     }
 }
