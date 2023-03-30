@@ -17,7 +17,7 @@ To start building the application, simply launch the solution in Visual Studio a
 Add a parameter to the ExpressionParameters of your avatar by assigning
 
 For sending:
-- You can replace ```HMDBat``` , ```ControllerBatL```, ```ControllerBatR``` with your own parameters is vars.txt
+- You can replace ```HMDBat```, ```ControllerBatL```, ```ControllerBatR```, ```SendPort``` with your own parameters is vars.txt
 
 Default vars
 
@@ -33,7 +33,7 @@ Default vars
 (About RSSI 0.0 is best, -1 is worst)
 
 For receiving
-- Replace in var.txt ```Receive_addr``` and ```Receive_addr_test``` according to your specific parameters
+- Replace in var.txt ```Receive_addr```, ```Receive_addr_test``` and ```ReceivePort``` according to your specific parameters
 
 Connect your Quest 2 (Or another headset from the Quest range) to your computer in developer mode
 
