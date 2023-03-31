@@ -1,6 +1,7 @@
 ﻿using MaterialSkin;
 using MaterialSkin.Controls;
 using System;
+using System.Data;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
@@ -29,6 +30,7 @@ namespace Quest2_VRC
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Amber800, Primary.Amber900, Primary.Cyan500, Accent.Cyan700, TextShade.WHITE);
             materialLabel2.Text = "Status: Ready";
+
         }
 
 
@@ -44,61 +46,97 @@ namespace Quest2_VRC
             materialCheckbox2.Enabled = false;
             materialTextBox1.Enabled = false;
         }
-
+        private void enadleeButtons()
+        {
+            materialButton1.Enabled = true;
+            materialButton2.Enabled = true;
+            materialButton3.Enabled = true;
+            materialButton4.Enabled = true;
+            materialButton5.Enabled = true;
+            materialButton6.Enabled = true;
+            materialSwitch1.Enabled = true;
+            materialCheckbox2.Enabled = true;
+            materialTextBox1.Enabled = true;
+        }
 
         private async void materialButton2_Click(object sender, EventArgs e)
         {
             disableButtons();
             materialLabel2.Text = "Status: Executing...";
-            await Task.Run(() =>
+            var dic = File.ReadAllLines("vars.txt")
+                    .Select(l => l.Split(new[] { '=' }))
+                    .ToDictionary(s => s[0].Trim(), s => s[1].Trim());
+
+            if (dic["HostIP"] == "127.0.0.1")
             {
-
-
-                if (materialSwitch1.Checked == true)
+                await Task.Run(() =>
                 {
-                    try
+
+
+
+                    if (materialSwitch1.Checked == true)
                     {
-                        var questip = materialTextBox1.Text;
-                        if (ADB.StartADB(true, true, questip, false, materialCheckbox2.Checked))
+                        try
                         {
+                            var questip = materialTextBox1.Text;
+                            if (ADB.StartADB(true, true, questip, false, materialCheckbox2.Checked))
+                            {
 
-                            materialLabel2.Invoke(new Action(() => materialLabel2.Text = "Status: ADB is running"));
+                                materialLabel2.Invoke(new Action(() => materialLabel2.Text = "Status: ADB is running"));
 
+                            }
+
+                        }
+                        catch (Exception)
+                        {
+                            Console.WriteLine("Failed to start ADB");
+                            MessageBox.Show("Failed to start ADB", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
 
                     }
-                    catch (Exception)
+                    else
                     {
-                        Console.WriteLine("Failed to start ADB");
-                        MessageBox.Show("Failed to start ADB", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-
-                }
-                else
-                {
-                    try
-                    {
-                        var questip = "127.0.0.1:62001";
-                        if (ADB.StartADB(true, true, questip, false, materialCheckbox2.Checked))
+                        try
                         {
-                            materialLabel2.Invoke(new Action(() => materialLabel2.Text = "Status: ADB is running"));
+                            var questip = "127.0.0.1:62001";
+                            if (ADB.StartADB(true, true, questip, false, materialCheckbox2.Checked))
+                            {
+                                materialLabel2.Invoke(new Action(() => materialLabel2.Text = "Status: ADB is running"));
 
+                            }
                         }
-                    }
-                    catch (Exception)
-                    {
-                        Console.WriteLine("Failed to start ADB");
-                        MessageBox.Show("Failed to start ADB", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            });
+                        catch (Exception)
+                        {
+                            Console.WriteLine("Failed to start ADB");
+                            MessageBox.Show("Failed to start ADB", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        }
 
+                    }
+
+                });
+
+
+            }
+            else
+            {
+                materialLabel2.Invoke(new Action(() => materialLabel2.Text = "Status: Ready"));
+                enadleeButtons();
+                materialButton2.Enabled = false;
+                MessageBox.Show("This function cannot be activated if HostIP is not 127.0.0.1", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
         }
         private async void materialButton3_Click(object sender, EventArgs e)
         {
             materialLabel2.Text = "Status: Executing...";
             disableButtons();
-            await Task.Run(() =>
+            var dic = File.ReadAllLines("vars.txt")
+                    .Select(l => l.Split(new[] { '=' }))
+                    .ToDictionary(s => s[0].Trim(), s => s[1].Trim());
+
+            if (dic["HostIP"] == "127.0.0.1")
+            {
+                await Task.Run(() =>
             {
                 try
                 {
@@ -112,51 +150,73 @@ namespace Quest2_VRC
                     MessageBox.Show("Failed to start OSC", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             });
+            }
+            else
+            {
+                materialLabel2.Invoke(new Action(() => materialLabel2.Text = "Status: Ready"));
+                enadleeButtons();
+                materialButton3.Enabled = false;
+                MessageBox.Show("This function cannot be activated if HostIP is not 127.0.0.1", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            }
         }
 
         private async void materialButton1_Click(object sender, EventArgs e)
         {
             materialLabel2.Text = "Status: Executing...";
-            disableButtons();
-            await Task.Run(() =>
+            var dic = File.ReadAllLines("vars.txt")
+                    .Select(l => l.Split(new[] { '=' }))
+                    .ToDictionary(s => s[0].Trim(), s => s[1].Trim());
+            if (dic["HostIP"] == "127.0.0.1")
             {
+                disableButtons();
+                await Task.Run(() =>
+                {
 
-                if (materialSwitch1.Checked == true)
-                {
-                    try
+                    if (materialSwitch1.Checked == true)
                     {
-                        var questip = materialTextBox1.Text;
-                        //questip += ":5555"; ;
-                        if (ADB.StartADB(false, true, questip, true, materialCheckbox2.Checked))
+                        try
                         {
-                            materialLabel2.Invoke(new Action(() => materialLabel2.Text = "Status: Receive only"));
-                            disableButtons();
+                            var questip = materialTextBox1.Text;
+                            //questip += ":5555"; ;
+                            if (ADB.StartADB(false, true, questip, true, materialCheckbox2.Checked))
+                            {
+                                materialLabel2.Invoke(new Action(() => materialLabel2.Text = "Status: Receive only"));
+                                disableButtons();
+                            }
+                        }
+                        catch (Exception)
+                        {
+                            Console.WriteLine("Failed to start ADB");
+                            MessageBox.Show("Failed to start ADB", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
-                    catch (Exception)
+                    else
                     {
-                        Console.WriteLine("Failed to start ADB");
-                        MessageBox.Show("Failed to start ADB", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-                else
-                {
-                    try
-                    {
-                        var questip = "127.0.0.1:62001";
-                        if (ADB.StartADB(false, true, questip, false, materialCheckbox2.Checked))
+                        try
                         {
-                            materialLabel2.Invoke(new Action(() => materialLabel2.Text = "Status: Receive only"));
-                            disableButtons();
+                            var questip = "127.0.0.1:62001";
+                            if (ADB.StartADB(false, true, questip, false, materialCheckbox2.Checked))
+                            {
+                                materialLabel2.Invoke(new Action(() => materialLabel2.Text = "Status: Receive only"));
+                                disableButtons();
+                            }
+                        }
+                        catch (Exception)
+                        {
+                            Console.WriteLine("Failed to start ADB");
+                            MessageBox.Show("Failed to start ADB", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
-                    catch (Exception)
-                    {
-                        Console.WriteLine("Failed to start ADB");
-                        MessageBox.Show("Failed to start ADB", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                }
-            });
+                });
+            }
+            else
+            {
+                materialLabel2.Invoke(new Action(() => materialLabel2.Text = "Status: Ready"));
+                enadleeButtons();
+                materialButton1.Enabled = false;
+                MessageBox.Show("This function cannot be activated if HostIP is not 127.0.0.1", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private async void materialButton4_Click(object sender, EventArgs e)
