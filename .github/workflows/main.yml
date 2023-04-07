@@ -1,0 +1,17 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: windows-2019
+    steps:
+    - uses: actions/checkout@v3
+    - name: setup-msbuild
+      uses: microsoft/setup-msbuild@v1
+    - name: Setup Nuget.exe for use with actions
+      uses: Nuget/Setup-nuget@v1.0.2
+    - name: Restore Nuget Packages
+      run: nuget restore solution.sln
+    - name: Build Solution
+      run: msbuild solution.sln
