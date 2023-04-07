@@ -38,13 +38,13 @@ jobs:
         name: Debug
         path: Quest2-VRC.GUI\bin\Debug\
         retention-days: 5
-        name: 'Upload Artifact (Core DLL Debug)'
+      name: 'Upload Artifact (Core DLL Debug)'
       uses: actions/upload-artifact@v3
       with:
         name: Debug
         path: Quest2-VRC\bin\Debug\
         retention-days: 5
-        name: 'Upload Artifact (Core DLL Release)'
+      name: 'Upload Artifact (Core DLL Release)'
       uses: actions/upload-artifact@v3
       with:
         name: Debug
