@@ -28,5 +28,5 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: my-artifact
-        path: Quest2-VRC\Quest2-VRC.GUI\bin\Release\
+        path: Quest2-VRC.GUI\bin\Release\
         retention-days: 5
