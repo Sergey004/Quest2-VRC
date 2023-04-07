@@ -24,9 +24,17 @@ jobs:
       run: nuget restore Quest2-VRC.sln
     - name: Build Solution
       run: msbuild Quest2-VRC.sln /t:Build /p:Configuration=Release
-    - name: 'Upload Artifact'
+    - name: Build Solution
+      run: msbuild Quest2-VRC.sln /t:Build /p:Configuration=Debug
+    - name: 'Upload Artifact (Release)'
       uses: actions/upload-artifact@v3
       with:
-        name: my-artifact
+        name: Release
         path: Quest2-VRC.GUI\bin\Release\
+        retention-days: 5
+    - name: 'Upload Artifact (Debug)'
+      uses: actions/upload-artifact@v3
+      with:
+        name: Debug
+        path: Quest2-VRC.GUI\bin\Debug\
         retention-days: 5
