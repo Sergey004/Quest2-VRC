@@ -52,7 +52,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Icon.ico</ApplicationIcon>
+    <ApplicationIcon>
+    </ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
@@ -247,4 +248,8 @@
     <Error Condition="!Exists('..\packages\GitInfo.2.3.0\build\GitInfo.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\GitInfo.2.3.0\build\GitInfo.targets'))" />
   </Target>
   <Import Project="..\packages\GitInfo.2.3.0\build\GitInfo.targets" Condition="Exists('..\packages\GitInfo.2.3.0\build\GitInfo.targets')" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
 </Project>

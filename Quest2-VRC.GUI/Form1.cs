@@ -46,7 +46,7 @@ namespace Quest2_VRC
             materialCheckbox2.Enabled = false;
             materialTextBox1.Enabled = false;
         }
-        private void enadleeButtons()
+        private void enadleButtons()
         {
             materialButton1.Enabled = true;
             materialButton2.Enabled = true;
@@ -112,15 +112,18 @@ namespace Quest2_VRC
                         }
 
                     }
+                    MessageBox.Show("Device not found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+
 
                 });
-
-
+                enadleButtons();
+                materialLabel2.Invoke(new Action(() => materialLabel2.Text = "Status: Ready"));
             }
             else
             {
                 materialLabel2.Invoke(new Action(() => materialLabel2.Text = "Status: Ready"));
-                enadleeButtons();
+                enadleButtons();
                 materialButton2.Enabled = false;
                 MessageBox.Show("This function cannot be activated if HostIP is not 127.0.0.1", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -150,11 +153,13 @@ namespace Quest2_VRC
                     MessageBox.Show("Failed to start OSC", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             });
+                enadleButtons();
+                materialLabel2.Invoke(new Action(() => materialLabel2.Text = "Status: Ready"));
             }
             else
             {
                 materialLabel2.Invoke(new Action(() => materialLabel2.Text = "Status: Ready"));
-                enadleeButtons();
+                enadleButtons();
                 materialButton3.Enabled = false;
                 MessageBox.Show("This function cannot be activated if HostIP is not 127.0.0.1", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
@@ -208,12 +213,16 @@ namespace Quest2_VRC
                             MessageBox.Show("Failed to start ADB", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
+                    MessageBox.Show("Device not found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    
                 });
+                enadleButtons();
+                materialLabel2.Invoke(new Action(() => materialLabel2.Text = "Status: Ready"));
             }
             else
             {
                 materialLabel2.Invoke(new Action(() => materialLabel2.Text = "Status: Ready"));
-                enadleeButtons();
+                enadleButtons();
                 materialButton1.Enabled = false;
                 MessageBox.Show("This function cannot be activated if HostIP is not 127.0.0.1", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -261,7 +270,12 @@ namespace Quest2_VRC
                         MessageBox.Show("Failed to start ADB", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-            });
+                MessageBox.Show("Device not found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
+                
+            }); 
+            enadleButtons();
+            materialLabel2.Invoke(new Action(() => materialLabel2.Text = "Status: Ready"));
 
 
         }
