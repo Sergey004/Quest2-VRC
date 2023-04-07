@@ -21,6 +21,6 @@ jobs:
       env:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
     - name: Restore Nuget Packages
-      run: nuget restore solution.sln
+      run: nuget restore Quest2-VRC.sln
     - name: Build Solution
-      run: msbuild solution.sln
+      run: msbuild Quest2-VRC.sln
