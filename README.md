@@ -1,4 +1,6 @@
 # Quest2-VRC
+![workflow](https://github.com/Sergey004/Quest2-VRC/actions/workflows/main.yml/badge.svg)
+
 This program sending Quest 2 (As well as other headsets in the Quest line) battery information (Now also Wifi signal strength, especially for you, AirLink or VD users) to the VRChtat via the OSC protocol, also receive osc address to control OpenRGB
 
 OpenRGB functions tested only on MSI Mystic Light (AKA MSI-RGB)
