@@ -14,8 +14,12 @@ jobs:
     - uses: actions/checkout@v3
     - name: setup-msbuild
       uses: microsoft/setup-msbuild@v1
+      env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
     - name: Setup Nuget.exe for use with actions
       uses: Nuget/Setup-nuget@v1.0.2
+      env:
+          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
     - name: Restore Nuget Packages
       run: nuget restore solution.sln
     - name: Build Solution
