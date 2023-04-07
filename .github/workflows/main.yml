@@ -22,9 +22,9 @@ jobs:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
     - name: Restore Nuget Packages
       run: nuget restore Quest2-VRC.sln
-    - name: Build Solution
+    - name: Build Solution (Release)
       run: msbuild Quest2-VRC.sln /t:Build /p:Configuration=Release
-    - name: Build Solution
+    - name: Build Solution (Debug)
       run: msbuild Quest2-VRC.sln /t:Build /p:Configuration=Debug
     - name: 'Upload Artifact (Release)'
       uses: actions/upload-artifact@v3
@@ -37,4 +37,16 @@ jobs:
       with:
         name: Debug
         path: Quest2-VRC.GUI\bin\Debug\
+        retention-days: 5
+        name: 'Upload Artifact (Core DLL Debug)'
+      uses: actions/upload-artifact@v3
+      with:
+        name: Debug
+        path: Quest2-VRC\bin\Debug\
+        retention-days: 5
+        name: 'Upload Artifact (Core DLL Release)'
+      uses: actions/upload-artifact@v3
+      with:
+        name: Debug
+        path: Quest2-VRC\bin\Release\
         retention-days: 5
