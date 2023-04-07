@@ -6,6 +6,11 @@ jobs:
   build:
     runs-on: windows-2019
     steps:
+    - name: Save state
+      run: echo "{name}={value}" >> $GITHUB_STATE
+
+    - name: Set output
+      run: echo "{name}={value}" >> $GITHUB_OUTPUT
     - uses: actions/checkout@v3
     - name: setup-msbuild
       uses: microsoft/setup-msbuild@v1
