@@ -15,6 +15,8 @@ To build this application you will need:
 
 To start building the application, simply launch the solution in Visual Studio and run "Restore NuGet packages" to download dependencies
 
+## Or you can dowload preconpile version fron Githud Actions
+
 ## Using
 Add a parameter to the ExpressionParameters of your avatar by assigning
 
