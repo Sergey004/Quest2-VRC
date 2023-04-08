@@ -3,11 +3,13 @@
 
 This program sending Quest 2 (As well as other headsets in the Quest line) battery information (Now also Wifi signal strength, especially for you, AirLink or VD users) to the VRChtat via the OSC protocol, also receive osc address to control OpenRGB
 
+If you see a program with approximately the same functionality, it is either a fork or a copy, this program is the only one that uses ADB and OSC at the same time
+
 OpenRGB functions tested only on MSI Mystic Light (AKA MSI-RGB)
 
 [Avatars with support for this program](Avatars%20with%20Quest2-VRC%20support.md)
 
-Available also in [CLI](https://github.com/Sergey004/Quest2-VRC/tree/cli_ver) form 
+Available also in [CLI](https://github.com/Sergey004/Quest2-VRC/tree/cli_ver) form (unmaintained)
 
 ## Building from source
 To build this application you will need:
@@ -16,6 +18,12 @@ To build this application you will need:
 To start building the application, simply launch the solution in Visual Studio and run "Restore NuGet packages" to download dependencies
 
 ## Or you can dowload preconpile version fron Github Actions
+
+There are two versions:
+
+Core version where the basic methods and the possibility to use them in other projects (Debug and Release)
+
+GUI version where you can use this version right out of the box
 
 ## Using
 Add a parameter to the ExpressionParameters of your avatar by assigning
