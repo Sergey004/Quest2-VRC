@@ -1,6 +1,8 @@
 # Quest2-VRC
 ![workflow](https://github.com/Sergey004/Quest2-VRC/actions/workflows/main.yml/badge.svg)
 
+![image](https://user-images.githubusercontent.com/11889498/230911077-48b58669-f37f-433d-b6ae-17bf2af58db9.png)
+
 This program sending Quest 2 (As well as other headsets in the Quest line) battery information (Now also Wifi signal strength, especially for you, AirLink or VD users) to the VRChtat via the OSC protocol, also receive osc address to control OpenRGB
 
 If you see a program with approximately the same functionality, it is either a fork or a copy, this program is the only one that uses ADB and OSC at the same time
@@ -52,6 +54,7 @@ For receiving
 Connect your Quest 2 (Or another headset from the Quest range) to your computer in developer mode
 
 And hope for the best that this program will work for you
+
 
 
 ## Dependencies
