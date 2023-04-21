@@ -47,12 +47,9 @@ namespace Quest2_Native
                 
                 var Hbat_receiver = Battery.ChargeLevel;
 
-                Java.Lang.Process process = Runtime.GetRuntime()?.Exec("dumpsys", null,null);
-                string result = process?.InputStream.ToString();
-                Console.WriteLine(result);
 
-                var Lbat_receiver = "100";
-                var Rbat_receiver = "100";
+                var Lbat_receiver = "100"; //Plaseholder
+                var Rbat_receiver = "100"; //Plaseholder
 
 
 
