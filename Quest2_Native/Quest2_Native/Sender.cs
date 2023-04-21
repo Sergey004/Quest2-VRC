@@ -46,8 +46,16 @@ namespace Quest2_Native
 
                 
                 var Hbat_receiver = Battery.ChargeLevel;
-                string Rbat_receiver = "100";
-                string Lbat_receiver = "100";
+
+                Java.Lang.Process process = Runtime.GetRuntime()?.Exec("dumpsys", null,null);
+                string result = process?.InputStream.ToString();
+                Console.WriteLine(result);
+
+                var Lbat_receiver = "100";
+                var Rbat_receiver = "100";
+
+
+
 
                 var Hbat_match = Regex.Match(Hbat_receiver.ToString(), @"\d+", RegexOptions.RightToLeft);
                 var Rbat_match = Regex.Match(Rbat_receiver.ToString(), @"\d+", RegexOptions.RightToLeft);
@@ -94,7 +102,7 @@ namespace Quest2_Native
 
             }
 
-
+            
         }
 
         
