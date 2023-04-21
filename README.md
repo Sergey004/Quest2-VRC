@@ -13,6 +13,8 @@ OpenRGB functions tested only on MSI Mystic Light (AKA MSI-RGB)
 
 Available also in [CLI](https://github.com/Sergey004/Quest2-VRC/tree/cli_ver) form (unmaintained)
 
+Also for Quest Native [Xamarin](https://github.com/Sergey004/Quest2-VRC/tree/xamarin) (POC State)
+
 ## Building from source
 To build this application you will need:
 - Visual Studio 2019 or later
