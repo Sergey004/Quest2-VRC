@@ -72,8 +72,6 @@ namespace Quest2_VRC
                 await Task.Run(() =>
                 {
 
-
-
                     if (materialSwitch1.Checked == true)
                     {
                         try
@@ -112,13 +110,8 @@ namespace Quest2_VRC
                         }
 
                     }
-                    MessageBox.Show("Device not found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-
-
 
                 });
-                enadleButtons();
-                materialLabel2.Invoke(new Action(() => materialLabel2.Text = "Status: Ready"));
             }
             else
             {
@@ -213,7 +206,7 @@ namespace Quest2_VRC
                             MessageBox.Show("Failed to start ADB", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
-                    MessageBox.Show("Device not found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    
                     
                 });
                 enadleButtons();
@@ -270,7 +263,7 @@ namespace Quest2_VRC
                         MessageBox.Show("Failed to start ADB", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-                MessageBox.Show("Device not found", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                
                 
                 
             }); 
