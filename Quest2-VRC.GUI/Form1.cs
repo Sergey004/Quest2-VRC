@@ -313,13 +313,7 @@ namespace Quest2_VRC
             }
             else
             {
-                Process process = new Process();
-                ProcessStartInfo startInfo = new ProcessStartInfo();
-                startInfo.WindowStyle = ProcessWindowStyle.Hidden;
-                startInfo.FileName = "cmd.exe";
-                startInfo.Arguments = "/C platform-tools\\adb.exe kill-server";
-                process.StartInfo = startInfo;
-                process.Start();
+                ADB.StopADB();
             }
 
         }

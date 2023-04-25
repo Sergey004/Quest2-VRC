@@ -145,6 +145,19 @@ namespace Quest2_VRC
 
             return deviceip;
         }
+        public static void StopADB()
+        {
+            if (!AdbServer.Instance.GetStatus().IsRunning)
+            {
+                // do nothing
+            }
+            else
+            {
+                
+                client.KillAdb();
+            }
+
+        }
 
     }
 }
