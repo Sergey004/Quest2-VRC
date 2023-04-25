@@ -153,7 +153,6 @@ namespace Quest2_VRC
             }
             else
             {
-                
                 client.KillAdb();
             }
 

@@ -11,20 +11,18 @@ jobs:
     - name: Set output
       run: echo "{name}={value}" >> $GITHUB_OUTPUT
     - uses: actions/checkout@v3
-    - name: setup-msbuild
-      uses: microsoft/setup-msbuild@v1
-      env:
-          ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
-    - name: Setup Nuget.exe for use with actions
-      uses: Nuget/Setup-nuget@v1.0.2
+    - name: Install .NET 7 SDK
+      uses: actions/setup-dotnet@v3
+      with:
+           dotnet-version: 7.x.x
       env:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
     - name: Restore Nuget Packages
-      run: nuget restore Quest2-VRC.sln
+      run: dotnet restore Quest2-VRC.sln
     - name: Build Solution (Release)
-      run: msbuild Quest2-VRC.sln /t:Build /p:Configuration=Release
+      run: dotnet build Quest2-VRC.sln --configuration Release --no-restore
     - name: Build Solution (Debug)
-      run: msbuild Quest2-VRC.sln /t:Build /p:Configuration=Debug
+      run: dotnet build Quest2-VRC.sln --configuration Debug --no-restore
     - name: Upload Artifact (Release)
       uses: actions/upload-artifact@v3
       with:

@@ -67,6 +67,7 @@ And hope for the best that this program will work for you
 - [OpenRGB.NET](https://github.com/diogotr7/OpenRGB.NET)
 - [MaterialSkin.2](https://github.com/leocb/MaterialSkin)
 - [GitInfo](https://github.com/devlooped/GitInfo)
+- [NetBeauty2](https://github.com/nulastudio/NetBeauty2)
 
 Sending code based on modified source code from https://github.com/KaleidonKep99/VRChat_CS_OSCTest
 
