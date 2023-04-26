@@ -396,14 +396,5 @@ namespace Quest2_VRC
             f2.ShowDialog();
         }
 
-        private void materialLabel3_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start(new ProcessStartInfo
-            {
-                FileName = ThisAssembly.Git.RepositoryUrl + "/commit/" + ThisAssembly.Git.Commit,
-                UseShellExecute = true
-            });
-
-        }
     }
 }

@@ -64,7 +64,7 @@
             materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
             materialCard1.Name = "materialCard1";
             materialCard1.Padding = new System.Windows.Forms.Padding(16);
-            materialCard1.Size = new System.Drawing.Size(180, 138);
+            materialCard1.Size = new System.Drawing.Size(180, 137);
             materialCard1.TabIndex = 0;
             // 
             // materialButton6
@@ -337,7 +337,7 @@
             materialCheckbox1.CheckState = System.Windows.Forms.CheckState.Checked;
             materialCheckbox1.Cursor = System.Windows.Forms.Cursors.Hand;
             materialCheckbox1.Depth = 0;
-            materialCheckbox1.Location = new System.Drawing.Point(785, 287);
+            materialCheckbox1.Location = new System.Drawing.Point(803, 288);
             materialCheckbox1.Margin = new System.Windows.Forms.Padding(0);
             materialCheckbox1.MouseLocation = new System.Drawing.Point(-1, -1);
             materialCheckbox1.MouseState = MaterialSkin.MouseState.HOVER;
@@ -353,24 +353,22 @@
             // materialLabel3
             // 
             materialLabel3.AutoSize = true;
-            materialLabel3.Cursor = System.Windows.Forms.Cursors.Hand;
             materialLabel3.Depth = 0;
             materialLabel3.Font = new System.Drawing.Font("Roboto", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            materialLabel3.Location = new System.Drawing.Point(729, 569);
+            materialLabel3.Location = new System.Drawing.Point(755, 569);
             materialLabel3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             materialLabel3.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel3.Name = "materialLabel3";
             materialLabel3.Size = new System.Drawing.Size(57, 19);
             materialLabel3.TabIndex = 11;
             materialLabel3.Text = "Commit";
-            materialLabel3.Click += materialLabel3_Click;
             // 
             // Form1
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackColor = System.Drawing.SystemColors.Control;
-            ClientSize = new System.Drawing.Size(932, 605);
+            ClientSize = new System.Drawing.Size(932, 604);
             Controls.Add(materialLabel3);
             Controls.Add(materialCheckbox1);
             Controls.Add(materialCard2);
