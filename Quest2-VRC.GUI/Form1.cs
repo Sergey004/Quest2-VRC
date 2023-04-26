@@ -206,8 +206,8 @@ namespace Quest2_VRC
                             MessageBox.Show("Failed to start ADB", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
-
-
+                    
+                    
                 });
                 enadleButtons();
                 materialLabel2.Invoke(new Action(() => materialLabel2.Text = "Status: Ready"));
@@ -263,10 +263,10 @@ namespace Quest2_VRC
                         MessageBox.Show("Failed to start ADB", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
-
-
-
-            });
+                
+                
+                
+            }); 
             enadleButtons();
             materialLabel2.Invoke(new Action(() => materialLabel2.Text = "Status: Ready"));
 
@@ -396,14 +396,5 @@ namespace Quest2_VRC
             f2.ShowDialog();
         }
 
-        private void materialLabel3_Click(object sender, EventArgs e)
-        {
-            System.Diagnostics.Process.Start(new ProcessStartInfo
-            {
-                FileName = ThisAssembly.Git.RepositoryUrl + "/commit/" + ThisAssembly.Git.Commit,
-                UseShellExecute = true
-            });
-
-        }
     }
 }
