@@ -7,7 +7,7 @@ This program sending Quest 2 (As well as other headsets in the Quest line) batte
 ### Available features 
 
 - [x] HMD Status
-- [ ] L\R Conrroller status
+- [ ] L\R Conrroller status (impossible because the dumpsys OVRRemoteService produces a null on the device itself)
 - [ ] Wifi signal
 
 If you see a program with approximately the same functionality, it is either a fork or a copy, this program is the only one that uses ADB and OSC at the same time
