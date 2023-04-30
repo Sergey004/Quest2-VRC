@@ -4,13 +4,10 @@ using Xamarin.Essentials;
 using System.Net.Sockets;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-
 using static Quest2_Native.Logger;
 using static Quest2_Native.PacketSender;
 using System.IO;
-using Android.Icu.Util;
-using Xamarin.Forms;
-using Java.Lang;
+
 
 namespace Quest2_Native
 {
@@ -37,31 +34,31 @@ namespace Quest2_Native
             {
 
                 string HMDBat = "HMDBat";
-                string ControllerBatL = "ControllerBatL";
-                string ControllerBatR = "ControllerBatR";
+                //string ControllerBatL = "ControllerBatL";
+                //string ControllerBatR = "ControllerBatR";
 
                 int Hbatlevelint = 0;
-                int Rbatlevelint = 0;
-                int Lbatlevelint = 0;
+                //int Rbatlevelint = 0;
+                //int Lbatlevelint = 0;
 
-                
+
                 var Hbat_receiver = Battery.ChargeLevel;
 
 
-                var Lbat_receiver = "100"; //Plaseholder
-                var Rbat_receiver = "100"; //Plaseholder
+                //var Lbat_receiver = "100"; //Plaseholder
+                //var Rbat_receiver = "100"; //Plaseholder
 
 
 
 
                 var Hbat_match = Regex.Match(Hbat_receiver.ToString(), @"\d+", RegexOptions.RightToLeft);
-                var Rbat_match = Regex.Match(Rbat_receiver.ToString(), @"\d+", RegexOptions.RightToLeft);
-                var Lbat_match = Regex.Match(Lbat_receiver.ToString(), @"\d+", RegexOptions.RightToLeft);
+                //var Rbat_match = Regex.Match(Rbat_receiver.ToString(), @"\d+", RegexOptions.RightToLeft);
+                //var Lbat_match = Regex.Match(Lbat_receiver.ToString(), @"\d+", RegexOptions.RightToLeft);
 
 
                 Hbatlevelint = int.Parse(Hbat_match.Value);
-                Rbatlevelint = int.Parse(Rbat_match.Value);
-                Lbatlevelint = int.Parse(Lbat_match.Value);
+                //Rbatlevelint = int.Parse(Rbat_match.Value);
+                //Lbatlevelint = int.Parse(Lbat_match.Value);
 
                 if (Hbatlevelint < 25)
                 {
@@ -76,32 +73,49 @@ namespace Quest2_Native
                     }
 
                 }
-                if (Rbatlevelint < 25)
-                {
-                    LogToConsole("Right controller is discharged, disabled or not connected");
-                }
-                if (Lbatlevelint < 25)
-                {
-                    LogToConsole("Left controller is discharged, disabled or not connected");
+                //if (Rbatlevelint < 25)
+                //{
+                //    LogToConsole("Right controller is discharged, disabled or not connected");
+                //}
+                //if (Lbatlevelint < 25)
+                //{
+                //    LogToConsole("Left controller is discharged, disabled or not connected");
 
-                }
+                //}
 
-                VRChatMessage Msg1 = new VRChatMessage(HMDBat, (float)Hbatlevelint);
-                VRChatMessage Msg2 = new VRChatMessage(ControllerBatL, (float)Lbatlevelint / 100);
-                VRChatMessage Msg3 = new VRChatMessage(ControllerBatR, (float)Rbatlevelint / 100);
+                VRChatMessage Msg1 = new VRChatMessage(HMDBat, (float)Hbatlevelint / 100);
+                //VRChatMessage Msg2 = new VRChatMessage(ControllerBatL, (float)Lbatlevelint / 100);
+                //VRChatMessage Msg3 = new VRChatMessage(ControllerBatR, (float)Rbatlevelint / 100);
                 VRChatMessage Msg4 = new VRChatMessage("LowHMDBat", LowHMDBat);
-                SendPacket(Msg1, Msg2, Msg3, Msg4);
+                SendPacket(Msg1, Msg4);
 
-                LogToConsole("Sending HMD status", Msg1, Msg2, Msg3, Msg4);
+                LogToConsole("Sending HMD status", Msg1, Msg4);
 
                 await Task.Delay(3000);
 
 
             }
-
-            
         }
+        //public static void CtrLeft() 
+        //{
+        //    Java.Lang.Process process;
+        //    process = Java.Lang.Runtime.GetRuntime().Exec("dumpsys"); WORKS ONLY IN ADB
+        //    process.WaitFor();
+        //    var log = process.InputStream;
+        //    using (StreamReader sr = new StreamReader(log))
+        //    {
+        //        string line;
+        //        // Read and display lines from the file until the end of
+        //        // the file is reached.
+        //        while ((line = sr.ReadLine()) != null)
+        //        {
+        //            System.Console.WriteLine(line);
 
-        
+        //        }
+
+        //   }
+
+        //}
     }
+
 }

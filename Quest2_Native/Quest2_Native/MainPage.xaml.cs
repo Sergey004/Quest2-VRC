@@ -1,7 +1,11 @@
-﻿using System;
+﻿using Java.IO;
+using System;
+using System.Diagnostics;
+using System.IO;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
 using Xamarin.Forms;
+using static Quest2_Native.Sender;
 
 namespace Quest2_Native
 {
@@ -47,6 +51,12 @@ namespace Quest2_Native
             System.Diagnostics.Process.GetCurrentProcess().Kill();
         }
 
+        private void button3_Click(object sender, EventArgs e)
+        {
+           //CtrLeft();
 
+
+
+        }
     }
 }
