@@ -1,6 +1,7 @@
 ﻿using AdvancedSharpAdbClient;
 using AdvancedSharpAdbClient.Exceptions;
 using Bespoke.Osc;
+using Newtonsoft.Json.Linq;
 using System;
 using System.IO;
 using System.Linq;
@@ -31,6 +32,9 @@ namespace Quest2_VRC
             // Create a bogus port for the client
             OscPacket.UdpClient = new UdpClient(Uport);
 
+            string json = File.ReadAllText("vars.json");
+            JObject vars = JObject.Parse(json);
+
             bool LowHMDBat = false;
             bool HMDCrit = false;
             bool audioPlayedHMD = false;
@@ -41,13 +45,9 @@ namespace Quest2_VRC
             {
                 try
                 {
-                    var dic = File.ReadAllLines("vars.txt")
-                    .Select(l => l.Split(new[] { '=' }))
-                    .ToDictionary(s => s[0].Trim(), s => s[1].Trim());
-
-                    string HMDBat = dic["HMDBat"];
-                    string ControllerBatL = dic["ControllerBatL"];
-                    string ControllerBatR = dic["ControllerBatR"];
+                    string HMDBat = (string)vars["HMDBat"];
+                    string ControllerBatL = (string)vars["ControllerBatL"];
+                    string ControllerBatR = (string)vars["ControllerBatR"];
 
                     int Hbatlevelint = 0;
                     int Rbatlevelint = 0;

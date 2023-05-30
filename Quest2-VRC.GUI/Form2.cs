@@ -1,9 +1,8 @@
 ﻿using MaterialSkin;
 using MaterialSkin.Controls;
+using Newtonsoft.Json.Linq;
 using System;
-using System.Data;
 using System.IO;
-using System.Linq;
 using System.Windows.Forms;
 using static Quest2_VRC.PacketSender;
 
@@ -25,44 +24,40 @@ namespace Quest2_VRC
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            var dic = File.ReadAllLines("vars.txt")
-                    .Select(l => l.Split(new[] { '=' }))
-                    .ToDictionary(s => s[0].Trim(), s => s[1].Trim());
 
-            string HMDBat = dic["HMDBat"];
-            string ControllerBatL = dic["ControllerBatL"];
-            string ControllerBatR = dic["ControllerBatR"];
-            materialSlider1.Text = dic["HMDBat"];
-            materialSlider2.Text = dic["ControllerBatL"];
-            materialSlider3.Text = dic["ControllerBatR"];
+
+            string json = File.ReadAllText("vars.json");
+            JObject vars = JObject.Parse(json);
+            materialSlider1.Text = (string)vars["HMDBat"];
+            materialSlider2.Text = (string)vars["ControllerBatL"];
+            materialSlider3.Text = (string)vars["ControllerBatR"];
         }
         private void materialSlider1_onValueChanged(object sender, int newValue)
         {
-            var dic = File.ReadAllLines("vars.txt")
-                    .Select(l => l.Split(new[] { '=' }))
-                    .ToDictionary(s => s[0].Trim(), s => s[1].Trim());
+            string json = File.ReadAllText("vars.json");
+            JObject vars = JObject.Parse(json);
 
-            string HMDBat = dic["HMDBat"];
+            string HMDBat = (string)vars["HMDBat"];
             VRChatMessage Msg_emu1 = new VRChatMessage(HMDBat, (float)newValue / 100);
             SendPacket(Msg_emu1);
         }
 
         private void materialSlider2_onValueChanged(object sender, int newValue)
         {
-            var dic = File.ReadAllLines("vars.txt")
-                    .Select(l => l.Split(new[] { '=' }))
-                    .ToDictionary(s => s[0].Trim(), s => s[1].Trim());
-            string ControllerBatL = dic["ControllerBatL"];
+            string json = File.ReadAllText("vars.json");
+            JObject vars = JObject.Parse(json);
+
+            string ControllerBatL = (string)vars["ControllerBatL"];
             VRChatMessage Msg_emu2 = new VRChatMessage(ControllerBatL, (float)newValue / 100);
             SendPacket(Msg_emu2);
         }
 
         private void materialSlider3_onValueChanged(object sender, int newValue)
         {
-            var dic = File.ReadAllLines("vars.txt")
-                    .Select(l => l.Split(new[] { '=' }))
-                    .ToDictionary(s => s[0].Trim(), s => s[1].Trim());
-            string ControllerBatR = dic["ControllerBatR"];
+            string json = File.ReadAllText("vars.json");
+            JObject vars = JObject.Parse(json);
+
+            string ControllerBatR = (string)vars["ControllerBatR"];
             VRChatMessage Msg_emu3 = new VRChatMessage(ControllerBatR, (float)newValue / 100);
             SendPacket(Msg_emu3);
 
@@ -82,13 +77,12 @@ namespace Quest2_VRC
         }
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
         {
-            var dic = File.ReadAllLines("vars.txt")
-                    .Select(l => l.Split(new[] { '=' }))
-                    .ToDictionary(s => s[0].Trim(), s => s[1].Trim());
+            string json = File.ReadAllText("vars.json");
+            JObject vars = JObject.Parse(json);
 
-            string HMDBat = dic["HMDBat"];
-            string ControllerBatL = dic["ControllerBatL"];
-            string ControllerBatR = dic["ControllerBatR"];
+            string HMDBat = (string)vars["HMDBat"];
+            string ControllerBatL = (string)vars["ControllerBatL"];
+            string ControllerBatR = (string)vars["ControllerBatR"];
             VRChatMessage Msg_emu1 = new VRChatMessage(HMDBat, 0f);
             VRChatMessage Msg_emu2 = new VRChatMessage(ControllerBatL, 0f);
             VRChatMessage Msg_emu3 = new VRChatMessage(ControllerBatR, 0f);

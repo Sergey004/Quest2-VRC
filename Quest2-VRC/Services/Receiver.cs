@@ -1,11 +1,9 @@
 ﻿using Bespoke.Osc;
+using Newtonsoft.Json.Linq;
 using Quest2_VRC.Services;
 using System;
-using System.Data;
 using System.IO;
-using System.Linq;
 using System.Net;
-using static Quest2_VRC.PacketSender;
 
 namespace Quest2_VRC
 {
@@ -16,13 +14,13 @@ namespace Quest2_VRC
         public static async void Run()
         {
             RGBControler.SendRGBData(dataInt); //Init OpenRGB
-            var dic = File.ReadAllLines("vars.txt")
-            .Select(l => l.Split(new[] { '=' }))
-            .ToDictionary(s => s[0].Trim(), s => s[1].Trim());
-            string Eyesmode = dic["Receive_addr"];
-            string EyesmodeTest = dic["Receive_addr_test"];
-            int ReceivePort = int.Parse(dic["ReceivePort"]);
-            var IP = IPAddress.Parse(dic["HostIP"]);
+            string json = File.ReadAllText("vars.json");
+            JObject vars = JObject.Parse(json);
+
+            string Eyesmode = (string)vars["Receive_addr"];
+            string EyesmodeTest = (string)vars["Receive_addr_test"];
+            int ReceivePort = int.Parse((string)vars["ReceivePort"]);
+            var IP = IPAddress.Parse((string)vars["HostIP"]);
 
             OscServer oscServer;
             oscServer = new OscServer((Bespoke.Common.Net.TransportType)TransportType.Udp, IP, ReceivePort);

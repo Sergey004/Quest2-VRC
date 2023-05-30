@@ -1,10 +1,8 @@
 ﻿using Bespoke.Osc;
+using Newtonsoft.Json.Linq;
 using System;
 using System.IO;
-using System.Linq;
 using System.Net;
-using System.Security;
-using System.Web;
 using static Quest2_VRC.Logger;
 
 namespace Quest2_VRC
@@ -12,15 +10,16 @@ namespace Quest2_VRC
 
     public class PacketSender
     {
-        
+
 
         static public void SendPacket(params VRChatMessage[] Params)
         {
-            var dic = File.ReadAllLines("vars.txt")
-           .Select(l => l.Split(new[] { '=' }))
-           .ToDictionary(s => s[0].Trim(), s => s[1].Trim());
-            int SendPort = int.Parse(dic["SendPort"]);
-            var IP = IPAddress.Parse(dic["HostIP"]);
+            string json = File.ReadAllText("vars.json");
+            JObject vars = JObject.Parse(json);
+
+
+            int SendPort = int.Parse((string)vars["SendPort"]);
+            var IP = IPAddress.Parse((string)vars["HostIP"]);
             IPEndPoint VRChat = new IPEndPoint(IP, SendPort);
             foreach (var Param in Params)
             {

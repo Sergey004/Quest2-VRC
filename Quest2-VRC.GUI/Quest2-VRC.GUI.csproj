@@ -76,7 +76,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="MaterialSkin.2" Version="2.3.1" />
-    <PackageReference Include="nulastudio.NetBeauty" Version="2.1.1" />
+    <PackageReference Include="nulastudio.NetBeauty" Version="2.1.2.1" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Quest2-VRC\Quest2-VRC.Core.csproj" />

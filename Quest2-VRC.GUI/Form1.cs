@@ -1,8 +1,8 @@
 ﻿using MaterialSkin;
 using MaterialSkin.Controls;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Data;
-using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -63,11 +63,10 @@ namespace Quest2_VRC
         {
             disableButtons();
             materialLabel2.Text = "Status: Executing...";
-            var dic = File.ReadAllLines("vars.txt")
-                    .Select(l => l.Split(new[] { '=' }))
-                    .ToDictionary(s => s[0].Trim(), s => s[1].Trim());
+            string json = File.ReadAllText("vars.json");
+            JObject vars = JObject.Parse(json);
 
-            if (dic["HostIP"] == "127.0.0.1")
+            if ((string)vars["HostIP"] == "127.0.0.1")
             {
                 await Task.Run(() =>
                 {
@@ -126,11 +125,10 @@ namespace Quest2_VRC
         {
             materialLabel2.Text = "Status: Executing...";
             disableButtons();
-            var dic = File.ReadAllLines("vars.txt")
-                    .Select(l => l.Split(new[] { '=' }))
-                    .ToDictionary(s => s[0].Trim(), s => s[1].Trim());
+            string json = File.ReadAllText("vars.json");
+            JObject vars = JObject.Parse(json);
 
-            if (dic["HostIP"] == "127.0.0.1")
+            if ((string)vars["HostIP"] == "127.0.0.1")
             {
                 await Task.Run(() =>
             {
@@ -162,10 +160,10 @@ namespace Quest2_VRC
         private async void materialButton1_Click(object sender, EventArgs e)
         {
             materialLabel2.Text = "Status: Executing...";
-            var dic = File.ReadAllLines("vars.txt")
-                    .Select(l => l.Split(new[] { '=' }))
-                    .ToDictionary(s => s[0].Trim(), s => s[1].Trim());
-            if (dic["HostIP"] == "127.0.0.1")
+            string json = File.ReadAllText("vars.json");
+            JObject vars = JObject.Parse(json);
+
+            if ((string)vars["HostIP"] == "127.0.0.1")
             {
                 disableButtons();
                 await Task.Run(() =>
