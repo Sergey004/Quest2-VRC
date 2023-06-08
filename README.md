@@ -32,7 +32,7 @@ GUI version where you can use this version right out of the box
 ## Using
 Add a parameter to the ExpressionParameters of your avatar by assigning
 
-- Replace 127.0.0.1 in the vars.txt file with the IP address of your headset if you are using VRChat in standalone mode
+- Replace 127.0.0.1 in the vars.json file with the IP address of your headset if you are using VRChat in standalone mode
 
 For sending:
 - You can replace ```HMDBat```, ```ControllerBatL```, ```ControllerBatR```, ```SendPort``` with your own parameters is vars.txt
