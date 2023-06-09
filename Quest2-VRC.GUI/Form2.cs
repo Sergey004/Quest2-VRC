@@ -17,6 +17,7 @@ namespace Quest2_VRC
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Amber800, Primary.Amber900, Primary.Cyan500, Accent.Cyan700, TextShade.WHITE);
+            materialComboBox1.Items.AddRange(new string[] { "bool", "int", "float", "string" });
         }
 
 
@@ -96,6 +97,31 @@ namespace Quest2_VRC
             string inputbox = "input";
             VRChatMessage TestMsg = new VRChatMessage(inputbox, materialTextBox1.Text);
             SendPacket(TestMsg);
+        }
+
+        private void materialButton2_Click(object sender, EventArgs e)
+        {
+            if (materialComboBox1.SelectedIndex.ToString() == "1")
+            {
+                VRChatMessage int1 = new VRChatMessage(materialTextBox2.Text, int.Parse(materialTextBox3.Text));
+                SendPacket(int1);
+            }
+            if (materialComboBox1.SelectedIndex.ToString() == "2")
+            {
+                VRChatMessage float1 = new VRChatMessage(materialTextBox2.Text, float.Parse(materialTextBox3.Text));
+                SendPacket(float1);
+            }
+            if (materialComboBox1.SelectedIndex.ToString() == "0")
+            {
+                VRChatMessage bool1 = new VRChatMessage(materialTextBox2.Text, bool.Parse(materialTextBox3.Text));
+                SendPacket(bool1);
+            }
+            if (materialComboBox1.SelectedIndex.ToString() == "3")
+            {
+                VRChatMessage string1 = new VRChatMessage(materialTextBox2.Text, materialTextBox3.Text);
+                SendPacket(string1);
+            }
+
         }
     }
 }
