@@ -5,9 +5,11 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Net;
+using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
+using Zeroconf;
 
 
 
@@ -144,6 +146,28 @@ namespace Quest2_VRC
             deviceip = Regex.Match(ipquery.ToString(), @"\S*\d+", RegexOptions.RightToLeft).ToString();
 
             return deviceip;
+        }
+        public static async Task<string> GetZeroConfIP()
+        {
+            string deviceip = null;
+            var adbtls = await ZeroconfResolver.ResolveAsync("_adb-tls-connect._tcp.local.");
+            foreach (var headset in adbtls)
+            {
+                foreach (IService service in headset.Services.Values)
+                {
+                    deviceip = headset.IPAddress + ":" + service.Port;
+                }
+            }
+            var secadb = await ZeroconfResolver.ResolveAsync("_adb_secure_connect._tcp.local");
+            foreach (var headset in secadb)
+            {
+                foreach (IService service in headset.Services.Values)
+                {
+                    deviceip = headset.IPAddress + ":" + service.Port;
+                }
+            }
+
+            return await Task.FromResult(deviceip);
         }
         public static void StopADB()
         {

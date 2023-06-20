@@ -318,7 +318,7 @@
             materialSwitch1.AutoSize = true;
             materialSwitch1.Cursor = System.Windows.Forms.Cursors.Hand;
             materialSwitch1.Depth = 0;
-            materialSwitch1.Location = new System.Drawing.Point(16, 96);
+            materialSwitch1.Location = new System.Drawing.Point(20, 94);
             materialSwitch1.Margin = new System.Windows.Forms.Padding(0);
             materialSwitch1.MouseLocation = new System.Drawing.Point(-1, -1);
             materialSwitch1.MouseState = MaterialSkin.MouseState.HOVER;

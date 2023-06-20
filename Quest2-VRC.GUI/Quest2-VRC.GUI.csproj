@@ -71,12 +71,12 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="GitInfo" Version="2.3.0">
+    <PackageReference Include="GitInfo" Version="3.1.0">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="MaterialSkin.2" Version="2.3.1" />
-    <PackageReference Include="nulastudio.NetBeauty" Version="2.1.2.1" />
+    <PackageReference Include="nulastudio.NetBeauty" Version="2.1.3.3" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Quest2-VRC\Quest2-VRC.Core.csproj" />

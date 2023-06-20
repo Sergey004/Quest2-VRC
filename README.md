@@ -5,7 +5,6 @@
 
 This program sending Quest 2 (As well as other headsets in the Quest line) battery information (Now also Wifi signal strength, especially for you, AirLink or VD users) to the VRChtat via the OSC protocol, also receive osc address to control OpenRGB
 
-If you see a program with approximately the same functionality, it is either a fork or a copy, this program is the only one that uses ADB and OSC at the same time
 
 OpenRGB functions tested only on MSI Mystic Light (AKA MSI-RGB)
 
@@ -68,6 +67,7 @@ And hope for the best that this program will work for you
 - [MaterialSkin.2](https://github.com/leocb/MaterialSkin)
 - [GitInfo](https://github.com/devlooped/GitInfo)
 - [NetBeauty2](https://github.com/nulastudio/NetBeauty2)
+- [ZeroConf](https://github.com/novotnyllc/Zeroconf)
 
 Sending code based on modified source code from https://github.com/KaleidonKep99/VRChat_CS_OSCTest
 

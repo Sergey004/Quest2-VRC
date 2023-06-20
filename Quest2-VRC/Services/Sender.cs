@@ -68,7 +68,7 @@ namespace Quest2_VRC
                         ConsoleOutputReceiver Wifi_Singal = new ConsoleOutputReceiver();
                         client.ExecuteRemoteCommand("dumpsys wifi | grep RSSI:", device, Wifi_Singal);
                         var Wifi_match = Regex.Match(Wifi_Singal.ToString(), @"RSSI: \S*\d+");
-                        WifiRSSI = Wifi_match.ToString().Substring(6);
+                        WifiRSSI = Wifi_match.ToString()[6..];
                         WifiInt = int.Parse(WifiRSSI);
 
                     }

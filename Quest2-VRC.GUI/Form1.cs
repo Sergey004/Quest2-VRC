@@ -75,8 +75,9 @@ namespace Quest2_VRC
                     {
                         try
                         {
-                            var questip = materialTextBox1.Text;
-                            if (ADB.StartADB(true, true, questip, false, materialCheckbox2.Checked))
+                            var questip = "null";
+                            materialTextBox1.Invoke(new Action(() => questip =     materialTextBox1.Text));
+                            if (ADB.StartADB(true, true, questip, true, materialCheckbox2.Checked))
                             {
 
                                 materialLabel2.Invoke(new Action(() => materialLabel2.Text = "Status: ADB is running"));
@@ -174,7 +175,7 @@ namespace Quest2_VRC
                         try
                         {
                             var questip = materialTextBox1.Text;
-                            //questip += ":5555"; ;
+                           
                             if (ADB.StartADB(false, true, questip, true, materialCheckbox2.Checked))
                             {
                                 materialLabel2.Invoke(new Action(() => materialLabel2.Text = "Status: Receive only"));
@@ -231,7 +232,7 @@ namespace Quest2_VRC
                     try
                     {
                         var questip = materialTextBox1.Text;
-                        //questip += ":5555";
+                        
                         if (ADB.StartADB(true, false, questip, true, materialCheckbox2.Checked))
                         {
                             materialLabel2.Invoke(new Action(() => materialLabel2.Text = "Status: Send only"));
@@ -314,39 +315,33 @@ namespace Quest2_VRC
             materialTextBox1.Enabled = false;
             if (materialSwitch1.Checked)
             {
-                MessageBox.Show("Connect your Quest to your computer and click \"OK\" to continue", "Restarting ADB in TCPIP mode", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                if (Check_Device.CheckDevice())
+                materialLabel2.Text = "Status: In TCPIP mode";
+                DialogResult dialogResult1 = MessageBox.Show("Do you want the program to find the IP address by old method or by using ZeroConf\nSearching through ZeroConf requires installing an additional program \"https://github.com/thedroidgeek/oculus-wireless-adb\"\nYes for ZeroConf, No for old method", "Restarting ADB in TCPIP mode", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (dialogResult1 == DialogResult.Yes)
                 {
-                    ADB.StartTCPIP();
-                    await Task.Delay(3000);
-                    materialLabel2.Text = "Status: In TCPIP mode";
-                    MessageBox.Show("ADB restarted in TCPIP mode, ready to wireless conection", "Restarting ADB in TCPIP mode", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    DialogResult dialogResult = MessageBox.Show("Do you want the program to find the IP address of the headset itself?", "Restarting ADB in TCPIP mode", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
-                    if (dialogResult == DialogResult.Yes)
+                    MessageBox.Show("Don't forget to wake up your device", "Restarting ADB in TCPIP mode", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    materialTextBox1.Text = await ADB.GetZeroConfIP();
+                }
+                else if (dialogResult1 == DialogResult.No)
+                {
+                    MessageBox.Show("Do not forget to connect the device via USB", "Restarting ADB in TCPIP mode", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    if (Check_Device.CheckDevice())
                     {
+                        
+                        ADB.StartTCPIP();
+                        await Task.Delay(3000);
                         materialTextBox1.Text = ADB.GetIP();
                     }
-                    else if (dialogResult == DialogResult.No)
+                    else
                     {
-                        MessageBox.Show("Input field is unlocked for manual entry", "Restarting ADB in TCPIP mode", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        materialTextBox1.Enabled = true;
+
+                        MessageBox.Show("Headset not connected", "Restarting ADB in TCPIP mode", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        materialSwitch1.Checked = false;
+                        materialLabel2.Text = "Status: Headset not connected";
                     }
 
                 }
-                else
-                {
-                    MessageBox.Show("Headset not connected", "Restarting ADB in TCPIP mode", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    materialSwitch1.Checked = false;
-                    materialLabel2.Text = "Status: Headset not connected";
-                }
-
             }
-            else
-            {
-                materialTextBox1.Text = null;
-            }
-
-
         }
 
         private void materialButton5_Click(object sender, EventArgs e)
