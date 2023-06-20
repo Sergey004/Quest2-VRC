@@ -6,6 +6,7 @@
 This program sending Quest 2 (As well as other headsets in the Quest line) battery information (Now also Wifi signal strength, especially for you, AirLink or VD users) to the VRChtat via the OSC protocol, also receive osc address to control OpenRGB
 
 
+Zeroconf discovery tested on v55 (Android 12 based)
 OpenRGB functions tested only on MSI Mystic Light (AKA MSI-RGB)
 
 [Avatars with support for this program](Avatars%20with%20Quest2-VRC%20support.md)
