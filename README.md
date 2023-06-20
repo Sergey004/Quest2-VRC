@@ -1,5 +1,5 @@
 # Quest2-VRC
-![workflow](https://github.com/Sergey004/Quest2-VRC/actions/workflows/main.yml/badge.svg)
+[![CI](https://github.com/Sergey004/Quest2-VRC/actions/workflows/main.yml/badge.svg)](https://github.com/Sergey004/Quest2-VRC/actions/workflows/main.yml)
 
 ![image](https://user-images.githubusercontent.com/11889498/230911077-48b58669-f37f-433d-b6ae-17bf2af58db9.png)
 
