@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Quest2_VRC.Auto_Wireless_ADB.MainPage">
+    <StackLayout>
+        <Label x:Name="lbl" Text="This activity is used as an initial setting, press the button below to activate ADB over WI-FI"  FontSize="24" />
+        <Button x:Name="button1" Text="Start wireless ADB" Clicked="button1_Clicked" />
+    </StackLayout>
+</ContentPage>
