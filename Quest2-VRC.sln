@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quest2-VRC.Mobile", "Quest2-VRC.Mobile\Quest2-VRC.Mobile.csproj", "{066C5626-DCFB-484F-A996-5E30D3E22167}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quest2-VRC.Auto_Wireless_ADB.Android", "Quest2-VRC.Auto_Wireless_ADB\Quest2-VRC.Auto_Wireless_ADB.Android\Quest2-VRC.Auto_Wireless_ADB.Android.csproj", "{BCA62844-96E4-45A5-A76E-2E9BA599BD89}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Quest2-VRC.Auto_Wireless_ADB", "Quest2-VRC.Auto_Wireless_ADB\Quest2-VRC.Auto_Wireless_ADB\Quest2-VRC.Auto_Wireless_ADB.csproj", "{46BBEB71-FEE2-472A-AB66-7ACC25FC5D8C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,12 +13,16 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{066C5626-DCFB-484F-A996-5E30D3E22167}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{066C5626-DCFB-484F-A996-5E30D3E22167}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{066C5626-DCFB-484F-A996-5E30D3E22167}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
-		{066C5626-DCFB-484F-A996-5E30D3E22167}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{066C5626-DCFB-484F-A996-5E30D3E22167}.Release|Any CPU.Build.0 = Release|Any CPU
-		{066C5626-DCFB-484F-A996-5E30D3E22167}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{BCA62844-96E4-45A5-A76E-2E9BA599BD89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BCA62844-96E4-45A5-A76E-2E9BA599BD89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BCA62844-96E4-45A5-A76E-2E9BA599BD89}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{BCA62844-96E4-45A5-A76E-2E9BA599BD89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BCA62844-96E4-45A5-A76E-2E9BA599BD89}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BCA62844-96E4-45A5-A76E-2E9BA599BD89}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{46BBEB71-FEE2-472A-AB66-7ACC25FC5D8C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{46BBEB71-FEE2-472A-AB66-7ACC25FC5D8C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{46BBEB71-FEE2-472A-AB66-7ACC25FC5D8C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{46BBEB71-FEE2-472A-AB66-7ACC25FC5D8C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
