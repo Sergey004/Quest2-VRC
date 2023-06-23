@@ -158,7 +158,7 @@ namespace Quest2_VRC
                     deviceip = headset.IPAddress + ":" + service.Port;
                 }
             }
-            var secadb = await ZeroconfResolver.ResolveAsync("_adb_secure_connect._tcp.local");
+            var secadb = await ZeroconfResolver.ResolveAsync("_adb_secure_connect._tcp.local.");
             foreach (var headset in secadb)
             {
                 foreach (IService service in headset.Services.Values)
