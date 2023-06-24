@@ -316,7 +316,7 @@ namespace Quest2_VRC
             if (materialSwitch1.Checked)
             {
                 materialLabel2.Text = "Status: In TCPIP mode";
-                DialogResult dialogResult1 = MessageBox.Show("Do you want the program to find the IP address by old method or by using ZeroConf\nSearching through ZeroConf requires installing an additional program \"https://github.com/thedroidgeek/oculus-wireless-adb\"\nYes for ZeroConf, No for old method", "Restarting ADB in TCPIP mode", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult dialogResult1 = MessageBox.Show("Do you want the program to find the IP address by old method or by using ZeroConf\nSearching through ZeroConf requires installing an additional program \"https://github.com/Sergey004/Quest2-VRC/releases/tag/Addon\"\nYes for ZeroConf, No for old method", "Restarting ADB in TCPIP mode", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dialogResult1 == DialogResult.Yes)
                 {
                     MessageBox.Show("Don't forget to wake up your device", "Restarting ADB in TCPIP mode", MessageBoxButtons.OK, MessageBoxIcon.Information);
