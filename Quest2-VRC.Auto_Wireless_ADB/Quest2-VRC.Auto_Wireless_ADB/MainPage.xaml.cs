@@ -18,12 +18,30 @@ namespace Quest2_VRC.Auto_Wireless_ADB
 
         private void button1_Clicked(object sender, EventArgs e)
         {
-
-            Settings.Global.PutInt(Android.App.Application.Context.ContentResolver, "adb_wifi_enabled", (int)1);
+            try
+            { Settings.Global.PutInt(Android.App.Application.Context.ContentResolver, "adb_wifi_enabled", (int)1);
+            }
+            catch (Java.Lang.SecurityException)
+            {
+                DisplayAlert("Error", $"android.permission.WRITE_SECURE_SETTINGS not set", "OK");
+                
+            }
+            
             int value = Settings.Global.GetInt(Android.App.Application.Context.ContentResolver, "adb_wifi_enabled");
 
-            DisplayAlert("Alert", $"adb_wifi_enabled is {value}", "OK");
-            CrossLocalNotifications.Current.Show("Wireless ADB", "Wireless ADB is now configured", 0, DateTime.Now.AddSeconds(1));
+            
+            if (value == 1)
+            {
+                DisplayAlert("Alert", $"adb_wifi_enabled is {value}", "OK");
+                CrossLocalNotifications.Current.Show("Wireless ADB", "Wireless ADB is now configured", 0, DateTime.Now.AddSeconds(1));
+            }
+            else
+            {
+                DisplayAlert("Alert", $"adb_wifi_enabled is {value}", "OK");
+                CrossLocalNotifications.Current.Show("Wireless ADB", "Wireless ADB is not configured", 0, DateTime.Now.AddSeconds(1));
+
+            }
+            
         }
         
         [BroadcastReceiver(Name = "com.quest2_vrc.auto_wireless_adb.BootBroadcastReceiver", Enabled = true)]
