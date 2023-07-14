@@ -20,13 +20,8 @@ namespace Quest2_VRC
             materialComboBox1.Items.AddRange(new string[] { "bool", "int", "float", "string" });
         }
 
-
-
-
         private void Form2_Load(object sender, EventArgs e)
         {
-
-
             string json = File.ReadAllText("vars.json");
             JObject vars = JObject.Parse(json);
             materialSlider1.Text = (string)vars["HMDBat"];
@@ -123,5 +118,6 @@ namespace Quest2_VRC
             }
 
         }
+
     }
 }

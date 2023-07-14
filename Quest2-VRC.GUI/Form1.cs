@@ -2,7 +2,6 @@
 using MaterialSkin.Controls;
 using Newtonsoft.Json.Linq;
 using System;
-using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -76,7 +75,7 @@ namespace Quest2_VRC
                         try
                         {
                             var questip = "null";
-                            materialTextBox1.Invoke(new Action(() => questip =     materialTextBox1.Text));
+                            materialTextBox1.Invoke(new Action(() => questip = materialTextBox1.Text));
                             if (ADB.StartADB(true, true, questip, true, materialCheckbox2.Checked))
                             {
 
@@ -175,7 +174,7 @@ namespace Quest2_VRC
                         try
                         {
                             var questip = materialTextBox1.Text;
-                           
+
                             if (ADB.StartADB(false, true, questip, true, materialCheckbox2.Checked))
                             {
                                 materialLabel2.Invoke(new Action(() => materialLabel2.Text = "Status: Receive only"));
@@ -232,7 +231,7 @@ namespace Quest2_VRC
                     try
                     {
                         var questip = materialTextBox1.Text;
-                        
+
                         if (ADB.StartADB(true, false, questip, true, materialCheckbox2.Checked))
                         {
                             materialLabel2.Invoke(new Action(() => materialLabel2.Text = "Status: Send only"));
@@ -327,7 +326,7 @@ namespace Quest2_VRC
                     MessageBox.Show("Do not forget to connect the device via USB", "Restarting ADB in TCPIP mode", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     if (Check_Device.CheckDevice())
                     {
-                        
+
                         ADB.StartTCPIP();
                         await Task.Delay(3000);
                         materialTextBox1.Text = ADB.GetIP();

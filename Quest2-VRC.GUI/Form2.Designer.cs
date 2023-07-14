@@ -169,7 +169,7 @@
             materialTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
             materialTextBox2.Depth = 0;
             materialTextBox2.Font = new System.Drawing.Font("Roboto", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
-            materialTextBox2.Hint = "Any parametor";
+            materialTextBox2.Hint = "Any parameter";
             materialTextBox2.LeadingIcon = null;
             materialTextBox2.Location = new System.Drawing.Point(162, 347);
             materialTextBox2.MaxLength = 50;

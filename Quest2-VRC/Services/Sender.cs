@@ -52,6 +52,8 @@ namespace Quest2_VRC
                     int Hbatlevelint = 0;
                     int Rbatlevelint = 0;
                     int Lbatlevelint = 0;
+                    int cputempint = 0;
+                    int gputempint = 0;
                     string WifiRSSI = null;
                     int WifiInt = 0;
 
@@ -63,6 +65,11 @@ namespace Quest2_VRC
                     client.ExecuteRemoteCommand("dumpsys OVRRemoteService | grep Right", device, Rbat_receiver);
                     ConsoleOutputReceiver Lbat_receiver = new ConsoleOutputReceiver();
                     client.ExecuteRemoteCommand("dumpsys OVRRemoteService | grep Left", device, Lbat_receiver);
+                    ConsoleOutputReceiver cputemp = new ConsoleOutputReceiver();
+                    client.ExecuteRemoteCommand("dumpsys hardware_properties|grep \"CPU temperatures\"", device, cputemp);
+                    ConsoleOutputReceiver gputemp = new ConsoleOutputReceiver();
+                    client.ExecuteRemoteCommand("dumpsys hardware_properties|grep \"GPU temperatures\"", device, gputemp);
+
                     if (wirlessmode == true)
                     {
                         ConsoleOutputReceiver Wifi_Singal = new ConsoleOutputReceiver();
@@ -76,11 +83,16 @@ namespace Quest2_VRC
                     var Hbat_match = Regex.Match(Hbat_receiver.ToString(), @"\d+", RegexOptions.RightToLeft);
                     var Rbat_match = Regex.Match(Rbat_receiver.ToString(), @"\d+", RegexOptions.RightToLeft);
                     var Lbat_match = Regex.Match(Lbat_receiver.ToString(), @"\d+", RegexOptions.RightToLeft);
-
+                    var cputemp_match = Regex.Match(cputemp.ToString(), @"\d+");
+                    var gputemp_match = Regex.Match(gputemp.ToString(), @"\d+");
+                    
 
                     Hbatlevelint = int.Parse(Hbat_match.Value);
                     Rbatlevelint = int.Parse(Rbat_match.Value);
                     Lbatlevelint = int.Parse(Lbat_match.Value);
+                    cputempint = int.Parse(cputemp_match.Value);
+                    gputempint = int.Parse(gputemp_match.Value);
+
 
                     if (Hbatlevelint < 25)
                     {
@@ -133,9 +145,11 @@ namespace Quest2_VRC
                     VRChatMessage Msg3 = new VRChatMessage(ControllerBatR, (float)Rbatlevelint / 100);
                     VRChatMessage Msg4 = new VRChatMessage("WifiRSSI", (float)WifiInt / 100);
                     VRChatMessage Msg5 = new VRChatMessage("LowHMDBat", LowHMDBat);
-                    SendPacket(Msg1, Msg2, Msg3, Msg4, Msg5);
+                    VRChatMessage Msg6 = new VRChatMessage("CPUtemp", cputempint);
+                    VRChatMessage Msg7 = new VRChatMessage("GPUtemp", gputempint);
+                    SendPacket(Msg1, Msg2, Msg3, Msg4, Msg5, Msg6, Msg7);
 
-                    LogToConsole("Sending HMD status", Msg1, Msg2, Msg3, Msg4, Msg5);
+                    LogToConsole("Sending HMD status", Msg1, Msg2, Msg3, Msg4, Msg5, Msg6, Msg7);
 
                     await Task.Delay(3000);
 

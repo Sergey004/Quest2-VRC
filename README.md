@@ -3,7 +3,7 @@
 
 ![image](https://user-images.githubusercontent.com/11889498/230911077-48b58669-f37f-433d-b6ae-17bf2af58db9.png)
 
-This program sending Quest 2 (As well as other headsets in the Quest line) battery information (Now also Wifi signal strength, especially for you, AirLink or VD users) to the VRChtat via the OSC protocol, also receive osc address to control OpenRGB
+This program sending Quest 2 (As well as other headsets in the Quest line) battery (and not only) information (Now also Wifi signal strength, especially for you, AirLink or VD users) to the VRChtat via the OSC protocol, also receive osc address to control OpenRGB
 
 
 Zeroconf discovery tested on v55 (Android 12 based)
@@ -40,7 +40,7 @@ Add a parameter to the ExpressionParameters of your avatar by assigning
 For sending:
 - You can replace ```HMDBat```, ```ControllerBatL```, ```ControllerBatR```, ```SendPort``` with your own parameters is vars.txt
 
-Default vars
+Default values transferred via OSC
 
 |Var name|Type|Value|
 |---|---|---|
@@ -49,6 +49,8 @@ Default vars
 |ControllerBatLR|Float|-1|
 |LowHMDBat|Bool|False|
 |WifiRSSI|Float|-1|
+|CPUtemp|Int|0|
+|GPUtemp|Int|0|
  
 
 (About RSSI 0.0 is best, -1 is worst)
@@ -56,7 +58,7 @@ Default vars
 For receiving
 - Replace in var.txt ```Receive_addr```, ```Receive_addr_test``` and ```ReceivePort``` according to your specific parameters
 
-Connect your Quest 2 (Or another headset from the Quest range) to your computer in developer mode
+Connect your Quest 2 (Or another headset from the Quest range) to your using USB or Wi-Fi computer in developer mode
 
 And hope for the best that this program will work for you
 
