@@ -117,185 +117,117 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="materialLabel2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
+  <data name="materialButton6.Text" xml:space="preserve">
+    <value>OSC Тест</value>
   </data>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="materialLabel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 297</value>
+  <data name="materialButton2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>21, 78</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="materialCard4.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>16, 16, 16, 16</value>
+  <data name="materialButton2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>138, 36</value>
   </data>
-  <data name="&gt;&gt;materialLabel5.Name" xml:space="preserve">
-    <value>materialLabel5</value>
+  <data name="materialButton2.Text" xml:space="preserve">
+    <value>Запустить все</value>
   </data>
-  <data name="&gt;&gt;materialLabel4.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="materialButton3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 137</value>
   </data>
-  <data name="materialCard2.TabIndex" type="System.Int32, mscorlib">
-    <value>9</value>
+  <data name="materialButton3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>135, 36</value>
   </data>
-  <data name="materialCard2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>246, 90</value>
+  <data name="materialButton3.Text" xml:space="preserve">
+    <value>Без ADB/Без VR</value>
   </data>
-  <data name="materialSwitch1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>215, 37</value>
+  <data name="materialButton1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 78</value>
   </data>
-  <data name="&gt;&gt;materialLabel1.ZOrder" xml:space="preserve">
-    <value>5</value>
+  <data name="materialButton1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>92, 36</value>
   </data>
-  <data name="materialMultiLineTextBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
+  <data name="materialButton1.Text" xml:space="preserve">
+    <value>Приёмка</value>
   </data>
-  <data name="&gt;&gt;materialCard4.Name" xml:space="preserve">
-    <value>materialCard4</value>
+  <data name="materialButton4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 23</value>
   </data>
-  <data name="&gt;&gt;materialLabel3.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="materialButton4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>98, 36</value>
   </data>
-  <data name="&gt;&gt;materialSwitch1.Name" xml:space="preserve">
-    <value>materialSwitch1</value>
+  <data name="materialButton4.Text" xml:space="preserve">
+    <value>Отправка</value>
   </data>
-  <data name="materialButton1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
+  <data name="materialLabel1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14px</value>
   </data>
-  <data name="materialLabel5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>82, 19</value>
+  <data name="materialLabel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>37, 19</value>
   </data>
-  <data name="&gt;&gt;materialMultiLineTextBox1.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialMultiLineTextBox, MaterialSkin, Culture=neutral, PublicKeyToken=null</value>
+  <data name="materialLabel1.Text" xml:space="preserve">
+    <value>Логи</value>
   </data>
-  <data name="materialMultiLineTextBox1.MaxLength" type="System.Int32, mscorlib">
-    <value>500</value>
+  <data name="materialLabel2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14px</value>
   </data>
-  <data name="materialCard2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>16, 16, 16, 16</value>
+  <data name="materialLabel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>56, 19</value>
   </data>
-  <data name="materialCheckbox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>109, 37</value>
+  <data name="materialLabel2.Text" xml:space="preserve">
+    <value>Статус:</value>
   </data>
-  <data name="materialLabel2.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
+  <data name="materialCheckbox2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>256, 37</value>
   </data>
-  <data name="&gt;&gt;materialButton3.ZOrder" xml:space="preserve">
-    <value>0</value>
+  <data name="materialCheckbox2.Text" xml:space="preserve">
+    <value>Звуковые уведомления (WIP)</value>
   </data>
-  <data name="materialSwitch1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="&gt;&gt;materialMultiLineTextBox1.ZOrder" xml:space="preserve">
-    <value>7</value>
-  </data>
-  <data name="&gt;&gt;materialCard4.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialCard, MaterialSkin, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;materialTextBox1.Name" xml:space="preserve">
-    <value>materialTextBox1</value>
-  </data>
-  <data name="Ready" xml:space="preserve">
-    <value>Ready</value>
-  </data>
-  <data name="&gt;&gt;materialCheckbox2.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialCheckbox, MaterialSkin, Culture=neutral, PublicKeyToken=null</value>
+  <data name="materialButton5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>345, 131</value>
   </data>
   <data name="materialButton5.Size" type="System.Drawing.Size, System.Drawing">
-    <value>64, 36</value>
+    <value>89, 36</value>
   </data>
-  <data name="&gt;&gt;materialLabel2.Name" xml:space="preserve">
-    <value>materialLabel2</value>
+  <data name="materialButton5.Text" xml:space="preserve">
+    <value>Помощь</value>
   </data>
-  <data name="&gt;&gt;materialLabel2.ZOrder" xml:space="preserve">
-    <value>8</value>
+  <data name="materialTextBox1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 16px</value>
   </data>
-  <data name="&gt;&gt;materialLabel3.Parent" xml:space="preserve">
-    <value>$this</value>
+  <data name="materialTextBox1.Hint" xml:space="preserve">
+    <value>Quest IP (только для ADB)</value>
   </data>
-  <data name="materialSwitch1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 94</value>
+  <data name="materialSwitch1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>239, 37</value>
   </data>
-  <data name="$this.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 3, 4, 3</value>
+  <data name="materialSwitch1.Text" xml:space="preserve">
+    <value>Link или AirLink (или VD)</value>
   </data>
-  <data name="materialButton4.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
+  <data name="materialCheckbox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>768, 288</value>
   </data>
-  <data name="materialCheckbox1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="materialLabel5.Text" xml:space="preserve">
-    <value>Status msg</value>
-  </data>
-  <data name="&gt;&gt;materialButton2.Name" xml:space="preserve">
-    <value>materialButton2</value>
-  </data>
-  <data name="&gt;&gt;materialButton1.Name" xml:space="preserve">
-    <value>materialButton1</value>
-  </data>
-  <data name="materialLabel4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>831, 569</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Quest2-VRC GUI</value>
-  </data>
-  <data name="materialSwitch1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;materialLabel1.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialLabel, MaterialSkin, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;materialCard1.Name" xml:space="preserve">
-    <value>materialCard1</value>
-  </data>
-  <data name="materialCard1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>16, 16, 16, 16</value>
-  </data>
-  <data name="&gt;&gt;materialLabel5.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="materialCard4.TabIndex" type="System.Int32, mscorlib">
-    <value>8</value>
-  </data>
-  <data name="&gt;&gt;materialCard2.ZOrder" xml:space="preserve">
-    <value>4</value>
-  </data>
-  <data name="ADBRunning" xml:space="preserve">
-    <value>ADB is running</value>
-  </data>
-  <data name="&gt;&gt;materialButton1.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;materialTextBox1.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialTextBox, MaterialSkin, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="materialCard1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>733, 90</value>
+  <data name="materialCheckbox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>145, 37</value>
   </data>
   <data name="materialCheckbox1.Text" xml:space="preserve">
-    <value>Show logs</value>
+    <value>Показать логи</value>
   </data>
-  <data name="&gt;&gt;materialButton4.ZOrder" xml:space="preserve">
-    <value>2</value>
+  <data name="materialLabel3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14px</value>
   </data>
-  <data name="&gt;&gt;materialLabel4.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialLabel, MaterialSkin, Culture=neutral, PublicKeyToken=null</value>
+  <data name="materialLabel3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>670, 569</value>
   </data>
-  <data name="&gt;&gt;materialButton1.Parent" xml:space="preserve">
-    <value>materialCard4</value>
-  </data>
-  <data name="materialLabel5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>79, 569</value>
-  </data>
-  <data name="&gt;&gt;materialSwitch1.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialSwitch, MaterialSkin, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="materialButton3.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
+  <data name="materialLabel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>153, 19</value>
   </data>
   <data name="materialLabel3.Text" xml:space="preserve">
-    <value>Last commit:</value>
+    <value>Последный коммит:</value>
+  </data>
+  <data name="materialLabel4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14px</value>
+  </data>
+  <data name="materialLabel5.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Microsoft Sans Serif, 14px</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -3115,541 +3047,73 @@
         AQAAgAEAAMADAADwDwAA
 </value>
   </data>
-  <data name="materialLabel3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>733, 569</value>
-  </data>
-  <data name="materialLabel4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
-  </data>
-  <data name="materialLabel2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>51, 19</value>
-  </data>
-  <data name="materialTextBox1.Hint" xml:space="preserve">
-    <value>Quest IP (ADB only)</value>
-  </data>
-  <data name="materialTextBox1.Multiline" type="System.Boolean, mscorlib">
-    <value>False</value>
-  </data>
-  <data name="materialTextBox1.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="materialMultiLineTextBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 333</value>
-  </data>
-  <data name="materialLabel4.TabIndex" type="System.Int32, mscorlib">
-    <value>12</value>
-  </data>
-  <data name="&gt;&gt;materialButton2.Parent" xml:space="preserve">
-    <value>materialCard1</value>
-  </data>
-  <data name="materialLabel5.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 14px</value>
-  </data>
-  <data name="materialButton5.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="&gt;&gt;materialLabel2.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="materialCheckbox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
-    <value>932, 604</value>
-  </data>
-  <data name="&gt;&gt;materialButton1.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="materialSwitch1.Text" xml:space="preserve">
-    <value>Link or AirLink (Or VD)</value>
-  </data>
-  <data name="materialButton4.Text" xml:space="preserve">
-    <value>Send only</value>
-  </data>
-  <data name="materialButton1.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;materialLabel1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;materialLabel3.Name" xml:space="preserve">
-    <value>materialLabel3</value>
-  </data>
-  <data name="materialLabel2.TabIndex" type="System.Int32, mscorlib">
-    <value>4</value>
-  </data>
-  <data name="&gt;&gt;materialSwitch1.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="materialLabel2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 14px</value>
-  </data>
-  <data name="materialLabel3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
-  </data>
-  <data name="materialCard1.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="Error" xml:space="preserve">
-    <value>Error</value>
-  </data>
-  <data name="materialCheckbox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>212, 37</value>
-  </data>
-  <data name="materialButton1.Text" xml:space="preserve">
-    <value>Receive only</value>
-  </data>
-  <data name="materialButton3.Text" xml:space="preserve">
-    <value>No ADB/No VR</value>
-  </data>
-  <data name="materialCheckbox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>803, 288</value>
-  </data>
-  <data name="materialCard4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>194, 190</value>
-  </data>
-  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
-    <value>7, 15</value>
-  </data>
-  <data name="materialLabel1.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="materialLabel5.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="materialTextBox1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 35</value>
-  </data>
-  <data name="materialButton6.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>5, 7, 5, 7</value>
-  </data>
-  <data name="&gt;&gt;materialCheckbox1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="materialButton6.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="materialButton3.Location" type="System.Drawing.Point, System.Drawing">
-    <value>21, 134</value>
-  </data>
-  <data name="&gt;&gt;materialCheckbox1.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialCheckbox, MaterialSkin, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="materialButton1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>120, 36</value>
-  </data>
-  <data name="&gt;&gt;materialLabel2.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialLabel, MaterialSkin, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;materialCheckbox1.Name" xml:space="preserve">
-    <value>materialCheckbox1</value>
-  </data>
-  <data name="materialLabel4.Text" xml:space="preserve">
-    <value>commit</value>
-  </data>
-  <data name="materialButton1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>5, 7, 5, 7</value>
-  </data>
-  <data name="Exec" xml:space="preserve">
-    <value>Executing...</value>
-  </data>
   <data name="ADBFall" xml:space="preserve">
-    <value>Failed to start ADB</value>
-  </data>
-  <data name="materialButton6.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
-    <value>CenterScreen</value>
-  </data>
-  <data name="materialTextBox1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 16px</value>
-  </data>
-  <data name="&gt;&gt;materialButton3.Name" xml:space="preserve">
-    <value>materialButton3</value>
-  </data>
-  <data name="materialButton5.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="materialLabel5.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="materialCheckbox2.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="&gt;&gt;materialButton6.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;materialTextBox1.ZOrder" xml:space="preserve">
-    <value>2</value>
-  </data>
-  <data name="&gt;&gt;materialCheckbox2.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="&gt;&gt;materialButton3.Parent" xml:space="preserve">
-    <value>materialCard4</value>
-  </data>
-  <data name="&gt;&gt;materialLabel4.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="materialTextBox1.MaxLength" type="System.Int32, mscorlib">
-    <value>50</value>
-  </data>
-  <data name="materialCard1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="materialButton4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>5, 7, 5, 7</value>
-  </data>
-  <data name="materialLabel1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
-  </data>
-  <data name="materialCard1.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>16, 16, 16, 16</value>
-  </data>
-  <data name="materialButton2.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="&gt;&gt;materialCheckbox1.ZOrder" xml:space="preserve">
-    <value>3</value>
-  </data>
-  <data name="$this.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 74, 4, 3</value>
-  </data>
-  <data name="materialButton4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>100, 36</value>
-  </data>
-  <data name="&gt;&gt;materialLabel3.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialLabel, MaterialSkin, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="materialLabel1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 14px</value>
-  </data>
-  <data name="materialButton6.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 23</value>
-  </data>
-  <data name="materialCheckbox1.TabIndex" type="System.Int32, mscorlib">
-    <value>10</value>
-  </data>
-  <data name="materialCheckbox2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>16, 138</value>
-  </data>
-  <data name="materialButton4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>21, 23</value>
-  </data>
-  <data name="materialButton2.Text" xml:space="preserve">
-    <value>Default run</value>
-  </data>
-  <data name="materialButton5.Text" xml:space="preserve">
-    <value>Help</value>
-  </data>
-  <data name="materialButton6.Text" xml:space="preserve">
-    <value>OSC Test</value>
-  </data>
-  <data name="materialButton3.TabIndex" type="System.Int32, mscorlib">
-    <value>1</value>
-  </data>
-  <data name="materialLabel4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 14px</value>
-  </data>
-  <data name="materialTextBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>414, 50</value>
-  </data>
-  <data name="materialLabel2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 569</value>
-  </data>
-  <data name="&gt;&gt;materialMultiLineTextBox1.Name" xml:space="preserve">
-    <value>materialMultiLineTextBox1</value>
-  </data>
-  <data name="&gt;&gt;materialCard1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;materialButton5.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="materialButton1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>21, 78</value>
-  </data>
-  <data name="&gt;&gt;materialCheckbox2.Name" xml:space="preserve">
-    <value>materialCheckbox2</value>
-  </data>
-  <data name="&gt;&gt;materialButton6.Name" xml:space="preserve">
-    <value>materialButton6</value>
-  </data>
-  <data name="materialButton2.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="materialButton2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>117, 36</value>
-  </data>
-  <data name="materialButton3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>123, 36</value>
-  </data>
-  <data name="materialLabel1.Text" xml:space="preserve">
-    <value>Log</value>
-  </data>
-  <data name="materialCard2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>454, 190</value>
-  </data>
-  <data name="&gt;&gt;materialButton6.ZOrder" xml:space="preserve">
-    <value>0</value>
-  </data>
-  <data name="materialCheckbox2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>0, 0, 0, 0</value>
-  </data>
-  <data name="&gt;&gt;materialSwitch1.Parent" xml:space="preserve">
-    <value>materialCard2</value>
-  </data>
-  <data name="materialLabel4.ImeMode" type="System.Windows.Forms.ImeMode, System.Windows.Forms">
-    <value>NoControl</value>
-  </data>
-  <data name="materialLabel2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
-  </data>
-  <data name="&gt;&gt;materialMultiLineTextBox1.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;materialCard1.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialCard, MaterialSkin, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;materialLabel4.Name" xml:space="preserve">
-    <value>materialLabel4</value>
-  </data>
-  <data name="&gt;&gt;materialLabel5.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="materialButton2.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="materialButton4.TabIndex" type="System.Int32, mscorlib">
-    <value>2</value>
-  </data>
-  <data name="materialLabel2.Text" xml:space="preserve">
-    <value>Status:</value>
-  </data>
-  <data name="materialMultiLineTextBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 3, 4, 3</value>
-  </data>
-  <data name="&gt;&gt;materialButton4.Name" xml:space="preserve">
-    <value>materialButton4</value>
-  </data>
-  <data name="materialCard4.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>16, 16, 16, 16</value>
-  </data>
-  <data name="materialButton5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>5, 7, 5, 7</value>
-  </data>
-  <data name="materialLabel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>55, 19</value>
-  </data>
-  <data name="materialButton5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>358, 132</value>
-  </data>
-  <data name="&gt;&gt;materialButton4.Parent" xml:space="preserve">
-    <value>materialCard4</value>
-  </data>
-  <data name="&gt;&gt;materialButton2.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="materialMultiLineTextBox1.ScrollBars" type="System.Windows.Forms.RichTextBoxScrollBars, System.Windows.Forms">
-    <value>None</value>
-  </data>
-  <data name="&gt;&gt;materialLabel5.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialLabel, MaterialSkin, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="materialButton2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>22, 81</value>
-  </data>
-  <data name="materialSwitch1.TabIndex" type="System.Int32, mscorlib">
-    <value>0</value>
-  </data>
-  <data name="materialLabel1.TabIndex" type="System.Int32, mscorlib">
-    <value>3</value>
-  </data>
-  <data name="materialLabel3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 14px</value>
-  </data>
-  <data name="materialButton4.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="materialButton3.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>5, 7, 5, 7</value>
-  </data>
-  <data name="&gt;&gt;materialButton4.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="materialCheckbox2.Text" xml:space="preserve">
-    <value>Audio notifications (WIP)</value>
-  </data>
-  <data name="&gt;&gt;materialButton5.Name" xml:space="preserve">
-    <value>materialButton5</value>
-  </data>
-  <data name="&gt;&gt;materialButton3.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="materialCard2.Padding" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>16, 16, 16, 16</value>
-  </data>
-  <data name="&gt;&gt;materialCard2.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialCard, MaterialSkin, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="&gt;&gt;materialTextBox1.Parent" xml:space="preserve">
-    <value>materialCard2</value>
-  </data>
-  <data name="&gt;&gt;$this.Name" xml:space="preserve">
-    <value>Form1</value>
-  </data>
-  <data name="&gt;&gt;materialCard2.Name" xml:space="preserve">
-    <value>materialCard2</value>
-  </data>
-  <data name="materialButton2.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>5, 7, 5, 7</value>
-  </data>
-  <data name="materialCard4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>20, 90</value>
-  </data>
-  <data name="materialLabel5.TabIndex" type="System.Int32, mscorlib">
-    <value>13</value>
-  </data>
-  <data name="materialLabel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>28, 19</value>
-  </data>
-  <data name="materialTextBox1.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="materialMultiLineTextBox1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>892, 222</value>
-  </data>
-  <data name="&gt;&gt;materialCard4.ZOrder" xml:space="preserve">
-    <value>6</value>
-  </data>
-  <data name="materialLabel5.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 0, 4, 0</value>
-  </data>
-  <data name="materialButton3.Anchor" type="System.Windows.Forms.AnchorStyles, System.Windows.Forms">
-    <value>Top, Bottom, Left, Right</value>
-  </data>
-  <data name="materialLabel4.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="materialTextBox1.Margin" type="System.Windows.Forms.Padding, System.Windows.Forms">
-    <value>4, 3, 4, 3</value>
-  </data>
-  <data name="materialCard1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>180, 137</value>
-  </data>
-  <data name="&gt;&gt;materialButton5.ZOrder" xml:space="preserve">
-    <value>1</value>
-  </data>
-  <data name="&gt;&gt;materialCheckbox2.Parent" xml:space="preserve">
-    <value>materialCard2</value>
-  </data>
-  <data name="&gt;&gt;materialLabel1.Name" xml:space="preserve">
-    <value>materialLabel1</value>
-  </data>
-  <data name="materialButton1.AutoSizeMode" type="System.Windows.Forms.AutoSizeMode, System.Windows.Forms">
-    <value>GrowAndShrink</value>
-  </data>
-  <data name="&gt;&gt;materialCard4.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="&gt;&gt;materialCard1.ZOrder" xml:space="preserve">
-    <value>9</value>
-  </data>
-  <data name="materialCheckbox2.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;materialButton5.Parent" xml:space="preserve">
-    <value>materialCard2</value>
-  </data>
-  <data name="&gt;&gt;materialButton2.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialButton, MaterialSkin, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="materialButton6.Size" type="System.Drawing.Size, System.Drawing">
-    <value>89, 36</value>
-  </data>
-  <data name="&gt;&gt;materialButton6.Parent" xml:space="preserve">
-    <value>materialCard1</value>
-  </data>
-  <data name="materialMultiLineTextBox1.Text" xml:space="preserve">
-    <value />
-  </data>
-  <data name="materialLabel3.TabIndex" type="System.Int32, mscorlib">
-    <value>11</value>
-  </data>
-  <data name="materialLabel3.AutoSize" type="System.Boolean, mscorlib">
-    <value>True</value>
-  </data>
-  <data name="&gt;&gt;$this.Type" xml:space="preserve">
-    <value>MaterialSkin.Controls.MaterialForm, MaterialSkin, Culture=neutral, PublicKeyToken=null</value>
-  </data>
-  <data name="materialMultiLineTextBox1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Lucida Console, 12pt</value>
-  </data>
-  <data name="&gt;&gt;materialCard2.Parent" xml:space="preserve">
-    <value>$this</value>
-  </data>
-  <data name="materialLabel3.Size" type="System.Drawing.Size, System.Drawing">
-    <value>94, 19</value>
-  </data>
-  <data name="$this.Localizable" type="System.Boolean, mscorlib">
-    <value>True</value>
+    <value>Ошибка при запуске ADB</value>
   </data>
   <data name="ADBInTCPIP" xml:space="preserve">
-    <value>Restarting ADB in TCPIP mode</value>
+    <value>Перезапуск ADB в режиме TCPIP</value>
+  </data>
+  <data name="ADBRunning" xml:space="preserve">
+    <value>ADB запущен</value>
   </data>
   <data name="ConnHelp" xml:space="preserve">
-    <value>1) Connect the headset to your computer
-2) Turn the switch to the "AirLink (or VD)" position. 
-3) Wait for ADB to switch to TCPIP mode
-4) Press "Default run" to connect 
+    <value>1) Подключите гарнитуру к компьютеру
+2) Переведите переключатель в положение "AirLink (или VD)". 
+3) Дождитесь, пока ADB переключится в режим TCPIP.
+4) Нажмите кнопку "Запуск по умолчанию" для подключения. 
 
-If this don't work
-Manual connection
-Enter 
+Если это не работает
+Подключение вручную
+Введите 
 "platform-tools\adb tcpip 5555" 
-"platform-tools\\adb connect  QUEST_IP:5555"</value>
+"platform-tools\\\adb connect QUEST_IP:5555"</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Ошибка</value>
+  </data>
+  <data name="Exec" xml:space="preserve">
+    <value>Выполнение...</value>
   </data>
   <data name="ExitAndStop" xml:space="preserve">
-    <value>Exit and stop ADB</value>
+    <value>Выход и завершение работы ADB</value>
   </data>
   <data name="ExitNote" xml:space="preserve">
-    <value>Do you want to exit?
-Note, this action will stop the ADB server</value>
+    <value>Вы хотите выйти?
+Обратите внимание, что это действие приведет к остановке сервера ADB</value>
   </data>
   <data name="LocalHostErr" xml:space="preserve">
-    <value>This function cannot be activated if HostIP is not 127.0.0.1</value>
+    <value>Данная функция не может быть активирована, если HostIP не равен 127.0.0.1</value>
   </data>
   <data name="NewOrOld" xml:space="preserve">
-    <value>Do you want the program to find the IP address by old method or by using ZeroConf?
-Searching through ZeroConf requires installing an additional program on Quest "https://github.com/Sergey004/Quest2-VRC/releases/tag/Addon"
-Yes for ZeroConf, No for old method</value>
+    <value>Вы хотите, чтобы программа находила IP-адрес старым способом или с помощью ZeroConf?
+Поиск через ZeroConf требует установки дополнительной программы на Quest "https://github.com/Sergey004/Quest2-VRC/releases/tag/Addon".
+Да для ZeroConf, Нет для старого метода</value>
   </data>
   <data name="NoADB" xml:space="preserve">
-    <value>No ADB mode</value>
+    <value>Нет режима ADB</value>
   </data>
   <data name="NoHMD" xml:space="preserve">
-    <value>Headset not connected</value>
+    <value>Гарнитура не подключена</value>
   </data>
   <data name="OSCFall" xml:space="preserve">
-    <value>Failed to start OSC</value>
+    <value>Ошибка при запуске OSC</value>
+  </data>
+  <data name="Ready" xml:space="preserve">
+    <value>Готов</value>
   </data>
   <data name="Receive" xml:space="preserve">
-    <value>Receive Only</value>
+    <value>Только приёмка</value>
   </data>
   <data name="Send" xml:space="preserve">
-    <value>Send Only</value>
+    <value>Только отправка</value>
   </data>
   <data name="TCPIPmode" xml:space="preserve">
-    <value>In TCPIP mode</value>
-  </data>
-  <data name="USBCon" xml:space="preserve">
-    <value>Do not forget to connect the device via USB</value>
+    <value>В режиме работы TCPIP</value>
   </data>
   <data name="WakeDevice" xml:space="preserve">
-    <value>Don't forget to wake up your device</value>
+    <value>Не забудьте разбудить свое устройство</value>
   </data>
   <data name="Help" xml:space="preserve">
-    <value>Help</value>
+    <value>Помощь</value>
   </data>
 </root>

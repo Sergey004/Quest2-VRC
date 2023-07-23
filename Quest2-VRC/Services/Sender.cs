@@ -7,6 +7,7 @@ using System.IO;
 using System.Linq;
 using System.Media;
 using System.Net.Sockets;
+using System.Runtime.Versioning;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using static Quest2_VRC.ADB;
@@ -19,6 +20,7 @@ namespace Quest2_VRC
     static class Sender
     {
 
+       
         public static async void Run(bool wirlessmode, bool audioEnadled)
         {
             Random rnd = new Random();
@@ -26,7 +28,7 @@ namespace Quest2_VRC
             Console.WriteLine("OSC UDP port is {0}", Uport);
             await questwd(Uport, wirlessmode, audioEnadled);
         }
-
+        
         public static async Task questwd(int Uport, bool wirlessmode, bool audioEnadled)
         {
             // Create a bogus port for the client
@@ -99,8 +101,12 @@ namespace Quest2_VRC
                         LowHMDBat = true;
                         if (audioEnadled == true && audioPlayedHMD == false)
                         {
-                            SoundPlayer playSound = new SoundPlayer(Properties.Resources.HMDloworbelow25);
-                            playSound.Play();
+                            if (OperatingSystem.IsWindows())
+                            {
+                                SoundPlayer playSound = new(Properties.Resources.HMDloworbelow25);
+                                playSound.Play();
+                            }
+
                             await Task.Delay(3000);
                             audioPlayedHMD = true;
                         }
@@ -120,12 +126,14 @@ namespace Quest2_VRC
 
                         if (audioEnadled == true && audioPlayedR == false)
                         {
-
-                            SoundPlayer playSound = new SoundPlayer(Properties.Resources.Rcrtloworbelow25);
-                            playSound.Play();
+                            if (OperatingSystem.IsWindows())
+                            {
+                                SoundPlayer playSound = new(Properties.Resources.Rcrtloworbelow25);
+                                playSound.Play();
+                            }
                             await Task.Delay(3000);
                             audioPlayedR = true;
-
+                      
                         }
                     }
                     if (Lbatlevelint < 25)
@@ -133,10 +141,14 @@ namespace Quest2_VRC
                         LogToConsole("Left controller is discharged, disabled or not connected");
                         if (audioEnadled == true && audioPlayedL == false)
                         {
-                            SoundPlayer playSound = new SoundPlayer(Properties.Resources.Lctrloworbelow25);
-                            playSound.Play();
+                            if (OperatingSystem.IsWindows())
+                            {
+                                SoundPlayer playSound = new(Properties.Resources.Lctrloworbelow25);
+                                playSound.Play();
+                            }
                             await Task.Delay(3000);
                             audioPlayedL = true;
+
                         }
                     }
 

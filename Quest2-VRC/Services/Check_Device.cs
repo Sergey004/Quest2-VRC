@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Management;
+using System.Runtime.Versioning;
 
 namespace Quest2_VRC
 {
 
     public class Check_Device
     {
+
         private static readonly string DeviceName = "Oculus Composite ADB Interface";
+        [SupportedOSPlatform("windows")]
         public static bool CheckDevice()
         {
 
@@ -22,6 +25,7 @@ namespace Quest2_VRC
                         break;
                     }
                 }
+
             }
             return deviceConnected;
         }

@@ -2,12 +2,15 @@
 using MaterialSkin.Controls;
 using Newtonsoft.Json.Linq;
 using System;
+using System.ComponentModel;
+using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Resources;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
 
 namespace Quest2_VRC
 {
@@ -17,18 +20,18 @@ namespace Quest2_VRC
     {
         public Form1()
         {
+            
+            ResourceManager resources = new ComponentResourceManager(typeof(Form1));
             InitializeComponent();
             materialTextBox1.Enabled = false;
             materialCheckbox1.Checked = false;
-            //materialSwitch1.Enabled = false;
-            //materialSwitch1.Text = "Broken, use this -->";
-            materialLabel3.Text = $"Last commit: {ThisAssembly.Git.Commit}";
+            materialLabel4.Text = $"{ThisAssembly.Git.Commit}";
             Check_Vars.CheckVars();
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Amber800, Primary.Amber900, Primary.Cyan500, Accent.Cyan700, TextShade.WHITE);
-            materialLabel2.Text = "Status: Ready";
+            materialLabel5.Text = resources.GetString("Ready");
 
         }
 
@@ -60,8 +63,9 @@ namespace Quest2_VRC
 
         private async void materialButton2_Click(object sender, EventArgs e)
         {
+            ResourceManager resources = new ComponentResourceManager(typeof(Form1));
             disableButtons();
-            materialLabel2.Text = "Status: Executing...";
+            materialLabel5.Text = resources.GetString("Exec");
             string json = File.ReadAllText("vars.json");
             JObject vars = JObject.Parse(json);
 
@@ -79,15 +83,15 @@ namespace Quest2_VRC
                             if (ADB.StartADB(true, true, questip, true, materialCheckbox2.Checked))
                             {
 
-                                materialLabel2.Invoke(new Action(() => materialLabel2.Text = "Status: ADB is running"));
+                                materialLabel5.Invoke(new Action(() => materialLabel5.Text = resources.GetString("ADBRunning")));
 
                             }
 
                         }
                         catch (Exception)
                         {
-                            Console.WriteLine("Failed to start ADB");
-                            MessageBox.Show("Failed to start ADB", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Console.WriteLine(resources.GetString("ADBFall"));
+                            MessageBox.Show(resources.GetString("ADBFall"), resources.GetString("Error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
 
                     }
@@ -98,14 +102,14 @@ namespace Quest2_VRC
                             var questip = "127.0.0.1:62001";
                             if (ADB.StartADB(true, true, questip, false, materialCheckbox2.Checked))
                             {
-                                materialLabel2.Invoke(new Action(() => materialLabel2.Text = "Status: ADB is running"));
+                                materialLabel5.Invoke(new Action(() => materialLabel5.Text = resources.GetString("ADBRunning")));
 
                             }
                         }
                         catch (Exception)
                         {
-                            Console.WriteLine("Failed to start ADB");
-                            MessageBox.Show("Failed to start ADB", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Console.WriteLine(resources.GetString("ADBFall"));
+                            MessageBox.Show(resources.GetString("ADBFall"), resources.GetString("Error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
 
                     }
@@ -114,16 +118,17 @@ namespace Quest2_VRC
             }
             else
             {
-                materialLabel2.Invoke(new Action(() => materialLabel2.Text = "Status: Ready"));
+                materialLabel5.Invoke(new Action(() => materialLabel5.Text = resources.GetString("Ready")));
                 enadleButtons();
                 materialButton2.Enabled = false;
-                MessageBox.Show("This function cannot be activated if HostIP is not 127.0.0.1", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(resources.GetString("LocalHostErr"), resources.GetString("Error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
         }
         private async void materialButton3_Click(object sender, EventArgs e)
         {
-            materialLabel2.Text = "Status: Executing...";
+            ResourceManager resources = new ComponentResourceManager(typeof(Form1));
+            materialLabel5.Text = resources.GetString("Exec");
             disableButtons();
             string json = File.ReadAllText("vars.json");
             JObject vars = JObject.Parse(json);
@@ -135,31 +140,32 @@ namespace Quest2_VRC
                 try
                 {
                     OSC.StartOSC(false, true);
-                    materialLabel2.Invoke(new Action(() => materialLabel2.Text = "Status: No ADB mode")); ;
+                    materialLabel5.Invoke(new Action(() => materialLabel5.Text = resources.GetString("NoADB"))); 
 
                 }
                 catch (Exception)
                 {
-                    Console.WriteLine("Failed to start OSC");
-                    MessageBox.Show("Failed to start OSC", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    Console.WriteLine(resources.GetString("OSCFall"));
+                    MessageBox.Show(resources.GetString("OSCFall"), resources.GetString("Error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             });
                 enadleButtons();
-                materialLabel2.Invoke(new Action(() => materialLabel2.Text = "Status: Ready"));
+                materialLabel5.Invoke(new Action(() => materialLabel5.Text = resources.GetString("Ready")));
             }
             else
             {
-                materialLabel2.Invoke(new Action(() => materialLabel2.Text = "Status: Ready"));
+                materialLabel5.Invoke(new Action(() => materialLabel5.Text = resources.GetString("Ready")));
                 enadleButtons();
                 materialButton3.Enabled = false;
-                MessageBox.Show("This function cannot be activated if HostIP is not 127.0.0.1", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(resources.GetString("LocalHostErr"), resources.GetString("Error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
         }
 
         private async void materialButton1_Click(object sender, EventArgs e)
         {
-            materialLabel2.Text = "Status: Executing...";
+            ResourceManager resources = new ComponentResourceManager(typeof(Form1));
+            materialLabel5.Text = resources.GetString("Exec");
             string json = File.ReadAllText("vars.json");
             JObject vars = JObject.Parse(json);
 
@@ -177,14 +183,14 @@ namespace Quest2_VRC
 
                             if (ADB.StartADB(false, true, questip, true, materialCheckbox2.Checked))
                             {
-                                materialLabel2.Invoke(new Action(() => materialLabel2.Text = "Status: Receive only"));
+                                materialLabel5.Invoke(new Action(() => materialLabel5.Text = resources.GetString("Receive")));
                                 disableButtons();
                             }
                         }
                         catch (Exception)
                         {
-                            Console.WriteLine("Failed to start ADB");
-                            MessageBox.Show("Failed to start ADB", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Console.WriteLine(resources.GetString("ADBFall"));
+                            MessageBox.Show(resources.GetString("ADBFall"), resources.GetString("Error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                     else
@@ -194,34 +200,35 @@ namespace Quest2_VRC
                             var questip = "127.0.0.1:62001";
                             if (ADB.StartADB(false, true, questip, false, materialCheckbox2.Checked))
                             {
-                                materialLabel2.Invoke(new Action(() => materialLabel2.Text = "Status: Receive only"));
+                                materialLabel5.Invoke(new Action(() => materialLabel5.Text = resources.GetString("Receive")));
                                 disableButtons();
                             }
                         }
                         catch (Exception)
                         {
-                            Console.WriteLine("Failed to start ADB");
-                            MessageBox.Show("Failed to start ADB", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            Console.WriteLine(resources.GetString("ADBFall"));
+                            MessageBox.Show(resources.GetString("ADBFall"), resources.GetString("Error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
 
 
                 });
                 enadleButtons();
-                materialLabel2.Invoke(new Action(() => materialLabel2.Text = "Status: Ready"));
+                materialLabel5.Invoke(new Action(() => materialLabel5.Text = resources.GetString("Ready")));
             }
             else
             {
-                materialLabel2.Invoke(new Action(() => materialLabel2.Text = "Status: Ready"));
+                materialLabel5.Invoke(new Action(() => materialLabel5.Text = resources.GetString("Ready")));
                 enadleButtons();
                 materialButton1.Enabled = false;
-                MessageBox.Show("This function cannot be activated if HostIP is not 127.0.0.1", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(resources.GetString("LocalHostErr"), resources.GetString("Error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private async void materialButton4_Click(object sender, EventArgs e)
         {
-            materialLabel2.Text = "Status: Executing...";
+            ResourceManager resources = new ComponentResourceManager(typeof(Form1));
+            materialLabel5.Text = resources.GetString("Exec");
             disableButtons();
 
             await Task.Run(() =>
@@ -234,14 +241,14 @@ namespace Quest2_VRC
 
                         if (ADB.StartADB(true, false, questip, true, materialCheckbox2.Checked))
                         {
-                            materialLabel2.Invoke(new Action(() => materialLabel2.Text = "Status: Send only"));
+                            materialLabel5.Invoke(new Action(() => materialLabel5.Text = resources.GetString("Send")));
 
                         }
                     }
                     catch (Exception)
                     {
-                        Console.WriteLine("Failed to start ADB");
-                        MessageBox.Show("Failed to start ADB", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Console.WriteLine(resources.GetString("ADBFall"));
+                        MessageBox.Show(resources.GetString("ADBFall"), resources.GetString("Error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
@@ -251,14 +258,14 @@ namespace Quest2_VRC
                         var questip = "127.0.0.1:62001";
                         if (ADB.StartADB(true, false, questip, false, materialCheckbox2.Checked))
                         {
-                            materialLabel2.Invoke(new Action(() => materialLabel2.Text = "Status: Send only"));
+                            materialLabel5.Invoke(new Action(() => materialLabel5.Text = resources.GetString("Send")));
 
                         }
                     }
                     catch (Exception)
                     {
-                        Console.WriteLine("Failed to start ADB");
-                        MessageBox.Show("Failed to start ADB", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        Console.WriteLine(resources.GetString("ADBFall"));
+                        MessageBox.Show(resources.GetString("ADBFall"), resources.GetString("Error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
 
@@ -266,7 +273,7 @@ namespace Quest2_VRC
 
             });
             enadleButtons();
-            materialLabel2.Invoke(new Action(() => materialLabel2.Text = "Status: Ready"));
+            materialLabel5.Invoke(new Action(() => materialLabel5.Text = resources.GetString("Ready")));
 
 
         }
@@ -297,7 +304,8 @@ namespace Quest2_VRC
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (MessageBox.Show("Do you want to exit?\nNote, this action will stop the ADB server", "Exit and stop ADB",
+            ResourceManager resources = new ComponentResourceManager(typeof(Form1));
+            if (MessageBox.Show(resources.GetString("ExitNote"), resources.GetString("ExitAndStop"),
         MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
             {
                 e.Cancel = true;
@@ -311,19 +319,20 @@ namespace Quest2_VRC
 
         private async void materialSwitch1_CheckedChanged(object sender, EventArgs e)
         {
+            ResourceManager resources = new ComponentResourceManager(typeof(Form1));
             materialTextBox1.Enabled = false;
             if (materialSwitch1.Checked)
             {
-                materialLabel2.Text = "Status: In TCPIP mode";
-                DialogResult dialogResult1 = MessageBox.Show("Do you want the program to find the IP address by old method or by using ZeroConf\nSearching through ZeroConf requires installing an additional program \"https://github.com/Sergey004/Quest2-VRC/releases/tag/Addon\"\nYes for ZeroConf, No for old method", "Restarting ADB in TCPIP mode", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                materialLabel5.Text = resources.GetString("TCPIPmode");
+                DialogResult dialogResult1 = MessageBox.Show(resources.GetString("NewOrOld"), resources.GetString("ADBInTCPIP"), MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                 if (dialogResult1 == DialogResult.Yes)
                 {
-                    MessageBox.Show("Don't forget to wake up your device", "Restarting ADB in TCPIP mode", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(resources.GetString("WakeDevice"), resources.GetString("ADBInTCPIP"), MessageBoxButtons.OK, MessageBoxIcon.Information);
                     materialTextBox1.Text = await ADB.GetZeroConfIP();
                 }
                 else if (dialogResult1 == DialogResult.No)
                 {
-                    MessageBox.Show("Do not forget to connect the device via USB", "Restarting ADB in TCPIP mode", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show(resources.GetString("USBCon"), resources.GetString("ADBInTCPIP"), MessageBoxButtons.OK, MessageBoxIcon.Information);
                     if (Check_Device.CheckDevice())
                     {
 
@@ -334,9 +343,9 @@ namespace Quest2_VRC
                     else
                     {
 
-                        MessageBox.Show("Headset not connected", "Restarting ADB in TCPIP mode", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(resources.GetString("NoHMD"), resources.GetString("ADBInTCPIP"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                         materialSwitch1.Checked = false;
-                        materialLabel2.Text = "Status: Headset not connected";
+                        materialLabel5.Text = resources.GetString("NoHMD");
                     }
 
                 }
@@ -345,7 +354,8 @@ namespace Quest2_VRC
 
         private void materialButton5_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("1) Connect the headset to your computer\n2) Turn the switch to the \"AirLink (or VD)\" position.\n3) Wait for ADB to switch to TCPIP mode\n4) Press \"Default run\" to connect \n \nIf this don't work\nManual connection\nEnter \n\"platform-tools\\adb tcpip 5555\" \n\"platform-tools\\adb connect  QUEST_IP:5555", "Help", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            ResourceManager resources = new ComponentResourceManager(typeof(Form1));
+            MessageBox.Show(resources.GetString("ConnHelp"), "Help", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void materialCheckbox1_CheckedChanged(object sender, EventArgs e)
