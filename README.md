@@ -55,6 +55,8 @@ Default values transferred via OSC
 
 (About RSSI 0.0 is best, -1 is worst)
 
+CPU and GPU vars is optional
+
 For receiving
 - Replace in var.txt ```Receive_addr```, ```Receive_addr_test``` and ```ReceivePort``` according to your specific parameters
 
