@@ -89,6 +89,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <None Update="odtclicommands.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -1,0 +1,3 @@
+server:asw.Off
+server:asw.Mode 
+exit
