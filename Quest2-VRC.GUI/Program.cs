@@ -2,6 +2,7 @@
 using System.Globalization;
 using System.Text;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 
@@ -36,6 +37,11 @@ namespace Quest2_VRC
                     case "--enhanced-oculus-control":
                         OculusStaff.DisableASW();
                         OculusStaff.HighPriority();
+                        var tasks = new[]
+                {
+                     Task.Factory.StartNew(() => OculusStaff.DashWatchDog(), TaskCreationOptions.LongRunning),
+                };
+                        
                         GUI();
                         break;
                     default:

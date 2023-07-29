@@ -1,6 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Printing;
+using static Quest2_VRC.PacketSender;
+using static Quest2_VRC.Logger;
 
 namespace Quest2_VRC
 {
@@ -61,7 +65,6 @@ namespace Quest2_VRC
 
 
         }
-
         public async static void NormalPriority()
         {
             Process[] OculusClient = Process.GetProcessesByName("OculusClient");
@@ -88,5 +91,43 @@ namespace Quest2_VRC
             Console.WriteLine("Priority set to Normal");
 
         }
+        public async static void DashWatchDog()
+        {
+            string OculusBase = "OculusBase";
+            var value = System.Environment.GetEnvironmentVariable(OculusBase);
+            while (true)
+            {
+                Process[] procs;
+                procs = Process.GetProcessesByName("OculusDash");
+                bool restartRequired = false;
+                foreach (Process proc in procs)
+                {
+                    if (!proc.Responding)
+                    {
+                        string inputbox = "input";
+                        restartRequired = true;
+                        LogToConsole("Error: Oculus dash crashed, waiting for app restart and enabling Voice Chat");
+                        VRChatMessage MsgErr = new VRChatMessage(inputbox, "Error: Oculus dash crashed, waiting for app restart and enabling Voice Chat"); 
+                        SendPacket(MsgErr);
+                        string input = "Voice";
+                        VRChatMessage VoiceReleased = new VRChatMessage(input, 0);
+                        SendPacket(VoiceReleased);
+                        VRChatMessage VoicePressed = new VRChatMessage(input, 1);
+                        SendPacket(VoicePressed);
+                        
+                        proc.Kill();
+                        break;
+                    }
+                }
+
+                if (restartRequired)
+                {
+                    Process procRun = new Process();
+                    procRun.StartInfo.FileName = value + "Support\\oculus-dash\\dash\\bin\\OculusDash.exe";
+                    procRun.Start();
+                }
+            }
+        }
+
     }
 }

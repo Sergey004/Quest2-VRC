@@ -2,6 +2,7 @@
 using Newtonsoft.Json.Linq;
 using System;
 using System.IO;
+using System.Linq;
 using System.Net;
 using static Quest2_VRC.Logger;
 
@@ -43,31 +44,48 @@ namespace Quest2_VRC
                     OscBundle VRBundle = new OscBundle(VRChat);
 
                     // Create the message, and append the parameter to it
-                    if (Param.Parameter == "input")
+                    switch (Param.Parameter)
                     {
+                        case var s when new[] { "MoveForward", "MoveBackward", "MoveLeft", "LookRight", "Jump", "Run", "ComfortLeft", "ComfortRight", "DropRight", "UseRight", "GrabRight", "DropLeft", "UseLeft", "GrabLeft", "PanicButton", "QuickMenuToggleLeft", "QuickMenuToggleRight", "Voice" }.Contains(s):
+                            {
+                                OscMessage Message = new OscMessage(VRChat, String.Format("/input/{0}", Param.Parameter));
+                                Message.Append(Param.Data);
+                                // Append the message to the bundle
+                                VRBundle.Append(Message);
 
-                        OscMessage Message = new OscMessage(VRChat, String.Format("/chatbox/{0}", Param.Parameter));
-                        Message.Append(Param.Data);
-                        Message.Append(true);
-                        // Append the message to the bundle
-                        VRBundle.Append(Message);
+                                // Send the bundle to the target address and port
+                                VRBundle.Send(VRChat);
+                                break;
+                            }
+                        case "input":
+                            {
+                                OscMessage Message = new OscMessage(VRChat, String.Format("/chatbox/{0}", Param.Parameter));
+                                Message.Append(Param.Data);
+                                Message.Append(true);
+                                // Append the message to the bundle
+                                VRBundle.Append(Message);
 
-                        // Send the bundle to the target address and port
-                        VRBundle.Send(VRChat);
+                                // Send the bundle to the target address and port
+                                VRBundle.Send(VRChat);
+                                break;
+
+                            }
+
+
+                        default:
+                            {
+                                OscMessage Message = new OscMessage(VRChat, String.Format("/avatar/parameters/{0}", Param.Parameter));
+                                Message.Append(Param.Data);
+
+                                // Append the message to the bundle
+
+                                VRBundle.Append(Message);
+
+                                // Send the bundle to the target address and port
+                                VRBundle.Send(VRChat);
+                                break;
+                            }
                     }
-                    else
-                    {
-                        OscMessage Message = new OscMessage(VRChat, String.Format("/avatar/parameters/{0}", Param.Parameter));
-                        Message.Append(Param.Data);
-
-                        // Append the message to the bundle
-
-                        VRBundle.Append(Message);
-
-                        // Send the bundle to the target address and port
-                        VRBundle.Send(VRChat);
-                    }
-
 
 
                 }
@@ -85,6 +103,7 @@ namespace Quest2_VRC
         // The target of the data
         public string? Parameter { get; }
 
+
         // The data itself
         public object? Data { get; }
 
@@ -92,6 +111,7 @@ namespace Quest2_VRC
         {
             Parameter = A;
             Data = B;
+
         }
 
     }

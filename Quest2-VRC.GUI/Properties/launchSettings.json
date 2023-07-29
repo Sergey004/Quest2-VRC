@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "Quest2-VRC.GUI": {
+      "commandName": "Project",
+      "commandLineArgs": "--enhanced-oculus-control\r\n"
+    }
+  }
+}
