@@ -8,7 +8,7 @@ using static Quest2_VRC.Logger;
 
 namespace Quest2_VRC.Services
 {
-    public class RGBControler
+    public class RGBController
     {
         public static void SendRGBData(int dataInt) // Sends commands to OpenRGB (every time there is a change at the OSC address)
         {

@@ -40,12 +40,13 @@ namespace Quest2_VRC
 
                         throw new Exception(String.Format("Param of type {0} is not supported by VRChat!", Param.Data.GetType()));
 
-                    // Create a bundle that contains the target address and port (VRChat works on localhost:9000)
+                    // Create a bundle that contains the target address and port (VRChat works on localhost:9000 or any IP:PORT)
                     OscBundle VRBundle = new OscBundle(VRChat);
 
                     // Create the message, and append the parameter to it
                     switch (Param.Parameter)
                     {
+                        //Used to send commands to control the functions of the game itself
                         case var s when new[] { "MoveForward", "MoveBackward", "MoveLeft", "LookRight", "Jump", "Run", "ComfortLeft", "ComfortRight", "DropRight", "UseRight", "GrabRight", "DropLeft", "UseLeft", "GrabLeft", "PanicButton", "QuickMenuToggleLeft", "QuickMenuToggleRight", "Voice" }.Contains(s):
                             {
                                 OscMessage Message = new OscMessage(VRChat, String.Format("/input/{0}", Param.Parameter));
@@ -57,6 +58,7 @@ namespace Quest2_VRC
                                 VRBundle.Send(VRChat);
                                 break;
                             }
+                        //Used to send text
                         case "input":
                             {
                                 OscMessage Message = new OscMessage(VRChat, String.Format("/chatbox/{0}", Param.Parameter));
@@ -70,8 +72,7 @@ namespace Quest2_VRC
                                 break;
 
                             }
-
-
+                        //Used to send avatar parameters
                         default:
                             {
                                 OscMessage Message = new OscMessage(VRChat, String.Format("/avatar/parameters/{0}", Param.Parameter));

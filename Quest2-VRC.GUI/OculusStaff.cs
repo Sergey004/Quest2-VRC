@@ -5,6 +5,9 @@ using System.IO;
 using System.Printing;
 using static Quest2_VRC.PacketSender;
 using static Quest2_VRC.Logger;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using System.ComponentModel;
 
 namespace Quest2_VRC
 {
@@ -13,29 +16,38 @@ namespace Quest2_VRC
         public static async void DisableASW()
         {
             string OculusBase = "OculusBase";
-            var value = System.Environment.GetEnvironmentVariable(OculusBase);
-            Console.WriteLine(value + "Support\\oculus-diagnostics");
-            string loc = "-f " + AppDomain.CurrentDomain.BaseDirectory;
-            var proc = new Process
-            {
-                StartInfo = new ProcessStartInfo
+            try{
+                var value = System.Environment.GetEnvironmentVariable(OculusBase);
+                Console.WriteLine(value + "Support\\oculus-diagnostics");
+                string loc = "-f " + AppDomain.CurrentDomain.BaseDirectory;
+                var proc = new Process
                 {
-                    FileName = value + "Support\\oculus-diagnostics\\OculusDebugToolCLI.exe",
-                    Arguments = loc + "\\odtclicommands.txt",
-                    UseShellExecute = false,
-                    RedirectStandardOutput = true,
-                    CreateNoWindow = true
+                    StartInfo = new ProcessStartInfo
+                    {
+                        FileName = value + "Support\\oculus-diagnostics\\OculusDebugToolCLI.exe",
+                        Arguments = loc + "\\odtclicommands.txt",
+                        UseShellExecute = false,
+                        RedirectStandardOutput = true,
+                        CreateNoWindow = true
+                    }
+                };
+                proc.Start();
+                while (!proc.StandardOutput.EndOfStream)
+                {
+                    string line = proc.StandardOutput.ReadLine();
+                    Console.WriteLine(line);
+                    File.AppendAllText("odtout.txt", line + Environment.NewLine);
+
                 }
-            };
-            proc.Start();
-            while (!proc.StandardOutput.EndOfStream)
-            {
-                string line = proc.StandardOutput.ReadLine();
-                Console.WriteLine(line);
-                File.AppendAllText("odtout.txt", line + Environment.NewLine);
-
             }
-
+            catch (Win32Exception)
+            {
+                Application.EnableVisualStyles();
+                MessageBox.Show("Oculus Software not installed!", System.Reflection.Assembly.GetExecutingAssembly().GetName().Name, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            
+           
+            await Task.Delay(1);
         }
         public async static void HighPriority()
         {
@@ -62,7 +74,7 @@ namespace Quest2_VRC
                 Console.WriteLine(process.PriorityClass);
             }
             Console.WriteLine("Priority set to High");
-
+            await Task.Delay(1);
 
         }
         public async static void NormalPriority()
@@ -89,6 +101,7 @@ namespace Quest2_VRC
                 Console.WriteLine(process.PriorityClass);
             }
             Console.WriteLine("Priority set to Normal");
+            await Task.Delay(1);
 
         }
         public async static void DashWatchDog()
@@ -116,6 +129,7 @@ namespace Quest2_VRC
                         SendPacket(VoicePressed);
                         
                         proc.Kill();
+                        await Task.Delay(100);
                         break;
                     }
                 }
@@ -124,7 +138,8 @@ namespace Quest2_VRC
                 {
                     Process procRun = new Process();
                     procRun.StartInfo.FileName = value + "Support\\oculus-dash\\dash\\bin\\OculusDash.exe";
-                    procRun.Start();
+                    procRun.Start(); 
+                    await Task.Delay(100);
                 }
             }
         }

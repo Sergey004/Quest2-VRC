@@ -4,6 +4,7 @@ using Quest2_VRC.Services;
 using System;
 using System.IO;
 using System.Net;
+using System.Threading.Tasks;
 
 namespace Quest2_VRC
 {
@@ -13,7 +14,7 @@ namespace Quest2_VRC
         static readonly int dataInt = 0;
         public static async void Run()
         {
-            RGBControler.SendRGBData(dataInt); //Init OpenRGB
+            RGBController.SendRGBData(dataInt); //Init OpenRGB
             string json = File.ReadAllText("vars.json");
             JObject vars = JObject.Parse(json);
 
@@ -30,6 +31,7 @@ namespace Quest2_VRC
             oscServer.MessageReceived += new EventHandler<OscMessageReceivedEventArgs>(oscServer_MessageReceived);
             oscServer.Start();
             Logger.LogToConsole("Make sure you have all effects disabled in OpenRGB");
+            await Task.Delay(3000);
         }
 
         private static void oscServer_MessageReceived(object sender, OscMessageReceivedEventArgs e)
@@ -52,7 +54,7 @@ namespace Quest2_VRC
                 //Console.WriteLine(string.Format("{0}", dataString)); //Debug
 
                 int dataInt = Int32.Parse(dataString);
-                RGBControler.SendRGBData(dataInt);
+                RGBController.SendRGBData(dataInt);
             }
 
         }
