@@ -21,7 +21,7 @@ namespace Quest2_VRC
 
         static void Main(string[] args)
         {
-            
+            Check_Vars.CheckVars();
             foreach (string arg in args)
             {
 
@@ -35,6 +35,7 @@ namespace Quest2_VRC
                         GUI();
                         break;
                     case "--enhanced-oculus-control":
+                        
                         OculusStaff.DisableASW();
                         OculusStaff.HighPriority();
                         var tasks = new[]

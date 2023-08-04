@@ -22,11 +22,10 @@ namespace Quest2_VRC
         {
             
             ResourceManager resources = new ComponentResourceManager(typeof(Form1));
-            InitializeComponent();
+            InitializeComponent(); 
             materialTextBox1.Enabled = false;
             materialCheckbox1.Checked = false;
             materialLabel4.Text = $"{ThisAssembly.Git.Commit}";
-            Check_Vars.CheckVars();
             var materialSkinManager = MaterialSkinManager.Instance;
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;

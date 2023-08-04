@@ -8,11 +8,14 @@ using static Quest2_VRC.Logger;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.ComponentModel;
+using System.Text.RegularExpressions;
+using System.Runtime.Versioning;
 
 namespace Quest2_VRC
 {
     public class OculusStaff
     {
+        [SupportedOSPlatform("windows")]
         public static async void DisableASW()
         {
             string OculusBase = "OculusBase";
@@ -49,6 +52,7 @@ namespace Quest2_VRC
            
             await Task.Delay(1);
         }
+        [SupportedOSPlatform("windows")]
         public async static void HighPriority()
         {
 
@@ -77,6 +81,7 @@ namespace Quest2_VRC
             await Task.Delay(1);
 
         }
+        [SupportedOSPlatform("windows")]
         public async static void NormalPriority()
         {
             Process[] OculusClient = Process.GetProcessesByName("OculusClient");
@@ -104,45 +109,46 @@ namespace Quest2_VRC
             await Task.Delay(1);
 
         }
+        [SupportedOSPlatform("windows")]
         public async static void DashWatchDog()
         {
-            string OculusBase = "OculusBase";
-            var value = System.Environment.GetEnvironmentVariable(OculusBase);
-            while (true)
-            {
-                Process[] procs;
-                procs = Process.GetProcessesByName("OculusDash");
-                bool restartRequired = false;
-                foreach (Process proc in procs)
-                {
-                    if (!proc.Responding)
-                    {
-                        string inputbox = "input";
-                        restartRequired = true;
-                        LogToConsole("Error: Oculus dash crashed, waiting for app restart and enabling Voice Chat");
-                        VRChatMessage MsgErr = new VRChatMessage(inputbox, "Error: Oculus dash crashed, waiting for app restart and enabling Voice Chat"); 
-                        SendPacket(MsgErr);
-                        string input = "Voice";
-                        VRChatMessage VoiceReleased = new VRChatMessage(input, 0);
-                        SendPacket(VoiceReleased);
-                        VRChatMessage VoicePressed = new VRChatMessage(input, 1);
-                        SendPacket(VoicePressed);
-                        
-                        proc.Kill();
-                        await Task.Delay(100);
-                        break;
-                    }
-                }
+            // It still doesn't work
 
-                if (restartRequired)
-                {
-                    Process procRun = new Process();
-                    procRun.StartInfo.FileName = value + "Support\\oculus-dash\\dash\\bin\\OculusDash.exe";
-                    procRun.Start(); 
-                    await Task.Delay(100);
-                }
-            }
+            //while (true)
+            //{
+            //    EventLog myLog = new EventLog();
+            //    myLog.Log = "Application";
+            //    myLog.Source = "Application Error"; 
+
+            //    var lastEntry = myLog.Entries[myLog.Entries.Count - 1];
+            //    var last_error_Message = lastEntry.Message;
+
+            //    for (int index = myLog.Entries.Count - 1; index > 0; index--)
+            //    {
+            //        var errLastEntry = myLog.Entries[index];
+            //        if (errLastEntry.EntryType == EventLogEntryType.Error)
+            //        {
+
+            //            var appName = errLastEntry.Message;
+            //            if (Regex.IsMatch(appName, @"OculusDash.exe")) // YES I HAVE THIS PROBLEM AND I HATE IT!
+            //            {
+            //                string inputbox = "input";
+            //                LogToConsole("Error: Oculus dash crashed, waiting for app restart and enabling Voice Chat");
+            //                VRChatMessage MsgErr = new VRChatMessage(inputbox, "Error: Oculus dash crashed, waiting for app restart and enabling Voice Chat");
+            //                SendPacket(MsgErr);
+            //                string input = "Voice";
+            //                VRChatMessage VoiceReleased = new VRChatMessage(input, 0);
+            //                SendPacket(VoiceReleased);
+            //                VRChatMessage VoicePressed = new VRChatMessage(input, 1);
+            //                SendPacket(VoicePressed);
+
+            //            }
+
+
+            //        }
+            //    }
+            //    await Task.Delay(100);
         }
-
     }
-}
+    }
+
