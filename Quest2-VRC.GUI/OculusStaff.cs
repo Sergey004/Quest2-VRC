@@ -121,28 +121,24 @@ namespace Quest2_VRC
                 EventLog("Application");
 
                 DateTime dt = DateTime.Now;
-               // Console.WriteLine(dt.ToString());
-
                 foreach (EventLogEntry entry in log.Entries)
                 {
-                    
+
                     if (entry.Source.Equals("Application Error") && (entry.TimeGenerated > dt))
-                    
+
                     {
                         var appName = entry.Message;
                         if (Regex.IsMatch(appName, @"OculusDash.exe")) // YES I HAVE THIS PROBLEM AND I HATE IT!
                         {
                             string inputbox = "input";
-                            LogToConsole("Error: Oculus dash crashed, waiting for dash restart and enabling Voice Chat");
-                            VRChatMessage MsgErr = new VRChatMessage(inputbox, "Error: Oculus dash crashed, waiting for dash restart and enabling Voice Chat");
+                            LogToConsole("Warning: Oculus Dash crashed, waiting for Dash to restart and enable voice chat (If disabled)");
+                            VRChatMessage MsgErr = new VRChatMessage(inputbox, "Warning: Oculus Dash crashed, waiting for Dash to restart and enable voice chat (If disabled)");
                             SendPacket(MsgErr);
                             string input = "Voice";
                             VRChatMessage VoiceReleased = new VRChatMessage(input, 0);
                             SendPacket(VoiceReleased);
                             VRChatMessage VoicePressed = new VRChatMessage(input, 1);
                             SendPacket(VoicePressed);
-                            
-
 
                         }
                     }
