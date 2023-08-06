@@ -1,25 +1,28 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
-using System.Printing;
-using static Quest2_VRC.PacketSender;
-using static Quest2_VRC.Logger;
+using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.ComponentModel;
-using System.Text.RegularExpressions;
-using System.Runtime.Versioning;
+using static Quest2_VRC.Logger;
+using static Quest2_VRC.PacketSender;
 
 namespace Quest2_VRC
 {
     public class OculusStaff
     {
+        [DllImport("user32.dll")]
+        public static extern int SetForegroundWindow(IntPtr hWnd);
+
         [SupportedOSPlatform("windows")]
         public static async void DisableASW()
         {
             string OculusBase = "OculusBase";
-            try{
+            try
+            {
                 var value = System.Environment.GetEnvironmentVariable(OculusBase);
                 Console.WriteLine(value + "Support\\oculus-diagnostics");
                 string loc = "-f " + AppDomain.CurrentDomain.BaseDirectory;
@@ -48,8 +51,8 @@ namespace Quest2_VRC
                 Application.EnableVisualStyles();
                 MessageBox.Show("Oculus Software not installed!", System.Reflection.Assembly.GetExecutingAssembly().GetName().Name, MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            
-           
+
+
             await Task.Delay(1);
         }
         [SupportedOSPlatform("windows")]
@@ -112,43 +115,41 @@ namespace Quest2_VRC
         [SupportedOSPlatform("windows")]
         public async static void DashWatchDog()
         {
-            // It still doesn't work
+            while (true)
+            {
+                EventLog log = new
+                EventLog("Application");
 
-            //while (true)
-            //{
-            //    EventLog myLog = new EventLog();
-            //    myLog.Log = "Application";
-            //    myLog.Source = "Application Error"; 
+                DateTime dt = DateTime.Now;
+               // Console.WriteLine(dt.ToString());
 
-            //    var lastEntry = myLog.Entries[myLog.Entries.Count - 1];
-            //    var last_error_Message = lastEntry.Message;
-
-            //    for (int index = myLog.Entries.Count - 1; index > 0; index--)
-            //    {
-            //        var errLastEntry = myLog.Entries[index];
-            //        if (errLastEntry.EntryType == EventLogEntryType.Error)
-            //        {
-
-            //            var appName = errLastEntry.Message;
-            //            if (Regex.IsMatch(appName, @"OculusDash.exe")) // YES I HAVE THIS PROBLEM AND I HATE IT!
-            //            {
-            //                string inputbox = "input";
-            //                LogToConsole("Error: Oculus dash crashed, waiting for app restart and enabling Voice Chat");
-            //                VRChatMessage MsgErr = new VRChatMessage(inputbox, "Error: Oculus dash crashed, waiting for app restart and enabling Voice Chat");
-            //                SendPacket(MsgErr);
-            //                string input = "Voice";
-            //                VRChatMessage VoiceReleased = new VRChatMessage(input, 0);
-            //                SendPacket(VoiceReleased);
-            //                VRChatMessage VoicePressed = new VRChatMessage(input, 1);
-            //                SendPacket(VoicePressed);
-
-            //            }
+                foreach (EventLogEntry entry in log.Entries)
+                {
+                    
+                    if (entry.Source.Equals("Application Error") && (entry.TimeGenerated > dt))
+                    
+                    {
+                        var appName = entry.Message;
+                        if (Regex.IsMatch(appName, @"OculusDash.exe")) // YES I HAVE THIS PROBLEM AND I HATE IT!
+                        {
+                            string inputbox = "input";
+                            LogToConsole("Error: Oculus dash crashed, waiting for dash restart and enabling Voice Chat");
+                            VRChatMessage MsgErr = new VRChatMessage(inputbox, "Error: Oculus dash crashed, waiting for dash restart and enabling Voice Chat");
+                            SendPacket(MsgErr);
+                            string input = "Voice";
+                            VRChatMessage VoiceReleased = new VRChatMessage(input, 0);
+                            SendPacket(VoiceReleased);
+                            VRChatMessage VoicePressed = new VRChatMessage(input, 1);
+                            SendPacket(VoicePressed);
+                            
 
 
-            //        }
-            //    }
-            //    await Task.Delay(100);
+                        }
+                    }
+                }
+            }
+
         }
     }
-    }
+}
 
