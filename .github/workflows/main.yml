@@ -1,7 +1,8 @@
 name: CI
 
 on: [push]
-
+env:
+  GIT_SUBMODULE_STRATEGY: recursive
 jobs:
   build:
     runs-on: windows-2019
@@ -11,9 +12,6 @@ jobs:
     - name: Set output
       run: echo "{name}={value}" >> $GITHUB_OUTPUT
     - uses: actions/checkout@v3
-    - name: checkout all the submodules
-      with:
-          submodules: true
     - name: Install .NET 7 SDK
       uses: actions/setup-dotnet@v3
       with:
