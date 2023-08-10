@@ -4,31 +4,32 @@ using Bespoke.Osc;
 using Newtonsoft.Json.Linq;
 using System;
 using System.IO;
-using System.Linq;
 using System.Media;
 using System.Net.Sockets;
-using System.Runtime.Versioning;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using VRC.OSCQuery;
 using static Quest2_VRC.ADB;
 using static Quest2_VRC.Logger;
 using static Quest2_VRC.PacketSender;
-
+using Extensions = VRC.OSCQuery.Extensions;
 
 namespace Quest2_VRC
 {
     static class Sender
     {
 
-       
+
         public static async void Run(bool wirlessmode, bool audioEnadled)
         {
-            Random rnd = new Random();
-            int Uport = rnd.Next(1, 9999);
+            
+            var udpPort = Extensions.GetAvailableUdpPort();
+
+            int Uport = udpPort;
             Console.WriteLine("OSC UDP port is {0}", Uport);
             await questwd(Uport, wirlessmode, audioEnadled);
         }
-        
+
         public static async Task questwd(int Uport, bool wirlessmode, bool audioEnadled)
         {
             // Create a bogus port for the client
@@ -87,7 +88,7 @@ namespace Quest2_VRC
                     var Lbat_match = Regex.Match(Lbat_receiver.ToString(), @"\d+", RegexOptions.RightToLeft);
                     var cputemp_match = Regex.Match(cputemp.ToString(), @"\d+");
                     var gputemp_match = Regex.Match(gputemp.ToString(), @"\d+");
-                    
+
 
                     Hbatlevelint = int.Parse(Hbat_match.Value);
                     Rbatlevelint = int.Parse(Rbat_match.Value);
@@ -133,7 +134,7 @@ namespace Quest2_VRC
                             }
                             await Task.Delay(3000);
                             audioPlayedR = true;
-                      
+
                         }
                     }
                     if (Lbatlevelint < 25)

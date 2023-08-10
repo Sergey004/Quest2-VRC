@@ -3108,7 +3108,7 @@
     <value>Только отправка</value>
   </data>
   <data name="TCPIPmode" xml:space="preserve">
-    <value>В режиме работы TCPIP</value>
+    <value>В режиме работы TCP/IP</value>
   </data>
   <data name="WakeDevice" xml:space="preserve">
     <value>Не забудьте разбудить свое устройство</value>

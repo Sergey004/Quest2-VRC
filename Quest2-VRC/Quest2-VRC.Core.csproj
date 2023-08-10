@@ -60,6 +60,9 @@
     <PackageReference Include="System.Management" Version="7.0.1" />
     <PackageReference Include="Zeroconf" Version="3.6.11" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\vrc-oscquery-lib\vrc-oscquery-lib\vrc-oscquery-lib.csproj" />
+  </ItemGroup>
   <PropertyGroup>
     <IsPublishable>False</IsPublishable>
     <BaseOutputPath></BaseOutputPath>

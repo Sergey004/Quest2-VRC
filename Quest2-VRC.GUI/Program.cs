@@ -21,6 +21,7 @@ namespace Quest2_VRC
 
         static void Main(string[] args)
         {
+            
             Check_Vars.CheckVars();
             foreach (string arg in args)
             {

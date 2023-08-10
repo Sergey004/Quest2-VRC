@@ -4,7 +4,9 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Net;
+using VRC.OSCQuery;
 using static Quest2_VRC.Logger;
+using Extensions = VRC.OSCQuery.Extensions;
 
 namespace Quest2_VRC
 {

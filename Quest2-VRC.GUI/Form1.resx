@@ -3641,7 +3641,7 @@ Yes for ZeroConf, No for old method</value>
     <value>Send Only</value>
   </data>
   <data name="TCPIPmode" xml:space="preserve">
-    <value>In TCPIP mode</value>
+    <value>In TCP/IP mode</value>
   </data>
   <data name="USBCon" xml:space="preserve">
     <value>Do not forget to connect the device via USB</value>

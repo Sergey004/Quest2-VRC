@@ -5,26 +5,39 @@ using System;
 using System.IO;
 using System.Net;
 using System.Threading.Tasks;
+using VRC.OSCQuery;
+using Extensions = VRC.OSCQuery.Extensions;
 
 namespace Quest2_VRC
-{
+
+{   // Currently broken
+
     public class Receiver
 
     {
         static readonly int dataInt = 0;
         public static async void Run()
         {
-            RGBController.SendRGBData(dataInt); //Init OpenRGB
+            RGBController.SendRGBData(dataInt); // Init OpenRGB
+            var tcpPort = Extensions.GetAvailableTcpPort();
+            var udpPort = Extensions.GetAvailableUdpPort();
+            var oscQuery = new OSCQueryServiceBuilder()
+                .WithTcpPort(tcpPort)
+                .WithUdpPort(udpPort)
+                .WithServiceName("Quest2-VRC OSCQuery Receiver")
+                .WithDefaults()
+                .Build();
+
             string json = File.ReadAllText("vars.json");
             JObject vars = JObject.Parse(json);
 
             string Eyesmode = (string)vars["Receive_addr"];
             string EyesmodeTest = (string)vars["Receive_addr_test"];
-            int ReceivePort = int.Parse((string)vars["ReceivePort"]);
+            
             var IP = IPAddress.Parse((string)vars["HostIP"]);
 
             OscServer oscServer;
-            oscServer = new OscServer((Bespoke.Common.Net.TransportType)TransportType.Udp, IP, ReceivePort);
+            oscServer = new OscServer((Bespoke.Common.Net.TransportType)TransportType.Udp, IP, udpPort);
             oscServer.FilterRegisteredMethods = true;
             oscServer.RegisterMethod(Eyesmode);
             oscServer.RegisterMethod(EyesmodeTest);
@@ -37,7 +50,7 @@ namespace Quest2_VRC
         private static void oscServer_MessageReceived(object sender, OscMessageReceivedEventArgs e)
         {
             OscMessage message = e.Message;
-            //Console.WriteLine(string.Format("\nMessage Received {0}", message.Address)); //Debug
+            Console.WriteLine(string.Format("\nMessage Received {0}", message.Address)); //Debug
 
             for (int i = 0; i < message.Data.Count; i++)
             {
@@ -53,7 +66,7 @@ namespace Quest2_VRC
                 }
                 //Console.WriteLine(string.Format("{0}", dataString)); //Debug
 
-                int dataInt = Int32.Parse(dataString);
+                int dataInt = int.Parse(dataString);
                 RGBController.SendRGBData(dataInt);
             }
 

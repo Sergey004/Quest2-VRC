@@ -146,11 +146,11 @@
             // 
             // materialMultiLineTextBox1
             // 
-            resources.ApplyResources(materialMultiLineTextBox1, "materialMultiLineTextBox1");
             materialMultiLineTextBox1.BackColor = System.Drawing.Color.FromArgb(255, 255, 255);
             materialMultiLineTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             materialMultiLineTextBox1.Cursor = System.Windows.Forms.Cursors.No;
             materialMultiLineTextBox1.Depth = 0;
+            resources.ApplyResources(materialMultiLineTextBox1, "materialMultiLineTextBox1");
             materialMultiLineTextBox1.ForeColor = System.Drawing.Color.FromArgb(222, 0, 0, 0);
             materialMultiLineTextBox1.MouseState = MaterialSkin.MouseState.HOVER;
             materialMultiLineTextBox1.Name = "materialMultiLineTextBox1";
@@ -166,13 +166,13 @@
             // 
             // materialCard4
             // 
-            resources.ApplyResources(materialCard4, "materialCard4");
             materialCard4.BackColor = System.Drawing.Color.FromArgb(255, 255, 255);
             materialCard4.Controls.Add(materialButton3);
             materialCard4.Controls.Add(materialButton1);
             materialCard4.Controls.Add(materialButton4);
             materialCard4.Depth = 0;
             materialCard4.ForeColor = System.Drawing.Color.FromArgb(222, 0, 0, 0);
+            resources.ApplyResources(materialCard4, "materialCard4");
             materialCard4.MouseState = MaterialSkin.MouseState.HOVER;
             materialCard4.Name = "materialCard4";
             // 
@@ -185,7 +185,6 @@
             // 
             // materialCard2
             // 
-            resources.ApplyResources(materialCard2, "materialCard2");
             materialCard2.BackColor = System.Drawing.Color.FromArgb(255, 255, 255);
             materialCard2.Controls.Add(materialCheckbox2);
             materialCard2.Controls.Add(materialButton5);
@@ -193,6 +192,7 @@
             materialCard2.Controls.Add(materialSwitch1);
             materialCard2.Depth = 0;
             materialCard2.ForeColor = System.Drawing.Color.FromArgb(222, 0, 0, 0);
+            resources.ApplyResources(materialCard2, "materialCard2");
             materialCard2.MouseState = MaterialSkin.MouseState.HOVER;
             materialCard2.Name = "materialCard2";
             // 
@@ -226,10 +226,10 @@
             // 
             // materialTextBox1
             // 
-            resources.ApplyResources(materialTextBox1, "materialTextBox1");
             materialTextBox1.AnimateReadOnly = false;
             materialTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             materialTextBox1.Depth = 0;
+            resources.ApplyResources(materialTextBox1, "materialTextBox1");
             materialTextBox1.LeadingIcon = null;
             materialTextBox1.MouseState = MaterialSkin.MouseState.OUT;
             materialTextBox1.Name = "materialTextBox1";

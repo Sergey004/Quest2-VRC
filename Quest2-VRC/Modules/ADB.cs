@@ -149,6 +149,7 @@ namespace Quest2_VRC
         public static async Task<string> GetZeroConfIP()
         {
             string deviceip = null;
+
             var adbtls = await ZeroconfResolver.ResolveAsync("_adb-tls-connect._tcp.local.");
             foreach (var headset in adbtls)
             {
@@ -168,18 +169,21 @@ namespace Quest2_VRC
 
             return await Task.FromResult(deviceip);
         }
-        public static void StopADB()
-        {
-            if (!AdbServer.Instance.GetStatus().IsRunning)
-            {
-                // do nothing
-            }
-            else
-            {
-                client.KillAdb();
-            }
 
+
+    
+    public static void StopADB()
+    {
+        if (!AdbServer.Instance.GetStatus().IsRunning)
+        {
+            // do nothing
+        }
+        else
+        {
+            client.KillAdb();
         }
 
     }
+
+}
 }

@@ -79,6 +79,6 @@ And hope for the best that this program will work for you
 
 Sending code based on modified source code from https://github.com/KaleidonKep99/VRChat_CS_OSCTest
 
-Audio files were generated with [xVASynth](https://github.com/DanRuta/xVA-Synth) 
+Audio files were generated with ~~[xVASynth](https://github.com/DanRuta/xVA-Synth)~~ [ElevenLabs](https://elevenlabs.io/speech-synthesis) + [RVC](https://github.com/Mangio621/Mangio-RVC-Fork)
 
 (If you know whose voice it is and which character it represents, then you're good, you found a mini Easter Egg :) )

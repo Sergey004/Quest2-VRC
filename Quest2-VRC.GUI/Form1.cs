@@ -311,6 +311,7 @@ namespace Quest2_VRC
             }
             else
             {
+                File.Delete("odtout.txt");
                 ADB.StopADB();
             }
 

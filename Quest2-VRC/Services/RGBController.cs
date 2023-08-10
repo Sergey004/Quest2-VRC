@@ -68,7 +68,7 @@ namespace Quest2_VRC.Services
             }
             catch (TimeoutException)
             {
-                LogToConsole("OpenRGB server is not enabled");
+                LogToConsole("OpenRGB server is not enabled, or not installed");
             }
         }
     }
