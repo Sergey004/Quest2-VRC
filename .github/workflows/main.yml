@@ -10,11 +10,10 @@ jobs:
       run: echo "{name}={value}" >> $GITHUB_STATE
     - name: Set output
       run: echo "{name}={value}" >> $GITHUB_OUTPUT
-    - name: checkout all the submodules
-      uses: actions/checkout@v2
+    - name: checkout all the submodules      
+    - uses: actions/checkout@v3
       with:
             submodules: recursive
-    - uses: actions/checkout@v3
     - name: Install .NET 7 SDK
       uses: actions/setup-dotnet@v3
       with:
