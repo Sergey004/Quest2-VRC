@@ -10,7 +10,7 @@ using Extensions = VRC.OSCQuery.Extensions;
 
 namespace Quest2_VRC
 
-{   // Currently broken
+{   
 
     public class Receiver
 
@@ -27,6 +27,8 @@ namespace Quest2_VRC
                 .WithServiceName("Quest2-VRC OSCQuery Receiver")
                 .WithDefaults()
                 .Build();
+
+            oscQuery.AddEndpoint<int>("/avatar", Attributes.AccessValues.WriteOnly);
 
             string json = File.ReadAllText("vars.json");
             JObject vars = JObject.Parse(json);

@@ -49,7 +49,7 @@ namespace Quest2_VRC
                     switch (Param.Parameter)
                     {
                         //Used to send commands to control the functions of the game itself
-                        case var s when new[] { "MoveForward", "MoveBackward", "MoveLeft", "LookRight", "Jump", "Run", "ComfortLeft", "ComfortRight", "DropRight", "UseRight", "GrabRight", "DropLeft", "UseLeft", "GrabLeft", "PanicButton", "QuickMenuToggleLeft", "QuickMenuToggleRight", "Voice" }.Contains(s):
+                        case var s when new[] { "MoveForward", "MoveBackward", "MoveLeft", "LookRight", "Jump", "Run", "ComfortLeft", "ComfortRight", "DropRight", "UseRight", "GrabRight", "DropLeft", "UseLeft", "GrabLeft", "PanicButton", "QuickMenuToggleLeft", "QuickMenuToggleRight", "Voice", "AFKToggle" }.Contains(s):
                             {
                                 OscMessage Message = new OscMessage(VRChat, String.Format("/input/{0}", Param.Parameter));
                                 Message.Append(Param.Data);
