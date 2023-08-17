@@ -8,7 +8,6 @@ using System.Media;
 using System.Net.Sockets;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using VRC.OSCQuery;
 using static Quest2_VRC.ADB;
 using static Quest2_VRC.Logger;
 using static Quest2_VRC.PacketSender;
@@ -164,7 +163,7 @@ namespace Quest2_VRC
 
                     LogToConsole("Sending HMD status", Msg1, Msg2, Msg3, Msg4, Msg5, Msg6, Msg7);
 
-                    await Task.Delay(3000);
+                    await Task.Delay(5000);
 
 
                 }

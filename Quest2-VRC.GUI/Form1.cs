@@ -3,12 +3,10 @@ using MaterialSkin.Controls;
 using Newtonsoft.Json.Linq;
 using System;
 using System.ComponentModel;
-using System.Globalization;
 using System.IO;
 using System.Linq;
 using System.Resources;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -20,9 +18,9 @@ namespace Quest2_VRC
     {
         public Form1()
         {
-            
+
             ResourceManager resources = new ComponentResourceManager(typeof(Form1));
-            InitializeComponent(); 
+            InitializeComponent();
             materialTextBox1.Enabled = false;
             materialCheckbox1.Checked = false;
             materialLabel4.Text = $"{ThisAssembly.Git.Commit}";
@@ -139,7 +137,7 @@ namespace Quest2_VRC
                 try
                 {
                     OSC.StartOSC(false, true);
-                    materialLabel5.Invoke(new Action(() => materialLabel5.Text = resources.GetString("NoADB"))); 
+                    materialLabel5.Invoke(new Action(() => materialLabel5.Text = resources.GetString("NoADB")));
 
                 }
                 catch (Exception)

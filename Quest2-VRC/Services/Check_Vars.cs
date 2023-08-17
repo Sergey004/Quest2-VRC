@@ -21,7 +21,6 @@ namespace Quest2_VRC
                 new JProperty("Receive_addr", "/avatar/parameters/Eyes mode"),
                 new JProperty("Receive_addr_test", "/avatar/parameters/Eyes_mode"),
                 new JProperty("SendPort", "9000"),
-                new JProperty("ReceivePort", "9001"),
                 new JProperty("HostIP", "127.0.0.1"));
 
 
