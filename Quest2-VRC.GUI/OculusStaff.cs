@@ -1,22 +1,21 @@
-﻿using System;
+﻿using AdvancedSharpAdbClient;
+using System;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.IO;
-using System.Runtime.InteropServices;
 using System.Runtime.Versioning;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static Quest2_VRC.ADB;
 using static Quest2_VRC.Logger;
 using static Quest2_VRC.PacketSender;
 
 namespace Quest2_VRC
 {
+    [SupportedOSPlatform("windows")]
     public class OculusStaff
     {
-        [DllImport("user32.dll")]
-        public static extern int SetForegroundWindow(IntPtr hWnd);
-
         [SupportedOSPlatform("windows")]
         public static async void DisableASW()
         {
@@ -24,7 +23,7 @@ namespace Quest2_VRC
             try
             {
                 var value = System.Environment.GetEnvironmentVariable(OculusBase);
-                Console.WriteLine(value + "Support\\oculus-diagnostics");
+
                 string loc = "-f " + AppDomain.CurrentDomain.BaseDirectory;
                 var proc = new Process
                 {
@@ -110,6 +109,13 @@ namespace Quest2_VRC
             }
             Console.WriteLine("Priority set to Normal");
             await Task.Delay(1);
+
+        }
+        [SupportedOSPlatform("windows")]
+        public async static void StartLink()
+        {
+           ConsoleOutputReceiver Hbat_receiver = new ConsoleOutputReceiver();
+           await client.ExecuteRemoteCommandAsync("am start \"xrstreamingclient://?\"", device, null);
 
         }
         [SupportedOSPlatform("windows")]

@@ -62,20 +62,20 @@ namespace Quest2_VRC
 
 
                     ConsoleOutputReceiver Hbat_receiver = new ConsoleOutputReceiver();
-                    client.ExecuteRemoteCommand("dumpsys CompanionService | grep Battery", device, Hbat_receiver);
+                    await client.ExecuteRemoteCommandAsync("dumpsys CompanionService | grep Battery", device, Hbat_receiver);
                     ConsoleOutputReceiver Rbat_receiver = new ConsoleOutputReceiver();
-                    client.ExecuteRemoteCommand("dumpsys OVRRemoteService | grep Right", device, Rbat_receiver);
+                    await client.ExecuteRemoteCommandAsync("dumpsys OVRRemoteService | grep Right", device, Rbat_receiver);
                     ConsoleOutputReceiver Lbat_receiver = new ConsoleOutputReceiver();
-                    client.ExecuteRemoteCommand("dumpsys OVRRemoteService | grep Left", device, Lbat_receiver);
+                    await client.ExecuteRemoteCommandAsync("dumpsys OVRRemoteService | grep Left", device, Lbat_receiver);
                     ConsoleOutputReceiver cputemp = new ConsoleOutputReceiver();
-                    client.ExecuteRemoteCommand("dumpsys hardware_properties|grep \"CPU temperatures\"", device, cputemp);
+                    await client.ExecuteRemoteCommandAsync("dumpsys hardware_properties| grep \"CPU temperatures\"", device, cputemp);
                     ConsoleOutputReceiver gputemp = new ConsoleOutputReceiver();
-                    client.ExecuteRemoteCommand("dumpsys hardware_properties|grep \"GPU temperatures\"", device, gputemp);
+                    await client.ExecuteRemoteCommandAsync("dumpsys hardware_properties| grep \"GPU temperatures\"", device, gputemp);
 
                     if (wirlessmode == true)
                     {
                         ConsoleOutputReceiver Wifi_Singal = new ConsoleOutputReceiver();
-                        client.ExecuteRemoteCommand("dumpsys wifi | grep RSSI:", device, Wifi_Singal);
+                        await client.ExecuteRemoteCommandAsync("dumpsys wifi | grep RSSI:", device, Wifi_Singal);
                         var Wifi_match = Regex.Match(Wifi_Singal.ToString(), @"RSSI: \S*\d+");
                         WifiRSSI = Wifi_match.ToString()[6..];
                         WifiInt = int.Parse(WifiRSSI);
@@ -113,10 +113,11 @@ namespace Quest2_VRC
                         if (HMDCrit = false && Hbatlevelint == 15)
                         {
                             string inputbox = "input";
-                            LogToConsole("Headset battery is at critical value, headset is turns off.");
-                            VRChatMessage MsgCrit = new VRChatMessage(inputbox, "Headset battery is at critical value, headset is turns off.");
+                            LogToConsole("Headset battery is at critical level, headset is turns off.");
+                            VRChatMessage MsgCrit = new VRChatMessage(inputbox, "Headset battery is at critical level, headset is turns off.");
                             SendPacket(MsgCrit);
                             HMDCrit = true;
+                            
                         }
 
                     }
@@ -170,8 +171,8 @@ namespace Quest2_VRC
                 catch (AdbException)
                 {
                     string inputbox = "input";
-                    LogToConsole("Error: Connection to the headset is lost! Trying to reconnect...");
-                    VRChatMessage MsgErr = new VRChatMessage(inputbox, "Error: Connection to the headset is lost! Trying to reconnect...");
+                    LogToConsole("Error: Connection to the headset is lost! Waiting for reconnect...");
+                    VRChatMessage MsgErr = new VRChatMessage(inputbox, "Error: Connection to the headset is lost! Waiting for reconnect...");
                     SendPacket(MsgErr);
                     await Task.Delay(3000);
                 }

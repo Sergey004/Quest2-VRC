@@ -150,7 +150,7 @@ namespace Quest2_VRC
         {
             string deviceip = null;
 
-            var adbtls = await ZeroconfResolver.ResolveAsync("_adb-tls-connect._tcp.local.");
+            var adbtls = await ZeroconfResolver.ResolveAsync("_adb-tls-connect._tcp.local."); // Android 11+
             foreach (var headset in adbtls)
             {
                 foreach (IService service in headset.Services.Values)
@@ -158,7 +158,7 @@ namespace Quest2_VRC
                     deviceip = headset.IPAddress + ":" + service.Port;
                 }
             }
-            var secadb = await ZeroconfResolver.ResolveAsync("_adb_secure_connect._tcp.local.");
+            var secadb = await ZeroconfResolver.ResolveAsync("_adb_secure_connect._tcp.local."); // Android 10 and lower
             foreach (var headset in secadb)
             {
                 foreach (IService service in headset.Services.Values)
