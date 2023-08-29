@@ -80,7 +80,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Quest2-VRC\Quest2-VRC.Core.csproj" />
-    <ProjectReference Include="..\vrc-oscquery-lib\vrc-oscquery-lib\vrc-oscquery-lib.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Properties\Settings.Designer.cs">
