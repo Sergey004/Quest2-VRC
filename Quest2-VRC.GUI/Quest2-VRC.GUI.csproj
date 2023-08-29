@@ -100,5 +100,6 @@
   </ItemGroup>
   <PropertyGroup>
     <IsPublishable>False</IsPublishable>
+    <StartupObject>Quest2_VRC.Program</StartupObject>
   </PropertyGroup>
 </Project>

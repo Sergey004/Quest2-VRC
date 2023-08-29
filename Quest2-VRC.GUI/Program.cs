@@ -29,7 +29,7 @@ namespace Quest2_VRC
                 switch (arg)
                 {
                     case "--help":
-                        Console.WriteLine("----Commands----\n--force-eng - Force enable English lang\n --enhanced-oculus-control - Enables enhanced management of Oculus services (Like disable ASW, sets High Priority for Oculus services");
+                        Console.WriteLine("----Commands----\n--force-eng - Force enable English lang\n--enhanced-oculus-control - Enables enhanced management of Oculus services (Like disable ASW, sets High Priority for Oculus services)");
                         break;
                     case "--force-eng":
                         Thread.CurrentThread.CurrentUICulture = new CultureInfo("en");
