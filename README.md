@@ -80,6 +80,7 @@ And hope for the best that this program will work for you
 - [GitInfo](https://github.com/devlooped/GitInfo)
 - [NetBeauty2](https://github.com/nulastudio/NetBeauty2)
 - [ZeroConf](https://github.com/novotnyllc/Zeroconf)
+- [vrc-oscquery-lib](https://github.com/vrchat-community/vrc-oscquery-lib)
 
 Sending code based on modified source code from https://github.com/KaleidonKep99/VRChat_CS_OSCTest
 
