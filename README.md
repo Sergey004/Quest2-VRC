@@ -5,26 +5,18 @@
 
 This program sending Quest 2 (As well as other headsets in the Quest line) battery (and not only) information (Now also Wifi signal strength, especially for you, AirLink or VD users) to the VRChtat via the OSC protocol, also receive osc address to control OpenRGB
 
-
 If you like this program, please put a star or better yet spread the word about this program
 
+Zeroconf discovery tested on v55 (Android 12 based) [Zeroconf discovery addon](https://github.com/Sergey004/Quest2-VRC/releases/tag/Addon)
 
-
-Zeroconf discovery tested on v55 (Android 12 based)
-
-[Zeroconf discovery addon](https://github.com/Sergey004/Quest2-VRC/releases/tag/Addon)
-
-OpenRGB functions tested only on MSI Mystic Light (AKA MSI-RGB)
+OpenRGB functions tested only on MSI Mystic Light (AKA MSI-RGB) *I think any RGB controller that is supported in OpenRGB will work...*
 
 [Avatars with support for this program](Avatars%20with%20Quest2-VRC%20support.md)
-
-Available also in [CLI](https://github.com/Sergey004/Quest2-VRC/tree/cli_ver) form (unmaintained)
-
-Also for Quest Native [Xamarin](https://github.com/Sergey004/Quest2-VRC/tree/xamarin) (POC State)
 
 ## Building from source
 To build this application you will need:
 - Visual Studio 2019 or later
+- .NET Core 6+
 
 To start building the application, simply launch the solution in Visual Studio and run "Restore NuGet packages" to download dependencies
 
@@ -32,14 +24,14 @@ To start building the application, simply launch the solution in Visual Studio a
 
 There are two versions:
 
-Core version where the basic methods and the possibility to use them in other projects (Debug and Release)
+- Core version where the basic methods and the possibility to use them in other projects (Only basic ADB and OSC functions)
 
-GUI version where you can use this version right out of the box
+- GUI version with additional functionality (Remote connectivity, managing Oculus services and settings on PC, crash watch dog for Oculus Dash)
 
 ## Using
-Add a parameter to the ExpressionParameters of your avatar by assigning
+- Replace 127.0.0.1 in the vars.json file with the IP address of your headset if you are using VRChat in standalone mode (AKA VRC on Quest) or AirLink (Or VD) 
 
-- Replace 127.0.0.1 in the vars.json file with the IP address of your headset if you are using VRChat in standalone mode
+Add a parameter to the ExpressionParameters of your avatar by assigning (Or use [Quest2-VRC OSC bindings](Bindings/Quest2-VRC%20OSC%20bindings.unitypackage) for faster integration or to test the app functions in Unity)
 
 For sending:
 - You can replace ```HMDBat```, ```ControllerBatL```, ```ControllerBatR```, ```SendPort``` with your own parameters is vars.txt
@@ -55,18 +47,19 @@ Default values transferred via OSC
 |WifiRSSI|Float|-1|
 |CPUtemp|Int|0|
 |GPUtemp|Int|0|
- 
 
-(About RSSI 0.0 is best, -1 is worst)
+(About RSSI 0.0 is best, -1 is worst) 
 
-CPU and GPU vars is optional
+*some vars in code maked as Int, as workaround I use Int to Float convertion for work as intended*
 
-For receiving
-- Replace in var.txt ```Receive_addr```, ```Receive_addr_test``` and ```ReceivePort``` according to your specific parameters
+```CPUtemp``` , ```GPUtemp``` and ```WifiRSSI``` vars is optional
 
-Connect your Quest 2 (Or another headset from the Quest range) to your using USB or Wi-Fi computer in developer mode
+For receiving:
+- Replace in var.txt ```Receive_addr```, ```Receive_addr_test``` according to your specific parameters
 
-And hope for the best that this program will work for you
+Connect the Quest 2 (or another Quest headset) to your computer using USB or Wi-Fi in developer mode
+
+ [How to enadle](https://www.wikihow.com/Enable-Developer-Mode-Oculus-Quest-2)
 
 
 

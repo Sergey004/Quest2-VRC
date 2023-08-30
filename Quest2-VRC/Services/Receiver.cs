@@ -10,7 +10,7 @@ using Extensions = VRC.OSCQuery.Extensions;
 
 namespace Quest2_VRC
 
-{   
+{
 
     public class Receiver
 
@@ -35,7 +35,7 @@ namespace Quest2_VRC
 
             string Eyesmode = (string)vars["Receive_addr"];
             string EyesmodeTest = (string)vars["Receive_addr_test"];
-            
+
             var IP = IPAddress.Parse((string)vars["HostIP"]);
 
             OscServer oscServer;

@@ -397,4 +397,3 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 /.editorconfig
-/Examples/OSCQueryExplorer-Unity/Assets/OSCQuery/Runtime/Plugins/vrc-oscquery-lib.dll

@@ -21,7 +21,7 @@ namespace Quest2_VRC
 
         public static async void Run(bool wirlessmode, bool audioEnadled)
         {
-            
+
             var udpPort = Extensions.GetAvailableUdpPort();
 
             int Uport = udpPort;
@@ -117,7 +117,7 @@ namespace Quest2_VRC
                             VRChatMessage MsgCrit = new VRChatMessage(inputbox, "Headset battery is at critical level, headset is turns off.");
                             SendPacket(MsgCrit);
                             HMDCrit = true;
-                            
+
                         }
 
                     }
