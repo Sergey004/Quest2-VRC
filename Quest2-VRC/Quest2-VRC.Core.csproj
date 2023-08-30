@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <TargetFramework>net7.0-windows</TargetFramework>
     <OutputType>Library</OutputType>
@@ -56,7 +56,7 @@
     <PackageReference Include="AdvancedSharpAdbClient" Version="2.5.7" />
     <PackageReference Include="Bespoke.Osc" Version="1.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
-    <PackageReference Include="OpenRGB.NET" Version="1.7.0" />
+    <PackageReference Include="OpenRGB.NET" Version="2.2.0" />
     <PackageReference Include="System.Management" Version="7.0.2" />
     <PackageReference Include="VRChat.OSCQuery" Version="0.0.7" />
     <PackageReference Include="Zeroconf" Version="3.6.11" />
