@@ -138,7 +138,6 @@ namespace Quest2_VRC
                         {
                             string inputbox = "input";
                             string Voiceinput = "Voice";
-                            string AFKinput = "AFKToggle";
                             LogToConsole("Warning: Oculus Dash crashed, waiting for Dash to restart and toggling voice chat (If disabled) and toggling AFK");
                             VRChatMessage MsgErr = new VRChatMessage(inputbox, "Warning: Oculus Dash crashed, waiting for Dash to restart and toggling voice chat (If disabled) and toggling AFK");
                             SendPacket(MsgErr);
@@ -146,10 +145,7 @@ namespace Quest2_VRC
                             SendPacket(VoiceReleased);
                             VRChatMessage VoicePressed = new VRChatMessage(Voiceinput, 1);
                             SendPacket(VoicePressed);
-                            VRChatMessage AFKReleased = new VRChatMessage(AFKinput, 0);
-                            SendPacket(AFKReleased);
-                            VRChatMessage AFKPressed = new VRChatMessage(AFKinput, 1);
-                            SendPacket(AFKPressed);
+
 
                         }
                     }
