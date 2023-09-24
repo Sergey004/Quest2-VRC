@@ -8,9 +8,9 @@ using static Quest2_VRC.PacketSender;
 
 namespace Quest2_VRC
 {
-    public partial class Form2 : MaterialForm
+    public partial class OSCTest : MaterialForm
     {
-        public Form2()
+        public OSCTest()
         {
             InitializeComponent();
             var materialSkinManager = MaterialSkinManager.Instance;

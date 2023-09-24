@@ -36,7 +36,6 @@ namespace Quest2_VRC
 
             string json = File.ReadAllText("vars.json");
             JObject vars = JObject.Parse(json);
-
             bool LowHMDBat = false;
             bool HMDCrit = false;
             bool audioPlayedHMD = false;
@@ -101,6 +100,7 @@ namespace Quest2_VRC
                         LowHMDBat = true;
                         if (audioEnadled == true && audioPlayedHMD == false)
                         {
+                            
                             if (OperatingSystem.IsWindows())
                             {
                                 SoundPlayer playSound = new(Properties.Resources.HMDloworbelow25);

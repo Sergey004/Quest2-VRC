@@ -5,6 +5,8 @@ using System.IO;
 using System.IO.Compression;
 using System.Linq;
 using System.Net;
+using System.Runtime.InteropServices;
+using System.Runtime.Versioning;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
@@ -20,32 +22,78 @@ namespace Quest2_VRC
         static public DeviceData device;
         public static bool StartADB(bool sender, bool receiver, string hostip, bool wireless, bool audioEnadled)
         {
+
             Console.WriteLine("Make sure you connect the headset to your computer and turn on the controllers");
             if (!AdbServer.Instance.GetStatus().IsRunning)
             {
                 AdbServer server = new AdbServer();
                 try
                 {
-                    bool exists = Directory.Exists("platform-tools"); // ADB Auto donwloader
+
+                    bool exists = Directory.Exists("platform-tools"); // ADB Auto downloader
                     if (!exists)
                     {
                         Console.WriteLine("ADB directory does not exist, creating...");
-                        Console.WriteLine("Dowloading ADB");
+                        Console.WriteLine("Downloading ADB");
                         var client = new WebClient();
-                        string uri = "https://dl.google.com/android/repository/platform-tools-latest-windows.zip";
-                        string filename = "platform-tools-latest-windows.zip";
-                        string extractPath = AppDomain.CurrentDomain.BaseDirectory;
-                        client.DownloadFile(uri, filename);
-                        ZipFile.ExtractToDirectory(filename, extractPath);
-                        File.Delete(filename);
+                        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows) == true)
+                        {
+                            string uri = "https://dl.google.com/android/repository/platform-tools-latest-windows.zip";
+                            string filename = "platform-tools-latest-windows.zip";
+                            string extractPath = AppDomain.CurrentDomain.BaseDirectory;
+                            client.DownloadFile(uri, filename);
+                            ZipFile.ExtractToDirectory(filename, extractPath);
+                            File.Delete(filename);
+                        }
+                        if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX) == true) // Really Mac OS?!
+                        {
+                            string uri = "https://dl.google.com/android/repository/platform-tools-latest-darwin.zip";
+                            string filename = "platform-tools-latest-darwin.zip";
+                            string extractPath = AppDomain.CurrentDomain.BaseDirectory;
+                            client.DownloadFile(uri, filename);
+                            ZipFile.ExtractToDirectory(filename, extractPath);
+                            File.Delete(filename);
+                        }
+                        if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) == true) // Well, I can't imagine who would use this program in Linux and in Mac OS XD
+                        {
+                            string uri = "https://dl.google.com/android/repository/platform-tools-latest-linux.zip";
+                            string filename = "platform-tools-latest-linux.zip";
+                            string extractPath = AppDomain.CurrentDomain.BaseDirectory;
+                            client.DownloadFile(uri, filename);
+                            ZipFile.ExtractToDirectory(filename, extractPath);
+                            File.Delete(filename);
+                        }
                         Console.WriteLine("Download completed");
                     }
-                    StartServerResult result = server.StartServer(@"platform-tools\adb.exe", false);
-                    if (result != StartServerResult.Started)
+                    if(RuntimeInformation.IsOSPlatform(OSPlatform.Windows) == true)
                     {
-                        Console.WriteLine("Can't start adb server, please try again");
+                        StartServerResult result = server.StartServer(@"platform-tools\adb.exe", false);
+                        if (result != StartServerResult.Started)
+                        {
+                            Console.WriteLine("Can't start adb server, please try again");
 
-                        return false;
+                            return false;
+                        }
+                    }
+                     if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX) == true)
+                    {
+                        StartServerResult result = server.StartServer(@"platform-tools\adb", false);
+                        if (result != StartServerResult.Started)
+                        {
+                            Console.WriteLine("Can't start adb server, please try again");
+
+                            return false;
+                        }
+                    }
+                    if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) == true)
+                    {
+                        StartServerResult result = server.StartServer(@"platform-tools\adb", false);
+                        if (result != StartServerResult.Started)
+                        {
+                            Console.WriteLine("Can't start adb server, please try again");
+
+                            return false;
+                        }
                     }
                 }
                 catch (WebException)
@@ -68,11 +116,10 @@ namespace Quest2_VRC
             if (device == null || device.Serial == null)
             {
                 Console.WriteLine("No devices found, please try again");
-                //Console.WriteLine("Or you can connect your headset via Wireless ADB:\n1) Enter \"platform-tools\\adb tcpip 5555\" when your headset is connected to your computer via USB \n2) Use the \"Quest IP\" field for conndection\n \n \nIf this don't work\nIgnore the switch and  enter\n \"platform-tools\\adb tcpip 5555\" \n \"platform-tools\\adb connect  QUEST_IP:5555\"");
 
                 return false;
             }
-            if (device.Name != "hollywood" && device.Name != "vr_monterey" && device.Name != "monterey" && device.Name != "seacliff" && device.Name != "eureka") //Based on documentation and rumors
+            if (device.Name != "hollywood" && device.Name != "vr_monterey" && device.Name != "monterey" && device.Name != "seacliff" && device.Name != "eureka") // Based on documentation and rumors
             {
                 Console.WriteLine("Device is: \nModel: {0}\nCodename: {1} \nState: {2}", device.Model, device.Name, device.State);
                 Console.WriteLine("Oculus/Meta device is not detected or is not authorized, please disconnect all non Oculus/Meta devices and close all emulators on PC, try again");
@@ -121,6 +168,7 @@ namespace Quest2_VRC
 
             return true;
         }
+        [SupportedOSPlatform("windows")]
         public static void StartTCPIP()
         {
 
@@ -171,19 +219,19 @@ namespace Quest2_VRC
         }
 
 
-    
-    public static void StopADB()
-    {
-        if (!AdbServer.Instance.GetStatus().IsRunning)
+
+        public static void StopADB()
         {
-            // do nothing
-        }
-        else
-        {
-            client.KillAdb();
+            if (!AdbServer.Instance.GetStatus().IsRunning)
+            {
+                // do nothing
+            }
+            else
+            {
+                client.KillAdb();
+            }
+
         }
 
     }
-
-}
 }

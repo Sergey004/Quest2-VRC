@@ -1,6 +1,6 @@
 ﻿namespace Quest2_VRC
 {
-    partial class Form2
+    partial class OSCTest
     {
         /// <summary>
         /// Required designer variable.

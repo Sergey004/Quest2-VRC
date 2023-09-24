@@ -13,13 +13,13 @@ using System.Windows.Forms;
 namespace Quest2_VRC
 {
 
-    public partial class Form1 : MaterialForm
+    public partial class MainWindow : MaterialForm
 
     {
-        public Form1()
+        public MainWindow()
         {
 
-            ResourceManager resources = new ComponentResourceManager(typeof(Form1));
+            ResourceManager resources = new ComponentResourceManager(typeof(MainWindow));
             InitializeComponent();
             materialTextBox1.Enabled = false;
             materialCheckbox1.Checked = false;
@@ -60,7 +60,7 @@ namespace Quest2_VRC
 
         private async void materialButton2_Click(object sender, EventArgs e)
         {
-            ResourceManager resources = new ComponentResourceManager(typeof(Form1));
+            ResourceManager resources = new ComponentResourceManager(typeof(MainWindow));
             disableButtons();
             materialLabel5.Text = resources.GetString("Exec");
             string json = File.ReadAllText("vars.json");
@@ -68,7 +68,7 @@ namespace Quest2_VRC
 
             if ((string)vars["HostIP"] == "127.0.0.1")
             {
-               
+
                 await Task.Run(() =>
                 {
 
@@ -125,7 +125,7 @@ namespace Quest2_VRC
         }
         private async void materialButton3_Click(object sender, EventArgs e)
         {
-            ResourceManager resources = new ComponentResourceManager(typeof(Form1));
+            ResourceManager resources = new ComponentResourceManager(typeof(MainWindow));
             materialLabel5.Text = resources.GetString("Exec");
             disableButtons();
             string json = File.ReadAllText("vars.json");
@@ -162,7 +162,7 @@ namespace Quest2_VRC
 
         private async void materialButton1_Click(object sender, EventArgs e)
         {
-            ResourceManager resources = new ComponentResourceManager(typeof(Form1));
+            ResourceManager resources = new ComponentResourceManager(typeof(MainWindow));
             materialLabel5.Text = resources.GetString("Exec");
             string json = File.ReadAllText("vars.json");
             JObject vars = JObject.Parse(json);
@@ -225,7 +225,7 @@ namespace Quest2_VRC
 
         private async void materialButton4_Click(object sender, EventArgs e)
         {
-            ResourceManager resources = new ComponentResourceManager(typeof(Form1));
+            ResourceManager resources = new ComponentResourceManager(typeof(MainWindow));
             materialLabel5.Text = resources.GetString("Exec");
             disableButtons();
 
@@ -302,7 +302,7 @@ namespace Quest2_VRC
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            ResourceManager resources = new ComponentResourceManager(typeof(Form1));
+            ResourceManager resources = new ComponentResourceManager(typeof(MainWindow));
             if (MessageBox.Show(resources.GetString("ExitNote"), resources.GetString("ExitAndStop"),
         MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
             {
@@ -318,7 +318,7 @@ namespace Quest2_VRC
 
         private async void materialSwitch1_CheckedChanged(object sender, EventArgs e)
         {
-            ResourceManager resources = new ComponentResourceManager(typeof(Form1));
+            ResourceManager resources = new ComponentResourceManager(typeof(MainWindow));
             materialTextBox1.Enabled = false;
             if (materialSwitch1.Checked)
             {
@@ -353,7 +353,7 @@ namespace Quest2_VRC
 
         private void materialButton5_Click(object sender, EventArgs e)
         {
-            ResourceManager resources = new ComponentResourceManager(typeof(Form1));
+            ResourceManager resources = new ComponentResourceManager(typeof(MainWindow));
             MessageBox.Show(resources.GetString("ConnHelp"), "Help", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
@@ -393,7 +393,7 @@ namespace Quest2_VRC
 
         private void materialButton6_Click(object sender, EventArgs e)
         {
-            Form2 f2 = new Form2();
+            OSCTest f2 = new OSCTest();
             f2.ShowDialog();
         }
 

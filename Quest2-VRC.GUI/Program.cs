@@ -87,7 +87,7 @@ namespace Quest2_VRC
                 Application.EnableVisualStyles();
                 Application.SetHighDpiMode(HighDpiMode.SystemAware);
                 Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new Form1());
+                Application.Run(new MainWindow());
             }
             catch (SystemException)
             {
