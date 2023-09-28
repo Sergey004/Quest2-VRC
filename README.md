@@ -24,9 +24,9 @@ To start building the application, simply launch the solution in Visual Studio a
 
 There are two versions:
 
-- Core version where the basic methods and the possibility to use them in other projects (Only basic ADB and OSC functions)
+- Core version where the basic methods and the possibility to use them in other projects (ADB and OSC functions, remote connectivity)
 
-- GUI version with additional functionality (Remote connectivity, managing Oculus services and settings on PC, crash watch dog for Oculus Dash)
+- GUI version with additional functionality (Мanaging Oculus services and settings on PC, crash watch dog for Oculus Dash)
 
 ## Using
 - Replace 127.0.0.1 in the vars.json file with the IP address of your headset if you are using VRChat in standalone mode (AKA VRC on Quest) or AirLink (Or VD) 
