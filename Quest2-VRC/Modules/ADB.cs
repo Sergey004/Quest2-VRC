@@ -1,4 +1,4 @@
-﻿using AdvancedSharpAdbClient;
+using AdvancedSharpAdbClient;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -75,7 +75,7 @@ namespace Quest2_VRC
                             return false;
                         }
                     }
-                     if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX) == true)
+                     if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) == true)
                     {
                         StartServerResult result = server.StartServer(@"platform-tools\adb", false);
                         if (result != StartServerResult.Started)
@@ -85,7 +85,7 @@ namespace Quest2_VRC
                             return false;
                         }
                     }
-                    if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) == true)
+                    if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX) == true)
                     {
                         StartServerResult result = server.StartServer(@"platform-tools\adb", false);
                         if (result != StartServerResult.Started)
@@ -119,7 +119,14 @@ namespace Quest2_VRC
 
                 return false;
             }
-            if (device.Name != "hollywood" && device.Name != "vr_monterey" && device.Name != "monterey" && device.Name != "seacliff" && device.Name != "eureka") // Based on documentation and rumors
+            if (device.Name != "hollywood" && device.Name != "vr_monterey" && device.Name != "monterey" && device.Name != "seacliff" && device.Name != "eureka") // 
+            /* Based on documentation and rumors
+            List of internal names Oculus/Meta VR devices 
+            Quest 1 (Android 10) = monterey
+            Quest 1 (Android 7.0) = vr_monterey
+            Quest 2 = hollywood
+            Quest Pro = seacliff
+            Quest 3 = eureka */
             {
                 Console.WriteLine("Device is: \nModel: {0}\nCodename: {1} \nState: {2}", device.Model, device.Name, device.State);
                 Console.WriteLine("Oculus/Meta device is not detected or is not authorized, please disconnect all non Oculus/Meta devices and close all emulators on PC, try again");
