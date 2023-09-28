@@ -3090,7 +3090,7 @@
 Да для ZeroConf, Нет для старого метода</value>
   </data>
   <data name="NoADB" xml:space="preserve">
-    <value>Нет режима ADB</value>
+    <value>Режим без ADB</value>
   </data>
   <data name="NoHMD" xml:space="preserve">
     <value>Гарнитура не подключена</value>
