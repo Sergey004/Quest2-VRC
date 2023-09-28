@@ -3116,4 +3116,7 @@
   <data name="Help" xml:space="preserve">
     <value>Помощь</value>
   </data>
+  <data name="USBCon" xml:space="preserve">
+    <value>Подключите свою гарнитуру к компьютеру и нажмите ОК</value>
+  </data>
 </root>
