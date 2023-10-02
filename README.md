@@ -66,12 +66,10 @@ For receiving:
 
 ## About interaction between Quest and ADB
 
-``dumpsys`` in 100% safe command
+``dumpsys`` in 100% safe
 
 > dumpsys is a tool that runs on Android devices and provides information about system services. Call dumpsys from the command line using the Android Debug Bridge (ADB) to get diagnostic output for all system services running on a connected device.
 
-> This output is typically more verbose than you want, so use the command-line options on this page to get output for only the system services you want. This page also describes how to use dumpsys to accomplish common tasks, such as inspecting input, RAM, battery, or network diagnostic
->
 [Source](https://developer.android.com/tools/dumpsys)
 
 ## Dependencies
