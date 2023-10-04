@@ -54,7 +54,7 @@ namespace Quest2_VRC
                             ZipFile.ExtractToDirectory(filename, extractPath);
                             File.Delete(filename);
                         }
-                        if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) == true) // Well, I can't imagine who would use this program in Linux and in Mac OS XD
+                        if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) == true) // Well, I can't imagine who would use this lib under Linux and in Mac OS XD
                         {
                             string uri = "https://dl.google.com/android/repository/platform-tools-latest-linux.zip";
                             string filename = "platform-tools-latest-linux.zip";
@@ -122,8 +122,8 @@ namespace Quest2_VRC
             if (device.Name != "hollywood" && device.Name != "vr_monterey" && device.Name != "monterey" && device.Name != "seacliff" && device.Name != "eureka") // 
             /* Based on documentation and rumors
             List of internal names Oculus/Meta VR devices 
-            Quest 1 (Android 10) = monterey
             Quest 1 (Android 7.0) = vr_monterey
+            Quest 1 (Android 10) = monterey
             Quest 2 = hollywood
             Quest Pro = seacliff
             Quest 3 = eureka */
@@ -213,7 +213,7 @@ namespace Quest2_VRC
                     deviceip = headset.IPAddress + ":" + service.Port;
                 }
             }
-            var secadb = await ZeroconfResolver.ResolveAsync("_adb_secure_connect._tcp.local."); // Android 10 and lower
+            var secadb = await ZeroconfResolver.ResolveAsync("_adb_secure_connect._tcp.local."); // Android 10 and below, not actually tested
             foreach (var headset in secadb)
             {
                 foreach (IService service in headset.Services.Values)
