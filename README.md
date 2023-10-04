@@ -24,11 +24,16 @@ To start building the application, simply launch the solution in Visual Studio a
 
 There are two versions:
 
-- Core version where the basic methods and the possibility to use them in other projects (Only basic ADB and OSC functions)
+- Core version where the basic methods and the possibility to use them in other projects (ADB and OSC functions, remote connectivity)
 
-- GUI version with additional functionality (Remote connectivity, managing Oculus services and settings on PC, crash watch dog for Oculus Dash)
+- GUI version with additional functionality (Мanaging Oculus services and settings on PC, crash watch dog for Oculus Dash)
 
 ## Using
+
+- Connect the Quest 2 (or another Quest headset) to your computer using USB or Wi-Fi in developer mode
+  
+  [How to enadle](https://www.wikihow.com/Enable-Developer-Mode-Oculus-Quest-2)
+ 
 - Replace 127.0.0.1 in the vars.json file with the IP address of your headset if you are using VRChat in standalone mode (AKA VRC on Quest) or AirLink (Or VD) 
 
 Add a parameter to the ExpressionParameters of your avatar by assigning (Or use [Quest2-VRC OSC bindings](Bindings/Quest2-VRC%20OSC%20bindings.unitypackage) for faster integration or to test the app functions in Unity)
@@ -57,11 +62,15 @@ Default values transferred via OSC
 For receiving:
 - Replace in var.txt ```Receive_addr```, ```Receive_addr_test``` according to your specific parameters
 
-Connect the Quest 2 (or another Quest headset) to your computer using USB or Wi-Fi in developer mode
-
- [How to enadle](https://www.wikihow.com/Enable-Developer-Mode-Oculus-Quest-2)
 
 
+## About interaction between Quest and ADB
+
+``dumpsys`` in 100% safe
+
+> dumpsys is a tool that runs on Android devices and provides information about system services. Call dumpsys from the command line using the Android Debug Bridge (ADB) to get diagnostic output for all system services running on a connected device.
+
+[Source](https://developer.android.com/tools/dumpsys)
 
 ## Dependencies
 
