@@ -7,9 +7,9 @@ This program sending Quest 2 (As well as other headsets in the Quest line) batte
 
 If you like this program, please put a star or better yet spread the word about this program
 
-Zeroconf discovery tested on v55 (Android 12 based) [Zeroconf discovery addon](https://github.com/Sergey004/Quest2-VRC/releases/tag/Addon)
+Zeroconf discovery tested on v55 (Android 12 based) [Zeroconf discovery addon](https://github.com/Sergey004/Quest2-VRC/releases/tag/New_Addon)
 
-OpenRGB functions tested only on MSI Mystic Light (AKA MSI-RGB) *I think any RGB controller that is supported in OpenRGB will work...*
+OpenRGB functions tested only on MSI Mystic Light (AKA MSI-RGB *I think any RGB controller that is supported in OpenRGB will work...*
 
 [Avatars with support for this program](Avatars%20with%20Quest2-VRC%20support.md)
 
