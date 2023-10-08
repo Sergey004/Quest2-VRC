@@ -66,7 +66,7 @@ For receiving:
 
 ## About interaction between Quest and ADB
 
-``dumpsys`` in 100% safe
+``dumpsys`` is 100% safe
 
 > dumpsys is a tool that runs on Android devices and provides information about system services. Call dumpsys from the command line using the Android Debug Bridge (ADB) to get diagnostic output for all system services running on a connected device.
 
