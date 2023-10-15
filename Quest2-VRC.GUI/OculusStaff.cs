@@ -137,14 +137,9 @@ namespace Quest2_VRC
                         if (Regex.IsMatch(appName, @"OculusDash.exe")) // YES I HAVE THIS PROBLEM AND I HATE IT!
                         {
                             string inputbox = "input";
-                            string Voiceinput = "Voice";
                             LogToConsole("Warning: Oculus Dash crashed, waiting for Dash to restart and toggling voice chat (If disabled) and toggling AFK");
                             VRChatMessage MsgErr = new VRChatMessage(inputbox, "Warning: Oculus Dash crashed, waiting for Dash to restart and toggling voice chat (If disabled) and toggling AFK");
                             SendPacket(MsgErr);
-                            VRChatMessage VoiceReleased = new VRChatMessage(Voiceinput, 0);
-                            SendPacket(VoiceReleased);
-                            VRChatMessage VoicePressed = new VRChatMessage(Voiceinput, 1);
-                            SendPacket(VoicePressed);
 
 
                         }
