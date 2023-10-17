@@ -12,7 +12,7 @@ namespace Quest2_VRC
             {
 
                 Console.WriteLine("You cannot enable data transfer with --no-adb, exiting");
-                
+
             }
             else if (receiver == true && sender == false)
             {
@@ -28,7 +28,7 @@ namespace Quest2_VRC
             {
 
                 Console.WriteLine("You cannot enable data transfer with --no-adb, exiting");
-                
+
             }
         }
     }

@@ -2,15 +2,13 @@
 using OpenRGB.NET.Models;
 using System;
 using System.Data;
-using System.IO;
 using System.Linq;
-using System.Net;
 using static Quest2_VRC.Logger;
 
 
 namespace Quest2_VRC.Services
 {
-    public class RGBControler
+    public class RGBController
     {
         public static void SendRGBData(int dataInt) // Sends commands to OpenRGB (every time there is a change at the OSC address)
         {
@@ -70,7 +68,7 @@ namespace Quest2_VRC.Services
             }
             catch (TimeoutException)
             {
-                LogToConsole("OpenRGB server is not enabled");
+                LogToConsole("OpenRGB server is not enabled, or not installed");
             }
         }
     }
