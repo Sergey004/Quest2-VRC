@@ -114,7 +114,7 @@ namespace Quest2_VRC
         [SupportedOSPlatform("windows")]
         public async static void StartLink()
         {
-           ConsoleOutputReceiver Hbat_receiver = new ConsoleOutputReceiver();
+           
            await client.ExecuteRemoteCommandAsync("am start \"xrstreamingclient://?\"", device, null);
 
         }
