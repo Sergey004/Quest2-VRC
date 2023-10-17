@@ -2,6 +2,7 @@
 using System;
 using System.CommandLine;
 using System.Globalization;
+using System.Net.Quic;
 using System.Runtime.InteropServices;
 using System.Threading;
 using System.Threading.Tasks;
@@ -42,8 +43,7 @@ namespace Quest2_VRC
                 if (enhancedoculuscontrol == false)
                 {
                     Check_Vars.CheckVars();
-                    Console.WriteLine("Logs redirected to main window");
-                    
+                    ADB.StartADB(true, true, questip, true, false);
                 }
                 if (enhancedoculuscontrol == true)
                 {
@@ -54,12 +54,12 @@ namespace Quest2_VRC
                              Task.Factory.StartNew(() => OculusStaff.DashWatchDog(), TaskCreationOptions.LongRunning),
                         };
                     Check_Vars.CheckVars();
-                    Console.WriteLine("Logs redirected to main window");
-                    
+                    ADB.StartADB(true, true, questip, true, false);
                 }
                 
 
             }
+            ADB.StopADB();
             Environment.Exit(1987); //Hehe yep I FNAF fan :) (This exit code = 0)
         }
     }
