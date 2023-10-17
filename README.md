@@ -30,9 +30,7 @@ There are two versions:
 
 ## Using
 
-- Connect the Quest 2 (or another Quest headset) to your computer using USB or Wi-Fi in developer mode
-  
-  [How to enadle](https://www.wikihow.com/Enable-Developer-Mode-Oculus-Quest-2)
+- Connect the Quest 2 (or another Quest headset) to your computer using USB or Wi-Fi in developer mode. [How to enadle](https://www.wikihow.com/Enable-Developer-Mode-Oculus-Quest-2)
  
 - Replace 127.0.0.1 in the vars.json file with the IP address of your headset if you are using VRChat in standalone mode (AKA VRC on Quest) or AirLink (Or VD) 
 
