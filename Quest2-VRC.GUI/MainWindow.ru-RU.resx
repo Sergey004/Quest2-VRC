@@ -3119,4 +3119,7 @@
   <data name="USBCon" xml:space="preserve">
     <value>Подключите свою гарнитуру к компьютеру и нажмите ОК</value>
   </data>
+  <data name="materialCheckbox3.Text" xml:space="preserve">
+    <value>Отключить сообщения об отключении</value>
+  </data>
 </root>

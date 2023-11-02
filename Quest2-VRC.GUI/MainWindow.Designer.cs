@@ -32,6 +32,7 @@
             materialCard1 = new MaterialSkin.Controls.MaterialCard();
             materialButton6 = new MaterialSkin.Controls.MaterialButton();
             materialButton2 = new MaterialSkin.Controls.MaterialButton();
+            materialCheckbox3 = new MaterialSkin.Controls.MaterialCheckbox();
             materialButton3 = new MaterialSkin.Controls.MaterialButton();
             materialButton1 = new MaterialSkin.Controls.MaterialButton();
             materialButton4 = new MaterialSkin.Controls.MaterialButton();
@@ -95,6 +96,18 @@
             materialButton2.UseAccentColor = false;
             materialButton2.UseVisualStyleBackColor = true;
             materialButton2.Click += materialButton2_Click;
+            // 
+            // materialCheckbox3
+            // 
+            materialCheckbox3.Depth = 0;
+            resources.ApplyResources(materialCheckbox3, "materialCheckbox3");
+            materialCheckbox3.MouseLocation = new System.Drawing.Point(-1, -1);
+            materialCheckbox3.MouseState = MaterialSkin.MouseState.HOVER;
+            materialCheckbox3.Name = "materialCheckbox3";
+            materialCheckbox3.ReadOnly = false;
+            materialCheckbox3.Ripple = true;
+            materialCheckbox3.UseVisualStyleBackColor = true;
+            materialCheckbox3.CheckedChanged += materialCheckbox3_CheckedChanged;
             // 
             // materialButton3
             // 
@@ -283,11 +296,12 @@
             materialLabel5.MouseState = MaterialSkin.MouseState.HOVER;
             materialLabel5.Name = "materialLabel5";
             // 
-            // Form1
+            // MainWindow
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             BackColor = System.Drawing.SystemColors.Control;
+            Controls.Add(materialCheckbox3);
             Controls.Add(materialLabel5);
             Controls.Add(materialLabel4);
             Controls.Add(materialLabel3);
@@ -299,7 +313,7 @@
             Controls.Add(materialLabel2);
             Controls.Add(materialCard1);
             MaximizeBox = false;
-            Name = "Form1";
+            Name = "MainWindow";
             Sizable = false;
             FormClosing += Form1_FormClosing;
             Load += Form1_Load;
@@ -334,6 +348,7 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel3;
         private MaterialSkin.Controls.MaterialLabel materialLabel4;
         private MaterialSkin.Controls.MaterialLabel materialLabel5;
+        private MaterialSkin.Controls.MaterialCheckbox materialCheckbox3;
     }
 }
 

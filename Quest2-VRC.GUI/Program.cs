@@ -46,7 +46,7 @@ namespace Quest2_VRC
                 }
                 if (forceeng == true && enhancedoculuscontrol == false)
                 {
-                    Thread.CurrentThread.CurrentUICulture = new CultureInfo("en");
+                    Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
                     Check_Vars.CheckVars();
                     Console.WriteLine("Logs redirected to main window");
                     GUI();

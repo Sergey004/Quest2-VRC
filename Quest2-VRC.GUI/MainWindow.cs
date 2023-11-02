@@ -78,7 +78,7 @@ namespace Quest2_VRC
                         {
                             var questip = "null";
                             materialTextBox1.Invoke(new Action(() => questip = materialTextBox1.Text));
-                            if (ADB.StartADB(true, true, questip, true, materialCheckbox2.Checked))
+                            if (ADB.StartADB(true, true, questip, true, materialCheckbox2.Checked, materialCheckbox3.Checked))
                             {
 
                                 materialLabel5.Invoke(new Action(() => materialLabel5.Text = resources.GetString("ADBRunning")));
@@ -98,7 +98,7 @@ namespace Quest2_VRC
                         try
                         {
                             var questip = "127.0.0.1:62001";
-                            if (ADB.StartADB(true, true, questip, false, materialCheckbox2.Checked))
+                            if (ADB.StartADB(true, true, questip, false, materialCheckbox2.Checked, materialCheckbox3.Checked))
                             {
                                 materialLabel5.Invoke(new Action(() => materialLabel5.Text = resources.GetString("ADBRunning")));
 
@@ -179,7 +179,7 @@ namespace Quest2_VRC
                         {
                             var questip = materialTextBox1.Text;
 
-                            if (ADB.StartADB(false, true, questip, true, materialCheckbox2.Checked))
+                            if (ADB.StartADB(false, true, questip, true, materialCheckbox2.Checked, materialCheckbox3.Checked))
                             {
                                 materialLabel5.Invoke(new Action(() => materialLabel5.Text = resources.GetString("Receive")));
                                 disableButtons();
@@ -196,7 +196,7 @@ namespace Quest2_VRC
                         try
                         {
                             var questip = "127.0.0.1:62001";
-                            if (ADB.StartADB(false, true, questip, false, materialCheckbox2.Checked))
+                            if (ADB.StartADB(false, true, questip, false, materialCheckbox2.Checked, materialCheckbox3.Checked))
                             {
                                 materialLabel5.Invoke(new Action(() => materialLabel5.Text = resources.GetString("Receive")));
                                 disableButtons();
@@ -237,7 +237,7 @@ namespace Quest2_VRC
                     {
                         var questip = materialTextBox1.Text;
 
-                        if (ADB.StartADB(true, false, questip, true, materialCheckbox2.Checked))
+                        if (ADB.StartADB(true, false, questip, true, materialCheckbox2.Checked, materialCheckbox3.Checked))
                         {
                             materialLabel5.Invoke(new Action(() => materialLabel5.Text = resources.GetString("Send")));
 
@@ -254,7 +254,7 @@ namespace Quest2_VRC
                     try
                     {
                         var questip = "127.0.0.1:62001";
-                        if (ADB.StartADB(true, false, questip, false, materialCheckbox2.Checked))
+                        if (ADB.StartADB(true, false, questip, false, materialCheckbox2.Checked, materialCheckbox3.Checked))
                         {
                             materialLabel5.Invoke(new Action(() => materialLabel5.Text = resources.GetString("Send")));
 
@@ -397,5 +397,9 @@ namespace Quest2_VRC
             f2.ShowDialog();
         }
 
+        private void materialCheckbox3_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
