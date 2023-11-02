@@ -398,3 +398,4 @@ FodyWeavers.xsd
 *.sln.iml
 /.editorconfig
 /Quest2-VRC.GUI/vars.json
+/Quest2-VRC.GUI/odtout.txt

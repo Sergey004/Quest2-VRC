@@ -19,17 +19,17 @@ namespace Quest2_VRC
     {
 
 
-        public static async void Run(bool wirlessmode, bool audioEnadled)
+        public static async void Run(bool wirlessmode, bool audioEnadled, bool disableerrmsg)
         {
 
             var udpPort = Extensions.GetAvailableUdpPort();
 
             int Uport = udpPort;
             Console.WriteLine("OSC UDP port is {0}", Uport);
-            await questwd(Uport, wirlessmode, audioEnadled);
+            await questwd(Uport, wirlessmode, audioEnadled, disableerrmsg);
         }
 
-        public static async Task questwd(int Uport, bool wirlessmode, bool audioEnadled)
+        public static async Task questwd(int Uport, bool wirlessmode, bool audioEnadled, bool disableerrmsg)
         {
             // Create a bogus port for the client
             OscPacket.UdpClient = new UdpClient(Uport);
@@ -172,8 +172,11 @@ namespace Quest2_VRC
                 {
                     string inputbox = "input";
                     LogToConsole("Error: Connection to the headset is lost! Waiting for reconnect...");
-                    VRChatMessage MsgErr = new VRChatMessage(inputbox, "Error: Connection to the headset is lost! Waiting for reconnect...");
-                    SendPacket(MsgErr);
+                    if (disableerrmsg == false)
+                    {
+                        VRChatMessage MsgErr = new VRChatMessage(inputbox, "Error: Connection to the headset is lost! Waiting for reconnect...");
+                        SendPacket(MsgErr);
+                    }
                     await Task.Delay(3000);
                 }
 
