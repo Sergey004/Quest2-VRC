@@ -62,7 +62,9 @@ For receiving:
 
 
 
-## About interaction between Quest and ADB
+## What do I use to get information from Quest (and other Android devices)?
+
+I use ``dumpsys`` and 
 
 ``dumpsys`` is 100% safe
 
