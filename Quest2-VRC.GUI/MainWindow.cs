@@ -44,6 +44,7 @@ namespace Quest2_VRC
             materialSwitch1.Enabled = false;
             materialCheckbox2.Enabled = false;
             materialTextBox1.Enabled = false;
+            materialCheckbox3.Enabled = false;
         }
         private void enadleButtons()
         {
@@ -56,6 +57,7 @@ namespace Quest2_VRC
             materialSwitch1.Enabled = true;
             materialCheckbox2.Enabled = true;
             materialTextBox1.Enabled = true;
+            materialCheckbox3.Enabled = true;
         }
 
         private async void materialButton2_Click(object sender, EventArgs e)

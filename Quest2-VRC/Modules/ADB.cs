@@ -229,9 +229,9 @@ namespace Quest2_VRC
 
         public static void StopADB()
         {
-            if (!AdbServer.Instance.GetStatus().IsRunning)
+            if (!AdbServer.Instance.GetStatus().IsRunning == false)
             {
-                // do nothing
+                Environment.Exit(1987);
             }
             else
             {
