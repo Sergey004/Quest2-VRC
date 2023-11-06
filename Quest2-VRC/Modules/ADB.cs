@@ -231,11 +231,12 @@ namespace Quest2_VRC
         {
             if (!AdbServer.Instance.GetStatus().IsRunning == false)
             {
+                client.KillAdb();
                 Environment.Exit(1987);
             }
             else
             {
-                client.KillAdb();
+                Environment.Exit(1987);
             }
 
         }
