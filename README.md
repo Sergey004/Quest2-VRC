@@ -64,9 +64,7 @@ For receiving:
 
 ## What do I use to get information from Quest (and other Android devices)?
 
-I use ``dumpsys`` and 
-
-``dumpsys`` is 100% safe
+I use ``dumpsys`` and ``dumpsys`` is 100% safe
 
 > dumpsys is a tool that runs on Android devices and provides information about system services. Call dumpsys from the command line using the Android Debug Bridge (ADB) to get diagnostic output for all system services running on a connected device.
 
