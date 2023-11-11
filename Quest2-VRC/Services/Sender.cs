@@ -177,7 +177,7 @@ namespace Quest2_VRC
                         VRChatMessage MsgErr = new VRChatMessage(inputbox, "Error: Connection to the headset is lost! Waiting for reconnect...");
                         SendPacket(MsgErr);
                     }
-                    await Task.Delay(3000);
+                    await Task.Delay(1000);
                 }
 
 
