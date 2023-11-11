@@ -7,6 +7,8 @@ This program sending Quest 2 (As well as other headsets in the Quest line) batte
 
 If you like this program, please put a star or better yet spread the word about this program
 
+If you share this use hahtag ``#Quest2-VRC`` like this
+
 Zeroconf discovery tested on v55 (Android 12 based) [Zeroconf discovery addon](https://github.com/Sergey004/Quest2-VRC/releases/tag/New_Addon)
 
 OpenRGB functions tested only on MSI Mystic Light (AKA MSI-RGB *I think any RGB controller that is supported in OpenRGB will work...*
@@ -64,9 +66,7 @@ For receiving:
 
 ## What do I use to get information from Quest (and other Android devices)?
 
-I use ``dumpsys`` and 
-
-``dumpsys`` is 100% safe
+I use ``dumpsys`` and ``dumpsys`` is 100% safe
 
 > dumpsys is a tool that runs on Android devices and provides information about system services. Call dumpsys from the command line using the Android Debug Bridge (ADB) to get diagnostic output for all system services running on a connected device.
 
