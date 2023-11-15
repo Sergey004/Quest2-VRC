@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net7.0-windows</TargetFramework>
+    <TargetFramework>net8.0-windows7.0</TargetFramework>
     <OutputType>Library</OutputType>
     <RootNamespace>Quest2_VRC</RootNamespace>
     <LangVersion>latest</LangVersion>
@@ -58,7 +58,7 @@
     <PackageReference Include="Bespoke.Osc" Version="1.0.0" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="OpenRGB.NET" Version="1.7.0" />
-    <PackageReference Include="System.Management" Version="7.0.2" />
+    <PackageReference Include="System.Management" Version="8.0.0" />
     <PackageReference Include="VRChat.OSCQuery" Version="0.0.7" />
     <PackageReference Include="Zeroconf" Version="3.6.11" />
   </ItemGroup>
