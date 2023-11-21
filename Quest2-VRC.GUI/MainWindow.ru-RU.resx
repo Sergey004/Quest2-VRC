@@ -179,7 +179,7 @@
     <value>256, 37</value>
   </data>
   <data name="materialCheckbox2.Text" xml:space="preserve">
-    <value>Звуковые уведомления (WIP)</value>
+    <value>Звуковые уведомления</value>
   </data>
   <data name="materialButton5.Location" type="System.Drawing.Point, System.Drawing">
     <value>345, 131</value>
@@ -3121,5 +3121,11 @@
   </data>
   <data name="materialCheckbox3.Text" xml:space="preserve">
     <value>Отключить сообщения об отключении</value>
+  </data>
+  <data name="materialButton7.Text" xml:space="preserve">
+    <value>Режим оверлея</value>
+  </data>
+  <data name="materialButton8.Text" xml:space="preserve">
+    <value>Настройка оверлея</value>
   </data>
 </root>

@@ -3024,7 +3024,7 @@ Enter
     <value>Show logs</value>
   </data>
   <data name="materialCheckbox2.Text" xml:space="preserve">
-    <value>Audio notifications (WIP)</value>
+    <value>Audio notifications</value>
   </data>
   <data name="materialLabel1.Text" xml:space="preserve">
     <value>Log</value>
@@ -3087,5 +3087,11 @@ Yes for ZeroConf, No for the old method</value>
   </data>
   <data name="WakeDevice" xml:space="preserve">
     <value>Remember to wake up your device</value>
+  </data>
+  <data name="materialButton7.Text" xml:space="preserve">
+    <value>Overlay mode</value>
+  </data>
+  <data name="materialButton8.Text" xml:space="preserve">
+    <value>Overlay setup</value>
   </data>
 </root>
