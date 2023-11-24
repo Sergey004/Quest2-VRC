@@ -65,9 +65,9 @@ jobs:
     - name: Restore Nuget Packages
       run: dotnet restore Quest2-VRC.sln
     - name: Build Solution (Release)
-      run: dotnet build Quest2-VRC.sln --configuration Release --no-restore 
+      run: dotnet build Quest2-VRC.sln --configuration Release --self-contained
     - name: Build Solution (Debug)
-      run: dotnet build Quest2-VRC.sln --configuration Debug --no-restore 
+      run: dotnet build Quest2-VRC.sln --configuration Debug --self-contained
     - name: Upload Artifact (Release)
       uses: actions/upload-artifact@v3
       with:
