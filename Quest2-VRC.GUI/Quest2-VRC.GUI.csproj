@@ -85,7 +85,7 @@
     <PackageReference Include="System.CommandLine" Version="2.0.0-beta4.22272.1" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Quest2-VRC\Quest2-VRC.Core.csproj" />
+    <ProjectReference Include="..\Quest2-VRC.Core\Quest2-VRC.Core.csproj" />
   </ItemGroup>
   <ItemGroup>
     <Compile Update="Properties\Settings.Designer.cs">
