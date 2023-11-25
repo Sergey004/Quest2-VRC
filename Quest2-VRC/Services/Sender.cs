@@ -17,7 +17,19 @@ namespace Quest2_VRC
 {
     static class Sender
     {
+        public class Global
+        {
+            public static float Hbatlevelint;
+            public static float Rbatlevelint;
+            public static float Lbatlevelint;
+            public static int cputempint;
+            public static int gputempint;
+            public static float WifiInt;
+            public static bool LowHMDBat;
+            
 
+
+        }
 
         public static async void Run(bool wirlessmode, bool audioEnadled, bool disableerrmsg)
         {
@@ -34,8 +46,7 @@ namespace Quest2_VRC
             // Create a bogus port for the client
             OscPacket.UdpClient = new UdpClient(Uport);
 
-            string json = File.ReadAllText("vars.json");
-            JObject vars = JObject.Parse(json);
+            
             bool LowHMDBat = false;
             bool HMDCrit = false;
             bool audioPlayedHMD = false;
@@ -46,9 +57,7 @@ namespace Quest2_VRC
             {
                 try
                 {
-                    string HMDBat = (string)vars["HMDBat"];
-                    string ControllerBatL = (string)vars["ControllerBatL"];
-                    string ControllerBatR = (string)vars["ControllerBatR"];
+                    
 
                     int Hbatlevelint = 0;
                     int Rbatlevelint = 0;
@@ -100,7 +109,7 @@ namespace Quest2_VRC
                         LowHMDBat = true;
                         if (audioEnadled == true && audioPlayedHMD == false)
                         {
-                            
+
                             if (OperatingSystem.IsWindows())
                             {
                                 SoundPlayer playSound = new(Properties.Resources.HMDloworbelow25);
@@ -153,17 +162,14 @@ namespace Quest2_VRC
                         }
                     }
 
-                    VRChatMessage Msg1 = new VRChatMessage(HMDBat, (float)Hbatlevelint / 100);
-                    VRChatMessage Msg2 = new VRChatMessage(ControllerBatL, (float)Lbatlevelint / 100);
-                    VRChatMessage Msg3 = new VRChatMessage(ControllerBatR, (float)Rbatlevelint / 100);
-                    VRChatMessage Msg4 = new VRChatMessage("WifiRSSI", (float)WifiInt / 100);
-                    VRChatMessage Msg5 = new VRChatMessage("LowHMDBat", LowHMDBat);
-                    VRChatMessage Msg6 = new VRChatMessage("CPUtemp", cputempint);
-                    VRChatMessage Msg7 = new VRChatMessage("GPUtemp", gputempint);
-                    SendPacket(Msg1, Msg2, Msg3, Msg4, Msg5, Msg6, Msg7);
-
-                    LogToConsole("Sending HMD status", Msg1, Msg2, Msg3, Msg4, Msg5, Msg6, Msg7);
-
+                    Global.Hbatlevelint = (float)Hbatlevelint / 100;
+                    Global.Lbatlevelint = (float)Lbatlevelint / 100;
+                    Global.Rbatlevelint = (float)Rbatlevelint / 100;
+                    Global.WifiInt = (float)WifiInt / 100;
+                    Global.cputempint = cputempint;
+                    Global.gputempint = gputempint;
+                    Global.LowHMDBat = LowHMDBat;
+                    Send();
                     await Task.Delay(5000);
 
 
@@ -184,6 +190,24 @@ namespace Quest2_VRC
             }
 
 
+        }
+
+        private static async void Send()
+        {
+            string json = File.ReadAllText("vars.json");
+            JObject vars = JObject.Parse(json);
+            string HMDBat = (string)vars["HMDBat"];
+            string ControllerBatL = (string)vars["ControllerBatL"];
+            string ControllerBatR = (string)vars["ControllerBatR"];
+            VRChatMessage Msg1 = new VRChatMessage(HMDBat, Global.Hbatlevelint);
+            VRChatMessage Msg2 = new VRChatMessage(ControllerBatL, Global.Lbatlevelint);
+            VRChatMessage Msg3 = new VRChatMessage(ControllerBatR, Global.Rbatlevelint);
+            VRChatMessage Msg4 = new VRChatMessage("WifiRSSI", Global.WifiInt);
+            VRChatMessage Msg5 = new VRChatMessage("LowHMDBat", Global.LowHMDBat);
+            VRChatMessage Msg6 = new VRChatMessage("CPUtemp", Global.cputempint);
+            VRChatMessage Msg7 = new VRChatMessage("GPUtemp", Global.gputempint);
+            SendPacket(Msg1, Msg2, Msg3, Msg4, Msg5, Msg6, Msg7);
+            LogToConsole("Sending HMD status", Msg1, Msg2, Msg3, Msg4, Msg5, Msg6, Msg7);
         }
 
 
