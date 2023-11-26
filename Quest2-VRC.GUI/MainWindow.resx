@@ -363,6 +363,7 @@
   </data>
   <data name="materialMultiLineTextBox1.Text" xml:space="preserve">
     <value />
+    <comment>@Invariant</comment>
   </data>
   <data name="&gt;&gt;materialMultiLineTextBox1.Name" xml:space="preserve">
     <value>materialMultiLineTextBox1</value>
@@ -558,6 +559,7 @@
   </data>
   <data name="materialTextBox1.Text" xml:space="preserve">
     <value />
+    <comment>@Invariant</comment>
   </data>
   <data name="&gt;&gt;materialTextBox1.Name" xml:space="preserve">
     <value>materialTextBox1</value>
@@ -3607,5 +3609,35 @@
   </data>
   <data name="&gt;&gt;$this.Type" xml:space="preserve">
     <value>MaterialSkin.Controls.MaterialForm, MaterialSkin, Culture=neutral, PublicKeyToken=null</value>
+  </data>
+  <data name="NewOrOld" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="NoADB" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="NoHMD" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="OSCFall" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="WakeDevice" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="USBCon" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="TCPIPmode" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Receive" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="Ready" xml:space="preserve">
+    <value></value>
   </data>
 </root>

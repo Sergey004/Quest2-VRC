@@ -2994,7 +2994,8 @@ Enter
     <value>Exiting and shutting down ADB</value>
   </data>
   <data name="ExitNote" xml:space="preserve">
-    <value>Do you want to log out?</value>
+    <value>Do you want to exit?
+Note that this action will stop the ADB server (if rinning)</value>
   </data>
   <data name="Help" xml:space="preserve">
     <value>Help</value>
@@ -3076,9 +3077,6 @@ Yes for ZeroConf, No for the old method</value>
   <data name="Send" xml:space="preserve">
     <value>Send only</value>
   </data>
-  <data name="String8" xml:space="preserve">
-    <value>Note that this action will stop the ADB server</value>
-  </data>
   <data name="TCPIPmode" xml:space="preserve">
     <value>In TCP/IP mode</value>
   </data>
@@ -3091,7 +3089,10 @@ Yes for ZeroConf, No for the old method</value>
   <data name="materialButton7.Text" xml:space="preserve">
     <value>Overlay mode</value>
   </data>
-  <data name="materialButton8.Text" xml:space="preserve">
-    <value>Overlay setup</value>
+  <data name="materialCheckbox3.Text" xml:space="preserve">
+    <value>Disable disconnect messages</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Quest2-VRC GUI</value>
   </data>
 </root>

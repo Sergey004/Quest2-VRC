@@ -1,5 +1,6 @@
 ﻿using System;
 using System.CommandLine;
+using System.Diagnostics;
 using System.Globalization;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -32,7 +33,7 @@ namespace Quest2_VRC
                 forceeng,
                 enhancedoculuscontrol
             };
-            
+
             _cmd.SetHandler<bool, bool>(Handler, forceeng, enhancedoculuscontrol);
             _cmd.Invoke(args);
 
@@ -76,23 +77,40 @@ namespace Quest2_VRC
                     Console.WriteLine("Logs redirected to main window");
                     GUI();
                 }
-                
+
             }
             Environment.Exit(1987); //Hehe yep I FNAF fan :) (This exit code = 0)
         }
         static void GUI()
         {
-            try
+
+            Process[] processes = Process.GetProcessesByName(System.Reflection.Assembly.GetExecutingAssembly().GetName().Name);
+
+            
+            if (processes.Length > 1)
             {
+                
                 Application.EnableVisualStyles();
-                Application.SetHighDpiMode(HighDpiMode.SystemAware);
-                Application.SetCompatibleTextRenderingDefault(false);
-                Application.Run(new MainWindow());
+                MessageBox.Show("Only one instance of the program can be opened!", System.Reflection.Assembly.GetExecutingAssembly().GetName().Name, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Environment.Exit(1987);
             }
-            catch (SystemException)
+            else
             {
-                // Ignores errors
+                try
+                {
+                    Application.EnableVisualStyles();
+                    Application.SetHighDpiMode(HighDpiMode.SystemAware);
+                    Application.SetCompatibleTextRenderingDefault(false);
+                    Application.Run(new MainWindow());
+                }
+                catch (SystemException)
+                {
+                    // Ignores errors
+                }
+
             }
+
+
         }
     }
 }
