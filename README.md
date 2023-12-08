@@ -1,7 +1,7 @@
 # Quest2-VRC
 [![CI](https://github.com/Sergey004/Quest2-VRC/actions/workflows/main.yml/badge.svg)](https://github.com/Sergey004/Quest2-VRC/actions/workflows/main.yml)
 
-![image](https://user-images.githubusercontent.com/11889498/230911077-48b58669-f37f-433d-b6ae-17bf2af58db9.png)
+![image](https://github.com/Sergey004/Quest2-VRC/assets/11889498/19633fbb-389a-4b6e-a185-e864a62a24f7)
 
 This program sending Quest 2 (As well as other headsets in the Quest line) battery (and not only) information (Now also Wifi signal strength, especially for you, AirLink or VD users) to the VRChtat via the OSC protocol, also receive osc address to control OpenRGB
 
