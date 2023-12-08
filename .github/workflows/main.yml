@@ -84,11 +84,11 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
         name: 'Debug Core DLL'
-        path: Quest2-VRC\bin\Debug\
+        path: Quest2-VRC.Core\bin\Debug\
         retention-days: 5   
     - name: Upload Artifact (Release Core DLL)
       uses: actions/upload-artifact@v3
       with:
         name: 'Release Core DLL'
-        path: Quest2-VRC\bin\Release\
+        path: Quest2-VRC.Core\bin\Release\
         retention-days: 5       
