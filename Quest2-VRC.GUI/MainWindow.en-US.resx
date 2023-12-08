@@ -3056,8 +3056,8 @@ Note that this action will stop the ADB server (if rinning)</value>
   </data>
   <data name="NewOrOld" xml:space="preserve">
     <value>Do you want the program to find the IP address the old way or with ZeroConf?
-Searching via ZeroConf requires an additional program to be installed on Quest "https://github.com/Sergey004/Quest2-VRC/releases/tag/Addon".
-Yes for ZeroConf, No for the old method</value>
+ZeroConf requires an additional program to be installed on Quest "https://github.com/Sergey004/Quest2-VRC/releases/tag/Finaly". (Yes, that's what it's called).
+Yes for ZeroConf, No for the old method.</value>
   </data>
   <data name="NoADB" xml:space="preserve">
     <value>No ADB mode</value>

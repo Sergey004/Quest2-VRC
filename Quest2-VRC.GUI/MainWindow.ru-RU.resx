@@ -3086,7 +3086,7 @@
   </data>
   <data name="NewOrOld" xml:space="preserve">
     <value>Вы хотите, чтобы программа находила IP-адрес старым способом или с помощью ZeroConf?
-Поиск через ZeroConf требует установки дополнительной программы на Quest "https://github.com/Sergey004/Quest2-VRC/releases/tag/Addon".
+Поиск через ZeroConf требует установки дополнительной программы на Quest "https://github.com/Sergey004/Quest2-VRC/releases/tag/Finaly". (Да оно именно так и называеться)
 Да для ZeroConf, Нет для старого метода</value>
   </data>
   <data name="NoADB" xml:space="preserve">
