@@ -5,7 +5,7 @@ using System.Runtime.Versioning;
 namespace Quest2_VRC
 {
 
-    public class Check_Device
+    public class Device_Management
     {
 
         private static readonly string DeviceName = "Oculus Composite ADB Interface";
@@ -29,5 +29,8 @@ namespace Quest2_VRC
             }
             return deviceConnected;
         }
+        
+
+
     }
 }

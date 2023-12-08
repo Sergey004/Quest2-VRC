@@ -325,7 +325,7 @@ namespace Quest2_VRC
             if (materialSwitch1.Checked)
             {
                 materialLabel5.Text = resources.GetString("TCPIPmode");
-                DialogResult dialogResult1 = MessageBox.Show(resources.GetString("NewOrOld"), resources.GetString("ADBInTCPIP"), MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                DialogResult dialogResult1 = MessageBox.Show(resources.GetString("NewOrOld"), resources.GetString("ADBInTCPIP"), MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                 if (dialogResult1 == DialogResult.Yes)
                 {
                     MessageBox.Show(resources.GetString("WakeDevice"), resources.GetString("ADBInTCPIP"), MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -334,7 +334,7 @@ namespace Quest2_VRC
                 else if (dialogResult1 == DialogResult.No)
                 {
                     MessageBox.Show(resources.GetString("USBCon"), resources.GetString("ADBInTCPIP"), MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    if (Check_Device.CheckDevice())
+                    if (Device_Management.CheckDevice())
                     {
 
                         ADB.StartTCPIP();
@@ -349,6 +349,11 @@ namespace Quest2_VRC
                         materialLabel5.Text = resources.GetString("NoHMD");
                     }
 
+                }
+                else if (dialogResult1 == DialogResult.Cancel)
+                {
+                    materialTextBox1.Enabled = true;
+                    MessageBox.Show(resources.GetString("Manualinput"), resources.GetString("ADBInTCPIP"), MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
             }
         }

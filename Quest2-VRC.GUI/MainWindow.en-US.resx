@@ -2976,13 +2976,13 @@
     <value>1) Connect the headset to your computer
 2) Set the switch to "AirLink (or VD)". 
 3) Wait for ADB to switch to TCPIP mode.
-4) Click the "Start by Default" button to connect. 
+4) Click the "Default run" button to connect. 
 
 If this does not work
 Connecting manually
 Enter 
 "platform-tools\adb tcpip 5555" 
-"platform-tools\\\\adb connect QUEST_IP:5555."</value>
+"platform-tools\adb connect QUEST_IP:5555."</value>
   </data>
   <data name="Error" xml:space="preserve">
     <value>Error</value>
@@ -3056,8 +3056,11 @@ Note that this action will stop the ADB server (if rinning)</value>
   </data>
   <data name="NewOrOld" xml:space="preserve">
     <value>Do you want the program to find the IP address the old way or with ZeroConf?
-ZeroConf requires an additional program to be installed on Quest "https://github.com/Sergey004/Quest2-VRC/releases/tag/Finaly". (Yes, that's what it's called).
-Yes for ZeroConf, No for the old method.</value>
+ZeroConf requires an additional program to be installed on Quest
+"https://github.com/Sergey004/Quest2-VRC/releases/tag/Finaly". (Yes, that's what it's called).
+"Yes" for ZeroConf, 
+"No" for the old method, 
+"Cancel" for manual IP entry.</value>
   </data>
   <data name="NoADB" xml:space="preserve">
     <value>No ADB mode</value>
@@ -3094,5 +3097,8 @@ Yes for ZeroConf, No for the old method.</value>
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Quest2-VRC GUI</value>
+  </data>
+  <data name="Manualinput" xml:space="preserve">
+    <value>The input box has been unlocked for manual entry</value>
   </data>
 </root>

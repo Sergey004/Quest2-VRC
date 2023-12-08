@@ -2,7 +2,7 @@
   "profiles": {
     "Quest2-VRC.GUI": {
       "commandName": "Project",
-      "commandLineArgs": "-eoc"
+      "commandLineArgs": ""
     }
   }
 }

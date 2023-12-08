@@ -3640,4 +3640,7 @@
   <data name="Ready" xml:space="preserve">
     <value></value>
   </data>
+  <data name="Manualinput" xml:space="preserve">
+    <value></value>
+  </data>
 </root>

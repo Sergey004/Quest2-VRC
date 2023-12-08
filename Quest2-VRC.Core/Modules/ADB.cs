@@ -196,8 +196,9 @@ namespace Quest2_VRC
             device = client.GetDevices().FirstOrDefault();
             Thread.Sleep(500);
             ConsoleOutputReceiver ipquery = new ConsoleOutputReceiver();
-            client.ExecuteRemoteCommand("ip route", device, ipquery);
+            client.ExecuteRemoteCommand("ip route | grep wlan0", device, ipquery);
             deviceip = Regex.Match(ipquery.ToString(), @"\S*\d+", RegexOptions.RightToLeft).ToString();
+
 
             return deviceip;
         }
@@ -231,8 +232,17 @@ namespace Quest2_VRC
         {
             if (!AdbServer.Instance.GetStatus().IsRunning == false)
             {
-                client.KillAdb();
-                Environment.Exit(1987);
+                try
+                
+                {
+                    client.KillAdb();
+                    Environment.Exit(1987);
+                }
+                catch 
+                { 
+                    // IDK how thos works
+                }
+                
             }
             else
             {

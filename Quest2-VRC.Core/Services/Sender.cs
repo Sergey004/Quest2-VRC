@@ -177,10 +177,10 @@ namespace Quest2_VRC
                 catch (AdbException)
                 {
                     string inputbox = "input";
-                    LogToConsole("Error: Connection to the headset is lost! Waiting for reconnect...");
+                    LogToConsole("Error: headset has been disconnected or has entered sleep mode! Waiting for reconnection...");
                     if (disableerrmsg == false)
                     {
-                        VRChatMessage MsgErr = new VRChatMessage(inputbox, "Error: Connection to the headset is lost! Waiting for reconnect...");
+                        VRChatMessage MsgErr = new VRChatMessage(inputbox, "Error: headset has been disconnected or has entered sleep mode! Waiting for reconnection...");
                         SendPacket(MsgErr);
                     }
                     await Task.Delay(1000);

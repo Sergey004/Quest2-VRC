@@ -96,17 +96,12 @@ namespace Quest2_VRC
             }
             else
             {
-                try
-                {
+                
                     Application.EnableVisualStyles();
                     Application.SetHighDpiMode(HighDpiMode.SystemAware);
                     Application.SetCompatibleTextRenderingDefault(false);
                     Application.Run(new MainWindow());
-                }
-                catch (SystemException)
-                {
-                    // Ignores errors
-                }
+               
 
             }
 

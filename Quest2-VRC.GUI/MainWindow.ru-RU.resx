@@ -3060,13 +3060,13 @@
     <value>1) Подключите гарнитуру к компьютеру
 2) Переведите переключатель в положение "AirLink (или VD)". 
 3) Дождитесь, пока ADB переключится в режим TCPIP.
-4) Нажмите кнопку "Запуск по умолчанию" для подключения. 
+4) Нажмите кнопку "Запустить все" для подключения. 
 
 Если это не работает
 Подключение вручную
 Введите 
 "platform-tools\adb tcpip 5555" 
-"platform-tools\\\adb connect QUEST_IP:5555"</value>
+"platform-tools\adb connect QUEST_IP:5555"</value>
   </data>
   <data name="Error" xml:space="preserve">
     <value>Ошибка</value>
@@ -3086,8 +3086,11 @@
   </data>
   <data name="NewOrOld" xml:space="preserve">
     <value>Вы хотите, чтобы программа находила IP-адрес старым способом или с помощью ZeroConf?
-Поиск через ZeroConf требует установки дополнительной программы на Quest "https://github.com/Sergey004/Quest2-VRC/releases/tag/Finaly". (Да оно именно так и называеться)
-Да для ZeroConf, Нет для старого метода</value>
+Поиск через ZeroConf требует установки дополнительной программы на Quest
+"https://github.com/Sergey004/Quest2-VRC/releases/tag/Finaly". (Да оно именно так и называеться)
+"Да" для ZeroConf, 
+"Нет" для старого метода,
+"Отмена" для ручного ввода IP</value>
   </data>
   <data name="NoADB" xml:space="preserve">
     <value>Нет режима ADB</value>
@@ -3132,6 +3135,9 @@
     <value>Status msg</value>
   </data>
   <data name="materialLabel4.Text" xml:space="preserve">
-    <value>Status msg</value>
+    <value>commit</value>
+  </data>
+  <data name="Manualinput" xml:space="preserve">
+    <value>Строка ввода была разблокирована для ручного ввода</value>
   </data>
 </root>
