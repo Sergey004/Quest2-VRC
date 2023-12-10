@@ -3066,7 +3066,7 @@ ZeroConf requires an additional program to be installed on Quest
     <value>No ADB mode</value>
   </data>
   <data name="NoHMD" xml:space="preserve">
-    <value>Headset is not connected</value>
+    <value>Headset not connected or not found on the local network</value>
   </data>
   <data name="OSCFall" xml:space="preserve">
     <value>Error when starting OSC</value>

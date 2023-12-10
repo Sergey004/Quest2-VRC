@@ -3096,7 +3096,7 @@
     <value>Нет режима ADB</value>
   </data>
   <data name="NoHMD" xml:space="preserve">
-    <value>Гарнитура не подключена</value>
+    <value>Гарнитура не подключена или не найдена в локальной сети</value>
   </data>
   <data name="OSCFall" xml:space="preserve">
     <value>Ошибка при запуске OSC</value>

@@ -330,6 +330,13 @@ namespace Quest2_VRC
                 {
                     MessageBox.Show(resources.GetString("WakeDevice"), resources.GetString("ADBInTCPIP"), MessageBoxButtons.OK, MessageBoxIcon.Information);
                     materialTextBox1.Text = await ADB.GetZeroConfIP();
+                    if (materialTextBox1.Text == "")
+                    {
+                        MessageBox.Show(resources.GetString("NoHMD"), resources.GetString("ADBInTCPIP"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        materialSwitch1.Checked = false;
+                    }
+
+                    
                 }
                 else if (dialogResult1 == DialogResult.No)
                 {

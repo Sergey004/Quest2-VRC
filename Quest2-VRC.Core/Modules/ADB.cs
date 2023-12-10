@@ -77,7 +77,7 @@ namespace Quest2_VRC
                     }
                      if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) == true)
                     {
-                        StartServerResult result = server.StartServer(@"platform-tools\adb", false);
+                        StartServerResult result = server.StartServer(@"platform-tools/adb", false);
                         if (result != StartServerResult.Started)
                         {
                             Console.WriteLine("Can't start adb server, please try again");
@@ -87,7 +87,7 @@ namespace Quest2_VRC
                     }
                     if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX) == true)
                     {
-                        StartServerResult result = server.StartServer(@"platform-tools\adb", false);
+                        StartServerResult result = server.StartServer(@"platform-tools/adb", false);
                         if (result != StartServerResult.Started)
                         {
                             Console.WriteLine("Can't start adb server, please try again");
@@ -145,7 +145,7 @@ namespace Quest2_VRC
                 Console.WriteLine("OSC receiver is inactive");
                 var tasks = new[]
                 {
-                     Task.Factory.StartNew(() => Sender.Run(wireless, audioEnadled, disableerrmsg), TaskCreationOptions.LongRunning),
+                     Task.Factory.StartNew(() => Sender.Run(wireless, audioEnadled, disableerrmsg, hostip), TaskCreationOptions.LongRunning),
                 };
 
 
@@ -167,7 +167,7 @@ namespace Quest2_VRC
                 Console.WriteLine("OSC receiver is active");
                 var tasks = new[]
                 {
-                     Task.Factory.StartNew(() => Sender.Run(wireless,audioEnadled, disableerrmsg), TaskCreationOptions.LongRunning),
+                     Task.Factory.StartNew(() => Sender.Run(wireless,audioEnadled, disableerrmsg,hostip), TaskCreationOptions.LongRunning),
                      Task.Factory.StartNew(() => Receiver.Run(), TaskCreationOptions.LongRunning),
                 };
 
