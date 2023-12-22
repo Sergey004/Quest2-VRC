@@ -1,3 +1,5 @@
+**Autorun after boot is broken right now**
+
 Addon for Quest2-VRC
 
 ### Installation commands
