@@ -28,6 +28,12 @@ namespace Quest2_VRC
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Amber800, Primary.Amber900, Primary.Cyan500, Accent.Cyan700, TextShade.WHITE);
+            if (File.Exists("platform-tools\\adb.exe") == false)
+            {
+                MessageBox.Show(resources.GetString("ADBNotFound"), resources.GetString("Error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
+                ADB.DownLoadADB();
+            }
+
             materialLabel5.Text = resources.GetString("Ready");
 
         }
@@ -336,7 +342,7 @@ namespace Quest2_VRC
                         materialSwitch1.Checked = false;
                     }
 
-                    
+
                 }
                 else if (dialogResult1 == DialogResult.No)
                 {
@@ -347,6 +353,7 @@ namespace Quest2_VRC
                         ADB.StartTCPIP();
                         await Task.Delay(3000);
                         materialTextBox1.Text = ADB.GetIP();
+                        MessageBox.Show(resources.GetString("USBDisCon"), resources.GetString("ADBInTCPIP"), MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     else
                     {

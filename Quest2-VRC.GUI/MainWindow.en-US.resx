@@ -3101,4 +3101,10 @@ ZeroConf requires an additional program to be installed on Quest
   <data name="Manualinput" xml:space="preserve">
     <value>The input box has been unlocked for manual entry</value>
   </data>
+  <data name="ADBNotFound" xml:space="preserve">
+    <value>adb.exe is not found in the "platform-tools" directory, adb will be loaded after pressing "OK" button, make sure your device is connected to the internet.</value>
+  </data>
+  <data name="USBDisCon" xml:space="preserve">
+    <value>Disconnect the device from the computer for the wireless connection to work properly.</value>
+  </data>
 </root>

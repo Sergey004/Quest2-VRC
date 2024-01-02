@@ -3140,4 +3140,10 @@
   <data name="Manualinput" xml:space="preserve">
     <value>Строка ввода была разблокирована для ручного ввода</value>
   </data>
+  <data name="ADBNotFound" xml:space="preserve">
+    <value>adb.exe не найден в каталоге "platform-tools", adb будет загружен после нажатия кнопки "OK", убедитесь, что ваше устройство подключено к Интернету.</value>
+  </data>
+  <data name="USBDisCon" xml:space="preserve">
+    <value>Для правильной работы беспроводного соединения отсоедините устройство от компьютера.</value>
+  </data>
 </root>

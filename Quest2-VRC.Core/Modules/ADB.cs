@@ -24,90 +24,7 @@ namespace Quest2_VRC
         {
 
             Console.WriteLine("Make sure you connect the headset to your computer and turn on the controllers");
-            if (!AdbServer.Instance.GetStatus().IsRunning)
-            {
-                AdbServer server = new AdbServer();
-                try
-                {
 
-                    bool exists = Directory.Exists("platform-tools"); // ADB Auto downloader
-                    if (!exists)
-                    {
-                        Console.WriteLine("ADB directory does not exist, creating...");
-                        Console.WriteLine("Downloading ADB");
-                        var client = new WebClient();
-                        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows) == true)
-                        {
-                            string uri = "https://dl.google.com/android/repository/platform-tools-latest-windows.zip";
-                            string filename = "platform-tools-latest-windows.zip";
-                            string extractPath = AppDomain.CurrentDomain.BaseDirectory;
-                            client.DownloadFile(uri, filename);
-                            ZipFile.ExtractToDirectory(filename, extractPath);
-                            File.Delete(filename);
-                        }
-                        if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX) == true) // Really Mac OS?!
-                        {
-                            string uri = "https://dl.google.com/android/repository/platform-tools-latest-darwin.zip";
-                            string filename = "platform-tools-latest-darwin.zip";
-                            string extractPath = AppDomain.CurrentDomain.BaseDirectory;
-                            client.DownloadFile(uri, filename);
-                            ZipFile.ExtractToDirectory(filename, extractPath);
-                            File.Delete(filename);
-                        }
-                        if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) == true) // Well, I can't imagine who would use this lib under Linux and in Mac OS XD
-                        {
-                            string uri = "https://dl.google.com/android/repository/platform-tools-latest-linux.zip";
-                            string filename = "platform-tools-latest-linux.zip";
-                            string extractPath = AppDomain.CurrentDomain.BaseDirectory;
-                            client.DownloadFile(uri, filename);
-                            ZipFile.ExtractToDirectory(filename, extractPath);
-                            File.Delete(filename);
-                        }
-                        Console.WriteLine("Download completed");
-                    }
-                    if(RuntimeInformation.IsOSPlatform(OSPlatform.Windows) == true)
-                    {
-                        StartServerResult result = server.StartServer(@"platform-tools\adb.exe", false);
-                        if (result != StartServerResult.Started)
-                        {
-                            Console.WriteLine("Can't start adb server, please try again");
-
-                            return false;
-                        }
-                    }
-                     if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) == true)
-                    {
-                        StartServerResult result = server.StartServer(@"platform-tools/adb", false);
-                        if (result != StartServerResult.Started)
-                        {
-                            Console.WriteLine("Can't start adb server, please try again");
-
-                            return false;
-                        }
-                    }
-                    if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX) == true)
-                    {
-                        StartServerResult result = server.StartServer(@"platform-tools/adb", false);
-                        if (result != StartServerResult.Started)
-                        {
-                            Console.WriteLine("Can't start adb server, please try again");
-
-                            return false;
-                        }
-                    }
-                }
-                catch (WebException)
-                {
-                    Console.WriteLine("Unable to download ADB from Google servers, try again or download files manually https://developer.android.com/studio/releases/platform-tools, press any key to exit");
-
-                    return false;
-                }
-
-            }
-            else
-            {
-                Console.WriteLine("ADB server is already running, no checks are required");
-            }
 
             client = new AdbClient();
             client.Connect(hostip);
@@ -188,6 +105,18 @@ namespace Quest2_VRC
             process.Start();
 
         }
+        public static void ForceKillADB()
+        {
+
+            Process process = new Process();
+            ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.WindowStyle = ProcessWindowStyle.Hidden;
+            startInfo.FileName = "cmd.exe";
+            startInfo.Arguments = "/C platform-tools\\adb.exe kill-server";
+            process.StartInfo = startInfo;
+            process.Start();
+
+        }
         public static string GetIP()
         {
             string deviceip = null;
@@ -226,7 +155,93 @@ namespace Quest2_VRC
             return await Task.FromResult(deviceip);
         }
 
+        public static void DownLoadADB()
+        {
+            if (!AdbServer.Instance.GetStatus().IsRunning)
+            {
+                AdbServer server = new AdbServer();
+                try
+                {
 
+                    bool exists = Directory.Exists("platform-tools"); // ADB Auto downloader
+                    if (!exists)
+                    {
+                        Console.WriteLine("ADB directory does not exist, creating...");
+                        Console.WriteLine("Downloading ADB");
+                        var client = new WebClient();
+                        if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows) == true)
+                        {
+                            string uri = "https://dl.google.com/android/repository/platform-tools-latest-windows.zip";
+                            string filename = "platform-tools-latest-windows.zip";
+                            string extractPath = AppDomain.CurrentDomain.BaseDirectory;
+                            client.DownloadFile(uri, filename);
+                            ZipFile.ExtractToDirectory(filename, extractPath);
+                            File.Delete(filename);
+                        }
+                        if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX) == true) // Really Mac OS?!
+                        {
+                            string uri = "https://dl.google.com/android/repository/platform-tools-latest-darwin.zip";
+                            string filename = "platform-tools-latest-darwin.zip";
+                            string extractPath = AppDomain.CurrentDomain.BaseDirectory;
+                            client.DownloadFile(uri, filename);
+                            ZipFile.ExtractToDirectory(filename, extractPath);
+                            File.Delete(filename);
+                        }
+                        if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) == true) // Well, I can't imagine who would use this lib under Linux and in Mac OS XD
+                        {
+                            string uri = "https://dl.google.com/android/repository/platform-tools-latest-linux.zip";
+                            string filename = "platform-tools-latest-linux.zip";
+                            string extractPath = AppDomain.CurrentDomain.BaseDirectory;
+                            client.DownloadFile(uri, filename);
+                            ZipFile.ExtractToDirectory(filename, extractPath);
+                            File.Delete(filename);
+                        }
+                        Console.WriteLine("Download completed");
+                    }
+                    if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows) == true)
+                    {
+                        StartServerResult result = server.StartServer(@"platform-tools\adb.exe", false);
+                        if (result != StartServerResult.Started)
+                        {
+                            Console.WriteLine("Can't start adb server, please try again");
+
+                            
+                        }
+                    }
+                    if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) == true)
+                    {
+                        StartServerResult result = server.StartServer(@"platform-tools/adb", false);
+                        if (result != StartServerResult.Started)
+                        {
+                            Console.WriteLine("Can't start adb server, please try again");
+
+                            
+                        }
+                    }
+                    if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX) == true)
+                    {
+                        StartServerResult result = server.StartServer(@"platform-tools/adb", false);
+                        if (result != StartServerResult.Started)
+                        {
+                            Console.WriteLine("Can't start adb server, please try again");
+
+                            
+                        }
+                    }
+                }
+                catch (WebException)
+                {
+                    Console.WriteLine("Unable to download ADB from Google servers, try again or download files manually https://developer.android.com/studio/releases/platform-tools, press any key to exit");
+
+                    
+                }
+
+            }
+            else
+            {
+                Console.WriteLine("ADB server is already running, no checks are required");
+            }
+        }
 
         public static void StopADB()
         {
@@ -235,12 +250,13 @@ namespace Quest2_VRC
                 try
                 
                 {
-                    client.KillAdb();
+                    
+                    ForceKillADB();
                     Environment.Exit(1987);
                 }
                 catch 
                 { 
-                    // IDK how thos works
+                    // IDK how this works
                 }
                 
             }

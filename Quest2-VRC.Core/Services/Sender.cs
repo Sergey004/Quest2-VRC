@@ -26,9 +26,6 @@ namespace Quest2_VRC
             public static int gputempint;
             public static float WifiInt;
             public static bool LowHMDBat;
-            
-
-
         }
 
         public static async void Run(bool wirlessmode, bool audioEnadled, bool disableerrmsg, string hostip)

@@ -3643,4 +3643,10 @@
   <data name="Manualinput" xml:space="preserve">
     <value></value>
   </data>
+  <data name="ADBNotFound" xml:space="preserve">
+    <value></value>
+  </data>
+  <data name="USBDisCon" xml:space="preserve">
+    <value></value>
+  </data>
 </root>
