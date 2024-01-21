@@ -1,6 +1,4 @@
-﻿using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
+﻿using Application = Xamarin.Forms.Application;
 
 namespace Quest2_VRC.Auto_Wireless_ADB
 {

@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.quest2_vrc.auto_wireless_adb" android:installLocation="internalOnly">
-	<uses-sdk android:minSdkVersion="21" android:targetSdkVersion="29" />
-	<application android:label="Quest2_VRC Auto Wireless ADB" android:theme="@style/MainTheme"></application>
-	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.quest2_vrc.auto_wireless_adb">
+	<uses-sdk android:minSdkVersion="25" android:targetSdkVersion="30" />
+	<application android:label="Quest2-VRC Auto Wireless ADB" android:theme="@style/MainTheme" android:icon="@mipmap/icon"></application>
 	<uses-permission android:name="android.permission.READ_LOGS" />
 	<uses-permission android:name="android.permission.WRITE_SECURE_SETTINGS" />
 	<uses-permission android:name="android.permission.WRITE_SETTINGS" />
+	<uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 </manifest>
