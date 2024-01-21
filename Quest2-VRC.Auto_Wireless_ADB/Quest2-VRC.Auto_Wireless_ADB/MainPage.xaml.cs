@@ -80,7 +80,7 @@ namespace Quest2_VRC.Auto_Wireless_ADB
 
                 if (!bootCompleted)
                     return;
-                CrossLocalNotifications.Current.Show("Wireless ADB", "FUCK", 0, DateTime.Now);
+                CrossLocalNotifications.Current.Show("Wireless ADB", "Well...", 0, DateTime.Now);
 
             }
 
