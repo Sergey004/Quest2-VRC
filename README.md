@@ -7,7 +7,7 @@ This program sending Quest 2 (As well as other headsets in the Quest line) batte
 
 If you like this program, please put a star or better yet spread the word about this program
 
-If you share this please use hashtag ``#Quest2-VRC`` like this
+If you share this please use hashtag ``#Quest2-VRC``
 
 Zeroconf discovery tested on v55 (Android 12 based) [Zeroconf discovery addon](https://github.com/Sergey004/Quest2-VRC/releases/tag/New_Addon)
 
@@ -20,7 +20,7 @@ OpenRGB functions tested only on MSI Mystic Light (AKA MSI-RGB)
 ## Building from source
 To build this application you will need:
 - Visual Studio 2019 or later
-- .NET Core 6+
+- .NET Core 7+
 
 To start building the application, simply launch the solution in Visual Studio and run "Restore NuGet packages" to download dependencies
 
