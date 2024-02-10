@@ -46,6 +46,8 @@ on:
 jobs:
   build:
     runs-on: windows-latest
+    permissions:
+      contents: write
     steps:
     - name: Save state
       run: echo "{name}={value}" >> $GITHUB_STATE
@@ -65,30 +67,36 @@ jobs:
     - name: Restore Nuget Packages
       run: dotnet restore Quest2-VRC.sln
     - name: Build Solution (Release)
-      run: dotnet build Quest2-VRC.sln --configuration Release --no-restore 
+      run: dotnet build Quest2-VRC.sln --configuration Release --no-restore --self-contained
     - name: Build Solution (Debug)
-      run: dotnet build Quest2-VRC.sln --configuration Debug --no-restore 
+      run: dotnet build Quest2-VRC.sln --configuration Debug --no-restore --self-contained
     - name: Upload Artifact (Release)
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: Release
-        path: Quest2-VRC.GUI\bin\Release\
+        path: Quest2-VRC.GUI\bin\Release\win-x64
         retention-days: 5
     - name: Upload Artifact (Debug)
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: Debug
-        path: Quest2-VRC.GUI\bin\Debug\
+        path: Quest2-VRC.GUI\bin\Debug\win-x64
         retention-days: 5
     - name: Upload Artifact (Debug Core DLL)
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: 'Debug Core DLL'
-        path: Quest2-VRC.Core\bin\Debug\
+        path: Quest2-VRC.Core\bin\Debug\win-x64
         retention-days: 5   
     - name: Upload Artifact (Release Core DLL)
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: 'Release Core DLL'
-        path: Quest2-VRC.Core\bin\Release\
-        retention-days: 5       
+        path: Quest2-VRC.Core\bin\Release\win-x64
+        retention-days: 5        
+    - name: Upload binaries to release
+      uses: softprops/action-gh-release@v1
+      if: startsWith(github.ref, 'refs/tags/')
+      with:
+           files: | 
+            Quest2-VRC.Core\bin\Release\win-x64
