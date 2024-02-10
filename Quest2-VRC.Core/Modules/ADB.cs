@@ -1,4 +1,5 @@
 using AdvancedSharpAdbClient;
+using Microsoft.Toolkit.Uwp.Notifications;
 using System;
 using System.Diagnostics;
 using System.IO;
@@ -171,31 +172,16 @@ namespace Quest2_VRC
                         var client = new WebClient();
                         if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows) == true)
                         {
+                            Notify_service.NotfyDowload();
                             string uri = "https://dl.google.com/android/repository/platform-tools-latest-windows.zip";
                             string filename = "platform-tools-latest-windows.zip";
                             string extractPath = AppDomain.CurrentDomain.BaseDirectory;
                             client.DownloadFile(uri, filename);
+                            Notify_service.NotfyComplited();  
                             ZipFile.ExtractToDirectory(filename, extractPath);
                             File.Delete(filename);
                         }
-                        if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX) == true) // Really Mac OS?!
-                        {
-                            string uri = "https://dl.google.com/android/repository/platform-tools-latest-darwin.zip";
-                            string filename = "platform-tools-latest-darwin.zip";
-                            string extractPath = AppDomain.CurrentDomain.BaseDirectory;
-                            client.DownloadFile(uri, filename);
-                            ZipFile.ExtractToDirectory(filename, extractPath);
-                            File.Delete(filename);
-                        }
-                        if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) == true) // Well, I can't imagine who would use this lib under Linux and in Mac OS XD
-                        {
-                            string uri = "https://dl.google.com/android/repository/platform-tools-latest-linux.zip";
-                            string filename = "platform-tools-latest-linux.zip";
-                            string extractPath = AppDomain.CurrentDomain.BaseDirectory;
-                            client.DownloadFile(uri, filename);
-                            ZipFile.ExtractToDirectory(filename, extractPath);
-                            File.Delete(filename);
-                        }
+
                         Console.WriteLine("Download completed");
                     }
                     if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows) == true)
@@ -205,35 +191,15 @@ namespace Quest2_VRC
                         {
                             Console.WriteLine("Can't start adb server, please try again");
 
-                            
                         }
                     }
-                    if (RuntimeInformation.IsOSPlatform(OSPlatform.Linux) == true)
-                    {
-                        StartServerResult result = server.StartServer(@"platform-tools/adb", false);
-                        if (result != StartServerResult.Started)
-                        {
-                            Console.WriteLine("Can't start adb server, please try again");
 
-                            
-                        }
-                    }
-                    if (RuntimeInformation.IsOSPlatform(OSPlatform.OSX) == true)
-                    {
-                        StartServerResult result = server.StartServer(@"platform-tools/adb", false);
-                        if (result != StartServerResult.Started)
-                        {
-                            Console.WriteLine("Can't start adb server, please try again");
-
-                            
-                        }
-                    }
                 }
                 catch (WebException)
                 {
                     Console.WriteLine("Unable to download ADB from Google servers, try again or download files manually https://developer.android.com/studio/releases/platform-tools, press any key to exit");
 
-                    
+
                 }
 
             }
@@ -243,25 +209,33 @@ namespace Quest2_VRC
             }
         }
 
+      
+       
+
+
         public static void StopADB()
         {
             if (!AdbServer.Instance.GetStatus().IsRunning == false)
             {
                 try
-                
+
                 {
-                    
+                    ToastNotificationManagerCompat.History.Clear();
+                    ToastNotificationManagerCompat.Uninstall();
+
                     ForceKillADB();
                     Environment.Exit(1987);
                 }
-                catch 
-                { 
+                catch
+                {
                     // IDK how this works
                 }
-                
+
             }
             else
             {
+                ToastNotificationManagerCompat.History.Clear();
+                ToastNotificationManagerCompat.Uninstall();
                 Environment.Exit(1987);
             }
 

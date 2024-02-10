@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <TargetFramework>net8.0-windows7.0</TargetFramework>
+    <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
     <OutputType>Library</OutputType>
     <RootNamespace>Quest2_VRC</RootNamespace>
     <LangVersion>latest</LangVersion>
@@ -56,6 +56,7 @@
   <ItemGroup>
     <PackageReference Include="AdvancedSharpAdbClient" Version="2.5.8" />
     <PackageReference Include="Bespoke.Osc" Version="1.0.0" />
+    <PackageReference Include="Microsoft.Toolkit.Uwp.Notifications" Version="7.1.3" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <PackageReference Include="OpenRGB.NET" Version="1.7.0" />
     <PackageReference Include="System.Management" Version="8.0.0" />

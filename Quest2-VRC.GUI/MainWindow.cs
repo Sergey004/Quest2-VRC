@@ -28,14 +28,13 @@ namespace Quest2_VRC
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Amber800, Primary.Amber900, Primary.Cyan500, Accent.Cyan700, TextShade.WHITE);
+            materialLabel5.Text = resources.GetString("Ready");
             if (File.Exists("platform-tools\\adb.exe") == false)
             {
                 MessageBox.Show(resources.GetString("ADBNotFound"), resources.GetString("Error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ADB.DownLoadADB();
             }
-
-            materialLabel5.Text = resources.GetString("Ready");
-
+           
         }
 
 
@@ -46,7 +45,7 @@ namespace Quest2_VRC
             materialButton3.Enabled = false;
             materialButton4.Enabled = false;
             materialButton5.Enabled = false;
-            materialButton6.Enabled = false;
+            //materialButton6.Enabled = false;
             materialSwitch1.Enabled = false;
             materialCheckbox2.Enabled = false;
             materialTextBox1.Enabled = false;
@@ -59,7 +58,7 @@ namespace Quest2_VRC
             materialButton3.Enabled = true;
             materialButton4.Enabled = true;
             materialButton5.Enabled = true;
-            materialButton6.Enabled = true;
+            //materialButton6.Enabled = true;
             materialSwitch1.Enabled = true;
             materialCheckbox2.Enabled = true;
             materialTextBox1.Enabled = true;
