@@ -92,13 +92,4 @@ jobs:
         name: 'Release Core DLL'
         path: Quest2-VRC.Core\bin\Release\
         retention-days: 5   
-  upload:
-         name: Upload as Release
-         needs: build
-         runs-on: windows-latest
-         steps:
-           - name: Download Release
-             uses: actions/download-artifact@v4
-             with:
-               name: Release
           
