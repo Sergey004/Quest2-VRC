@@ -69,25 +69,25 @@ jobs:
     - name: Build Solution (Debug)
       run: dotnet build Quest2-VRC.sln --configuration Debug --no-restore 
     - name: Upload Artifact (Release)
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: Release
         path: Quest2-VRC.GUI\bin\Release\
         retention-days: 5
     - name: Upload Artifact (Debug)
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: Debug
         path: Quest2-VRC.GUI\bin\Debug\
         retention-days: 5
     - name: Upload Artifact (Debug Core DLL)
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: 'Debug Core DLL'
         path: Quest2-VRC.Core\bin\Debug\
         retention-days: 5   
     - name: Upload Artifact (Release Core DLL)
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: 'Release Core DLL'
         path: Quest2-VRC.Core\bin\Release\
