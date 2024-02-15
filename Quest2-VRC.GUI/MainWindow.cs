@@ -1,4 +1,5 @@
-﻿using MaterialSkin;
+﻿using AdvancedSharpAdbClient;
+using MaterialSkin;
 using MaterialSkin.Controls;
 using Newtonsoft.Json.Linq;
 using System;
@@ -34,7 +35,9 @@ namespace Quest2_VRC
                 MessageBox.Show(resources.GetString("ADBNotFound"), resources.GetString("Error"), MessageBoxButtons.OK, MessageBoxIcon.Error);
                 ADB.DownLoadADB();
             }
-           
+            AdbServer server = new AdbServer();
+            StartServerResult result = server.StartServer(@"platform-tools\adb.exe", false);
+
         }
 
 

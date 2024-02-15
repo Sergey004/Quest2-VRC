@@ -14,7 +14,7 @@ using System.Threading.Tasks;
 using Zeroconf;
 
 
-
+[assembly: SupportedOSPlatform("windows")]
 namespace Quest2_VRC
 {
     public class ADB
@@ -25,7 +25,6 @@ namespace Quest2_VRC
         {
 
             Console.WriteLine("Make sure you connect the headset to your computer and turn on the controllers");
-
 
             client = new AdbClient();
             client.Connect(hostip);
@@ -177,7 +176,7 @@ namespace Quest2_VRC
                             string filename = "platform-tools-latest-windows.zip";
                             string extractPath = AppDomain.CurrentDomain.BaseDirectory;
                             client.DownloadFile(uri, filename);
-                            Notify_service.NotfyComplited();  
+                            Notify_service.NotfyComplited();
                             ZipFile.ExtractToDirectory(filename, extractPath);
                             File.Delete(filename);
                         }
@@ -209,37 +208,55 @@ namespace Quest2_VRC
             }
         }
 
-      
-       
 
-
-        public static void StopADB()
+        public static void StartADBSrv()
         {
-            if (!AdbServer.Instance.GetStatus().IsRunning == false)
+            if (!AdbServer.Instance.GetStatus().IsRunning)
             {
-                try
-
+                AdbServer server = new AdbServer();
+                StartServerResult result = server.StartServer(@"platform-tools\adb.exe", false);
+                if (result != StartServerResult.Started)
                 {
-                    ToastNotificationManagerCompat.History.Clear();
-                    ToastNotificationManagerCompat.Uninstall();
+                    Console.WriteLine("Can't start adb server, please try again");
 
-                    ForceKillADB();
-                    Environment.Exit(1987);
                 }
-                catch
-                {
-                    // IDK how this works
-                }
-
             }
             else
             {
-                ToastNotificationManagerCompat.History.Clear();
-                ToastNotificationManagerCompat.Uninstall();
-                Environment.Exit(1987);
+                Console.WriteLine("ADB server is already running, no checks are required");
             }
-
         }
 
+
+            public static void StopADB()
+
+            {
+                if (!AdbServer.Instance.GetStatus().IsRunning == false)
+                {
+                    try
+
+                    {
+                        ToastNotificationManagerCompat.History.Clear();
+                        ToastNotificationManagerCompat.Uninstall();
+
+                        ForceKillADB();
+                        Environment.Exit(1987);
+                    }
+                    catch
+                    {
+                        // IDK how this works
+                    }
+
+                }
+                else
+                {
+                    ToastNotificationManagerCompat.History.Clear();
+                    ToastNotificationManagerCompat.Uninstall();
+                    Environment.Exit(1987);
+                }
+
+            }
+
+        
     }
 }

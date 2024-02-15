@@ -67,5 +67,6 @@
     <IsPublishable>False</IsPublishable>
     <BaseOutputPath></BaseOutputPath>
     <GenerateDocumentationFile>False</GenerateDocumentationFile>
+    <NoWarn>$(NoWarn);SYSLIB0014</NoWarn>
   </PropertyGroup>
 </Project>
