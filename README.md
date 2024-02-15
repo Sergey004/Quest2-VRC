@@ -1,5 +1,5 @@
 # Quest2-VRC
-[![CI](https://github.com/Sergey004/Quest2-VRC/actions/workflows/main.yml/badge.svg)](https://github.com/Sergey004/Quest2-VRC/actions/workflows/main.yml)
+[![CI Auto](https://github.com/Sergey004/Quest2-VRC/actions/workflows/auto.yml/badge.svg?branch=winform_gui)](https://github.com/Sergey004/Quest2-VRC/actions/workflows/auto.yml)
 
 ![image](https://github.com/Sergey004/Quest2-VRC/assets/11889498/19633fbb-389a-4b6e-a185-e864a62a24f7)
 
