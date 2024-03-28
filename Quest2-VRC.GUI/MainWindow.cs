@@ -92,6 +92,7 @@ namespace Quest2_VRC
                             {
 
                                 materialLabel5.Invoke(new Action(() => materialLabel5.Text = resources.GetString("ADBRunning")));
+                                Notify_service.NotfyConneced();
 
                             }
 
@@ -111,7 +112,7 @@ namespace Quest2_VRC
                             if (ADB.StartADB(true, true, questip, false, materialCheckbox2.Checked, materialCheckbox3.Checked))
                             {
                                 materialLabel5.Invoke(new Action(() => materialLabel5.Text = resources.GetString("ADBRunning")));
-
+                                Notify_service.NotfyConneced();
                             }
                         }
                         catch (Exception)
@@ -192,6 +193,7 @@ namespace Quest2_VRC
                             if (ADB.StartADB(false, true, questip, true, materialCheckbox2.Checked, materialCheckbox3.Checked))
                             {
                                 materialLabel5.Invoke(new Action(() => materialLabel5.Text = resources.GetString("Receive")));
+                                Notify_service.NotfyConneced();
                                 disableButtons();
                             }
                         }
@@ -209,6 +211,7 @@ namespace Quest2_VRC
                             if (ADB.StartADB(false, true, questip, false, materialCheckbox2.Checked, materialCheckbox3.Checked))
                             {
                                 materialLabel5.Invoke(new Action(() => materialLabel5.Text = resources.GetString("Receive")));
+                                Notify_service.NotfyConneced();
                                 disableButtons();
                             }
                         }

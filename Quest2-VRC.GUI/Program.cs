@@ -42,12 +42,14 @@ namespace Quest2_VRC
             {
                 if (forceeng == false && enhancedoculuscontrol == false)
                 {
+                    Notify_service.NotfyStarting();
                     Check_Vars.CheckVars();
                     Console.WriteLine("Logs redirected to main window");
                     GUI();
                 }
                 if (forceeng == true && enhancedoculuscontrol == false)
                 {
+                    Notify_service.NotfyStarting();
                     Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
                     Check_Vars.CheckVars();
                     Console.WriteLine("Logs redirected to main window");
@@ -55,6 +57,7 @@ namespace Quest2_VRC
                 }
                 if (forceeng == false && enhancedoculuscontrol == true)
                 {
+                    Notify_service.NotfyStarting();
                     OculusStaff.DisableASW();
                     OculusStaff.HighPriority();
                     var tasks = new[]
@@ -67,6 +70,7 @@ namespace Quest2_VRC
                 }
                 if (forceeng == true && enhancedoculuscontrol == true)
                 {
+                    Notify_service.NotfyStarting();
                     Thread.CurrentThread.CurrentUICulture = new CultureInfo("en");
                     OculusStaff.DisableASW();
                     OculusStaff.HighPriority();
