@@ -15,7 +15,7 @@ using Extensions = VRC.OSCQuery.Extensions;
 
 namespace Quest2_VRC
 {
-    static class Sender
+    public static class Sender
     {
         public class Global
         {

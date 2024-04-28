@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json.Linq;
 using System;
 using System.IO;
+using System.Net;
 
 namespace Quest2_VRC
 {
@@ -21,7 +22,8 @@ namespace Quest2_VRC
                 new JProperty("Receive_addr", "/avatar/parameters/Eyes mode"),
                 new JProperty("Receive_addr_test", "/avatar/parameters/Eyes_mode"),
                 new JProperty("SendPort", "9000"),
-                new JProperty("HostIP", "127.0.0.1"));
+                new JProperty("HostIP", "127.0.0.1"),
+                new JProperty("LastKnownIP", "127.0.0.1"));
 
 
                 File.WriteAllText(@"vars.json", vars.ToString());
@@ -33,5 +35,23 @@ namespace Quest2_VRC
                 Console.WriteLine("vars.json exists");
             }
         }
+        public static void WriteJSON(string lastip)
+        {
+            string jsonString = File.ReadAllText("vars.json");
+            JObject jObject = Newtonsoft.Json.JsonConvert.DeserializeObject(jsonString) as JObject;
+            JToken jToken = jObject.SelectToken("LastKnownIP");
+            jToken.Replace(lastip);
+            string updatedJsonString = jObject.ToString();
+            File.WriteAllText("vars.json", updatedJsonString);
+        }
+        public static string ReadJSON(string lastip)
+        {
+            string jsonString = File.ReadAllText("vars.json");
+            JObject vars = JObject.Parse(jsonString);
+            
+            return _ = ((string)vars["LastKnownIP"]);
+
+        }
+        
     }
 }

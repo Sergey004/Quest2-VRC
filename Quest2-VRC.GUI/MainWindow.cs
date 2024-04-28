@@ -19,7 +19,7 @@ namespace Quest2_VRC
     {
         public MainWindow()
         {
-
+            string lastip = null;
             ResourceManager resources = new ComponentResourceManager(typeof(MainWindow));
             InitializeComponent();
             materialTextBox1.Enabled = false;
@@ -37,6 +37,7 @@ namespace Quest2_VRC
             }
             AdbServer server = new AdbServer();
             StartServerResult result = server.StartServer(@"platform-tools\adb.exe", false);
+            materialTextBox1.Text = Check_Vars.ReadJSON(lastip);
 
         }
 
@@ -323,6 +324,7 @@ namespace Quest2_VRC
             }
             else
             {
+                Check_Vars.WriteJSON(materialTextBox1.Text);
                 File.Delete("odtout.txt");
                 ADB.StopADB();
             }

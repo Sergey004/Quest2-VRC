@@ -42,14 +42,14 @@ namespace Quest2_VRC
             {
                 if (forceeng == false && enhancedoculuscontrol == false)
                 {
-                    Notify_service.NotfyStarting();
+                    
                     Check_Vars.CheckVars();
                     Console.WriteLine("Logs redirected to main window");
                     GUI();
                 }
                 if (forceeng == true && enhancedoculuscontrol == false)
                 {
-                    Notify_service.NotfyStarting();
+                    
                     Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
                     Check_Vars.CheckVars();
                     Console.WriteLine("Logs redirected to main window");
@@ -57,7 +57,7 @@ namespace Quest2_VRC
                 }
                 if (forceeng == false && enhancedoculuscontrol == true)
                 {
-                    Notify_service.NotfyStarting();
+                    
                     OculusStaff.DisableASW();
                     OculusStaff.HighPriority();
                     var tasks = new[]
@@ -70,7 +70,7 @@ namespace Quest2_VRC
                 }
                 if (forceeng == true && enhancedoculuscontrol == true)
                 {
-                    Notify_service.NotfyStarting();
+                    
                     Thread.CurrentThread.CurrentUICulture = new CultureInfo("en");
                     OculusStaff.DisableASW();
                     OculusStaff.HighPriority();
@@ -95,14 +95,14 @@ namespace Quest2_VRC
 
             if (processes.Length > 1)
             {
-
+                
                 Application.EnableVisualStyles();
                 MessageBox.Show("Only one instance of the program can be opened!", System.Reflection.Assembly.GetExecutingAssembly().GetName().Name, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Environment.Exit(1987);
             }
             else
             {
-
+                Notify_service.NotfyStarting();
                 Application.EnableVisualStyles();
                 Application.SetHighDpiMode(HighDpiMode.SystemAware);
                 Application.SetCompatibleTextRenderingDefault(false);
