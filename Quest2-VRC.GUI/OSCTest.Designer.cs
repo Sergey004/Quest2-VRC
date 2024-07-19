@@ -242,7 +242,7 @@
             materialButton2.UseVisualStyleBackColor = true;
             materialButton2.Click += materialButton2_Click;
             // 
-            // Form2
+            // OSCTest
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -262,7 +262,7 @@
             Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             MaximizeBox = false;
             MinimizeBox = false;
-            Name = "Form2";
+            Name = "OSCTest";
             Padding = new System.Windows.Forms.Padding(4, 74, 4, 3);
             ShowIcon = false;
             Sizable = false;

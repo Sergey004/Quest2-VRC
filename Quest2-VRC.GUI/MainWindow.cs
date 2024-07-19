@@ -36,7 +36,16 @@ namespace Quest2_VRC
                 ADB.DownLoadADB();
             }
             AdbServer server = new AdbServer();
-            StartServerResult result = server.StartServer(@"platform-tools\adb.exe", false);
+            try
+            {
+                StartServerResult result = server.StartServer(@"platform-tools\adb.exe", false);
+            }
+            catch (Exception ex) {
+                MessageBox.Show(string.Format("ADB process running from another location is detected, the program closes."), "Results", MessageBoxButtons.OK);
+                Environment.Exit(1987);
+
+
+            }
             materialTextBox1.Text = Check_Vars.ReadJSON(lastip);
 
         }
