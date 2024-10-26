@@ -45,8 +45,6 @@ namespace Quest2_VRC
             Quest Pro = seacliff
             Quest 3 = eureka
             Quest3S = panther */
-            Quest 3 = eureka
-            Quest3S = panther */
             {
                 Console.WriteLine("Device is: \nModel: {0}\nCodename: {1} \nState: {2}", device.Model, device.Name, device.State);
                 Console.WriteLine("Oculus/Meta device is not detected or is not authorized, please disconnect all non Oculus/Meta devices and close all emulators on PC, try again");
