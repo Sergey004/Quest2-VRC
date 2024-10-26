@@ -45,8 +45,6 @@ namespace Quest2_VRC
             Quest Pro = seacliff
             Quest 3 = eureka
             Quest3S = panther */
-            Quest 3 = eureka
-            Quest3S = panther */
             {
                 Console.WriteLine("Device is: \nModel: {0}\nCodename: {1} \nState: {2}", device.Model, device.Name, device.State);
                 Console.WriteLine("Oculus/Meta device is not detected or is not authorized, please disconnect all non Oculus/Meta devices and close all emulators on PC, try again");
@@ -212,78 +210,35 @@ namespace Quest2_VRC
         }
 
 
-        public static void StartADBSrv()
-        {
-            if (!AdbServer.Instance.GetStatus().IsRunning)
+           public static void StopADB()
+
             {
-                AdbServer server = new AdbServer();
-                StartServerResult result = server.StartServer(@"platform-tools\adb.exe", false);
-                if (result != StartServerResult.Started)
+                if (!AdbServer.Instance.GetStatus().IsRunning == false)
                 {
-                    Console.WriteLine("Can't start adb server, please try again");
+                    try
+
+                    {
+                        ToastNotificationManagerCompat.History.Clear();
+                        ToastNotificationManagerCompat.Uninstall();
+
+                        ForceKillADB();
+                        Environment.Exit(1987);
+                    }
+                    catch
+                    {
+                        // IDK how this works
+                    }
 
                 }
-            }
-            else
-            {
-                Console.WriteLine("ADB server is already running, no checks are required");
-            }
-        }
-
-
-        public static void StopADB()
-        public static void StopADB()
-
-        {
-            if (!AdbServer.Instance.GetStatus().IsRunning == false)
-            {
-                try
-        {
-            if (!AdbServer.Instance.GetStatus().IsRunning == false)
-            {
-                try
-
+                else
                 {
                     ToastNotificationManagerCompat.History.Clear();
                     ToastNotificationManagerCompat.Uninstall();
-                {
-                    ToastNotificationManagerCompat.History.Clear();
-                    ToastNotificationManagerCompat.Uninstall();
-
-                    ForceKillADB();
                     Environment.Exit(1987);
                 }
-                catch
-                {
-                    // IDK how this works
-                }
-                    ForceKillADB();
-                    Environment.Exit(1987);
-                }
-                catch
-                {
-                    // IDK how this works
-                }
 
             }
-            else
-            {
-                ToastNotificationManagerCompat.History.Clear();
-                ToastNotificationManagerCompat.Uninstall();
-                Environment.Exit(1987);
-            }
-            }
-            else
-            {
-                ToastNotificationManagerCompat.History.Clear();
-                ToastNotificationManagerCompat.Uninstall();
-                Environment.Exit(1987);
-            }
 
-        }
-        }
-
-
-
+        
     }
 }
