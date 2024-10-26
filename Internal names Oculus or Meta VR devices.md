@@ -6,6 +6,7 @@ List of internal names Oculus/Meta VR devices
 |---|---|
 Quest 1 (Android 7.0) | vr_monterey
 Quest 1 (Android 10) | monterey
-Quest 2 |hollywood
+Quest 2 | hollywood
 Quest Pro | seacliff
 Quest 3 | eureka
+Quest 3S | panther
