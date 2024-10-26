@@ -45,6 +45,8 @@ namespace Quest2_VRC
             Quest Pro = seacliff
             Quest 3 = eureka
             Quest3S = panther */
+            Quest 3 = eureka
+            Quest3S = panther */
             {
                 Console.WriteLine("Device is: \nModel: {0}\nCodename: {1} \nState: {2}", device.Model, device.Name, device.State);
                 Console.WriteLine("Oculus/Meta device is not detected or is not authorized, please disconnect all non Oculus/Meta devices and close all emulators on PC, try again");
@@ -230,7 +232,12 @@ namespace Quest2_VRC
 
 
         public static void StopADB()
+        public static void StopADB()
 
+        {
+            if (!AdbServer.Instance.GetStatus().IsRunning == false)
+            {
+                try
         {
             if (!AdbServer.Instance.GetStatus().IsRunning == false)
             {
@@ -239,7 +246,17 @@ namespace Quest2_VRC
                 {
                     ToastNotificationManagerCompat.History.Clear();
                     ToastNotificationManagerCompat.Uninstall();
+                {
+                    ToastNotificationManagerCompat.History.Clear();
+                    ToastNotificationManagerCompat.Uninstall();
 
+                    ForceKillADB();
+                    Environment.Exit(1987);
+                }
+                catch
+                {
+                    // IDK how this works
+                }
                     ForceKillADB();
                     Environment.Exit(1987);
                 }
@@ -255,8 +272,17 @@ namespace Quest2_VRC
                 ToastNotificationManagerCompat.Uninstall();
                 Environment.Exit(1987);
             }
+            }
+            else
+            {
+                ToastNotificationManagerCompat.History.Clear();
+                ToastNotificationManagerCompat.Uninstall();
+                Environment.Exit(1987);
+            }
 
         }
+        }
+
 
 
     }
