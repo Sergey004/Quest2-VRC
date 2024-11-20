@@ -2,7 +2,9 @@
 using Newtonsoft.Json.Linq;
 using Quest2_VRC.Services;
 using System;
+using System.Collections.Concurrent;
 using System.IO;
+using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using VRC.OSCQuery;
@@ -16,33 +18,41 @@ namespace Quest2_VRC
 
     {
         static readonly int dataInt = 0;
+        static bool Raw_RGB = false; 
+        static readonly int udpPort = 9001;
+        private static readonly string R = "/avatar/parameters/R";
+        private static readonly string G = "/avatar/parameters/G";
+        private static readonly string B = "/avatar/parameters/B";
+        private static readonly ConcurrentDictionary<string, int> rgbBuffer = new();
+        private static readonly string[] rgbAddresses = { "/avatar/parameters/R", "/avatar/parameters/G", "/avatar/parameters/B" };
         public static async void Run()
         {
-            RGBController.SendRGBData(dataInt); // Init OpenRGB
-            var tcpPort = Extensions.GetAvailableTcpPort();
-            var udpPort = Extensions.GetAvailableUdpPort();
-            var oscQuery = new OSCQueryServiceBuilder()
-                .WithTcpPort(tcpPort)
-                .WithUdpPort(udpPort)
-                .WithServiceName("Quest2-VRC OSCQuery Receiver")
-                .WithDefaults()
-                .Build();
+            RGBController.SendRGBRawData(0,195,255); // Init OpenRGB
+            //var tcpPort = Extensions.GetAvailableTcpPort();
+            //var udpPort = Extensions.GetAvailableUdpPort();
+            
+            
+            //var oscQuery = new OSCQueryServiceBuilder()
+            //    .WithTcpPort(tcpPort)
+            //    .WithUdpPort(udpPort)
+            //    .WithServiceName("Quest2-VRC OSCQuery Receiver")
+            //    .WithDefaults()
+            //    .Build();
 
-            oscQuery.AddEndpoint<int>("/avatar", Attributes.AccessValues.WriteOnly);
+            //oscQuery.AddEndpoint<int>("/avatar", Attributes.AccessValues.WriteOnly);
 
             string json = File.ReadAllText("vars.json");
             JObject vars = JObject.Parse(json);
-
-            string Eyesmode = (string)vars["Receive_addr"];
-            string EyesmodeTest = (string)vars["Receive_addr_test"];
+         
 
             var IP = IPAddress.Parse((string)vars["HostIP"]);
 
             OscServer oscServer;
             oscServer = new OscServer((Bespoke.Common.Net.TransportType)TransportType.Udp, IP, udpPort);
             oscServer.FilterRegisteredMethods = true;
-            oscServer.RegisterMethod(Eyesmode);
-            oscServer.RegisterMethod(EyesmodeTest);
+            oscServer.RegisterMethod(R);
+            oscServer.RegisterMethod(G);
+            oscServer.RegisterMethod(B);
             oscServer.MessageReceived += new EventHandler<OscMessageReceivedEventArgs>(oscServer_MessageReceived);
             oscServer.Start();
             Logger.LogToConsole("Make sure you have all effects disabled in OpenRGB");
@@ -52,33 +62,41 @@ namespace Quest2_VRC
         private static void oscServer_MessageReceived(object sender, OscMessageReceivedEventArgs e)
         {
             OscMessage message = e.Message;
-            Console.WriteLine(string.Format("\nMessage Received {0}", message.Address)); //Debug
 
-            for (int i = 0; i < message.Data.Count; i++)
+            if (rgbAddresses.Contains(message.Address) && message.Data[0] is int intValue)
             {
-                string dataString;
+                
+                rgbBuffer[message.Address] = intValue;
 
-                if (message.Data[i] == null)
+                
+                if (rgbBuffer.Count == rgbAddresses.Length)
                 {
-                    dataString = "Nil";
-                }
-                else
-                {
-                    dataString = (message.Data[i] is byte[]? BitConverter.ToString((byte[])message.Data[i]) : message.Data[i].ToString());
-                }
-                //Console.WriteLine(string.Format("{0}", dataString)); //Debug
+                    
+                    int r = rgbBuffer["/avatar/parameters/R"];
+                    int g = rgbBuffer["/avatar/parameters/G"];
+                    int b = rgbBuffer["/avatar/parameters/B"];
 
-                int dataInt = int.Parse(dataString);
-                RGBController.SendRGBData(dataInt);
+                  
+                    ProcessRGB(r, g, b);
+
+                    
+                    rgbBuffer.Clear();
+                }
             }
-
+            else
+            {
+                Console.WriteLine($"Unhandled or invalid message: {message.Address}");
+            }
         }
 
-
+        private static void ProcessRGB(int r, int g, int b)
+        {
+            Console.WriteLine($"Received RGB: R={r}, G={g}, B={b}");
+            RGBController.SendRGBRawData(r, g, b);
+        }
     }
 
 }
-
 
 
 
