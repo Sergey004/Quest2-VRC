@@ -11,7 +11,7 @@ If you share this please use hashtag ``#Quest2-VRC``
 
 Zeroconf discovery tested on v55 (Android 12 based) [Zeroconf discovery addon](https://github.com/Sergey004/Quest2-VRC/releases/tag/New_Addon)
 
-OpenRGB functions tested only on MSI Mystic Light (AKA MSI-RGB)
+OpenRGB function works on all supported devices which supports OpenRGB itself
 
 *I think [any](https://github.com/Sergey004/E1.31-to-OSC) RGB controller that is supported in OpenRGB will work...*
 
@@ -62,7 +62,13 @@ Default values transferred via OSC
 ```CPUtemp``` , ```GPUtemp``` and ```WifiRSSI``` vars is optional
 
 For receiving:
-- Replace in vars.txt ```Receive_addr```, ```Receive_addr_test``` according to your specific parameters
+- Now the program accepts Raw RGB data from 1 to 255 in Int, inside the program it will be converted to Byte
+
+|Var name|Type|Value|
+|---|---|---|
+|R|Int|1-255|
+|G|Int|1-255|
+|B|Int|1-255|
 
 ## What do I use to get information from Quest (and other Android devices)?
 
