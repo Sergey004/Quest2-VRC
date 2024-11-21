@@ -17,9 +17,7 @@ namespace Quest2_VRC
     public class Receiver
 
     {
-        static readonly int dataInt = 0;
-        static bool Raw_RGB = false; 
-        static readonly int udpPort = 9001;
+
         private static readonly string R = "/avatar/parameters/R";
         private static readonly string G = "/avatar/parameters/G";
         private static readonly string B = "/avatar/parameters/B";
@@ -27,23 +25,24 @@ namespace Quest2_VRC
         private static readonly string[] rgbAddresses = { "/avatar/parameters/R", "/avatar/parameters/G", "/avatar/parameters/B" };
         public static async void Run()
         {
-            RGBController.SendRGBRawData(0,195,255); // Init OpenRGB
-            //var tcpPort = Extensions.GetAvailableTcpPort();
-            //var udpPort = Extensions.GetAvailableUdpPort();
-            
-            
-            //var oscQuery = new OSCQueryServiceBuilder()
-            //    .WithTcpPort(tcpPort)
-            //    .WithUdpPort(udpPort)
-            //    .WithServiceName("Quest2-VRC OSCQuery Receiver")
-            //    .WithDefaults()
-            //    .Build();
+            RGBController.SendRGBRawData(0, 195, 255);  // Init OpenRGB
+            RGBController.SendRGBRawData(0, 0, 0);      // Set to Black
+            var tcpPort = Extensions.GetAvailableTcpPort();
+            var udpPort = Extensions.GetAvailableUdpPort();
 
-            //oscQuery.AddEndpoint<int>("/avatar", Attributes.AccessValues.WriteOnly);
+
+            var oscQuery = new OSCQueryServiceBuilder()
+                .WithTcpPort(tcpPort)
+                .WithUdpPort(udpPort)
+                .WithServiceName("Quest2-VRC OSCQuery Receiver")
+                .WithDefaults()
+                .Build();
+
+            oscQuery.AddEndpoint<int>("/avatar", Attributes.AccessValues.WriteOnly);
 
             string json = File.ReadAllText("vars.json");
             JObject vars = JObject.Parse(json);
-         
+
 
             var IP = IPAddress.Parse((string)vars["HostIP"]);
 
@@ -65,21 +64,21 @@ namespace Quest2_VRC
 
             if (rgbAddresses.Contains(message.Address) && message.Data[0] is int intValue)
             {
-                
+
                 rgbBuffer[message.Address] = intValue;
 
-                
+
                 if (rgbBuffer.Count == rgbAddresses.Length)
                 {
-                    
+
                     int r = rgbBuffer["/avatar/parameters/R"];
                     int g = rgbBuffer["/avatar/parameters/G"];
                     int b = rgbBuffer["/avatar/parameters/B"];
 
-                  
+
                     ProcessRGB(r, g, b);
 
-                    
+
                     rgbBuffer.Clear();
                 }
             }
