@@ -25,10 +25,10 @@ namespace Quest2_VRC.Services
 
                 for (int i = 0; i < devices.Length; i++)
                 {
-                    var leds = Enumerable.Range(0, devices[i].Colors.Length)
+                     var leds = Enumerable.Range(0, devices[i].Colors.Length)
                         .Select(_ => new Color(R_Byte,G_Byte,B_Byte))   
                         .ToArray();
-                    client.UpdateLeds(i, leds);
+                     client.UpdateLeds(i, leds);
                 }
             }
 
