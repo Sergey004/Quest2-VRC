@@ -61,7 +61,7 @@
     <PackageReference Include="OpenRGB.NET" Version="1.7.0" />
     <PackageReference Include="System.Management" Version="8.0.0" />
     <PackageReference Include="VRChat.OSCQuery" Version="0.0.7" />
-    <PackageReference Include="Zeroconf" Version="3.6.11" />
+    <PackageReference Include="Zeroconf" Version="3.7.16" />
   </ItemGroup>
   <PropertyGroup>
     <IsPublishable>False</IsPublishable>

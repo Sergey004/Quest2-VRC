@@ -3125,9 +3125,6 @@
   <data name="materialCheckbox3.Text" xml:space="preserve">
     <value>Отключить сообщения об отключении</value>
   </data>
-  <data name="materialButton7.Text" xml:space="preserve">
-    <value>Режим оверлея</value>
-  </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Quest2-VRC GUI</value>
   </data>

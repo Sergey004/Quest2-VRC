@@ -3089,9 +3089,6 @@ ZeroConf requires an additional program to be installed on Quest
   <data name="WakeDevice" xml:space="preserve">
     <value>Remember to wake up your device</value>
   </data>
-  <data name="materialButton7.Text" xml:space="preserve">
-    <value>Overlay mode</value>
-  </data>
   <data name="materialCheckbox3.Text" xml:space="preserve">
     <value>Disable disconnect messages</value>
   </data>
