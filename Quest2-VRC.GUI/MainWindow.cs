@@ -198,8 +198,8 @@ namespace Quest2_VRC
                     {
                         try
                         {
-                            var questip = materialTextBox1.Text;
-
+                            var questip = "null";
+                            materialTextBox1.Invoke(new Action(() => questip = materialTextBox1.Text));
                             if (ADB.StartADB(false, true, questip, true, materialCheckbox2.Checked, materialCheckbox3.Checked))
                             {
                                 materialLabel5.Invoke(new Action(() => materialLabel5.Text = resources.GetString("Receive")));
@@ -258,7 +258,8 @@ namespace Quest2_VRC
                 {
                     try
                     {
-                        var questip = materialTextBox1.Text;
+                        var questip = "null";
+                        materialTextBox1.Invoke(new Action(() => questip = materialTextBox1.Text));
 
                         if (ADB.StartADB(true, false, questip, true, materialCheckbox2.Checked, materialCheckbox3.Checked))
                         {
