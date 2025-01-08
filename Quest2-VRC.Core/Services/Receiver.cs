@@ -8,8 +8,8 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
-using VRC.OSCQuery;
 using Extensions = VRC.OSCQuery.Extensions;
+using VRC.OSCQuery;
 
 namespace Quest2_VRC
 
@@ -36,16 +36,14 @@ namespace Quest2_VRC
             RGBController.SendRGBRawData(0, 0, 0);      // Set to Black
             var tcpPort = Extensions.GetAvailableTcpPort();
             var udpPort = Extensions.GetAvailableUdpPort();
-
-
             var oscQuery = new OSCQueryServiceBuilder()
-                .WithTcpPort(tcpPort)
-                .WithUdpPort(udpPort)
-                .WithServiceName("Quest2-VRC OSCQuery Receiver")
-                .WithDefaults()
-                .Build();
+            .WithTcpPort(tcpPort)
+            .WithUdpPort(udpPort)
+            .WithServiceName("Quest2-VRC OSCQuery Receiver")
+            .WithDefaults()
+            .Build();
 
-            oscQuery.AddEndpoint<int>("/avatar", Attributes.AccessValues.WriteOnly);
+
 
             string json = File.ReadAllText("vars.json");
             JObject vars = JObject.Parse(json);

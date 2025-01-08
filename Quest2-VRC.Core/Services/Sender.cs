@@ -8,6 +8,7 @@ using System.Media;
 using System.Net.Sockets;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
+using VRC.OSCQuery;
 using static Quest2_VRC.ADB;
 using static Quest2_VRC.Logger;
 using static Quest2_VRC.PacketSender;
@@ -30,7 +31,7 @@ namespace Quest2_VRC
 
         public static async void Run(bool wirlessmode, bool audioEnadled, bool disableerrmsg, string hostip)
         {
-
+            var tcpPort = Extensions.GetAvailableTcpPort();
             string json = File.ReadAllText("vars.json");
             JObject vars = JObject.Parse(json);
 
@@ -43,6 +44,14 @@ namespace Quest2_VRC
             {
                 Uport = Extensions.GetAvailableUdpPort();
             }
+            var oscQuery = new OSCQueryServiceBuilder()
+             .WithTcpPort(tcpPort)
+             .WithUdpPort(Uport)
+             .WithServiceName("Quest2-VRC OSCQuery Sender")
+             .WithDefaults()
+             .Build();
+
+            oscQuery.AddEndpoint<int>("/avatar", Attributes.AccessValues.WriteOnly);
             Console.WriteLine("OSC UDP port is {0}", Uport);
             await questwd(Uport, wirlessmode, audioEnadled, disableerrmsg, hostip);
         }
