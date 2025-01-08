@@ -19,6 +19,7 @@ namespace Quest2_VRC
                 new JProperty("HMDBat", "HMDBat"),
                 new JProperty("ControllerBatL", "ControllerBatL"),
                 new JProperty("ControllerBatR", "ControllerBatR"),
+                new JProperty("UseCustomPort", "True"),
                 new JProperty("SendPort", "9000"),
                 new JProperty("HostIP", "127.0.0.1"),
                 new JProperty("LastKnownIP", "127.0.0.1"));

@@ -31,9 +31,18 @@ namespace Quest2_VRC
         public static async void Run(bool wirlessmode, bool audioEnadled, bool disableerrmsg, string hostip)
         {
 
-            var udpPort = Extensions.GetAvailableUdpPort();
+            string json = File.ReadAllText("vars.json");
+            JObject vars = JObject.Parse(json);
 
-            int Uport = udpPort;
+            int Uport;
+            if (vars["UseCustomPort"] != null && (bool)vars["UseCustomPort"])
+            {
+                Uport = (int)vars["SendPort"];
+            }
+            else
+            {
+                Uport = Extensions.GetAvailableUdpPort();
+            }
             Console.WriteLine("OSC UDP port is {0}", Uport);
             await questwd(Uport, wirlessmode, audioEnadled, disableerrmsg, hostip);
         }
