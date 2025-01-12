@@ -18,6 +18,8 @@ namespace Quest2_VRC
 {
     public static class Sender
     {
+       
+
         public class Global
         {
             public static float Hbatlevelint;
@@ -27,6 +29,7 @@ namespace Quest2_VRC
             public static int gputempint;
             public static float WifiInt;
             public static bool LowHMDBat;
+            public static bool HMDCharging;
         }
 
         public static async void Run(bool wirlessmode, bool audioEnadled, bool disableerrmsg, string hostip)
@@ -67,6 +70,7 @@ namespace Quest2_VRC
             bool audioPlayedHMD = false;
             bool audioPlayedL = false;
             bool audioPlayedR = false;
+            bool HMDCharging = false;
 
             while (true)
             {
@@ -81,11 +85,14 @@ namespace Quest2_VRC
                     int gputempint = 0;
                     string WifiRSSI = null;
                     int WifiInt = 0;
+                    
 
 
 
                     ConsoleOutputReceiver Hbat_receiver = new ConsoleOutputReceiver();
                     await client.ExecuteRemoteCommandAsync("dumpsys CompanionService | grep Battery", device, Hbat_receiver);
+                    ConsoleOutputReceiver HCrh_receiver = new ConsoleOutputReceiver();
+                    await client.ExecuteRemoteCommandAsync("dumpsys CompanionService | grep Charging | grep -v 'Fast Charging'", device, HCrh_receiver);
                     ConsoleOutputReceiver Rbat_receiver = new ConsoleOutputReceiver();
                     await client.ExecuteRemoteCommandAsync("dumpsys OVRRemoteService | grep Right", device, Rbat_receiver);
                     ConsoleOutputReceiver Lbat_receiver = new ConsoleOutputReceiver();
@@ -106,6 +113,7 @@ namespace Quest2_VRC
                     }
 
                     var Hbat_match = Regex.Match(Hbat_receiver.ToString(), @"\d+", RegexOptions.RightToLeft);
+                    var HCrh_match = Regex.Match(HCrh_receiver.ToString(), @"Charging: (?<value>true|false)", RegexOptions.RightToLeft);
                     var Rbat_match = Regex.Match(Rbat_receiver.ToString(), @"\d+", RegexOptions.RightToLeft);
                     var Lbat_match = Regex.Match(Lbat_receiver.ToString(), @"\d+", RegexOptions.RightToLeft);
                     var cputemp_match = Regex.Match(cputemp.ToString(), @"\d+");
@@ -117,6 +125,9 @@ namespace Quest2_VRC
                     Lbatlevelint = int.Parse(Lbat_match.Value);
                     cputempint = int.Parse(cputemp_match.Value);
                     gputempint = int.Parse(gputemp_match.Value);
+                    HMDCharging = bool.Parse(HCrh_match.Groups["value"].Value);
+
+
 
 
                     if (Hbatlevelint < 25)
@@ -184,6 +195,7 @@ namespace Quest2_VRC
                     Global.cputempint = cputempint;
                     Global.gputempint = gputempint;
                     Global.LowHMDBat = LowHMDBat;
+                    Global.HMDCharging = HMDCharging;
                     Send();
                     await Task.Delay(5000);
 
@@ -222,8 +234,9 @@ namespace Quest2_VRC
             VRChatMessage Msg5 = new VRChatMessage("LowHMDBat", Global.LowHMDBat);
             VRChatMessage Msg6 = new VRChatMessage("CPUtemp", Global.cputempint);
             VRChatMessage Msg7 = new VRChatMessage("GPUtemp", Global.gputempint);
-            SendPacket(Msg1, Msg2, Msg3, Msg4, Msg5, Msg6, Msg7);
-            LogToConsole("Sending HMD status", Msg1, Msg2, Msg3, Msg4, Msg5, Msg6, Msg7);
+            VRChatMessage Msg8 = new VRChatMessage("HMDCharging", Global.HMDCharging);
+            SendPacket(Msg1, Msg2, Msg3, Msg4, Msg5, Msg6, Msg7, Msg8);
+            LogToConsole("Sending HMD status", Msg1, Msg2, Msg3, Msg4, Msg5, Msg6, Msg7, Msg8);
         }
 
 
