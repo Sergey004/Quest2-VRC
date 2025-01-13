@@ -23,14 +23,14 @@ namespace Quest2_VRC
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            
+
             materialSlider1.Text = (string)Global.HMDBat;
             materialSlider2.Text = (string)Global.ControllerBatL;
             materialSlider3.Text = (string)Global.ControllerBatR;
         }
         private void materialSlider1_onValueChanged(object sender, int newValue)
         {
-            
+
 
             string HMDBat = (string)Global.HMDBat;
             VRChatMessage Msg_emu1 = new VRChatMessage(HMDBat, (float)newValue / 100);
@@ -39,7 +39,7 @@ namespace Quest2_VRC
 
         private void materialSlider2_onValueChanged(object sender, int newValue)
         {
-           
+
 
             string ControllerBatL = (string)Global.ControllerBatL;
             VRChatMessage Msg_emu2 = new VRChatMessage(ControllerBatL, (float)newValue / 100);
@@ -48,7 +48,7 @@ namespace Quest2_VRC
 
         private void materialSlider3_onValueChanged(object sender, int newValue)
         {
-           
+
 
             string ControllerBatR = (string)Global.ControllerBatR; ;
             VRChatMessage Msg_emu3 = new VRChatMessage(ControllerBatR, (float)newValue / 100);
@@ -70,7 +70,7 @@ namespace Quest2_VRC
         }
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
         {
-            
+
             string HMDBat = (string)Global.HMDBat;
             string ControllerBatL = (string)Global.ControllerBatL;
             string ControllerBatR = (string)Global.ControllerBatR;
@@ -79,7 +79,8 @@ namespace Quest2_VRC
             VRChatMessage Msg_emu3 = new VRChatMessage(ControllerBatR, 0f);
             VRChatMessage Msg_emu4 = new VRChatMessage("WifiRSSI", 0f);
             VRChatMessage Msg_emu5 = new VRChatMessage("LowHMDBat", false);
-            SendPacket(Msg_emu1, Msg_emu2, Msg_emu3, Msg_emu4, Msg_emu5);
+            VRChatMessage Msg_emu6 = new VRChatMessage("HMDCharging", false);
+            SendPacket(Msg_emu1, Msg_emu2, Msg_emu3, Msg_emu4, Msg_emu5, Msg_emu6);
         }
 
         private void materialButton1_Click(object sender, EventArgs e)
@@ -114,6 +115,10 @@ namespace Quest2_VRC
 
         }
 
-       
+        private void materialCheckbox2_CheckedChanged(object sender, EventArgs e)
+        {
+            VRChatMessage Msg_emu6 = new VRChatMessage("HMDCharging", materialCheckbox2.Checked);
+            SendPacket(Msg_emu6);
+        }
     }
 }

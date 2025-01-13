@@ -40,6 +40,7 @@
             materialTextBox3 = new MaterialSkin.Controls.MaterialTextBox();
             materialComboBox1 = new MaterialSkin.Controls.MaterialComboBox();
             materialButton2 = new MaterialSkin.Controls.MaterialButton();
+            materialCheckbox2 = new MaterialSkin.Controls.MaterialCheckbox();
             SuspendLayout();
             // 
             // materialSlider1
@@ -242,11 +243,29 @@
             materialButton2.UseVisualStyleBackColor = true;
             materialButton2.Click += materialButton2_Click;
             // 
+            // materialCheckbox2
+            // 
+            materialCheckbox2.AutoSize = true;
+            materialCheckbox2.Depth = 0;
+            materialCheckbox2.Location = new System.Drawing.Point(162, 255);
+            materialCheckbox2.Margin = new System.Windows.Forms.Padding(0);
+            materialCheckbox2.MouseLocation = new System.Drawing.Point(-1, -1);
+            materialCheckbox2.MouseState = MaterialSkin.MouseState.HOVER;
+            materialCheckbox2.Name = "materialCheckbox2";
+            materialCheckbox2.ReadOnly = false;
+            materialCheckbox2.Ripple = true;
+            materialCheckbox2.Size = new System.Drawing.Size(125, 37);
+            materialCheckbox2.TabIndex = 17;
+            materialCheckbox2.Text = "LowHMDBat";
+            materialCheckbox2.UseVisualStyleBackColor = true;
+            materialCheckbox2.CheckedChanged += materialCheckbox2_CheckedChanged;
+            // 
             // OSCTest
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             ClientSize = new System.Drawing.Size(726, 472);
+            Controls.Add(materialCheckbox2);
             Controls.Add(materialButton2);
             Controls.Add(materialComboBox1);
             Controls.Add(materialTextBox3);
@@ -288,6 +307,6 @@
         private MaterialSkin.Controls.MaterialTextBox materialTextBox3;
         private MaterialSkin.Controls.MaterialComboBox materialComboBox1;
         private MaterialSkin.Controls.MaterialButton materialButton2;
-   
+        private MaterialSkin.Controls.MaterialCheckbox materialCheckbox2;
     }
 }
