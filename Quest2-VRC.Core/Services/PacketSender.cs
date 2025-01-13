@@ -4,6 +4,7 @@ using System;
 using System.IO;
 using System.Linq;
 using System.Net;
+using static Quest2_VRC.Vars;
 using static Quest2_VRC.Logger;
 
 namespace Quest2_VRC
@@ -15,12 +16,18 @@ namespace Quest2_VRC
 
         static public void SendPacket(params VRChatMessage[] Params)
         {
-            string json = File.ReadAllText("vars.json");
-            JObject vars = JObject.Parse(json);
 
+            int SendPort = Global.SendPort;
+            if (Global.UseCustomPort)
+            {
+                SendPort = Global.SendPort;
+            }
+            else
+            {
+                SendPort = 9000;
+            }
 
-            int SendPort = int.Parse((string)vars["SendPort"]);
-            var IP = IPAddress.Parse((string)vars["HostIP"]);
+            var IP = IPAddress.Parse(Global.HostIP);
             IPEndPoint VRChat = new IPEndPoint(IP, SendPort);
             foreach (var Param in Params)
             {

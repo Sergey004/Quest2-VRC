@@ -4,6 +4,7 @@ using Newtonsoft.Json.Linq;
 using System;
 using System.IO;
 using System.Windows.Forms;
+using static Quest2_VRC.Vars;
 using static Quest2_VRC.PacketSender;
 
 namespace Quest2_VRC
@@ -17,43 +18,39 @@ namespace Quest2_VRC
             materialSkinManager.AddFormToManage(this);
             materialSkinManager.Theme = MaterialSkinManager.Themes.DARK;
             materialSkinManager.ColorScheme = new ColorScheme(Primary.Amber800, Primary.Amber900, Primary.Cyan500, Accent.Cyan700, TextShade.WHITE);
-            materialComboBox1.Items.AddRange(new string[] { "bool", "int", "float", "string" });
+            materialComboBox1.Items.AddRange(["bool", "int", "float", "string"]);
         }
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            string json = File.ReadAllText("vars.json");
-            JObject vars = JObject.Parse(json);
-            materialSlider1.Text = (string)vars["HMDBat"];
-            materialSlider2.Text = (string)vars["ControllerBatL"];
-            materialSlider3.Text = (string)vars["ControllerBatR"];
+            
+            materialSlider1.Text = (string)Global.HMDBat;
+            materialSlider2.Text = (string)Global.ControllerBatL;
+            materialSlider3.Text = (string)Global.ControllerBatR;
         }
         private void materialSlider1_onValueChanged(object sender, int newValue)
         {
-            string json = File.ReadAllText("vars.json");
-            JObject vars = JObject.Parse(json);
+            
 
-            string HMDBat = (string)vars["HMDBat"];
+            string HMDBat = (string)Global.HMDBat;
             VRChatMessage Msg_emu1 = new VRChatMessage(HMDBat, (float)newValue / 100);
             SendPacket(Msg_emu1);
         }
 
         private void materialSlider2_onValueChanged(object sender, int newValue)
         {
-            string json = File.ReadAllText("vars.json");
-            JObject vars = JObject.Parse(json);
+           
 
-            string ControllerBatL = (string)vars["ControllerBatL"];
+            string ControllerBatL = (string)Global.ControllerBatL;
             VRChatMessage Msg_emu2 = new VRChatMessage(ControllerBatL, (float)newValue / 100);
             SendPacket(Msg_emu2);
         }
 
         private void materialSlider3_onValueChanged(object sender, int newValue)
         {
-            string json = File.ReadAllText("vars.json");
-            JObject vars = JObject.Parse(json);
+           
 
-            string ControllerBatR = (string)vars["ControllerBatR"];
+            string ControllerBatR = (string)Global.ControllerBatR; ;
             VRChatMessage Msg_emu3 = new VRChatMessage(ControllerBatR, (float)newValue / 100);
             SendPacket(Msg_emu3);
 
@@ -73,12 +70,10 @@ namespace Quest2_VRC
         }
         private void Form2_FormClosing(object sender, FormClosingEventArgs e)
         {
-            string json = File.ReadAllText("vars.json");
-            JObject vars = JObject.Parse(json);
-
-            string HMDBat = (string)vars["HMDBat"];
-            string ControllerBatL = (string)vars["ControllerBatL"];
-            string ControllerBatR = (string)vars["ControllerBatR"];
+            
+            string HMDBat = (string)Global.HMDBat;
+            string ControllerBatL = (string)Global.ControllerBatL;
+            string ControllerBatR = (string)Global.ControllerBatR;
             VRChatMessage Msg_emu1 = new VRChatMessage(HMDBat, 0f);
             VRChatMessage Msg_emu2 = new VRChatMessage(ControllerBatL, 0f);
             VRChatMessage Msg_emu3 = new VRChatMessage(ControllerBatR, 0f);

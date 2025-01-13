@@ -43,7 +43,7 @@ namespace Quest2_VRC
                 if (forceeng == false && enhancedoculuscontrol == false)
                 {
                     
-                    Check_Vars.CheckVars();
+                    Vars.CheckVars();
                     Console.WriteLine("Logs redirected to main window");
                     GUI();
                 }
@@ -51,7 +51,7 @@ namespace Quest2_VRC
                 {
                     
                     Thread.CurrentThread.CurrentUICulture = new CultureInfo("en-US");
-                    Check_Vars.CheckVars();
+                    Vars.CheckVars();
                     Console.WriteLine("Logs redirected to main window");
                     GUI();
                 }
@@ -64,7 +64,7 @@ namespace Quest2_VRC
                         {
                              Task.Factory.StartNew(() => OculusStaff.DashWatchDog(), TaskCreationOptions.LongRunning),
                         };
-                    Check_Vars.CheckVars();
+                    Vars.CheckVars();
                     Console.WriteLine("Logs redirected to main window");
                     GUI();
                 }
@@ -78,7 +78,7 @@ namespace Quest2_VRC
                         {
                              Task.Factory.StartNew(() => OculusStaff.DashWatchDog(), TaskCreationOptions.LongRunning),
                         };
-                    Check_Vars.CheckVars();
+                    Vars.CheckVars();
                     Console.WriteLine("Logs redirected to main window");
                     GUI();
                 }

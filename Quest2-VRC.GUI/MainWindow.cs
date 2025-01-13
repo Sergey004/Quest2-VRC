@@ -40,13 +40,13 @@ namespace Quest2_VRC
             {
                 StartServerResult result = server.StartServer(@"platform-tools\adb.exe", false);
             }
-            catch (Exception ex) {
+            catch (Exception) {
                 MessageBox.Show(string.Format("ADB process running from another location is detected, the program closes."), "Results", MessageBoxButtons.OK);
                 Environment.Exit(1987);
 
 
             }
-            materialTextBox1.Text = Check_Vars.ReadJSON(lastip);
+            materialTextBox1.Text = Vars.ReadJSON(lastip);
 
         }
 
@@ -334,7 +334,7 @@ namespace Quest2_VRC
             }
             else
             {
-                Check_Vars.WriteJSON(materialTextBox1.Text);
+                Vars.WriteJSON(materialTextBox1.Text);
                 File.Delete("odtout.txt");
                 ADB.StopADB();
             }

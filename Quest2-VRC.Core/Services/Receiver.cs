@@ -8,6 +8,7 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
+using static Quest2_VRC.Vars;
 using Extensions = VRC.OSCQuery.Extensions;
 using VRC.OSCQuery;
 
@@ -26,7 +27,9 @@ namespace Quest2_VRC
         private static readonly string[] rgbAddresses = { "/avatar/parameters/R", "/avatar/parameters/G", "/avatar/parameters/B" };
         private static readonly Timer processTimer = new(230); 
         public static async void Run()
-        {       
+        {
+            string json = File.ReadAllText("vars.json");
+            JObject vars = JObject.Parse(json);
             processTimer.Elapsed += ProcessBufferedData;
             processTimer.AutoReset = true; 
             processTimer.Start();
@@ -35,21 +38,31 @@ namespace Quest2_VRC
             await Task.Delay(20);          
             RGBController.SendRGBRawData(0, 0, 0);      // Set to Black
             var tcpPort = Extensions.GetAvailableTcpPort();
-            var udpPort = Extensions.GetAvailableUdpPort();
-            var oscQuery = new OSCQueryServiceBuilder()
-            .WithTcpPort(tcpPort)
-            .WithUdpPort(udpPort)
-            .WithServiceName("Quest2-VRC OSCQuery Receiver")
-            .WithDefaults()
-            .Build();
+            int udpPort;
+            if (vars["UseCustomPort"] != null && (bool)vars["UseCustomPort"])
+            {
+                
+                udpPort = Extensions.GetAvailableUdpPort();
+                var oscQuery = new OSCQueryServiceBuilder()
+           .WithTcpPort(tcpPort)
+           .WithUdpPort(udpPort)
+           .WithServiceName("Quest2-VRC OSCQuery Receiver")
+           .WithDefaults()
+           .Build();
+            }
+            else
+            {
+                udpPort = (int)vars["ReceivePort"];
+            }
+            
+           
 
 
 
-            string json = File.ReadAllText("vars.json");
-            JObject vars = JObject.Parse(json);
+            
 
 
-            var IP = IPAddress.Parse((string)vars["HostIP"]);
+            var IP = IPAddress.Parse((string)Global.HostIP);
 
             OscServer oscServer;
             oscServer = new OscServer((Bespoke.Common.Net.TransportType)TransportType.Udp, IP, udpPort);

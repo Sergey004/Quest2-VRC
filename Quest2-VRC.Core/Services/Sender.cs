@@ -8,7 +8,6 @@ using System.Media;
 using System.Net.Sockets;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
-using VRC.OSCQuery;
 using static Quest2_VRC.ADB;
 using static Quest2_VRC.Logger;
 using static Quest2_VRC.PacketSender;
@@ -18,7 +17,7 @@ namespace Quest2_VRC
 {
     public static class Sender
     {
-       
+
 
         public class Global
         {
@@ -38,24 +37,11 @@ namespace Quest2_VRC
             string json = File.ReadAllText("vars.json");
             JObject vars = JObject.Parse(json);
 
-            int Uport;
-            if (vars["UseCustomPort"] != null && (bool)vars["UseCustomPort"])
-            {
-                Uport = (int)vars["SendPort"];
-            }
-            else
-            {
-                Uport = Extensions.GetAvailableUdpPort();
-            }
-            var oscQuery = new OSCQueryServiceBuilder()
-             .WithTcpPort(tcpPort)
-             .WithUdpPort(Uport)
-             .WithServiceName("Quest2-VRC OSCQuery Sender")
-             .WithDefaults()
-             .Build();
+            int Uport = Extensions.GetAvailableUdpPort(); ;
 
-            oscQuery.AddEndpoint<int>("/avatar", Attributes.AccessValues.WriteOnly);
-            Console.WriteLine("OSC UDP port is {0}", Uport);
+
+            Console.WriteLine("OSC CLIENT UDP port is {0}", Uport);
+
             await questwd(Uport, wirlessmode, audioEnadled, disableerrmsg, hostip);
         }
 
@@ -64,7 +50,7 @@ namespace Quest2_VRC
             // Create a bogus port for the client
             OscPacket.UdpClient = new UdpClient(Uport);
 
-            
+
             bool LowHMDBat = false;
             bool HMDCrit = false;
             bool audioPlayedHMD = false;
@@ -76,7 +62,7 @@ namespace Quest2_VRC
             {
                 try
                 {
-                    
+
 
                     int Hbatlevelint = 0;
                     int Rbatlevelint = 0;
@@ -85,7 +71,7 @@ namespace Quest2_VRC
                     int gputempint = 0;
                     string WifiRSSI = null;
                     int WifiInt = 0;
-                    
+
 
 
 
