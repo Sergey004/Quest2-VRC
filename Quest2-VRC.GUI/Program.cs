@@ -23,9 +23,12 @@ namespace Quest2_VRC
         [STAThread]
 
 
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
-            AttachConsole(ATTACH_PARENT_PROCESS);
+            if (!AttachConsole(ATTACH_PARENT_PROCESS))
+            {
+                Console.WriteLine("Failed to attach console.");
+            }
 
             var forceeng = new Option<bool>(new[] { "--force-eng", "-en" }, () => { return false; }, "Force enable English lang");
             var enhancedoculuscontrol = new Option<bool>(new[] { "--enhanced-oculus-control", "-eoc" }, () => { return false; }, "Enables enhanced management of Oculus services (Like disable ASW, sets High Priority for Oculus services)");
