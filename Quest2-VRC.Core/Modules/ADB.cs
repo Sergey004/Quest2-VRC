@@ -127,8 +127,12 @@ namespace Quest2_VRC
             Thread.Sleep(500);
             ConsoleOutputReceiver ipquery = new ConsoleOutputReceiver();
             client.ExecuteRemoteCommand("ip route | grep wlan0", device, ipquery);
+            ConsoleOutputReceiver wifi_wakeup_available = new ConsoleOutputReceiver();
+            client.ExecuteRemoteCommand("settings put global wifi_wakeup_available 1", device, wifi_wakeup_available);
+            ConsoleOutputReceiver wifi_wakeup_enabled = new ConsoleOutputReceiver();
+            client.ExecuteRemoteCommand("settings put global wifi_wakeup_enabled 1", device, wifi_wakeup_enabled);
             deviceip = Regex.Match(ipquery.ToString(), @"\S*\d+", RegexOptions.RightToLeft).ToString();
-
+            Vars.WriteJSON(deviceip);
 
             return deviceip;
         }

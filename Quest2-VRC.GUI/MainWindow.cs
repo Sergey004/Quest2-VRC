@@ -334,7 +334,7 @@ namespace Quest2_VRC
             }
             else
             {
-                Vars.WriteJSON(materialTextBox1.Text);
+                
                 File.Delete("odtout.txt");
                 ADB.StopADB();
             }
