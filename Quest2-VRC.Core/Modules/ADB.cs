@@ -131,6 +131,8 @@ namespace Quest2_VRC
             client.ExecuteRemoteCommand("settings put global wifi_wakeup_available 1", device, wifi_wakeup_available);
             ConsoleOutputReceiver wifi_wakeup_enabled = new ConsoleOutputReceiver();
             client.ExecuteRemoteCommand("settings put global wifi_wakeup_enabled 1", device, wifi_wakeup_enabled);
+            ConsoleOutputReceiver wifi_sleep_policy = new ConsoleOutputReceiver();
+            client.ExecuteRemoteCommand("settings put global wifi_sleep_policy 1", device, wifi_sleep_policy);
             deviceip = Regex.Match(ipquery.ToString(), @"\S*\d+", RegexOptions.RightToLeft).ToString();
             Vars.WriteJSON(deviceip);
 
