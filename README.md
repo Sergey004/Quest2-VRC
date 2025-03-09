@@ -1,3 +1,5 @@
+**This project is not dead, it is being developed by one person in his spare time.**
+
 # Quest2-VRC
 [![CI Auto](https://github.com/Sergey004/Quest2-VRC/actions/workflows/auto.yml/badge.svg?branch=winform_gui)](https://github.com/Sergey004/Quest2-VRC/actions/workflows/auto.yml)
 
