@@ -1,4 +1,6 @@
 using AdvancedSharpAdbClient;
+using AdvancedSharpAdbClient.Models;
+using AdvancedSharpAdbClient.Receivers;
 using Microsoft.Toolkit.Uwp.Notifications;
 using System;
 using System.Diagnostics;

@@ -58,33 +58,33 @@ namespace Quest2_VRC
                     Console.WriteLine("Logs redirected to main window");
                     GUI();
                 }
-                if (forceeng == false && enhancedoculuscontrol == true)
-                {
+                //if (forceeng == false && enhancedoculuscontrol == true)
+                //{
                     
-                    OculusStaff.DisableASW();
-                    OculusStaff.HighPriority();
-                    var tasks = new[]
-                        {
-                             Task.Factory.StartNew(() => OculusStaff.DashWatchDog(), TaskCreationOptions.LongRunning),
-                        };
-                    Vars.CheckVars();
-                    Console.WriteLine("Logs redirected to main window");
-                    GUI();
-                }
-                if (forceeng == true && enhancedoculuscontrol == true)
-                {
+                //    //OculusStaff.DisableASW();
+                //    //OculusStaff.HighPriority();
+                //    var tasks = new[]
+                //        {
+                //             Task.Factory.StartNew(() => //OculusStaff.DashWatchDog(), TaskCreationOptions.LongRunning),
+                //        };
+                //    Vars.CheckVars();
+                //    Console.WriteLine("Logs redirected to main window");
+                //    GUI();
+                //}
+                //if (forceeng == true && enhancedoculuscontrol == true)
+                //{
                     
-                    Thread.CurrentThread.CurrentUICulture = new CultureInfo("en");
-                    OculusStaff.DisableASW();
-                    OculusStaff.HighPriority();
-                    var tasks = new[]
-                        {
-                             Task.Factory.StartNew(() => OculusStaff.DashWatchDog(), TaskCreationOptions.LongRunning),
-                        };
-                    Vars.CheckVars();
-                    Console.WriteLine("Logs redirected to main window");
-                    GUI();
-                }
+                //    Thread.CurrentThread.CurrentUICulture = new CultureInfo("en");
+                //    OculusStaff.DisableASW();
+                //    OculusStaff.HighPriority();
+                //    var tasks = new[]
+                //        {
+                //             Task.Factory.StartNew(() => OculusStaff.DashWatchDog(), TaskCreationOptions.LongRunning),
+                //        };
+                //    Vars.CheckVars();
+                //    Console.WriteLine("Logs redirected to main window");
+                //    GUI();
+                //}
 
             }
             ToastNotificationManagerCompat.Uninstall();

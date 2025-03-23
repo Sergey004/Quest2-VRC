@@ -1,5 +1,4 @@
 ﻿using OpenRGB.NET;
-using OpenRGB.NET.Models;
 using System;
 using System.Data;
 using System.Linq;
@@ -14,7 +13,7 @@ namespace Quest2_VRC.Services
         {
             try
             { 
-            using var client = new OpenRGBClient(name: "Quest2-VRC OSC Receiver", autoconnect: true, timeout: 1000);
+            using var client = new OpenRgbClient(name: "Quest2-VRC OSC Receiver", autoConnect: true, timeoutMs: 1000);
 
             var deviceCount = client.GetControllerCount();
             var devices = client.GetAllControllerData();

@@ -1,4 +1,5 @@
 ﻿using AdvancedSharpAdbClient;
+using AdvancedSharpAdbClient.Models;
 using MaterialSkin;
 using MaterialSkin.Controls;
 using Newtonsoft.Json.Linq;
