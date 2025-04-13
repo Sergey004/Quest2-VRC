@@ -54,13 +54,6 @@ namespace Quest2_VRC
             {
                 udpPort = (int)vars["ReceivePort"];
             }
-            
-           
-
-
-
-            
-
 
             var IP = IPAddress.Parse((string)Global.HostIP);
 

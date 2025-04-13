@@ -8,14 +8,14 @@ namespace Quest2_VRC
     public class Device_Management
     {
 
-        private static readonly string DeviceName = "Oculus Composite ADB Interface";
+        private static readonly string DeviceName = "Reality Labs Composite XRSP Interface";
         private static readonly string FallbackName = "ADB Interface";
         [SupportedOSPlatform("windows")]
         public static bool CheckDevice()
         {
 
             bool deviceConnected = false;
-            ManagementObjectSearcher searcher = new ManagementObjectSearcher("select * from Win32_PnPEntity where Caption='Oculus Composite ADB Interface'");
+            ManagementObjectSearcher searcher = new ManagementObjectSearcher("select * from Win32_PnPEntity where Caption='Reality Labs Composite ADB Interface'");
             ManagementObjectSearcher fallback = new ManagementObjectSearcher("select * from Win32_PnPEntity where Caption='ADB Interface'");
 
             foreach (ManagementObject hmd in searcher.Get())
