@@ -5,23 +5,48 @@ using Quest2_VRC;
 
 namespace Plugin.MediaControlOSC
 {
+    public class MediaControlConfig
+    {
+        public bool EnableLogging { get; set; } = false;
+        public bool UseCustomAddresses { get; set; } = false;
+        public string[] CustomAddresses { get; set; } = Array.Empty<string>();
+    }
+
     public class MediaControlOSC : IPlugin
     {
-        private static readonly string[] MediaAddresses = {
+        private static readonly string[] DefaultMediaAddresses = {
             "/avatar/parameters/MediaPlay",
             "/avatar/parameters/MediaPause",
             "/avatar/parameters/MediaNext",
             "/avatar/parameters/MediaPrevious"
         };
+
+        private MediaControlConfig _config;
         private bool _started = false;
+        private string[] _activeAddresses;
 
         public string Name => "MediaControlOSC";
         public string Description => "Controls media playback via OSC commands from VRChat.";
 
         public void Init()
         {
-            foreach (var address in MediaAddresses)
+            // Загружаем конфиг
+            _config = this.LoadConfiguration<MediaControlConfig>();
+            Console.WriteLine($"[MediaControlOSC] Initialized with logging={_config.EnableLogging}");
+
+            _activeAddresses = _config.UseCustomAddresses && _config.CustomAddresses.Length > 0 
+                ? _config.CustomAddresses 
+                : DefaultMediaAddresses;
+
+            RegisterAddresses();
+        }
+
+        private void RegisterAddresses()
+        {
+            foreach (var address in _activeAddresses)
             {
+                if (_config.EnableLogging)
+                    Console.WriteLine($"[MediaControlOSC] Registering address: {address}");
                 Quest2_VRC.Receiver.RegisterOSCAddress(address);
             }
         }
@@ -29,8 +54,11 @@ namespace Plugin.MediaControlOSC
         public void Start()
         {
             if (_started) return;
+            RegisterAddresses(); // Повторная регистрация при старте
             Quest2_VRC.Receiver.MediaControlCommandReceived += OnMediaControlCommandReceived;
             _started = true;
+            if (_config.EnableLogging)
+                Console.WriteLine("[MediaControlOSC] Started");
         }
 
         public void Stop()
@@ -38,10 +66,15 @@ namespace Plugin.MediaControlOSC
             if (!_started) return;
             Quest2_VRC.Receiver.MediaControlCommandReceived -= OnMediaControlCommandReceived;
             _started = false;
+            if (_config.EnableLogging)
+                Console.WriteLine("[MediaControlOSC] Stopped");
         }
 
-        private static void OnMediaControlCommandReceived(string command)
+        private void OnMediaControlCommandReceived(string command)
         {
+            if (_config.EnableLogging)
+                Console.WriteLine($"[MediaControlOSC] Received command: {command}");
+
             switch (command.ToLower())
             {
                 case "mediaplay":
@@ -59,15 +92,18 @@ namespace Plugin.MediaControlOSC
             }
         }
 
-        private static void MediaPlay() => SendMediaKey(MediaKeyAction.Play);
-        private static void MediaPause() => SendMediaKey(MediaKeyAction.Pause);
-        private static void MediaNext() => SendMediaKey(MediaKeyAction.Next);
-        private static void MediaPrevious() => SendMediaKey(MediaKeyAction.Previous);
+        private void MediaPlay() => SendMediaKey(MediaKeyAction.Play);
+        private void MediaPause() => SendMediaKey(MediaKeyAction.Pause);
+        private void MediaNext() => SendMediaKey(MediaKeyAction.Next);
+        private void MediaPrevious() => SendMediaKey(MediaKeyAction.Previous);
 
         private enum MediaKeyAction { Play, Pause, Next, Previous }
 
-        private static void SendMediaKey(MediaKeyAction action)
+        private void SendMediaKey(MediaKeyAction action)
         {
+            if (_config.EnableLogging)
+                Console.WriteLine($"[MediaControlOSC] Sending media key: {action}");
+
             if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows))
             {
                 switch (action)

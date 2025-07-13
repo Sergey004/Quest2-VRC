@@ -43,17 +43,35 @@ namespace Quest2_VRC
 
         public static void StartAll()
         {
+            Console.WriteLine($"Starting {LoadedPlugins.Count} plugins...");
             foreach (var plugin in LoadedPlugins)
             {
-                try { plugin.Start(); } catch { }
+                try 
+                { 
+                    plugin.Start();
+                    Console.WriteLine($"Started plugin: {plugin.Name}");
+                } 
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error starting plugin {plugin.Name}: {ex.Message}");
+                }
             }
         }
 
         public static void StopAll()
         {
+            Console.WriteLine($"Stopping {LoadedPlugins.Count} plugins...");
             foreach (var plugin in LoadedPlugins)
             {
-                try { plugin.Stop(); } catch { }
+                try 
+                { 
+                    plugin.Stop();
+                    Console.WriteLine($"Stopped plugin: {plugin.Name}");
+                } 
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error stopping plugin {plugin.Name}: {ex.Message}");
+                }
             }
         }
     }

@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Linq;
 using System;
 using System.IO;
 
@@ -33,8 +33,7 @@ namespace Quest2_VRC
                 new JProperty("SendPort", "9000"),
                 new JProperty("ReceivePort", "9001"),
                 new JProperty("HostIP", "127.0.0.1"),
-                new JProperty("LastKnownIP", "127.0.0.1"),
-                new JProperty("SpotifyToken", "TOKEN HERE"));
+                new JProperty("LastKnownIP", "127.0.0.1"));
 
                 File.WriteAllText(@"vars.json", vars.ToString());
             }

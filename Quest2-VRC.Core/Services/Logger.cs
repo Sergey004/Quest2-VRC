@@ -5,8 +5,12 @@ namespace Quest2_VRC
 {
     public class Logger
     {
+        public static bool DebugEnabled = false;
         static public void LogToConsole(string Message, params VRChatMessage[] Parameters)
         {
+            if (!DebugEnabled)
+                return;
+
             StringBuilder MessageBuilder = new StringBuilder();
 
             MessageBuilder.Append(String.Format("{0} - {1}", DateTime.UtcNow.ToString("dd/MM/yyyy HH:mm:ss.ffff"), Message));
