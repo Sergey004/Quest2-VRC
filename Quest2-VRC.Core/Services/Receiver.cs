@@ -87,16 +87,31 @@ namespace Quest2_VRC
             rgbBuffer.Clear();
         }
 
+        // Событие для передачи команд управления мультимедиа
+        public static event Action<string>? MediaControlCommandReceived;
+        // Событие для передачи команд управления Spotify
+        public static event Action<string>? SpotifyControlCommandReceived;
+
         private static void oscServer_MessageReceived(object sender, OscMessageReceivedEventArgs e)
         {
             OscMessage message = e.Message;
 
             if (rgbAddresses.Contains(message.Address) && message.Data[0] is int intValue)
             {
-                
                 rgbBuffer[message.Address] = intValue;
-
                 Console.WriteLine($"Received {message.Address}: {intValue}");
+            }
+            // Обработка OSC-команд для управления мультимедиа
+            else if (message.Address.StartsWith("/media/") && message.Data.Count > 0 && message.Data[0] is string cmd)
+            {
+                Console.WriteLine($"Received media command: {cmd}");
+                MediaControlCommandReceived?.Invoke(cmd);
+            }
+            // Обработка OSC-команд для управления Spotify
+            else if (message.Address.StartsWith("/spotify/") && message.Data.Count > 0 && message.Data[0] is string spotifyCmd)
+            {
+                Console.WriteLine($"Received spotify command: {spotifyCmd}");
+                SpotifyControlCommandReceived?.Invoke(spotifyCmd);
             }
             else
             {
@@ -114,6 +129,8 @@ namespace Quest2_VRC
     }
 
 }
+
+
 
 
 
