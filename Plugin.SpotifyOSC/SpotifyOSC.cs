@@ -4,31 +4,37 @@ using System.Net.Http;
 using System.Text.Json;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
-using static Quest2_VRC.PacketSender;
+using Quest2_VRC;
 
-namespace Quest2_VRC
+namespace Plugin.SpotifyOSC
 {
-    public class SpotifyOSC
+    public class SpotifyOSC : IPlugin
     {
         private static string? _accessToken;
         private static readonly HttpClient _httpClient = new HttpClient();
         private static string _lastTrackId = string.Empty;
+        private Task? _worker;
+        private bool _running = false;
 
-        // Запуск модуля Spotify OSC
-        public static void StartSpotifyOSC()
+        public string Name => "SpotifyOSC";
+        public string Description => "Sends current Spotify track info to VRChat via OSC.";
+
+        public void Init() { }
+
+        public void Start()
         {
             _accessToken = GetTokenFromConfig();
             if (string.IsNullOrEmpty(_accessToken))
-            {
-                // Можно добавить логирование ошибки
                 return;
-            }
-            // Удалена подписка на Receiver.SpotifyControlCommandReceived
-            Task.Factory.StartNew(Run, TaskCreationOptions.LongRunning);
+            _running = true;
+            _worker = Task.Factory.StartNew(Run, TaskCreationOptions.LongRunning);
         }
 
+        public void Stop()
+        {
+            _running = false;
+        }
 
-        // Получение токена Spotify из config.json
         private static string? GetTokenFromConfig()
         {
             try
@@ -45,10 +51,9 @@ namespace Quest2_VRC
             }
         }
 
-        // Основной цикл получения трека и отправки OSC
-        private static async void Run()
+        private async void Run()
         {
-            while (true)
+            while (_running)
             {
                 try
                 {
@@ -56,23 +61,18 @@ namespace Quest2_VRC
                     if (track != null && track.Id != _lastTrackId)
                     {
                         _lastTrackId = track.Id;
-                        // Отправка данных в VRChat через OSC
-                        SendPacket(
+                        PacketSender.SendPacket(
                             new VRChatMessage("SpotifyTrack", track.Name),
                             new VRChatMessage("SpotifyArtist", track.Artist),
                             new VRChatMessage("SpotifyAlbum", track.Album)
                         );
                     }
                 }
-                catch (Exception ex)
-                {
-                    // Можно добавить логирование
-                }
-                await Task.Delay(3000); // Проверять раз в 3 секунды
+                catch { }
+                await Task.Delay(3000);
             }
         }
 
-        // Получение текущего трека Spotify через Web API
         private static async Task<SpotifyTrack?> GetCurrentTrack()
         {
             if (string.IsNullOrEmpty(_accessToken))

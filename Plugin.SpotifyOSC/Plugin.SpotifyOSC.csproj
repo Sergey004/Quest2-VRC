@@ -1,0 +1,22 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Quest2-VRC.Core\Quest2-VRC.Core.csproj" />
+  </ItemGroup>
+
+  <Target Name="CopyPluginToGuiPluginsFolder" AfterTargets="Build">
+    <PropertyGroup>
+      <GuiPluginsDir>$(SolutionDir)Quest2-VRC.GUI\bin\$(Configuration)\Plugins\</GuiPluginsDir>
+    </PropertyGroup>
+    <MakeDir Directories="$(GuiPluginsDir)" />
+    <Copy SourceFiles="$(TargetDir)$(TargetFileName)" DestinationFolder="$(GuiPluginsDir)" />
+  </Target>
+
+</Project>

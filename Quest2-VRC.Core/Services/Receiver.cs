@@ -13,42 +13,52 @@ using Extensions = VRC.OSCQuery.Extensions;
 using VRC.OSCQuery;
 
 namespace Quest2_VRC
-
 {
-
     public class Receiver
-
     {
-
         private static readonly string R = "/avatar/parameters/R";
         private static readonly string G = "/avatar/parameters/G";
         private static readonly string B = "/avatar/parameters/B";
         private static readonly ConcurrentDictionary<string, int> rgbBuffer = new();
         private static readonly string[] rgbAddresses = { "/avatar/parameters/R", "/avatar/parameters/G", "/avatar/parameters/B" };
-        private static readonly Timer processTimer = new(230); 
+        private static readonly Timer processTimer = new(230);
+        private static OscServer? oscServer;
+        
+        // Event for media control commands
+        public static event Action<string>? MediaControlCommandReceived;
+
+        public static void RegisterOSCAddress(string address)
+        {
+            if (oscServer != null)
+            {
+                oscServer.RegisterMethod(address);
+                Console.WriteLine($"Registered OSC address: {address}");
+            }
+        }
+
         public static async void Run()
         {
             string json = File.ReadAllText("vars.json");
             JObject vars = JObject.Parse(json);
             processTimer.Elapsed += ProcessBufferedData;
-            processTimer.AutoReset = true; 
+            processTimer.AutoReset = true;
             processTimer.Start();
 
-            RGBController.SendRGBRawData(255,255,255);  // Init OpenRGB
-            await Task.Delay(20);          
+            RGBController.SendRGBRawData(255, 255, 255);  // Init OpenRGB
+            await Task.Delay(20);
             RGBController.SendRGBRawData(0, 0, 0);      // Set to Black
+            
             var tcpPort = Extensions.GetAvailableTcpPort();
             int udpPort;
             if (vars["UseCustomPort"] != null && (bool)vars["UseCustomPort"])
             {
-                
                 udpPort = Extensions.GetAvailableUdpPort();
                 var oscQuery = new OSCQueryServiceBuilder()
-           .WithTcpPort(tcpPort)
-           .WithUdpPort(udpPort)
-           .WithServiceName("Quest2-VRC OSCQuery Receiver")
-           .WithDefaults()
-           .Build();
+                    .WithTcpPort(tcpPort)
+                    .WithUdpPort(udpPort)
+                    .WithServiceName("Quest2-VRC OSCQuery Receiver")
+                    .WithDefaults()
+                    .Build();
             }
             else
             {
@@ -57,61 +67,40 @@ namespace Quest2_VRC
 
             var IP = IPAddress.Parse((string)Global.HostIP);
 
-            OscServer oscServer;
             oscServer = new OscServer((Bespoke.Common.Net.TransportType)TransportType.Udp, IP, udpPort);
             oscServer.FilterRegisteredMethods = true;
+            
+            // Register default RGB methods
             oscServer.RegisterMethod(R);
             oscServer.RegisterMethod(G);
             oscServer.RegisterMethod(B);
-            oscServer.MessageReceived += new EventHandler<OscMessageReceivedEventArgs>(oscServer_MessageReceived);
+            
+            oscServer.MessageReceived += OscServer_MessageReceived;
             oscServer.Start();
+            
             Logger.LogToConsole("Make sure you have all effects disabled in OpenRGB");
             await Task.Delay(3000);
         }
 
-        private static void ProcessBufferedData(object sender, ElapsedEventArgs e)
-        {
-            if (rgbBuffer.Count == 0) return;
-
-            
-            int r = rgbBuffer.ContainsKey("/avatar/parameters/R") ? rgbBuffer["/avatar/parameters/R"] : 0;
-            int g = rgbBuffer.ContainsKey("/avatar/parameters/G") ? rgbBuffer["/avatar/parameters/G"] : 0;
-            int b = rgbBuffer.ContainsKey("/avatar/parameters/B") ? rgbBuffer["/avatar/parameters/B"] : 0;
-
-            Console.WriteLine($"Processing RGB: R={r}, G={g}, B={b}");
-
-            
-            ProcessRGB(r, g, b);
-
-            
-            rgbBuffer.Clear();
-        }
-
-        // Событие для передачи команд управления мультимедиа
-        public static event Action<string>? MediaControlCommandReceived;
-        // Событие для передачи команд управления Spotify
-        public static event Action<string>? SpotifyControlCommandReceived;
-
-        private static void oscServer_MessageReceived(object sender, OscMessageReceivedEventArgs e)
+        private static void OscServer_MessageReceived(object sender, OscMessageReceivedEventArgs e)
         {
             OscMessage message = e.Message;
-
-            if (rgbAddresses.Contains(message.Address) && message.Data[0] is int intValue)
+            
+            // Handle RGB parameters
+            if (rgbAddresses.Contains(message.Address) && message.Data.Count > 0 && message.Data[0] is int intValue)
             {
                 rgbBuffer[message.Address] = intValue;
                 Console.WriteLine($"Received {message.Address}: {intValue}");
             }
-            // Обработка OSC-команд для управления мультимедиа
-            else if (message.Address.StartsWith("/media/") && message.Data.Count > 0 && message.Data[0] is string cmd)
+            // Handle media control parameters
+            else if (message.Address.StartsWith("/avatar/parameters/Media") && message.Data.Count > 0)
             {
-                Console.WriteLine($"Received media command: {cmd}");
-                MediaControlCommandReceived?.Invoke(cmd);
-            }
-            // Обработка OSC-команд для управления Spotify
-            else if (message.Address.StartsWith("/spotify/") && message.Data.Count > 0 && message.Data[0] is string spotifyCmd)
-            {
-                Console.WriteLine($"Received spotify command: {spotifyCmd}");
-                SpotifyControlCommandReceived?.Invoke(spotifyCmd);
+                var command = message.Address.Split('/').Last();
+                if (message.Data[0] is bool value && value) // Only trigger when parameter is set to true
+                {
+                    Console.WriteLine($"Received media command: {command}");
+                    MediaControlCommandReceived?.Invoke(command);
+                }
             }
             else
             {
@@ -119,15 +108,25 @@ namespace Quest2_VRC
             }
         }
 
+        private static void ProcessBufferedData(object sender, ElapsedEventArgs e)
+        {
+            if (rgbBuffer.Count == 0) return;
+
+            int r = rgbBuffer.ContainsKey("/avatar/parameters/R") ? rgbBuffer["/avatar/parameters/R"] : 0;
+            int g = rgbBuffer.ContainsKey("/avatar/parameters/G") ? rgbBuffer["/avatar/parameters/G"] : 0;
+            int b = rgbBuffer.ContainsKey("/avatar/parameters/B") ? rgbBuffer["/avatar/parameters/B"] : 0;
+
+            Console.WriteLine($"Processing RGB: R={r}, G={g}, B={b}");
+            ProcessRGB(r, g, b);
+            rgbBuffer.Clear();
+        }
+
         private static void ProcessRGB(int r, int g, int b)
         {
-            
             Console.WriteLine($"Received RGB: R={r}, G={g}, B={b}");
             RGBController.SendRGBRawData(r, g, b);
-            
         }
     }
-
 }
 
 

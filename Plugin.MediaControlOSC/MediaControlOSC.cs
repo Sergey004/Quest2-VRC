@@ -1,40 +1,64 @@
 using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
-using static Quest2_VRC.PacketSender;
+using Quest2_VRC;
 
-namespace Quest2_VRC
+namespace Plugin.MediaControlOSC
 {
-    public static class MediaControlOSC
+    public class MediaControlOSC : IPlugin
     {
-        // Запуск OSC-приемника для управления мультимедиа
-        public static void StartMediaControlOSC()
+        private static readonly string[] MediaAddresses = {
+            "/avatar/parameters/MediaPlay",
+            "/avatar/parameters/MediaPause",
+            "/avatar/parameters/MediaNext",
+            "/avatar/parameters/MediaPrevious"
+        };
+        private bool _started = false;
+
+        public string Name => "MediaControlOSC";
+        public string Description => "Controls media playback via OSC commands from VRChat.";
+
+        public void Init()
         {
-            // Можно вынести в отдельный поток, если потребуется
-            Receiver.MediaControlCommandReceived += OnMediaControlCommandReceived;
+            foreach (var address in MediaAddresses)
+            {
+                Quest2_VRC.Receiver.RegisterOSCAddress(address);
+            }
         }
 
-        // Обработчик команд OSC для управления мультимедиа
+        public void Start()
+        {
+            if (_started) return;
+            Quest2_VRC.Receiver.MediaControlCommandReceived += OnMediaControlCommandReceived;
+            _started = true;
+        }
+
+        public void Stop()
+        {
+            if (!_started) return;
+            Quest2_VRC.Receiver.MediaControlCommandReceived -= OnMediaControlCommandReceived;
+            _started = false;
+        }
+
         private static void OnMediaControlCommandReceived(string command)
         {
             switch (command.ToLower())
             {
-                case "play":
+                case "mediaplay":
                     MediaPlay();
                     break;
-                case "pause":
+                case "mediapause":
                     MediaPause();
                     break;
-                case "next":
+                case "medianext":
                     MediaNext();
                     break;
-                case "previous":
+                case "mediaprevious":
                     MediaPrevious();
                     break;
             }
         }
 
-        // Методы управления мультимедиа через Windows API
         private static void MediaPlay() => SendMediaKey(MediaKeyAction.Play);
         private static void MediaPause() => SendMediaKey(MediaKeyAction.Pause);
         private static void MediaNext() => SendMediaKey(MediaKeyAction.Next);
