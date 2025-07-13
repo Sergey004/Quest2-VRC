@@ -1,0 +1,1 @@
+Example of a plugin that works when the program is launched
