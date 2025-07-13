@@ -101,15 +101,15 @@ namespace Quest2_VRC
 
                     var Hbat_match = Regex.Match(Hbat_receiver.ToString(), @"\d+", RegexOptions.RightToLeft);
                     var HCrh_match = Regex.Match(HCrh_receiver.ToString(), @"Charging: (?<value>true|false)", RegexOptions.RightToLeft);
-                    var Rbat_match = Regex.Match(Rbat_receiver.ToString(), @"\d+", RegexOptions.RightToLeft);
-                    var Lbat_match = Regex.Match(Lbat_receiver.ToString(), @"\d+", RegexOptions.RightToLeft);
+                    var Rbat_match = Regex.Match(Rbat_receiver.ToString(), @"\d+%", RegexOptions.RightToLeft);
+                    var Lbat_match = Regex.Match(Lbat_receiver.ToString(), @"\d+%", RegexOptions.RightToLeft);
                     var cputemp_match = Regex.Match(cputemp.ToString(), @"\d+");
                     var gputemp_match = Regex.Match(gputemp.ToString(), @"\d+");
 
 
                     Hbatlevelint = int.Parse(Hbat_match.Value);
-                    Rbatlevelint = int.Parse(Rbat_match.Value);
-                    Lbatlevelint = int.Parse(Lbat_match.Value);
+                    Rbatlevelint = int.Parse(Rbat_match.Value.TrimEnd('%'));
+                    Lbatlevelint = int.Parse(Lbat_match.Value.TrimEnd('%'));
                     cputempint = int.Parse(cputemp_match.Value);
                     gputempint = int.Parse(gputemp_match.Value);
                     HMDCharging = bool.Parse(HCrh_match.Groups["value"].Value);

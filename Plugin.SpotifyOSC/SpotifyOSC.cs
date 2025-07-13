@@ -140,7 +140,7 @@ namespace Plugin.SpotifyOSC
                         _lastTrackId = track.Id;
                         
                         // Формируем строку с информацией о треке
-                        var trackInfo = $"Now Playing: {track.Name} - {track.Artist} ({track.Album})";
+                        var trackInfo = $"Now Playing: {track.Artist} - {track.Name} ({track.Album})";
                         
                         PacketSender.SendPacket(
                             // Отправляем в inputbox
