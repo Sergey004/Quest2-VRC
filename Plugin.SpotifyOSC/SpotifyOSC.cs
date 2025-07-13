@@ -176,16 +176,20 @@ namespace Plugin.SpotifyOSC
                 Console.WriteLine("[SpotifyOSC] OAuth server already running on http://localhost:8888/login");
                 return;
             }
+            if (string.IsNullOrEmpty(_config.AccessToken)==true)
+
+            {
+                GeneratePkceCodes();
+                Console.WriteLine("[SpotifyOSC] Starting OAuth PKCE flow...");
+                Console.WriteLine("[SpotifyOSC] Visit http://localhost:8888/login to authorize Spotify access");
+
+                _httpListener = new HttpListener();
+                _httpListener.Prefixes.Add("http://localhost:8888/login/");
+                _httpListener.Prefixes.Add("http://localhost:8888/callback/");
+                _httpListener.Start();
+                Task.Run(async () => await HandleOAuthRequests());
+            }
             
-            GeneratePkceCodes();
-            Console.WriteLine("[SpotifyOSC] Starting OAuth PKCE flow...");
-            Console.WriteLine("[SpotifyOSC] Visit http://localhost:8888/login to authorize Spotify access");
-            
-            _httpListener = new HttpListener();
-            _httpListener.Prefixes.Add("http://localhost:8888/login/");
-            _httpListener.Prefixes.Add("http://localhost:8888/callback/");
-            _httpListener.Start();
-            Task.Run(async () => await HandleOAuthRequests());
         }
 
         private async Task HandleOAuthRequests()
