@@ -1,4 +1,4 @@
-﻿using Microsoft.Toolkit.Uwp.Notifications;
+using Microsoft.Toolkit.Uwp.Notifications;
 using System;
 using System.CommandLine;
 using System.Diagnostics;
@@ -83,6 +83,7 @@ namespace Quest2_VRC
                 PluginLoader.LoadPlugins();
                 Console.WriteLine("Starting plugins...");
                 PluginLoader.StartAll();
+
                 Application.EnableVisualStyles();
                 Application.SetHighDpiMode(HighDpiMode.SystemAware);
                 Application.SetCompatibleTextRenderingDefault(false);

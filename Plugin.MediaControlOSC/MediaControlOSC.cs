@@ -30,7 +30,7 @@ namespace Plugin.MediaControlOSC
 
         public void Init()
         {
-            // Загружаем конфиг
+            // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
             _config = this.LoadConfiguration<MediaControlConfig>();
             Console.WriteLine($"[MediaControlOSC] Initialized with logging={_config.EnableLogging}");
 
@@ -47,15 +47,15 @@ namespace Plugin.MediaControlOSC
             {
                 if (_config.EnableLogging)
                     Console.WriteLine($"[MediaControlOSC] Registering address: {address}");
-                Quest2_VRC.Receiver.RegisterOSCAddress(address);
+                Quest2_VRC.PluginReceiver.RegisterPluginAddress(address);
             }
         }
 
         public void Start()
         {
             if (_started) return;
-            RegisterAddresses(); // Повторная регистрация при старте
-            Quest2_VRC.Receiver.MediaControlCommandReceived += OnMediaControlCommandReceived;
+            RegisterAddresses(); // пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ
+            Quest2_VRC.PluginReceiver.PluginCommandReceived += OnMediaControlCommandReceived;
             _started = true;
             if (_config.EnableLogging)
                 Console.WriteLine("[MediaControlOSC] Started");
@@ -64,7 +64,7 @@ namespace Plugin.MediaControlOSC
         public void Stop()
         {
             if (!_started) return;
-            Quest2_VRC.Receiver.MediaControlCommandReceived -= OnMediaControlCommandReceived;
+            Quest2_VRC.PluginReceiver.PluginCommandReceived -= OnMediaControlCommandReceived;
             _started = false;
             if (_config.EnableLogging)
                 Console.WriteLine("[MediaControlOSC] Stopped");
@@ -150,7 +150,7 @@ namespace Plugin.MediaControlOSC
                 };
                 if (!string.IsNullOrEmpty(script))
                 {
-                    try { Process.Start("osascript", $"-e \"{script}\""); } catch { }
+                    try { Process.Start("osascript", $"-e \"{script}\"" ); } catch { }
                 }
             }
         }

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Threading.Tasks;
 
 
@@ -22,6 +22,7 @@ namespace Quest2_VRC
                 var tasks = new[]
                 {
                     Task.Factory.StartNew(() => Receiver.Run(), TaskCreationOptions.LongRunning),
+                    Task.Factory.StartNew(() => PluginReceiver.Run(), TaskCreationOptions.LongRunning),
                 };
             }
             else

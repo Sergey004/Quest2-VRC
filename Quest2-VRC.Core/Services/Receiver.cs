@@ -23,18 +23,6 @@ namespace Quest2_VRC
         private static readonly string[] rgbAddresses = { "/avatar/parameters/R", "/avatar/parameters/G", "/avatar/parameters/B" };
         private static readonly Timer processTimer = new(230);
         private static OscServer? oscServer;
-        
-        // Event for media control commands
-        public static event Action<string>? MediaControlCommandReceived;
-
-        public static void RegisterOSCAddress(string address)
-        {
-            if (oscServer != null)
-            {
-                oscServer.RegisterMethod(address);
-                Console.WriteLine($"Registered OSC address: {address}");
-            }
-        }
 
         public static async void Run()
         {
@@ -91,16 +79,6 @@ namespace Quest2_VRC
             {
                 rgbBuffer[message.Address] = intValue;
                 Console.WriteLine($"Received {message.Address}: {intValue}");
-            }
-            // Handle media control parameters
-            else if (message.Address.StartsWith("/avatar/parameters/Media") && message.Data.Count > 0)
-            {
-                var command = message.Address.Split('/').Last();
-                if (message.Data[0] is bool value && value) // Only trigger when parameter is set to true
-                {
-                    Console.WriteLine($"Received media command: {command}");
-                    MediaControlCommandReceived?.Invoke(command);
-                }
             }
             else
             {

@@ -34,20 +34,19 @@ namespace Plugin.SpotifyOSC
         private static string _lastTrackId = string.Empty;
         private Task? _worker;
         private bool _running = false;
+        private string _codeVerifier = string.Empty;
+        private string _codeChallenge = string.Empty;
 
         public string Name => "SpotifyOSC";
         public string Description => "Sends current Spotify track info to VRChat via OSC.";
 
         public void Init()
         {
-            // ��������� ������ ��������� ������� ������������ ��������
             _config = this.LoadConfiguration<SpotifyConfig>();
             Console.WriteLine($"[SpotifyOSC] Initialized with config: ClientId={!string.IsNullOrEmpty(_config.ClientId)}, AccessToken={!string.IsNullOrEmpty(_config.AccessToken)}");
-            // ���� ���� ������ ������ � vars.json, ��������� ���
             MigrateOldConfig();
         }
 
-        // ����� ��������� ����� ��� ������� ������� ������
         public void RequestAccessToken()
         {
             StartOAuthFlow();
@@ -95,9 +94,8 @@ namespace Plugin.SpotifyOSC
 
         public void Start()
         {
-            // Всегда запускаем OAuth сервер для доступа к /login
             StartOAuthFlow();
-            
+
             if (!string.IsNullOrEmpty(_config.AccessToken))
             {
                 _running = true;
@@ -112,8 +110,7 @@ namespace Plugin.SpotifyOSC
         public void Stop()
         {
             _running = false;
-            
-            // Останавливаем HTTP listener если он запущен
+
             if (_httpListener != null && _httpListener.IsListening)
             {
                 try
@@ -138,15 +135,8 @@ namespace Plugin.SpotifyOSC
                     if (track != null && track.Id != _lastTrackId)
                     {
                         _lastTrackId = track.Id;
-                        
-                        // Формируем строку с информацией о треке
                         var trackInfo = $"Now Playing: {track.Artist} - {track.Name} ({track.Album})";
-                        
-                        PacketSender.SendPacket(
-                            // Отправляем в inputbox
-                            new VRChatMessage("input", trackInfo)
-                        );
-                        
+                        PacketSender.SendPacket(new VRChatMessage("input", trackInfo));
                         Console.WriteLine($"[SpotifyOSC] Sent track info: {trackInfo}");
                     }
                 }
@@ -158,10 +148,6 @@ namespace Plugin.SpotifyOSC
             }
         }
 
-        // --- OAuth2 PKCE Implementation (vrc-osc-spotify style) ---
-        private string _codeVerifier = string.Empty;
-        private string _codeChallenge = string.Empty;
-
         private void StartOAuthFlow()
         {
             if (string.IsNullOrEmpty(_config.ClientId))
@@ -169,19 +155,20 @@ namespace Plugin.SpotifyOSC
                 Logger.LogToConsole("Spotify Client ID missing in config");
                 return;
             }
-            
-            // Проверяем, не запущен ли уже HTTP listener
+
             if (_httpListener != null && _httpListener.IsListening)
             {
                 Console.WriteLine("[SpotifyOSC] OAuth server already running on http://localhost:8888/login");
                 return;
             }
-            if (string.IsNullOrEmpty(_config.AccessToken)==true)
 
+            if (string.IsNullOrEmpty(_config.AccessToken))
             {
                 GeneratePkceCodes();
                 Console.WriteLine("[SpotifyOSC] Starting OAuth PKCE flow...");
                 Console.WriteLine("[SpotifyOSC] Visit http://localhost:8888/login to authorize Spotify access");
+                Console.WriteLine($"[SpotifyOSC] Generated code_verifier: {_codeVerifier}");
+                Console.WriteLine($"[SpotifyOSC] Generated code_challenge: {_codeChallenge}");
 
                 _httpListener = new HttpListener();
                 _httpListener.Prefixes.Add("http://localhost:8888/login/");
@@ -189,7 +176,6 @@ namespace Plugin.SpotifyOSC
                 _httpListener.Start();
                 Task.Run(async () => await HandleOAuthRequests());
             }
-            
         }
 
         private async Task HandleOAuthRequests()
@@ -206,7 +192,7 @@ namespace Plugin.SpotifyOSC
                 }
                 else if (url == "/callback/")
                 {
-                    var code = System.Web.HttpUtility.ParseQueryString(context.Request.Url?.Query ?? "").Get("code");
+                    var code = HttpUtility.ParseQueryString(context.Request.Url?.Query ?? "").Get("code");
                     var responseString = "<html><body>Spotify authorization complete. You may close this window.</body></html>";
                     var buffer = System.Text.Encoding.UTF8.GetBytes(responseString);
                     context.Response.ContentLength64 = buffer.Length;
@@ -226,12 +212,16 @@ namespace Plugin.SpotifyOSC
 
         private void GeneratePkceCodes()
         {
-            // Generate a high-entropy code verifier
-            var rng = new System.Security.Cryptography.RNGCryptoServiceProvider();
-            var bytes = new byte[32];
-            rng.GetBytes(bytes);
-            _codeVerifier = Convert.ToBase64String(bytes).TrimEnd('=');
-            // Create code challenge
+            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~";
+            var random = new Random();
+            var codeVerifierLength = 128;
+            var codeVerifier = new char[codeVerifierLength];
+            for (int i = 0; i < codeVerifierLength; i++)
+            {
+                codeVerifier[i] = chars[random.Next(chars.Length)];
+            }
+            _codeVerifier = new string(codeVerifier);
+
             using var sha256 = System.Security.Cryptography.SHA256.Create();
             var challengeBytes = sha256.ComputeHash(System.Text.Encoding.ASCII.GetBytes(_codeVerifier));
             _codeChallenge = Base64UrlEncode(challengeBytes);
@@ -239,23 +229,34 @@ namespace Plugin.SpotifyOSC
 
         private static string Base64UrlEncode(byte[] input)
         {
-            return Convert.ToBase64String(input).TrimEnd('=')
+            var base64 = Convert.ToBase64String(input)
+                .TrimEnd('=')
                 .Replace('+', '-')
                 .Replace('/', '_');
+            return base64;
         }
 
         private async Task ExchangeCodeForToken(string code)
         {
             try
             {
+                if (string.IsNullOrEmpty(code))
+                {
+                    Console.WriteLine("[SpotifyOSC] Authorization code is empty");
+                    return;
+                }
+
+                var body = $"grant_type=authorization_code&code={HttpUtility.UrlEncode(code)}&redirect_uri={HttpUtility.UrlEncode("http://localhost:8888/callback/")}&client_id={HttpUtility.UrlEncode(_config.ClientId)}&code_verifier={HttpUtility.UrlEncode(_codeVerifier)}";
+                Console.WriteLine($"[SpotifyOSC] Sending token request with code_verifier: {_codeVerifier}");
+                Console.WriteLine($"[SpotifyOSC] Request body: {body}");
+
                 var request = new HttpRequestMessage(HttpMethod.Post, "https://accounts.spotify.com/api/token");
-                var body = $"grant_type=authorization_code&code={code}&redirect_uri=http://localhost:8888/callback/&client_id={_config.ClientId}&code_verifier={_codeVerifier}";
                 request.Content = new StringContent(body, System.Text.Encoding.UTF8, "application/x-www-form-urlencoded");
-                
+
                 var response = await _httpClient.SendAsync(request);
                 var json = await response.Content.ReadAsStringAsync();
-                Console.WriteLine($"[SpotifyOSC] Token response: {json}"); // Debug log
-                
+                Console.WriteLine($"[SpotifyOSC] Token response: {json}");
+
                 if (!response.IsSuccessStatusCode)
                 {
                     Console.WriteLine($"[SpotifyOSC] Failed to exchange code for token: {response.StatusCode}");
@@ -274,12 +275,11 @@ namespace Plugin.SpotifyOSC
 
                 _config.AccessToken = accessToken;
                 _config.RefreshToken = refreshToken;
-                
+
                 Console.WriteLine("[SpotifyOSC] Saving new tokens to config...");
                 this.SaveConfiguration(_config);
                 Console.WriteLine("[SpotifyOSC] AccessToken received and saved");
 
-                // После получения токена запускаем основной функционал
                 if (!_running)
                 {
                     _running = true;
@@ -304,18 +304,17 @@ namespace Plugin.SpotifyOSC
             {
                 var request = new HttpRequestMessage(HttpMethod.Post, "https://accounts.spotify.com/api/token");
                 var body = $"grant_type=refresh_token&refresh_token={_config.RefreshToken}&client_id={_config.ClientId}";
-                
-                // Добавляем client_secret только если он есть
+
                 if (!string.IsNullOrEmpty(_config.ClientSecret))
                 {
                     body += $"&client_secret={_config.ClientSecret}";
                 }
-                
+
                 request.Content = new StringContent(body, System.Text.Encoding.UTF8, "application/x-www-form-urlencoded");
-                
+
                 var response = await _httpClient.SendAsync(request);
                 var json = await response.Content.ReadAsStringAsync();
-                Console.WriteLine($"[SpotifyOSC] Refresh response: {json}"); // Debug log
+                Console.WriteLine($"[SpotifyOSC] Refresh response: {json}");
 
                 if (!response.IsSuccessStatusCode)
                 {
@@ -333,14 +332,13 @@ namespace Plugin.SpotifyOSC
                 }
 
                 _config.AccessToken = accessToken;
-                
-                // Обновляем refresh_token если он пришёл в ответе
+
                 var newRefreshToken = obj["refresh_token"]?.ToString();
                 if (!string.IsNullOrEmpty(newRefreshToken))
                 {
                     _config.RefreshToken = newRefreshToken;
                 }
-                
+
                 Console.WriteLine("[SpotifyOSC] Saving refreshed tokens to config...");
                 this.SaveConfiguration(_config);
                 Console.WriteLine("[SpotifyOSC] AccessToken refreshed and saved");
@@ -378,12 +376,12 @@ namespace Plugin.SpotifyOSC
         }
 
         private record SpotifyTrack(string Id, string Name, string Artist, string Album);
-        // Получить AccessToken (публичный метод)
+
         public string? GetAccessToken()
         {
             return _config?.AccessToken;
         }
-        // Публичный метод для запуска OAuth веб-сервера вручную
+
         public void StartOAuthWebServer()
         {
             StartOAuthFlow();
