@@ -33,6 +33,8 @@ namespace Quest2_VRC
                 new JProperty("SendPort", "9000"),
                 new JProperty("ReceivePort", "9001"),
                 new JProperty("HostIP", "127.0.0.1"),
+                new JProperty("UseCustomPort", "False"),
+
                 new JProperty("LastKnownIP", "127.0.0.1"));
 
                 File.WriteAllText(@"vars.json", vars.ToString());

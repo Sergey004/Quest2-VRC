@@ -21,7 +21,7 @@ namespace Quest2_VRC
         private static int pluginUdpPort;
         private static OSCQueryService? oscQueryService;
 
-        public static event Action<string>? PluginCommandReceived;
+        public static event Action<string, object>? PluginCommandReceived;
 
         public static void RegisterPluginAddress(string address)
         {
@@ -44,10 +44,9 @@ namespace Quest2_VRC
             try
             {
                 string json = File.ReadAllText("vars.json");
-                JObject vars = JObject.Parse(json);
 
                 int tcpPort = Extensions.GetAvailableTcpPort();
-                if (vars["UseCustomPort"] != null && (bool)vars["UseCustomPort"])
+                if (Global.UseCustomPort != true)
                 {
                     pluginUdpPort = Extensions.GetAvailableUdpPort();
                     oscQueryService = new OSCQueryServiceBuilder()
@@ -60,7 +59,7 @@ namespace Quest2_VRC
                 else
                 {
                     // Use main receive port + 1 for plugin channel
-                    pluginUdpPort = ((int)vars["ReceivePort"]) + 1;
+                    pluginUdpPort = ((int)Global.ReceivePort + 1);
                 }
 
                 var ip = IPAddress.Parse((string)Global.HostIP);
@@ -104,20 +103,8 @@ namespace Quest2_VRC
             if (message.Data.Count == 0) return;
             var val = message.Data[0];
 
-            bool trigger = val switch
-            {
-                bool b => b,
-                int i => i != 0,
-                float f => Math.Abs(f) > 0.5f,
-                double d => Math.Abs(d) > 0.5,
-                _ => false
-            };
-
-            if (trigger)
-            {
-                Console.WriteLine($"[PluginReceiver] Triggered: {message.Address}");
-                PluginCommandReceived?.Invoke(message.Address);
-            }
+            Console.WriteLine($"[PluginReceiver] Received: {message.Address} = {val}");
+            PluginCommandReceived?.Invoke(message.Address, val);
         }
     }
 }

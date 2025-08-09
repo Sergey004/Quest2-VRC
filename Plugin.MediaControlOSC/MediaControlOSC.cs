@@ -2,6 +2,7 @@ using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
 using Quest2_VRC;
+using System.Linq;
 
 namespace Plugin.MediaControlOSC
 {
@@ -15,6 +16,7 @@ namespace Plugin.MediaControlOSC
     public class MediaControlOSC : IPlugin
     {
         private static readonly string[] DefaultMediaAddresses = {
+            "/avatar/parameters/MediaPlayPause",
             "/avatar/parameters/MediaPlay",
             "/avatar/parameters/MediaPause",
             "/avatar/parameters/MediaNext",
@@ -30,7 +32,7 @@ namespace Plugin.MediaControlOSC
 
         public void Init()
         {
-            // ��������� ������
+            // Загрузка конфига
             _config = this.LoadConfiguration<MediaControlConfig>();
             Console.WriteLine($"[MediaControlOSC] Initialized with logging={_config.EnableLogging}");
 
@@ -54,7 +56,7 @@ namespace Plugin.MediaControlOSC
         public void Start()
         {
             if (_started) return;
-            RegisterAddresses(); // ��������� ����������� ��� ������
+            RegisterAddresses(); // Повторная регистрация при старте
             Quest2_VRC.PluginReceiver.PluginCommandReceived += OnMediaControlCommandReceived;
             _started = true;
             if (_config.EnableLogging)
@@ -70,13 +72,18 @@ namespace Plugin.MediaControlOSC
                 Console.WriteLine("[MediaControlOSC] Stopped");
         }
 
-        private void OnMediaControlCommandReceived(string command)
+        private void OnMediaControlCommandReceived(string address, object value)
         {
             if (_config.EnableLogging)
-                Console.WriteLine($"[MediaControlOSC] Received command: {command}");
+                Console.WriteLine($"[MediaControlOSC] Received {address}: {value}");
 
-            switch (command.ToLower())
+            string command = address.Split('/').LastOrDefault()?.ToLower() ?? "";
+            
+            switch (command)
             {
+                case "mediaplaypause":
+                    HandlePlayPause(value);
+                    break;
                 case "mediaplay":
                     MediaPlay();
                     break;
@@ -89,6 +96,31 @@ namespace Plugin.MediaControlOSC
                 case "mediaprevious":
                     MediaPrevious();
                     break;
+            }
+        }
+
+        private void HandlePlayPause(object value)
+        {
+            bool isPlay = value switch
+            {
+                bool b => b,
+                int i => i != 0,
+                float f => Math.Abs(f) > 0.5f,
+                double d => Math.Abs(d) > 0.5,
+                _ => false
+            };
+
+            if (isPlay)
+            {
+                if (_config.EnableLogging)
+                    Console.WriteLine("[MediaControlOSC] Play command");
+                MediaPlay();
+            }
+            else
+            {
+                if (_config.EnableLogging)
+                    Console.WriteLine("[MediaControlOSC] Pause command");
+                MediaPause();
             }
         }
 

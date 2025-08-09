@@ -135,7 +135,7 @@ namespace Plugin.SpotifyOSC
                     if (track != null && track.Id != _lastTrackId)
                     {
                         _lastTrackId = track.Id;
-                        var trackInfo = $"Now Playing: {track.Artist} - {track.Name} ({track.Album})";
+                        var trackInfo = $"Now Listening: {track.Artist} - {track.Name} ({track.Album})";
                         PacketSender.SendPacket(new VRChatMessage("input", trackInfo));
                         Console.WriteLine($"[SpotifyOSC] Sent track info: {trackInfo}");
                     }
@@ -361,9 +361,14 @@ namespace Plugin.SpotifyOSC
                 await RefreshAccessToken();
                 return await GetCurrentTrack();
             }
+            // Spotify returns 204 No Content when nothing is currently playing
+            if (response.StatusCode == HttpStatusCode.NoContent)
+                return null;
             if (!response.IsSuccessStatusCode)
                 return null;
             var json = await response.Content.ReadAsStringAsync();
+            if (string.IsNullOrWhiteSpace(json))
+                return null;
             using var doc = JsonDocument.Parse(json);
             var root = doc.RootElement;
             if (!root.TryGetProperty("item", out var item))
