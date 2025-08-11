@@ -46,8 +46,18 @@ namespace Quest2_VRC
             oscServer.FilterRegisteredMethods = false;
             
             oscServer.MessageReceived += OscServer_MessageReceived;
+            if (Global.UseCustomPort == false)
+            {
+                Logger.LogToConsole($"Receiver started on port: UDP: {udpPort} TCP: {tcpPort}");  
+                 
+            }
+            else
+            {
+                Logger.LogToConsole($"Receiver started on port: UDP: {udpPort}");
+            }
             oscServer.Start();
-            Logger.LogToConsole($"Receiver started on port: {udpPort}");
+           
+
             await Task.Delay(3000);
         }
 
