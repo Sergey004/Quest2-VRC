@@ -21,6 +21,7 @@
     </PropertyGroup>
     <MakeDir Directories="$(GuiPluginsDir)" />
     <Copy SourceFiles="$(TargetDir)$(TargetFileName)" DestinationFolder="$(GuiPluginsDir)" />
+    <Copy SourceFiles="$(TargetDir)OpenRGB.NET.dll" DestinationFolder="$(GuiPluginsDir)" />
   </Target>
 
 </Project>

@@ -1,7 +1,6 @@
-using System;
+using Quest2_VRC;
 using System.Collections.Concurrent;
 using System.Timers;
-using Quest2_VRC;
 using Timer = System.Timers.Timer;
 
 
@@ -43,12 +42,12 @@ namespace Plugin.OpenRGBOSC
         {
             _config = this.LoadConfiguration<OpenRGBConfig>();
             _processTimer.Interval = _config.BufferTimeMs;
-            
+
             if (_config.EnableLogging)
                 Console.WriteLine($"[OpenRGBOSC] Initialized with buffer time={_config.BufferTimeMs}ms");
 
-            _activeAddresses = _config.UseCustomAddresses && _config.CustomAddresses.Length > 0 
-                ? _config.CustomAddresses 
+            _activeAddresses = _config.UseCustomAddresses && _config.CustomAddresses.Length > 0
+                ? _config.CustomAddresses
                 : DefaultRGBAddresses;
 
             RegisterAddresses();
@@ -67,16 +66,16 @@ namespace Plugin.OpenRGBOSC
         public void Start()
         {
             if (_started) return;
-            
+
             RegisterAddresses(); // Повторная регистрация при старте
             Receiver.PluginCommandReceived += OnRGBCommandReceived;
             _processTimer.Start();
-            
+
             // Инициализация OpenRGB
             RGBController.SendRGBRawData(255, 255, 255);  // Init OpenRGB
             System.Threading.Tasks.Task.Delay(20).Wait();
             RGBController.SendRGBRawData(0, 0, 0);        // Set to Black
-            
+
             _started = true;
             if (_config.EnableLogging)
                 Console.WriteLine("[OpenRGBOSC] Started");
@@ -85,11 +84,11 @@ namespace Plugin.OpenRGBOSC
         public void Stop()
         {
             if (!_started) return;
-            
+
             Receiver.PluginCommandReceived -= OnRGBCommandReceived;
             _processTimer.Stop();
             _started = false;
-            
+
             if (_config.EnableLogging)
                 Console.WriteLine("[OpenRGBOSC] Stopped");
         }
@@ -137,22 +136,20 @@ namespace Plugin.OpenRGBOSC
 
             if (_config.EnableLogging)
                 Console.WriteLine($"[OpenRGBOSC] Processing RGB: R={r}, G={g}, B={b}");
-            
+
             ProcessRGB(r, g, b);
             _rgbBuffer.Clear();
         }
 
         private int GetRGBValue(string component)
         {
-            // Ищем адрес, содержащий компонент (R, G, или B)
             foreach (var kvp in _rgbBuffer)
             {
-                if (kvp.Key.Contains(component, StringComparison.OrdinalIgnoreCase))
+                if (kvp.Key.EndsWith(component, StringComparison.OrdinalIgnoreCase))
                     return kvp.Value;
             }
             return 0;
         }
-
         private void ProcessRGB(int r, int g, int b)
         {
             try

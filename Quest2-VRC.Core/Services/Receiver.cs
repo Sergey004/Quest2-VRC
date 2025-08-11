@@ -25,7 +25,7 @@ namespace Quest2_VRC
 
             var tcpPort = Extensions.GetAvailableTcpPort();
             int udpPort;
-            if (vars["UseCustomPort"] != null && (bool)vars["UseCustomPort"])
+            if (Global.UseCustomPort==false)
             {
                 udpPort = Extensions.GetAvailableUdpPort();
                 var oscQuery = new OSCQueryServiceBuilder()
@@ -37,17 +37,17 @@ namespace Quest2_VRC
             }
             else
             {
-                udpPort = (int)vars["ReceivePort"];
+                udpPort = (int)Global.ReceivePort;
             }
 
             var IP = IPAddress.Parse((string)Global.HostIP);
 
             oscServer = new OscServer((Bespoke.Common.Net.TransportType)TransportType.Udp, IP, udpPort);
-            oscServer.FilterRegisteredMethods = true;
+            oscServer.FilterRegisteredMethods = false;
             
             oscServer.MessageReceived += OscServer_MessageReceived;
             oscServer.Start();
-            
+            Logger.LogToConsole($"Receiver started on port: {udpPort}");
             await Task.Delay(3000);
         }
 
