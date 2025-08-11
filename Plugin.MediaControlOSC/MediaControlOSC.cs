@@ -49,7 +49,7 @@ namespace Plugin.MediaControlOSC
             {
                 if (_config.EnableLogging)
                     Console.WriteLine($"[MediaControlOSC] Registering address: {address}");
-                Quest2_VRC.PluginReceiver.RegisterPluginAddress(address);
+                Receiver.RegisterAddress(address);
             }
         }
 
@@ -57,7 +57,7 @@ namespace Plugin.MediaControlOSC
         {
             if (_started) return;
             RegisterAddresses(); // Повторная регистрация при старте
-            Quest2_VRC.PluginReceiver.PluginCommandReceived += OnMediaControlCommandReceived;
+            Receiver.PluginCommandReceived += OnMediaControlCommandReceived;
             _started = true;
             if (_config.EnableLogging)
                 Console.WriteLine("[MediaControlOSC] Started");
@@ -66,7 +66,7 @@ namespace Plugin.MediaControlOSC
         public void Stop()
         {
             if (!_started) return;
-            Quest2_VRC.PluginReceiver.PluginCommandReceived -= OnMediaControlCommandReceived;
+            Receiver.PluginCommandReceived -= OnMediaControlCommandReceived;
             _started = false;
             if (_config.EnableLogging)
                 Console.WriteLine("[MediaControlOSC] Stopped");
