@@ -77,50 +77,43 @@ namespace Plugin.MediaControlOSC
             if (_config.EnableLogging)
                 Console.WriteLine($"[MediaControlOSC] Received {address}: {value}");
 
+            // Проверяем, что значение равно int 1
+            if (!(value is int intValue && intValue == 1))
+            {
+                if (_config.EnableLogging)
+                    Console.WriteLine($"[MediaControlOSC] Ignoring command - value is not int 1: {value}");
+                return;
+            }
+
             string command = address.Split('/').LastOrDefault()?.ToLower() ?? "";
             
             switch (command)
             {
                 case "mediaplaypause":
-                    HandlePlayPause(value);
+                    if (_config.EnableLogging)
+                        Console.WriteLine("[MediaControlOSC] PlayPause command");
+                    MediaPlayPause();
                     break;
                 case "mediaplay":
+                    if (_config.EnableLogging)
+                        Console.WriteLine("[MediaControlOSC] Play command");
                     MediaPlay();
                     break;
                 case "mediapause":
+                    if (_config.EnableLogging)
+                        Console.WriteLine("[MediaControlOSC] Pause command");
                     MediaPause();
                     break;
                 case "medianext":
+                    if (_config.EnableLogging)
+                        Console.WriteLine("[MediaControlOSC] Next command");
                     MediaNext();
                     break;
                 case "mediaprevious":
+                    if (_config.EnableLogging)
+                        Console.WriteLine("[MediaControlOSC] Previous command");
                     MediaPrevious();
                     break;
-            }
-        }
-
-        private void HandlePlayPause(object value)
-        {
-            bool isPlay = value switch
-            {
-                bool b => b,
-                int i => i != 0,
-                float f => Math.Abs(f) > 0.5f,
-                double d => Math.Abs(d) > 0.5,
-                _ => false
-            };
-
-            if (isPlay)
-            {
-                if (_config.EnableLogging)
-                    Console.WriteLine("[MediaControlOSC] Play command");
-                MediaPlay();
-            }
-            else
-            {
-                if (_config.EnableLogging)
-                    Console.WriteLine("[MediaControlOSC] Pause command");
-                MediaPause();
             }
         }
 
@@ -128,6 +121,7 @@ namespace Plugin.MediaControlOSC
         private void MediaPause() => SendMediaKey(MediaKeyAction.Pause);
         private void MediaNext() => SendMediaKey(MediaKeyAction.Next);
         private void MediaPrevious() => SendMediaKey(MediaKeyAction.Previous);
+        private void MediaPlayPause() => SendMediaKey(MediaKeyAction.Play);
 
         private enum MediaKeyAction { Play, Pause, Next, Previous }
 
