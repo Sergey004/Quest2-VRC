@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             materialCard1 = new MaterialSkin.Controls.MaterialCard();
+            materialButton7 = new MaterialSkin.Controls.MaterialButton();
             materialButton6 = new MaterialSkin.Controls.MaterialButton();
             materialButton2 = new MaterialSkin.Controls.MaterialButton();
             materialCheckbox3 = new MaterialSkin.Controls.MaterialCheckbox();
@@ -58,12 +59,29 @@
             // 
             resources.ApplyResources(materialCard1, "materialCard1");
             materialCard1.BackColor = System.Drawing.Color.FromArgb(255, 255, 255);
+            materialCard1.Controls.Add(materialButton7);
             materialCard1.Controls.Add(materialButton6);
             materialCard1.Controls.Add(materialButton2);
             materialCard1.Depth = 0;
             materialCard1.ForeColor = System.Drawing.Color.FromArgb(222, 0, 0, 0);
             materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
             materialCard1.Name = "materialCard1";
+            // 
+            // materialButton7
+            // 
+            resources.ApplyResources(materialButton7, "materialButton7");
+            materialButton7.Cursor = System.Windows.Forms.Cursors.Hand;
+            materialButton7.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            materialButton7.Depth = 0;
+            materialButton7.HighEmphasis = true;
+            materialButton7.Icon = null;
+            materialButton7.MouseState = MaterialSkin.MouseState.HOVER;
+            materialButton7.Name = "materialButton7";
+            materialButton7.NoAccentTextColor = System.Drawing.Color.Empty;
+            materialButton7.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            materialButton7.UseAccentColor = false;
+            materialButton7.UseVisualStyleBackColor = true;
+            materialButton7.Click += materialButton7_Click;
             // 
             // materialButton6
             // 
@@ -349,6 +367,7 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel4;
         private MaterialSkin.Controls.MaterialLabel materialLabel5;
         private MaterialSkin.Controls.MaterialCheckbox materialCheckbox3;
+        private MaterialSkin.Controls.MaterialButton materialButton7;
     }
 }
 

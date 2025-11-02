@@ -3104,4 +3104,7 @@ ZeroConf requires an additional program to be installed on Quest
   <data name="USBDisCon" xml:space="preserve">
     <value>Disconnect the device from the computer for the wireless connection to work properly.</value>
   </data>
+  <data name="materialButton7.Text" xml:space="preserve">
+    <value>Plugins</value>
+  </data>
 </root>

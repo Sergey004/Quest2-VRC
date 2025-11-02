@@ -3090,7 +3090,7 @@
 "https://github.com/Sergey004/Quest2-VRC/releases/tag/Finaly". (Да оно именно так и называеться)
 "Да" для ZeroConf, 
 "Нет" для старого метода,
-"Отмена" для ручного ввода IP</value>
+"Отмена" для ручного ввода IP.</value>
   </data>
   <data name="NoADB" xml:space="preserve">
     <value>Нет режима ADB</value>
@@ -3142,5 +3142,8 @@
   </data>
   <data name="USBDisCon" xml:space="preserve">
     <value>Для правильной работы беспроводного соединения отсоедините устройство от компьютера.</value>
+  </data>
+  <data name="materialButton7.Text" xml:space="preserve">
+    <value>Плагины</value>
   </data>
 </root>
