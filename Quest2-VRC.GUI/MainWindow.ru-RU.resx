@@ -1,17 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <root>
-  <!-- 
-    Microsoft ResX Schema 
-    
+  <!--
+    Microsoft ResX Schema
+
     Version 2.0
-    
-    The primary goals of this format is to allow a simple XML format 
-    that is mostly human readable. The generation and parsing of the 
-    various data types are done through the TypeConverter classes 
+
+    The primary goals of this format is to allow a simple XML format
+    that is mostly human readable. The generation and parsing of the
+    various data types are done through the TypeConverter classes
     associated with the data types.
-    
+
     Example:
-    
+
     ... ado.net/XML headers & schema ...
     <resheader name="resmimetype">text/microsoft-resx</resheader>
     <resheader name="version">2.0</resheader>
@@ -26,36 +26,36 @@
         <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
         <comment>This is a comment</comment>
     </data>
-                
-    There are any number of "resheader" rows that contain simple 
+
+    There are any number of "resheader" rows that contain simple
     name/value pairs.
-    
-    Each data row contains a name, and value. The row also contains a 
-    type or mimetype. Type corresponds to a .NET class that support 
-    text/value conversion through the TypeConverter architecture. 
-    Classes that don't support this are serialized and stored with the 
+
+    Each data row contains a name, and value. The row also contains a
+    type or mimetype. Type corresponds to a .NET class that support
+    text/value conversion through the TypeConverter architecture.
+    Classes that don't support this are serialized and stored with the
     mimetype set.
-    
-    The mimetype is used for serialized objects, and tells the 
-    ResXResourceReader how to depersist the object. This is currently not 
+
+    The mimetype is used for serialized objects, and tells the
+    ResXResourceReader how to depersist the object. This is currently not
     extensible. For a given mimetype the value must be set accordingly:
-    
-    Note - application/x-microsoft.net.object.binary.base64 is the format 
-    that the ResXResourceWriter will generate, however the reader can 
+
+    Note - application/x-microsoft.net.object.binary.base64 is the format
+    that the ResXResourceWriter will generate, however the reader can
     read any of the formats listed below.
-    
+
     mimetype: application/x-microsoft.net.object.binary.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
-    
+
     mimetype: application/x-microsoft.net.object.soap.base64
-    value   : The object must be serialized with 
+    value   : The object must be serialized with
             : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
             : and then encoded with base64 encoding.
 
     mimetype: application/x-microsoft.net.object.bytearray.base64
-    value   : The object must be serialized into a byte array 
+    value   : The object must be serialized into a byte array
             : using a System.ComponentModel.TypeConverter
             : and then encoded with base64 encoding.
     -->
@@ -117,18 +117,27 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="materialButton7.Size" type="System.Drawing.Size, System.Drawing">
+    <value>94, 36</value>
+  </data>
+  <data name="materialButton7.Text" xml:space="preserve">
+    <value>Плагины</value>
+  </data>
   <data name="materialButton6.Text" xml:space="preserve">
     <value>OSC Тест</value>
   </data>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
   <data name="materialButton2.Location" type="System.Drawing.Point, System.Drawing">
-    <value>21, 78</value>
+    <value>21, 137</value>
   </data>
   <data name="materialButton2.Size" type="System.Drawing.Size, System.Drawing">
     <value>138, 36</value>
   </data>
   <data name="materialButton2.Text" xml:space="preserve">
     <value>Запустить все</value>
+  </data>
+  <data name="materialCheckbox3.Text" xml:space="preserve">
+    <value>Отключить сообщения об отключении</value>
   </data>
   <data name="materialButton3.Location" type="System.Drawing.Point, System.Drawing">
     <value>12, 137</value>
@@ -158,7 +167,7 @@
     <value>Отправка</value>
   </data>
   <data name="materialLabel1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 14px</value>
+    <value>Roboto, 14px</value>
   </data>
   <data name="materialLabel1.Size" type="System.Drawing.Size, System.Drawing">
     <value>37, 19</value>
@@ -167,7 +176,7 @@
     <value>Логи</value>
   </data>
   <data name="materialLabel2.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 14px</value>
+    <value>Roboto, 14px</value>
   </data>
   <data name="materialLabel2.Size" type="System.Drawing.Size, System.Drawing">
     <value>56, 19</value>
@@ -176,7 +185,7 @@
     <value>Статус:</value>
   </data>
   <data name="materialCheckbox2.Size" type="System.Drawing.Size, System.Drawing">
-    <value>256, 37</value>
+    <value>213, 37</value>
   </data>
   <data name="materialCheckbox2.Text" xml:space="preserve">
     <value>Звуковые уведомления</value>
@@ -191,7 +200,7 @@
     <value>Помощь</value>
   </data>
   <data name="materialTextBox1.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 16px</value>
+    <value>Roboto, 16px</value>
   </data>
   <data name="materialTextBox1.Hint" xml:space="preserve">
     <value>Quest IP (только для ADB)</value>
@@ -212,7 +221,7 @@
     <value>Показать логи</value>
   </data>
   <data name="materialLabel3.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 14px</value>
+    <value>Roboto, 14px</value>
   </data>
   <data name="materialLabel3.Location" type="System.Drawing.Point, System.Drawing">
     <value>670, 569</value>
@@ -224,10 +233,10 @@
     <value>Последный коммит:</value>
   </data>
   <data name="materialLabel4.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 14px</value>
+    <value>Roboto, 14px</value>
   </data>
   <data name="materialLabel5.Font" type="System.Drawing.Font, System.Drawing">
-    <value>Microsoft Sans Serif, 14px</value>
+    <value>Roboto, 14px</value>
   </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
@@ -3046,104 +3055,5 @@
         AAAAAAAAAAAAAADwDwAAwAMAAIABAACAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACA
         AQAAgAEAAMADAADwDwAA
 </value>
-  </data>
-  <data name="ADBFall" xml:space="preserve">
-    <value>Ошибка при запуске ADB</value>
-  </data>
-  <data name="ADBInTCPIP" xml:space="preserve">
-    <value>Перезапуск ADB в режиме TCPIP</value>
-  </data>
-  <data name="ADBRunning" xml:space="preserve">
-    <value>ADB запущен</value>
-  </data>
-  <data name="ConnHelp" xml:space="preserve">
-    <value>1) Подключите гарнитуру к компьютеру
-2) Переведите переключатель в положение "AirLink (или VD)". 
-3) Дождитесь, пока ADB переключится в режим TCPIP.
-4) Нажмите кнопку "Запустить все" для подключения. 
-
-Если это не работает
-Подключение вручную
-Введите 
-"platform-tools\adb tcpip 5555" 
-"platform-tools\adb connect QUEST_IP:5555"</value>
-  </data>
-  <data name="Error" xml:space="preserve">
-    <value>Ошибка</value>
-  </data>
-  <data name="Exec" xml:space="preserve">
-    <value>Выполнение...</value>
-  </data>
-  <data name="ExitAndStop" xml:space="preserve">
-    <value>Выход и завершение работы ADB</value>
-  </data>
-  <data name="ExitNote" xml:space="preserve">
-    <value>Вы хотите выйти?
-Обратите внимание, что это действие приведет к остановке ADB-сервера (если он запущен)</value>
-  </data>
-  <data name="LocalHostErr" xml:space="preserve">
-    <value>Данная функция не может быть активирована, если HostIP не равен 127.0.0.1</value>
-  </data>
-  <data name="NewOrOld" xml:space="preserve">
-    <value>Вы хотите, чтобы программа находила IP-адрес старым способом или с помощью ZeroConf?
-Поиск через ZeroConf требует установки дополнительной программы на Quest
-"https://github.com/Sergey004/Quest2-VRC/releases/tag/Finaly". (Да оно именно так и называеться)
-"Да" для ZeroConf, 
-"Нет" для старого метода,
-"Отмена" для ручного ввода IP.</value>
-  </data>
-  <data name="NoADB" xml:space="preserve">
-    <value>Нет режима ADB</value>
-  </data>
-  <data name="NoHMD" xml:space="preserve">
-    <value>Гарнитура не подключена или не найдена в локальной сети</value>
-  </data>
-  <data name="OSCFall" xml:space="preserve">
-    <value>Ошибка при запуске OSC</value>
-  </data>
-  <data name="Ready" xml:space="preserve">
-    <value>Готов</value>
-  </data>
-  <data name="Receive" xml:space="preserve">
-    <value>Только приёмка</value>
-  </data>
-  <data name="Send" xml:space="preserve">
-    <value>Только отправка</value>
-  </data>
-  <data name="TCPIPmode" xml:space="preserve">
-    <value>В режиме работы TCP/IP</value>
-  </data>
-  <data name="WakeDevice" xml:space="preserve">
-    <value>Не забудьте разбудить свое устройство</value>
-  </data>
-  <data name="Help" xml:space="preserve">
-    <value>Помощь</value>
-  </data>
-  <data name="USBCon" xml:space="preserve">
-    <value>Подключите свою гарнитуру к компьютеру и нажмите ОК</value>
-  </data>
-  <data name="materialCheckbox3.Text" xml:space="preserve">
-    <value>Отключить сообщения об отключении</value>
-  </data>
-  <data name="$this.Text" xml:space="preserve">
-    <value>Quest2-VRC GUI</value>
-  </data>
-  <data name="materialLabel5.Text" xml:space="preserve">
-    <value>Status msg</value>
-  </data>
-  <data name="materialLabel4.Text" xml:space="preserve">
-    <value>commit</value>
-  </data>
-  <data name="Manualinput" xml:space="preserve">
-    <value>Строка ввода была разблокирована для ручного ввода</value>
-  </data>
-  <data name="ADBNotFound" xml:space="preserve">
-    <value>adb.exe не найден в каталоге "platform-tools", adb будет загружен после нажатия кнопки "OK", убедитесь, что ваше устройство подключено к Интернету.</value>
-  </data>
-  <data name="USBDisCon" xml:space="preserve">
-    <value>Для правильной работы беспроводного соединения отсоедините устройство от компьютера.</value>
-  </data>
-  <data name="materialButton7.Text" xml:space="preserve">
-    <value>Плагины</value>
   </data>
 </root>

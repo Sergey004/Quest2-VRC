@@ -444,13 +444,11 @@ namespace Quest2_VRC
 
         private void materialButton7_Click(object sender, EventArgs e)
         {
-            // Раньше открывал OSCTest. Теперь открываем менеджер плагинов.
-            // Use BeginInvoke to ensure mouse up is processed before dialog is shown
             BeginInvoke(new Action(() =>
             {
-                using (var pm = new PluginManagerForm())
+                using (var pm = Activator.CreateInstance(typeof(PluginManagerForm)) as PluginManagerForm)
                 {
-                    pm.ShowDialog(this);
+                    pm?.ShowDialog(this);
                 }
             }));
         }

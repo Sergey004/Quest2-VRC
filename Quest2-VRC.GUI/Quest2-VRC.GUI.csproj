@@ -96,6 +96,12 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Update="PluginManagerForm.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>PluginManagerForm.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
     <None Update="odtclicommands.txt">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
