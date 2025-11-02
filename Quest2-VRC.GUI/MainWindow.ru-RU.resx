@@ -3056,4 +3056,97 @@
         AQAAgAEAAMADAADwDwAA
 </value>
   </data>
+  <data name="ADBFall" xml:space="preserve">
+    <value>Ошибка при запуске ADB</value>
+  </data>
+  <data name="ADBInTCPIP" xml:space="preserve">
+    <value>Перезапуск ADB в режиме TCPIP</value>
+  </data>
+  <data name="ADBRunning" xml:space="preserve">
+    <value>ADB запущен</value>
+  </data>
+  <data name="ConnHelp" xml:space="preserve">
+    <value>1) Подключите гарнитуру к компьютеру
+2) Переведите переключатель в положение "AirLink (или VD)". 
+3) Дождитесь, пока ADB переключится в режим TCPIP.
+4) Нажмите кнопку "Запустить все" для подключения. 
+
+Если это не работает
+Подключение вручную
+Введите 
+"platform-tools\adb tcpip 5555" 
+"platform-tools\adb connect QUEST_IP:5555"</value>
+  </data>
+  <data name="Error" xml:space="preserve">
+    <value>Ошибка</value>
+  </data>
+  <data name="Exec" xml:space="preserve">
+    <value>Выполнение...</value>
+  </data>
+  <data name="ExitAndStop" xml:space="preserve">
+    <value>Выход и завершение работы ADB</value>
+  </data>
+  <data name="ExitNote" xml:space="preserve">
+    <value>Вы хотите выйти?
+Обратите внимание, что это действие приведет к остановке ADB-сервера (если он запущен)</value>
+  </data>
+  <data name="LocalHostErr" xml:space="preserve">
+    <value>Данная функция не может быть активирована, если HostIP не равен 127.0.0.1</value>
+  </data>
+  <data name="NewOrOld" xml:space="preserve">
+    <value>Вы хотите, чтобы программа находила IP-адрес старым способом или с помощью ZeroConf?
+Поиск через ZeroConf требует установки дополнительной программы на Quest
+"https://github.com/Sergey004/Quest2-VRC/releases/tag/Finaly". (Да оно именно так и называеться)
+"Да" для ZeroConf, 
+"Нет" для старого метода,
+"Отмена" для ручного ввода IP.</value>
+  </data>
+  <data name="NoADB" xml:space="preserve">
+    <value>Нет режима ADB</value>
+  </data>
+  <data name="NoHMD" xml:space="preserve">
+    <value>Гарнитура не подключена или не найдена в локальной сети</value>
+  </data>
+  <data name="OSCFall" xml:space="preserve">
+    <value>Ошибка при запуске OSC</value>
+  </data>
+  <data name="Ready" xml:space="preserve">
+    <value>Готов</value>
+  </data>
+  <data name="Receive" xml:space="preserve">
+    <value>Только приёмка</value>
+  </data>
+  <data name="Send" xml:space="preserve">
+    <value>Только отправка</value>
+  </data>
+  <data name="TCPIPmode" xml:space="preserve">
+    <value>В режиме работы TCP/IP</value>
+  </data>
+  <data name="WakeDevice" xml:space="preserve">
+    <value>Не забудьте разбудить свое устройство</value>
+  </data>
+  <data name="Help" xml:space="preserve">
+    <value>Помощь</value>
+  </data>
+  <data name="USBCon" xml:space="preserve">
+    <value>Подключите свою гарнитуру к компьютеру и нажмите ОК</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Quest2-VRC GUI</value>
+  </data>
+  <data name="materialLabel5.Text" xml:space="preserve">
+    <value>Status msg</value>
+  </data>
+  <data name="materialLabel4.Text" xml:space="preserve">
+    <value>commit</value>
+  </data>
+  <data name="Manualinput" xml:space="preserve">
+    <value>Строка ввода была разблокирована для ручного ввода</value>
+  </data>
+  <data name="ADBNotFound" xml:space="preserve">
+    <value>adb.exe не найден в каталоге "platform-tools", adb будет загружен после нажатия кнопки "OK", убедитесь, что ваше устройство подключено к Интернету.</value>
+  </data>
+  <data name="USBDisCon" xml:space="preserve">
+    <value>Для правильной работы беспроводного соединения отсоедините устройство от компьютера.</value>
+  </data>
 </root>
