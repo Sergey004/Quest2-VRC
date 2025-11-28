@@ -1,4 +1,4 @@
-# Quest2-VRC but for Quest Native (POC state)
+# Quest2-VRC but for Quest Native (~~POC state~~ Xamarin is Dead May 1, 2024)
 
 ![image](https://user-images.githubusercontent.com/11889498/233682219-d7dee072-867f-429d-ba1d-f7933d27db41.png "POC")
 
