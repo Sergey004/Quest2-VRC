@@ -55,10 +55,10 @@ jobs:
       uses: actions/checkout@v3
       with:
             submodules: recursive
-    - name: Install .NET 8 SDK
+    - name: Install .NET 10 SDK
       uses: actions/setup-dotnet@v3
       with:
-           dotnet-version: 8.x.x
+           dotnet-version: 10.x.x
       env:
           ACTIONS_ALLOW_UNSECURE_COMMANDS: 'true'
     
