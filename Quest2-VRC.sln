@@ -1,7 +1,6 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.4.33205.214
+# Visual Studio Version 18
+VisualStudioVersion = 18.4.11620.152 stable
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Quest2-VRC.Core", "Quest2-VRC.Core\Quest2-VRC.Core.csproj", "{0BFC8128-748B-49AB-A5F6-CE52D656FD1C}"
 EndProject
@@ -11,6 +10,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.MediaControlOSC", "Plugin.MediaControlOSC\Plugin.MediaControlOSC.csproj", "{72195382-73D4-0965-2377-8A7F394EE0E7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.SpotifyOSC", "Plugin.SpotifyOSC\Plugin.SpotifyOSC.csproj", "{4B2221AB-7887-48FF-03EB-0832BC15AD7A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Plugin.OpenRGBOSC", "Plugin.OpenRGBOSC\Plugin.OpenRGBOSC.csproj", "{A7E8D0B7-8C68-4A8E-9B1C-6E1B2F03E8C1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Plugin.WinOSC", "Plugin.WinOSC\Plugin.WinOSC.csproj", "{4B08257F-9130-46DE-AFE1-36C14F428797}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -36,6 +43,38 @@ Global
 		{B8C01B77-7853-408C-8B9E-6740B890571A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{B8C01B77-7853-408C-8B9E-6740B890571A}.Release|x64.ActiveCfg = Release|x64
 		{B8C01B77-7853-408C-8B9E-6740B890571A}.Release|x64.Build.0 = Release|x64
+		{72195382-73D4-0965-2377-8A7F394EE0E7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{72195382-73D4-0965-2377-8A7F394EE0E7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{72195382-73D4-0965-2377-8A7F394EE0E7}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{72195382-73D4-0965-2377-8A7F394EE0E7}.Debug|x64.Build.0 = Debug|Any CPU
+		{72195382-73D4-0965-2377-8A7F394EE0E7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{72195382-73D4-0965-2377-8A7F394EE0E7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{72195382-73D4-0965-2377-8A7F394EE0E7}.Release|x64.ActiveCfg = Release|Any CPU
+		{72195382-73D4-0965-2377-8A7F394EE0E7}.Release|x64.Build.0 = Release|Any CPU
+		{4B2221AB-7887-48FF-03EB-0832BC15AD7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B2221AB-7887-48FF-03EB-0832BC15AD7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B2221AB-7887-48FF-03EB-0832BC15AD7A}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{4B2221AB-7887-48FF-03EB-0832BC15AD7A}.Debug|x64.Build.0 = Debug|Any CPU
+		{4B2221AB-7887-48FF-03EB-0832BC15AD7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B2221AB-7887-48FF-03EB-0832BC15AD7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B2221AB-7887-48FF-03EB-0832BC15AD7A}.Release|x64.ActiveCfg = Release|Any CPU
+		{4B2221AB-7887-48FF-03EB-0832BC15AD7A}.Release|x64.Build.0 = Release|Any CPU
+		{A7E8D0B7-8C68-4A8E-9B1C-6E1B2F03E8C1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7E8D0B7-8C68-4A8E-9B1C-6E1B2F03E8C1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7E8D0B7-8C68-4A8E-9B1C-6E1B2F03E8C1}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{A7E8D0B7-8C68-4A8E-9B1C-6E1B2F03E8C1}.Debug|x64.Build.0 = Debug|Any CPU
+		{A7E8D0B7-8C68-4A8E-9B1C-6E1B2F03E8C1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7E8D0B7-8C68-4A8E-9B1C-6E1B2F03E8C1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7E8D0B7-8C68-4A8E-9B1C-6E1B2F03E8C1}.Release|x64.ActiveCfg = Release|Any CPU
+		{A7E8D0B7-8C68-4A8E-9B1C-6E1B2F03E8C1}.Release|x64.Build.0 = Release|Any CPU
+		{4B08257F-9130-46DE-AFE1-36C14F428797}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4B08257F-9130-46DE-AFE1-36C14F428797}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4B08257F-9130-46DE-AFE1-36C14F428797}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{4B08257F-9130-46DE-AFE1-36C14F428797}.Debug|x64.Build.0 = Debug|Any CPU
+		{4B08257F-9130-46DE-AFE1-36C14F428797}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4B08257F-9130-46DE-AFE1-36C14F428797}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4B08257F-9130-46DE-AFE1-36C14F428797}.Release|x64.ActiveCfg = Release|Any CPU
+		{4B08257F-9130-46DE-AFE1-36C14F428797}.Release|x64.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

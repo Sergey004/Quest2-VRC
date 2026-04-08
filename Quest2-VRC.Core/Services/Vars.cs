@@ -1,4 +1,4 @@
-﻿using Newtonsoft.Json.Linq;
+using Newtonsoft.Json.Linq;
 using System;
 using System.IO;
 
@@ -29,7 +29,7 @@ namespace Quest2_VRC
                 new JProperty("HMDBat", "HMDBat"),
                 new JProperty("ControllerBatL", "ControllerBatL"),
                 new JProperty("ControllerBatR", "ControllerBatR"),
-                new JProperty("UseCustomPort", "False"),
+                new JProperty("UseCustomPort", "True"),    // OSCQuery broken
                 new JProperty("SendPort", "9000"),
                 new JProperty("ReceivePort", "9001"),
                 new JProperty("HostIP", "127.0.0.1"),

@@ -41,7 +41,8 @@ namespace Quest2_VRC
             {
                 StartServerResult result = server.StartServer(@"platform-tools\adb.exe", false);
             }
-            catch (Exception) {
+            catch (Exception)
+            {
                 MessageBox.Show(string.Format("ADB process running from another location is detected, the program closes."), "Results", MessageBoxButtons.OK);
                 Environment.Exit(1987);
 
@@ -335,7 +336,7 @@ namespace Quest2_VRC
             }
             else
             {
-                
+
                 File.Delete("odtout.txt");
                 ADB.StopADB();
             }
@@ -426,7 +427,7 @@ namespace Quest2_VRC
         }
 
         private void Form1_Load(object sender, EventArgs e)
-        {
+        {      
 
         }
 
@@ -439,6 +440,17 @@ namespace Quest2_VRC
         private void materialCheckbox3_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void materialButton7_Click(object sender, EventArgs e)
+        {
+            BeginInvoke(new Action(() =>
+            {
+                using (var pm = Activator.CreateInstance(typeof(PluginManagerForm)) as PluginManagerForm)
+                {
+                    pm?.ShowDialog(this);
+                }
+            }));
         }
     }
 }

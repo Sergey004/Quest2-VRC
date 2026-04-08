@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainWindow));
             materialCard1 = new MaterialSkin.Controls.MaterialCard();
+            materialButton7 = new MaterialSkin.Controls.MaterialButton();
             materialButton6 = new MaterialSkin.Controls.MaterialButton();
             materialButton2 = new MaterialSkin.Controls.MaterialButton();
             materialCheckbox3 = new MaterialSkin.Controls.MaterialCheckbox();
@@ -58,12 +59,29 @@
             // 
             resources.ApplyResources(materialCard1, "materialCard1");
             materialCard1.BackColor = System.Drawing.Color.FromArgb(255, 255, 255);
+            materialCard1.Controls.Add(materialButton7);
             materialCard1.Controls.Add(materialButton6);
             materialCard1.Controls.Add(materialButton2);
             materialCard1.Depth = 0;
             materialCard1.ForeColor = System.Drawing.Color.FromArgb(222, 0, 0, 0);
             materialCard1.MouseState = MaterialSkin.MouseState.HOVER;
             materialCard1.Name = "materialCard1";
+            // 
+            // materialButton7
+            // 
+            resources.ApplyResources(materialButton7, "materialButton7");
+            materialButton7.Cursor = System.Windows.Forms.Cursors.Hand;
+            materialButton7.Density = MaterialSkin.Controls.MaterialButton.MaterialButtonDensity.Default;
+            materialButton7.Depth = 0;
+            materialButton7.HighEmphasis = true;
+            materialButton7.Icon = null;
+            materialButton7.MouseState = MaterialSkin.MouseState.HOVER;
+            materialButton7.Name = "materialButton7";
+            materialButton7.NoAccentTextColor = System.Drawing.Color.Empty;
+            materialButton7.Type = MaterialSkin.Controls.MaterialButton.MaterialButtonType.Contained;
+            materialButton7.UseAccentColor = false;
+            materialButton7.UseVisualStyleBackColor = true;
+            materialButton7.Click += materialButton7_Click;
             // 
             // materialButton6
             // 
@@ -99,8 +117,8 @@
             // 
             // materialCheckbox3
             // 
-            materialCheckbox3.Depth = 0;
             resources.ApplyResources(materialCheckbox3, "materialCheckbox3");
+            materialCheckbox3.Depth = 0;
             materialCheckbox3.MouseLocation = new System.Drawing.Point(-1, -1);
             materialCheckbox3.MouseState = MaterialSkin.MouseState.HOVER;
             materialCheckbox3.Name = "materialCheckbox3";
@@ -159,11 +177,11 @@
             // 
             // materialMultiLineTextBox1
             // 
+            resources.ApplyResources(materialMultiLineTextBox1, "materialMultiLineTextBox1");
             materialMultiLineTextBox1.BackColor = System.Drawing.Color.FromArgb(255, 255, 255);
             materialMultiLineTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             materialMultiLineTextBox1.Cursor = System.Windows.Forms.Cursors.No;
             materialMultiLineTextBox1.Depth = 0;
-            resources.ApplyResources(materialMultiLineTextBox1, "materialMultiLineTextBox1");
             materialMultiLineTextBox1.ForeColor = System.Drawing.Color.FromArgb(222, 0, 0, 0);
             materialMultiLineTextBox1.MouseState = MaterialSkin.MouseState.HOVER;
             materialMultiLineTextBox1.Name = "materialMultiLineTextBox1";
@@ -179,13 +197,13 @@
             // 
             // materialCard4
             // 
+            resources.ApplyResources(materialCard4, "materialCard4");
             materialCard4.BackColor = System.Drawing.Color.FromArgb(255, 255, 255);
             materialCard4.Controls.Add(materialButton3);
             materialCard4.Controls.Add(materialButton1);
             materialCard4.Controls.Add(materialButton4);
             materialCard4.Depth = 0;
             materialCard4.ForeColor = System.Drawing.Color.FromArgb(222, 0, 0, 0);
-            resources.ApplyResources(materialCard4, "materialCard4");
             materialCard4.MouseState = MaterialSkin.MouseState.HOVER;
             materialCard4.Name = "materialCard4";
             // 
@@ -198,6 +216,7 @@
             // 
             // materialCard2
             // 
+            resources.ApplyResources(materialCard2, "materialCard2");
             materialCard2.BackColor = System.Drawing.Color.FromArgb(255, 255, 255);
             materialCard2.Controls.Add(materialCheckbox2);
             materialCard2.Controls.Add(materialButton5);
@@ -205,7 +224,6 @@
             materialCard2.Controls.Add(materialSwitch1);
             materialCard2.Depth = 0;
             materialCard2.ForeColor = System.Drawing.Color.FromArgb(222, 0, 0, 0);
-            resources.ApplyResources(materialCard2, "materialCard2");
             materialCard2.MouseState = MaterialSkin.MouseState.HOVER;
             materialCard2.Name = "materialCard2";
             // 
@@ -239,10 +257,10 @@
             // 
             // materialTextBox1
             // 
+            resources.ApplyResources(materialTextBox1, "materialTextBox1");
             materialTextBox1.AnimateReadOnly = false;
             materialTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
             materialTextBox1.Depth = 0;
-            resources.ApplyResources(materialTextBox1, "materialTextBox1");
             materialTextBox1.LeadingIcon = null;
             materialTextBox1.MouseState = MaterialSkin.MouseState.OUT;
             materialTextBox1.Name = "materialTextBox1";
@@ -349,6 +367,7 @@
         private MaterialSkin.Controls.MaterialLabel materialLabel4;
         private MaterialSkin.Controls.MaterialLabel materialLabel5;
         private MaterialSkin.Controls.MaterialCheckbox materialCheckbox3;
+        private MaterialSkin.Controls.MaterialButton materialButton7;
     }
 }
 

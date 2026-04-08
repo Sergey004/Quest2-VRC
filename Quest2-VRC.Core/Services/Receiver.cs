@@ -1,6 +1,5 @@
 ﻿using Bespoke.Osc;
 using Newtonsoft.Json.Linq;
-using Quest2_VRC.Services;
 using System;
 using System.Collections.Concurrent;
 using System.Timers;
@@ -13,107 +12,76 @@ using Extensions = VRC.OSCQuery.Extensions;
 using VRC.OSCQuery;
 
 namespace Quest2_VRC
-
 {
-
     public class Receiver
-
     {
+        private static OscServer? oscServer;
+        public static event Action<string, object> PluginCommandReceived;
 
-        private static readonly string R = "/avatar/parameters/R";
-        private static readonly string G = "/avatar/parameters/G";
-        private static readonly string B = "/avatar/parameters/B";
-        private static readonly ConcurrentDictionary<string, int> rgbBuffer = new();
-        private static readonly string[] rgbAddresses = { "/avatar/parameters/R", "/avatar/parameters/G", "/avatar/parameters/B" };
-        private static readonly Timer processTimer = new(230); 
         public static async void Run()
         {
             string json = File.ReadAllText("vars.json");
             JObject vars = JObject.Parse(json);
-            processTimer.Elapsed += ProcessBufferedData;
-            processTimer.AutoReset = true; 
-            processTimer.Start();
 
-            RGBController.SendRGBRawData(255,255,255);  // Init OpenRGB
-            await Task.Delay(20);          
-            RGBController.SendRGBRawData(0, 0, 0);      // Set to Black
             var tcpPort = Extensions.GetAvailableTcpPort();
             int udpPort;
-            if (vars["UseCustomPort"] != null && (bool)vars["UseCustomPort"])
+            if (Global.UseCustomPort==false)
             {
-                
                 udpPort = Extensions.GetAvailableUdpPort();
                 var oscQuery = new OSCQueryServiceBuilder()
-           .WithTcpPort(tcpPort)
-           .WithUdpPort(udpPort)
-           .WithServiceName("Quest2-VRC OSCQuery Receiver")
-           .WithDefaults()
-           .Build();
+                    .WithTcpPort(tcpPort)
+                    .WithUdpPort(udpPort)
+                    .WithServiceName("Quest2-VRC OSCQuery Receiver")
+                    .WithDefaults()
+                    .Build();
             }
             else
             {
-                udpPort = (int)vars["ReceivePort"];
+                udpPort = (int)Global.ReceivePort;
             }
 
             var IP = IPAddress.Parse((string)Global.HostIP);
 
-            OscServer oscServer;
             oscServer = new OscServer((Bespoke.Common.Net.TransportType)TransportType.Udp, IP, udpPort);
-            oscServer.FilterRegisteredMethods = true;
-            oscServer.RegisterMethod(R);
-            oscServer.RegisterMethod(G);
-            oscServer.RegisterMethod(B);
-            oscServer.MessageReceived += new EventHandler<OscMessageReceivedEventArgs>(oscServer_MessageReceived);
-            oscServer.Start();
-            Logger.LogToConsole("Make sure you have all effects disabled in OpenRGB");
-            await Task.Delay(3000);
-        }
-
-        private static void ProcessBufferedData(object sender, ElapsedEventArgs e)
-        {
-            if (rgbBuffer.Count == 0) return;
-
+            oscServer.FilterRegisteredMethods = false;
             
-            int r = rgbBuffer.ContainsKey("/avatar/parameters/R") ? rgbBuffer["/avatar/parameters/R"] : 0;
-            int g = rgbBuffer.ContainsKey("/avatar/parameters/G") ? rgbBuffer["/avatar/parameters/G"] : 0;
-            int b = rgbBuffer.ContainsKey("/avatar/parameters/B") ? rgbBuffer["/avatar/parameters/B"] : 0;
-
-            Console.WriteLine($"Processing RGB: R={r}, G={g}, B={b}");
-
-            
-            ProcessRGB(r, g, b);
-
-            
-            rgbBuffer.Clear();
-        }
-
-        private static void oscServer_MessageReceived(object sender, OscMessageReceivedEventArgs e)
-        {
-            OscMessage message = e.Message;
-
-            if (rgbAddresses.Contains(message.Address) && message.Data[0] is int intValue)
+            oscServer.MessageReceived += OscServer_MessageReceived;
+            if (Global.UseCustomPort == false)
             {
-                
-                rgbBuffer[message.Address] = intValue;
-
-                Console.WriteLine($"Received {message.Address}: {intValue}");
+                Logger.LogToConsole($"Receiver started on port: UDP: {udpPort} TCP: {tcpPort}");  
+                 
             }
             else
             {
-                Console.WriteLine($"Unhandled or invalid message: {message.Address}");
+                Logger.LogToConsole($"Receiver started on port: UDP: {udpPort}");
+            }
+            oscServer.Start();
+           
+
+            await Task.Delay(3000);
+        }
+
+        public static void RegisterAddress(string address)
+        {
+            oscServer?.RegisterMethod(address);
+        }
+
+        private static void OscServer_MessageReceived(object sender, OscMessageReceivedEventArgs e)
+        {
+            OscMessage message = e.Message;
+            if (message.Data.Count > 0)
+            {
+                PluginCommandReceived?.Invoke(message.Address, message.Data[0]);
+            }
+            else
+            {
+                Console.WriteLine($"Received message without data: {message.Address}");
             }
         }
-
-        private static void ProcessRGB(int r, int g, int b)
-        {
-            
-            Console.WriteLine($"Received RGB: R={r}, G={g}, B={b}");
-            RGBController.SendRGBRawData(r, g, b);
-            
-        }
     }
-
 }
+
+
 
 
 

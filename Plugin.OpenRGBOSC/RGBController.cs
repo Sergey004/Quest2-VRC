@@ -5,7 +5,7 @@ using System.Linq;
 using static Quest2_VRC.Logger;
 
 
-namespace Quest2_VRC.Services
+namespace Plugin.OpenRGBOSC
 {
     public class RGBController
     {
@@ -13,7 +13,7 @@ namespace Quest2_VRC.Services
         {
             try
             { 
-            using var client = new OpenRgbClient(name: "Quest2-VRC OSC Receiver", autoConnect: true, timeoutMs: 1000);
+            using var client = new OpenRgbClient(name: "Quest2-VRC OpenRGBOSC Plugin", autoConnect: true, timeoutMs: 1000);
 
             var deviceCount = client.GetControllerCount();
             var devices = client.GetAllControllerData();
@@ -40,5 +40,3 @@ namespace Quest2_VRC.Services
     }
 
 }
-
-
