@@ -12,15 +12,33 @@ namespace Plugin.WinOSC
 
 
         private string _lastTrackInfo = string.Empty;
-        private static readonly string[] _allowedApps = {
-    "Spotify.exe", "foobar2000.exe", "AIMP.exe", "Winamp.exe",
-    "MusicBee.exe", "TIDAL.exe", "Deezer.exe", "vlc.exe",
-    "mpc-hc64.exe", "mpc-be64.exe",
-    "SpotifyAB.SpotifyMusic", "AppleInc.AppleMusicWin",
-    "Microsoft.ZuneMusic", "TidalMusicAS.TIDAL",
+        private static readonly Dictionary<string, string> _allowedApps = new(StringComparer.OrdinalIgnoreCase)
+{
+    // Win32 players
+    { "Spotify.exe",            "Spotify" },
+    { "foobar2000.exe",         "foobar2000" },
+    { "AIMP.exe",               "AIMP" },
+    { "Winamp.exe",             "Winamp" },
+    { "MusicBee.exe",           "MusicBee" },
+    { "TIDAL.exe",              "TIDAL" },
+    { "Deezer.exe",             "Deezer" },
+    { "wmplayer.exe",            "Windows Media Player Legacy" },
+    { "itunes.exe",             "iTunes" },
+    // Video players (often used for music videos)
+    { "vlc.exe",                "VLC" },
+    { "mpc-hc64.exe",           "MPC-HC" },
+    { "mpc-be64.exe",           "MPC-BE" },
+    // Store
+    { "SpotifyAB.SpotifyMusic", "Spotify" },
+    { "AppleInc.AppleMusicWin", "Apple Music" },
+    { "Microsoft.ZuneMusic",    "Windows Media Player" },
+    { "TidalMusicAS.TIDAL",     "TIDAL" },
+
 };
-        private static bool IsAllowedApp(string appId) =>
-    _allowedApps.Any(a => appId.StartsWith(a, StringComparison.OrdinalIgnoreCase));
+        private static string? GetAppFriendlyName(string appId) =>
+     _allowedApps
+         .FirstOrDefault(kv => appId.StartsWith(kv.Key, StringComparison.OrdinalIgnoreCase))
+         .Value;
 
         private CancellationTokenSource? _cts;
         private readonly object _lockObject = new object();
@@ -111,6 +129,7 @@ namespace Plugin.WinOSC
 
         private async void OnMediaPropertiesChanged(GlobalSystemMediaTransportControlsSession sender, MediaPropertiesChangedEventArgs args)
         {
+
             await UpdateTrackInfoAsync(sender);
         }
 
@@ -119,7 +138,8 @@ namespace Plugin.WinOSC
             try
             {
                 var appId = session.SourceAppUserModelId ?? "";
-                if (!IsAllowedApp(appId))
+                var appName = GetAppFriendlyName(appId);
+                if (appName == null)
                 {
                     //Console.WriteLine($"[{Name}] Skipped: {appId}");
                     return;
@@ -148,7 +168,7 @@ namespace Plugin.WinOSC
 
                 }
 
-                string message = $"Now Listening: {trackInfo}";
+                string message = $"Now Listening: {trackInfo} | {appName}";
 
                 PacketSender.SendPacket(new VRChatMessage("input", message));
                 Console.WriteLine($"[{Name}] Sent: {message}");
@@ -164,6 +184,14 @@ namespace Plugin.WinOSC
     PlaybackInfoChangedEventArgs args)
         {
             var playback = sender.GetPlaybackInfo();
+            Console.WriteLine($"[{Name}] PlaybackStatus: {playback?.PlaybackStatus}");
+
+            if (playback?.PlaybackStatus == GlobalSystemMediaTransportControlsSessionPlaybackStatus.Paused)
+            {
+                lock (_lockObject) { _lastTrackInfo = string.Empty; }
+                return;
+            }
+
             if (playback?.PlaybackStatus == GlobalSystemMediaTransportControlsSessionPlaybackStatus.Playing)
                 await UpdateTrackInfoAsync(sender);
         }

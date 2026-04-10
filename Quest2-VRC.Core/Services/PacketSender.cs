@@ -71,6 +71,7 @@ namespace Quest2_VRC
                                 OscMessage Message = new OscMessage(VRChat, String.Format("/chatbox/{0}", Param.Parameter));
                                 Message.Append(Param.Data);
                                 Message.Append(true);
+                                Message.Append(false);
                                 // Append the message to the bundle
                                 VRBundle.Append(Message);
 
