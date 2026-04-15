@@ -22,15 +22,16 @@ namespace Plugin.WinOSC
     { "MusicBee.exe",           "MusicBee" },
     { "TIDAL.exe",              "TIDAL" },
     { "Deezer.exe",             "Deezer" },
-    { "wmplayer.exe",            "Windows Media Player Legacy" },
+    { "wmplayer.exe",            "Windows Media Player (Legacy)" },
     { "itunes.exe",             "iTunes" },
     // Video players (often used for music videos)
     { "vlc.exe",                "VLC" },
     { "mpc-hc64.exe",           "MPC-HC" },
     { "mpc-be64.exe",           "MPC-BE" },
-    // Store
+    // Store AKA UWP Apps
     { "SpotifyAB.SpotifyMusic", "Spotify" },
     { "AppleInc.AppleMusicWin", "Apple Music" },
+    { "AppleInc.iTunes", "iTunes" },
     { "Microsoft.ZuneMusic",    "Windows Media Player" },
     { "TidalMusicAS.TIDAL",     "TIDAL" },
 
