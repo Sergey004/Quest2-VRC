@@ -1,4 +1,4 @@
-**This project is closed for forever.**
+**This project is not being developed further because it is considered complete.**
 
 # Quest2-VRC
 [![CI Auto](https://github.com/Sergey004/Quest2-VRC/actions/workflows/auto.yml/badge.svg?branch=winform_gui)](https://github.com/Sergey004/Quest2-VRC/actions/workflows/auto.yml)
